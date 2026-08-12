@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* Custom Cyber Studio Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06070b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 243, 255, 0.25);
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00f3ff;
+}
+
+/* Firefox custom scrollbar support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1e293b #06070b;
+}

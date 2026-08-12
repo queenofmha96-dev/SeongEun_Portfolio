@@ -1,0 +1,6 @@
+{
+  "name": "Sound Director Portfolio",
+  "description": "게임 진입화면 스타일의 네온 다크모드 사운드 디렉터 포트폴리오 웹 애플리케이션",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
