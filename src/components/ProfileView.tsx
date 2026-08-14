@@ -58,25 +58,14 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
           </div>
         </div>
 
-        {/* Bio Paragraphs & Quote */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-7 space-y-2">
-            <h3 className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" /> ABOUT DIRECTOR
-            </h3>
-            <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans">
-              {profile.bio}
-            </p>
-          </div>
-
-          <div className="lg:col-span-5 border-l-2 border-amber-400 pl-5 space-y-1 flex flex-col justify-center">
-            <span className="text-[11px] font-mono font-bold text-amber-400 uppercase tracking-wider">
-              PHILOSOPHY
-            </span>
-            <p className="text-xs sm:text-sm text-amber-200/90 italic font-sans leading-relaxed">
-              "{profile.philosophy}"
-            </p>
-          </div>
+        {/* Bio Section */}
+        <div className="space-y-2">
+          <h3 className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" /> ABOUT DIRECTOR
+          </h3>
+          <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans max-w-4xl">
+            {profile.bio}
+          </p>
         </div>
 
       </div>
