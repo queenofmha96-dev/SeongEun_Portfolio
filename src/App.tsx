@@ -99,7 +99,7 @@ export default function App() {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
 
-        <main className="flex-1 px-4 sm:px-8 md:px-12 lg:px-16 max-w-[1640px] w-full mx-auto space-y-24 pb-36">
+        <main className="flex-1 px-4 sm:px-8 md:px-12 lg:px-16 max-w-[1640px] w-full mx-auto space-y-24 pt-12 sm:pt-16 md:pt-20 pb-36">
           
           {/* Section 1: Director Resume & Profile */}
           <section id="director-stats" className="scroll-mt-24 space-y-7">
