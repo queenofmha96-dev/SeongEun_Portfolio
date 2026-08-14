@@ -70,57 +70,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
 
       </div>
 
-      {/* 2. Clean Career Timeline */}
-      <div className="space-y-6 pt-4 border-t border-slate-800/80">
-        
-        <div className="flex items-center gap-2.5">
-          <Award className="w-5 h-5 text-cyan-400" />
-          <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-            주요 경력 사항 (CAREER HISTORY)
-          </h2>
-        </div>
-
-        {/* Open Timeline without nested boxes */}
-        <div className="relative border-l-2 border-slate-800 ml-3 pl-6 space-y-8">
-          {profile.experience.map((exp, idx) => (
-            <div key={idx} className="relative space-y-2 group">
-              {/* Dot on line */}
-              <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-900 border-2 border-cyan-400 group-hover:scale-125 transition-transform" />
-
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-base sm:text-lg font-bold text-white">{exp.company}</h3>
-                  <span className="text-slate-500">•</span>
-                  <span className="text-xs sm:text-sm font-semibold text-amber-300">{exp.role}</span>
-                </div>
-
-                <span className="text-xs font-mono text-cyan-400 font-bold px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800">
-                  {exp.period}
-                </span>
-              </div>
-
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
-                {exp.description}
-              </p>
-
-              <div className="flex flex-wrap items-center gap-2 pt-1">
-                <span className="text-xs font-mono text-slate-500 font-semibold">프로젝트:</span>
-                {exp.projects.map((p, i) => (
-                  <span 
-                    key={i} 
-                    className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300 text-xs font-mono"
-                  >
-                    {p}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </div>
-
-      {/* 3. Skills & Tools (Flat Clean Columns) */}
+      {/* 2. Skills & Tools (Flat Clean Columns) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-4 border-t border-slate-800/80">
         
         {/* Audio Middleware Skills */}
@@ -187,6 +137,56 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
               </ul>
             </div>
           </div>
+        </div>
+
+      </div>
+
+      {/* 3. Clean Career Timeline */}
+      <div className="space-y-6 pt-4 border-t border-slate-800/80">
+        
+        <div className="flex items-center gap-2.5">
+          <Award className="w-5 h-5 text-cyan-400" />
+          <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+            주요 경력 사항 (CAREER HISTORY)
+          </h2>
+        </div>
+
+        {/* Open Timeline without nested boxes */}
+        <div className="relative border-l-2 border-slate-800 ml-3 pl-6 space-y-8">
+          {profile.experience.map((exp, idx) => (
+            <div key={idx} className="relative space-y-2 group">
+              {/* Dot on line */}
+              <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-900 border-2 border-cyan-400 group-hover:scale-125 transition-transform" />
+
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-3">
+                  <h3 className="text-base sm:text-lg font-bold text-white">{exp.company}</h3>
+                  <span className="text-slate-500">•</span>
+                  <span className="text-xs sm:text-sm font-semibold text-amber-300">{exp.role}</span>
+                </div>
+
+                <span className="text-xs font-mono text-cyan-400 font-bold px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800">
+                  {exp.period}
+                </span>
+              </div>
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                {exp.description}
+              </p>
+
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                <span className="text-xs font-mono text-slate-500 font-semibold">프로젝트:</span>
+                {exp.projects.map((p, i) => (
+                  <span 
+                    key={i} 
+                    className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300 text-xs font-mono"
+                  >
+                    {p}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
