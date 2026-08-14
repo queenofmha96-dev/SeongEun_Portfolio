@@ -99,11 +99,11 @@ export default function App() {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
 
-        <main className="flex-1 p-4 md:p-8 max-w-7xl w-full mx-auto space-y-16 pb-24">
+        <main className="flex-1 px-4 sm:px-8 md:px-12 lg:px-16 max-w-[1640px] w-full mx-auto space-y-24 pb-36">
           
           {/* Section 1: Director Resume & Profile */}
-          <section id="director-stats" className="scroll-mt-24 space-y-5">
-            <div className="flex items-center gap-3 border-b border-slate-800 pb-3 font-mono">
+          <section id="director-stats" className="scroll-mt-24 space-y-6">
+            <div className="flex items-center gap-3 border-b border-slate-800 pb-3.5 font-mono">
               <span className="px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-bold">
                 01
               </span>
@@ -115,8 +115,8 @@ export default function App() {
           </section>
 
           {/* Section 2: Gaming History & Sound Research */}
-          <section id="gaming-history" className="scroll-mt-24 space-y-5">
-            <div className="flex items-center gap-3 border-b border-slate-800 pb-3 font-mono">
+          <section id="gaming-history" className="scroll-mt-24 space-y-6">
+            <div className="flex items-center gap-3 border-b border-slate-800 pb-3.5 font-mono">
               <span className="px-2.5 py-1 rounded-md bg-amber-950/80 border border-amber-500/40 text-amber-300 text-xs font-bold">
                 02
               </span>
@@ -128,8 +128,8 @@ export default function App() {
           </section>
 
           {/* Section 3: Portfolio Showcase Reel */}
-          <section id="showcase-reel" className="scroll-mt-24 space-y-5">
-            <div className="flex items-center gap-3 border-b border-slate-800 pb-3 font-mono">
+          <section id="showcase-reel" className="scroll-mt-24 space-y-6">
+            <div className="flex items-center gap-3 border-b border-slate-800 pb-3.5 font-mono">
               <span className="px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-bold">
                 03
               </span>
@@ -144,8 +144,8 @@ export default function App() {
           </section>
 
           {/* Section 4: Contact */}
-          <section id="direct-contact" className="scroll-mt-24 space-y-5">
-            <div className="flex items-center gap-3 border-b border-slate-800 pb-3 font-mono">
+          <section id="direct-contact" className="scroll-mt-24 space-y-6">
+            <div className="flex items-center gap-3 border-b border-slate-800 pb-3.5 font-mono">
               <span className="px-2.5 py-1 rounded-md bg-amber-950/80 border border-amber-500/40 text-amber-300 text-xs font-bold">
                 04
               </span>
@@ -159,11 +159,12 @@ export default function App() {
               onExportData={handleExportData}
             />
           </section>
+
         </main>
 
         {/* Footer */}
         <footer className="border-t border-slate-800/80 bg-[#06070b] py-8 text-center text-xs font-mono text-slate-400">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="max-w-[1640px] mx-auto px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p>© 2026 SEONGEUN SOUND STUDIO. ALL RIGHTS RESERVED.</p>
             <p className="text-purple-300 font-bold">FMOD / WWISE INTEGRATION COMPATIBLE</p>
           </div>

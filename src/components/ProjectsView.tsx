@@ -37,7 +37,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
   const featuredProject = projects.find((p) => p.isFeatured) || projects[0];
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 animate-fadeIn text-white font-sans">
+    <div className="w-full space-y-8 animate-fadeIn text-white font-sans">
       {/* Featured Reel Hero Card */}
       {featuredProject && (
         <div className="relative rounded-3xl overflow-hidden bg-[#0e1018] border border-slate-800 p-6 md:p-8 shadow-2xl">

@@ -10,7 +10,7 @@ interface ProfileViewProps {
 
 export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
   return (
-    <div className="max-w-5xl mx-auto space-y-12 animate-fadeIn text-slate-100 font-sans py-2">
+    <div className="w-full space-y-12 animate-fadeIn text-slate-100 font-sans py-2">
       
       {/* 1. Header & Bio Intro */}
       <div className="space-y-6">

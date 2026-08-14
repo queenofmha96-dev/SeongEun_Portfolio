@@ -24,7 +24,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ profile }) => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-6 py-2 animate-fadeIn text-white font-sans">
+    <div className="w-full space-y-6 py-2 animate-fadeIn text-white font-sans">
       
       {/* Container Box without border */}
       <div className="space-y-6">
@@ -40,7 +40,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ profile }) => {
         </div>
 
         {/* 2 Columns Contact Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl">
           
           {/* 1. Phone Card */}
           <div className="p-5 rounded-xl bg-[#0f121d] border border-slate-800/80 hover:border-cyan-500/50 transition-all flex flex-col justify-between space-y-4 group">

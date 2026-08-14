@@ -153,7 +153,7 @@ export const GamingHistoryView: React.FC = () => {
   const totalHours = GAMING_LOGS.reduce((acc, curr) => acc + curr.hoursPlayed, 0);
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6 animate-fadeIn font-sans text-slate-100 py-2">
+    <div className="w-full space-y-6 animate-fadeIn font-sans text-slate-100 py-2">
       
       {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
