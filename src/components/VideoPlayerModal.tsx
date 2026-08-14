@@ -66,28 +66,28 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
       <div className="relative w-full max-w-6xl max-h-[92vh] flex flex-col bg-[#090a12] border border-slate-800/90 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] my-auto text-white font-sans">
         
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between px-6 py-3.5 bg-[#05060a] border-b border-slate-800/80 font-mono flex-shrink-0">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(0,243,255,0.8)]" />
-            <span className="text-cyan-300 font-bold text-xs tracking-wider">
+        <div className="flex items-center justify-between px-6 py-4 bg-[#05060a] border-b border-slate-800/80 font-mono flex-shrink-0">
+          <div className="flex items-center gap-3">
+            <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(0,243,255,0.8)]" />
+            <span className="text-cyan-300 font-black text-xs sm:text-sm tracking-wider">
               {project.genre.toUpperCase()} <span className="text-slate-600">//</span> OFFICIAL SHOWCASE
             </span>
           </div>
 
           <button
             onClick={onClose}
-            className="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 transition-all cursor-pointer flex items-center gap-1.5 text-xs font-mono group"
+            className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500/60 text-slate-200 hover:text-cyan-300 transition-all cursor-pointer flex items-center gap-2 text-xs sm:text-sm font-mono group"
           >
-            <X className="w-4 h-4 group-hover:rotate-90 transition-transform" />
-            <span className="text-[11px] font-bold hidden sm:inline">닫기 (ESC)</span>
+            <X className="w-4.5 h-4.5 group-hover:rotate-90 transition-transform" />
+            <span className="font-bold hidden sm:inline">닫기 (ESC)</span>
           </button>
         </div>
 
         {/* Modal Scrollable Content Body */}
-        <div className="p-5 sm:p-7 overflow-y-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+        <div className="p-6 sm:p-8 overflow-y-auto grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-9">
           
           {/* Left Column: Immersive Cinema Video Player + Highlights */}
-          <div className="lg:col-span-7 space-y-5">
+          <div className="lg:col-span-7 space-y-6">
             {/* Cinema Frame */}
             <div className="relative aspect-video rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-[0_0_30px_rgba(0,0,0,0.5)] group">
               {isDirectVideo ? (
@@ -110,20 +110,20 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
 
             {/* Key Sound Design Highlights Card */}
             {project.soundHighlights && project.soundHighlights.length > 0 && (
-              <div className="bg-[#0e1018] p-4 sm:p-5 rounded-2xl border border-slate-800/80 space-y-3">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold text-cyan-400 uppercase tracking-wide">
-                  <Sparkles className="w-4 h-4 text-amber-400" />
+              <div className="bg-[#0e1018] p-5 rounded-2xl border border-slate-800/80 space-y-3.5">
+                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono font-black text-cyan-400 uppercase tracking-wide">
+                  <Sparkles className="w-4.5 h-4.5 text-amber-400" />
                   <span>Key Sound Design Highlights</span>
                 </div>
 
-                <div className="grid grid-cols-1 gap-2 text-xs text-slate-300">
+                <div className="grid grid-cols-1 gap-2.5 text-xs sm:text-sm text-slate-200">
                   {project.soundHighlights.map((highlight, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start gap-3 bg-[#06070c] px-3.5 py-2.5 rounded-xl border border-slate-800/60 hover:border-slate-700 transition-colors"
+                      className="flex items-start gap-3 bg-[#06070c] px-4 py-3 rounded-xl border border-slate-800/70 hover:border-slate-700 transition-colors"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                      <span className="leading-relaxed font-sans text-slate-200">{highlight}</span>
+                      <CheckCircle2 className="w-4.5 h-4.5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <span className="leading-relaxed font-sans text-slate-200 font-medium">{highlight}</span>
                     </div>
                   ))}
                 </div>
@@ -136,74 +136,74 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             <div className="space-y-4">
               
               {/* Category & Year Header Badges */}
-              <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-lg bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 font-mono text-[11px] font-bold tracking-wide">
+              <div className="flex items-center gap-2.5">
+                <span className="px-3.5 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 font-mono text-xs sm:text-sm font-bold tracking-wide">
                   {project.client || 'Seongeun Studio'}
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 font-mono text-[11px]">
+                <span className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-mono text-xs sm:text-sm font-bold">
                   {project.releaseYear}
                 </span>
               </div>
 
               {/* Title & Subtitle */}
               <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold font-sans text-white tracking-tight leading-snug">
+                <h2 className="text-2xl sm:text-3xl font-black font-sans text-white tracking-tight leading-snug">
                   {project.title}
                 </h2>
-                <p className="text-xs sm:text-sm text-amber-300 font-mono font-bold mt-1.5">
+                <p className="text-sm sm:text-base text-amber-300 font-mono font-bold mt-1.5">
                   {project.subtitle}
                 </p>
               </div>
 
               {/* Description Card */}
-              <div className="bg-[#0e1018] p-4 rounded-2xl border border-slate-800/80">
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+              <div className="bg-[#0e1018] p-5 rounded-2xl border border-slate-800/80">
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans">
                   {project.description}
                 </p>
               </div>
 
               {/* Audio Stems Layer Breakdown */}
               {stems.length > 0 && (
-                <div className="bg-[#0e1018] p-4.5 rounded-2xl border border-slate-800/80 space-y-3">
-                  <div className="flex items-center justify-between font-mono text-xs text-cyan-300">
-                    <span className="flex items-center gap-1.5 font-bold tracking-wide">
-                      <Layers className="w-4 h-4 text-cyan-400" />
+                <div className="bg-[#0e1018] p-5 rounded-2xl border border-slate-800/80 space-y-3.5">
+                  <div className="flex items-center justify-between font-mono text-xs sm:text-sm text-cyan-300">
+                    <span className="flex items-center gap-2 font-black tracking-wide">
+                      <Layers className="w-4.5 h-4.5 text-cyan-400" />
                       AUDIO STEMS BREAKDOWN
                     </span>
-                    <span className="text-[10px] text-slate-400">Solo / Mute Control</span>
+                    <span className="text-xs text-slate-400">Solo / Mute Control</span>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2.5">
                     {stems.map((stem) => (
                       <div
                         key={stem.id}
-                        className="p-2.5 rounded-xl bg-[#06070c] border border-slate-800/80 flex items-center justify-between gap-3 text-xs font-mono"
+                        className="p-3 rounded-xl bg-[#06070c] border border-slate-800/80 flex items-center justify-between gap-3 text-xs sm:text-sm font-mono"
                       >
-                        <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                        <div className="flex items-center gap-3 min-w-0 flex-1">
                           <span
-                            className="w-2.5 h-2.5 rounded-full flex-shrink-0 shadow-sm"
+                            className="w-3 h-3 rounded-full flex-shrink-0 shadow-sm"
                             style={{ backgroundColor: stem.color }}
                           />
-                          <span className="text-slate-200 truncate font-medium">{stem.name}</span>
+                          <span className="text-slate-200 truncate font-semibold">{stem.name}</span>
                         </div>
 
-                        <div className="flex items-center gap-1.5 flex-shrink-0">
+                        <div className="flex items-center gap-2 flex-shrink-0">
                           <button
                             onClick={() => toggleStemMute(stem.id)}
-                            className={`px-2.5 py-1 rounded-md border text-[10px] font-bold transition-all cursor-pointer ${
+                            className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all cursor-pointer ${
                               stem.isMuted
                                 ? 'bg-rose-950/90 border-rose-500 text-rose-300 shadow-sm'
-                                : 'bg-slate-900/80 border-slate-700/80 text-slate-400 hover:text-slate-200 hover:border-slate-600'
+                                : 'bg-slate-900 border-slate-700 text-slate-300 hover:text-white hover:border-slate-600'
                             }`}
                           >
                             MUTE
                           </button>
                           <button
                             onClick={() => toggleStemSolo(stem.id)}
-                            className={`px-2.5 py-1 rounded-md border text-[10px] font-bold transition-all cursor-pointer ${
+                            className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all cursor-pointer ${
                               stem.isSoloed
                                 ? 'bg-amber-950/90 border-amber-500 text-amber-300 shadow-sm'
-                                : 'bg-slate-900/80 border-slate-700/80 text-slate-400 hover:text-slate-200 hover:border-slate-600'
+                                : 'bg-slate-900 border-slate-700 text-slate-300 hover:text-white hover:border-slate-600'
                             }`}
                           >
                             SOLO
@@ -218,19 +218,19 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             </div>
 
             {/* Well-Structured Roles & Tools Spec Grid */}
-            <div className="pt-4 border-t border-slate-800/80 space-y-3 font-mono text-xs">
+            <div className="pt-4 border-t border-slate-800/80 space-y-4 font-mono text-xs sm:text-sm">
               
               {/* Roles */}
-              <div className="space-y-1.5">
-                <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1">
-                  <UserCheck className="w-3 h-3 text-cyan-400" />
+              <div className="space-y-2">
+                <div className="text-xs text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <UserCheck className="w-4 h-4 text-cyan-400" />
                   <span>Roles & Responsibilities</span>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {project.role.map((r, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1 rounded-lg bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 font-bold text-[11px]"
+                      className="px-3 py-1.5 rounded-lg bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 font-bold text-xs sm:text-sm"
                     >
                       {r}
                     </span>
@@ -239,16 +239,16 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
               </div>
 
               {/* Tools & DAWs */}
-              <div className="space-y-1.5 pt-1">
-                <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1">
-                  <Wrench className="w-3 h-3 text-amber-400" />
+              <div className="space-y-2 pt-1">
+                <div className="text-xs text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <Wrench className="w-4 h-4 text-amber-400" />
                   <span>Software & DAW Environment</span>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {project.toolsUsed.map((t, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1 rounded-lg bg-amber-950/60 border border-amber-500/30 text-amber-300 font-bold text-[11px]"
+                      className="px-3 py-1.5 rounded-lg bg-amber-950/70 border border-amber-500/40 text-amber-300 font-bold text-xs sm:text-sm"
                     >
                       {t}
                     </span>

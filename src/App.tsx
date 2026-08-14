@@ -102,12 +102,12 @@ export default function App() {
         <main className="flex-1 px-4 sm:px-8 md:px-12 lg:px-16 max-w-[1640px] w-full mx-auto space-y-24 pb-36">
           
           {/* Section 1: Director Resume & Profile */}
-          <section id="director-stats" className="scroll-mt-24 space-y-6">
-            <div className="flex items-center gap-3 border-b border-slate-800 pb-3.5 font-mono">
-              <span className="px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-bold">
+          <section id="director-stats" className="scroll-mt-24 space-y-7">
+            <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
+              <span className="px-3 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-sm font-black">
                 01
               </span>
-              <h2 className="text-lg md:text-xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
                 디렉터 이력서 & 개발 프로필
               </h2>
             </div>
@@ -115,12 +115,12 @@ export default function App() {
           </section>
 
           {/* Section 2: Gaming History & Sound Research */}
-          <section id="gaming-history" className="scroll-mt-24 space-y-6">
-            <div className="flex items-center gap-3 border-b border-slate-800 pb-3.5 font-mono">
-              <span className="px-2.5 py-1 rounded-md bg-amber-950/80 border border-amber-500/40 text-amber-300 text-xs font-bold">
+          <section id="gaming-history" className="scroll-mt-24 space-y-7">
+            <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
+              <span className="px-3 py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-sm font-black">
                 02
               </span>
-              <h2 className="text-lg md:text-xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
                 게이밍 경력 & 사운드 연구 분석
               </h2>
             </div>
@@ -128,12 +128,12 @@ export default function App() {
           </section>
 
           {/* Section 3: Portfolio Showcase Reel */}
-          <section id="showcase-reel" className="scroll-mt-24 space-y-6">
-            <div className="flex items-center gap-3 border-b border-slate-800 pb-3.5 font-mono">
-              <span className="px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-bold">
+          <section id="showcase-reel" className="scroll-mt-24 space-y-7">
+            <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
+              <span className="px-3 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-sm font-black">
                 03
               </span>
-              <h2 className="text-lg md:text-xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
                 게임 사운드 포트폴리오
               </h2>
             </div>
@@ -144,12 +144,12 @@ export default function App() {
           </section>
 
           {/* Section 4: Contact */}
-          <section id="direct-contact" className="scroll-mt-24 space-y-6">
-            <div className="flex items-center gap-3 border-b border-slate-800 pb-3.5 font-mono">
-              <span className="px-2.5 py-1 rounded-md bg-amber-950/80 border border-amber-500/40 text-amber-300 text-xs font-bold">
+          <section id="direct-contact" className="scroll-mt-24 space-y-7">
+            <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
+              <span className="px-3 py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-sm font-black">
                 04
               </span>
-              <h2 className="text-lg md:text-xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
                 CONTACT
               </h2>
             </div>
@@ -163,10 +163,10 @@ export default function App() {
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-slate-800/80 bg-[#06070b] py-8 text-center text-xs font-mono text-slate-400">
-          <div className="max-w-[1640px] mx-auto px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <footer className="border-t border-slate-800/80 bg-[#06070b] py-10 text-center text-sm font-mono text-slate-400">
+          <div className="max-w-[1640px] mx-auto px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p>© 2026 SEONGEUN SOUND STUDIO. ALL RIGHTS RESERVED.</p>
-            <p className="text-purple-300 font-bold">FMOD / WWISE INTEGRATION COMPATIBLE</p>
+            <p className="text-purple-300 font-bold text-sm">FMOD / WWISE INTEGRATION COMPATIBLE</p>
           </div>
         </footer>
       </div>
