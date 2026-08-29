@@ -114,14 +114,14 @@ export default function App() {
             <ProfileView profile={profile} />
           </section>
 
-          {/* Section 2: Gaming History & Sound Research */}
+          {/* Section 2: Gaming History & Sound Reference */}
           <section id="gaming-history" className="scroll-mt-28 space-y-7">
             <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
               <span className="px-3 py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-sm font-black">
                 02
               </span>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
-                게이밍 경력 & 사운드 연구 분석
+                게이밍 경력 & 사운드 레퍼런스
               </h2>
             </div>
             <GamingHistoryView />

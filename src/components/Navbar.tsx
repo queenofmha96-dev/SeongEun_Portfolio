@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
 
   const navItems = [
     { id: 'director-stats', label: '프로필 & 경력', icon: User },
-    { id: 'gaming-history', label: '게이밍 연구', icon: Gamepad2 },
+    { id: 'gaming-history', label: '게이밍 레퍼런스', icon: Gamepad2 },
     { id: 'showcase-reel', label: '포트폴리오', icon: FolderKanban },
   ];
 
