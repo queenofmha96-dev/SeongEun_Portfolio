@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Gamepad2, Clock, Headphones, Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
+import React from 'react';
+import { Gamepad2, Clock, Headphones, Sparkles } from 'lucide-react';
 
 interface GameLogItem {
   id: string;
@@ -154,11 +154,6 @@ export const GameLogoBadge: React.FC<{ gameId: string; size?: 'normal' | 'compac
 export const GamingHistoryView: React.FC = () => {
   const totalHours = GAMING_LOGS.reduce((acc, curr) => acc + curr.hoursPlayed, 0);
   const maxHours = 520; // LoL hours
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-
-  const toggleExpand = (id: string) => {
-    setExpandedId(prev => (prev === id ? null : id));
-  };
 
   const top3Games = GAMING_LOGS.slice(0, 3);
   const other5Games = GAMING_LOGS.slice(3);
@@ -188,9 +183,6 @@ export const GamingHistoryView: React.FC = () => {
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             CORE REFERENCE GAMES (TOP PLAYTIME)
           </span>
-          <span className="text-xs font-mono text-slate-400">
-            기준 최댓값: 520h
-          </span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
@@ -202,7 +194,7 @@ export const GamingHistoryView: React.FC = () => {
                 className="p-5 rounded-2xl bg-[#0e1018] border border-slate-800/90 hover:border-cyan-500/60 transition-all duration-300 flex flex-col justify-between space-y-4 shadow-lg group"
               >
                 <div className="space-y-3.5">
-                  {/* Header: Logo, Title, Rank/Tag */}
+                  {/* Header: Logo, Title, Rank */}
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3 min-w-0">
                       <GameLogoBadge gameId={game.id} />
@@ -211,11 +203,11 @@ export const GamingHistoryView: React.FC = () => {
                           <span className="text-xs font-mono font-black text-cyan-400 bg-cyan-950/80 px-1.5 py-0.5 rounded border border-cyan-500/30">
                             #{index + 1}
                           </span>
-                          <h3 className="text-base font-bold text-white truncate break-keep group-hover:text-cyan-300 transition-colors">
+                          <h3 className="text-base font-bold text-white break-keep line-clamp-2 leading-snug group-hover:text-cyan-300 transition-colors">
                             {game.title}
                           </h3>
                         </div>
-                        <span className="text-xs font-mono text-slate-400 font-semibold block mt-0.5">
+                        <span className="text-xs font-mono text-slate-400 font-semibold block mt-1">
                           {game.genre}
                         </span>
                       </div>
@@ -226,7 +218,7 @@ export const GamingHistoryView: React.FC = () => {
                   <div className="space-y-1.5 pt-1">
                     <div className="flex justify-between items-center text-xs font-mono">
                       <span className="text-slate-400">누적 플레이</span>
-                      <span className="text-amber-300 font-bold">{game.hoursPlayed}시간 ({percentage}%)</span>
+                      <span className="text-amber-300 font-bold">{game.hoursPlayed}시간</span>
                     </div>
                     <div className="w-full h-2.5 bg-slate-900/90 rounded-full overflow-hidden border border-slate-800">
                       <div
@@ -239,7 +231,7 @@ export const GamingHistoryView: React.FC = () => {
 
                 {/* Sound Reference Content */}
                 <div className="pt-2 border-t border-slate-800/70 space-y-1.5">
-                  <div className="flex items-center gap-1.5 text-xs font-mono font-black text-cyan-300 tracking-wider">
+                  <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-cyan-300 tracking-wider">
                     <Headphones className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
                     <span>주목해서 듣는 사운드</span>
                   </div>
@@ -262,23 +254,11 @@ export const GamingHistoryView: React.FC = () => {
         <div className="space-y-2.5">
           {other5Games.map((game, index) => {
             const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
-            const isExpanded = expandedId === game.id;
 
             return (
               <div
                 key={game.id}
-                role="button"
-                tabIndex={0}
-                aria-expanded={isExpanded}
-                aria-label={`${game.title} 사운드 레퍼런스 정보`}
-                onClick={() => toggleExpand(game.id)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggleExpand(game.id);
-                  }
-                }}
-                className="p-3.5 sm:p-4 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-slate-700 hover:bg-[#0c0e17] transition-all cursor-pointer space-y-3 group focus:outline-none focus:border-cyan-500/50"
+                className="p-3.5 sm:p-4 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-slate-700 hover:bg-[#0c0e17] transition-all space-y-3 group"
               >
                 {/* Main Row: Logo, Title & Genre, Playtime Bar & Badge */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -289,7 +269,7 @@ export const GamingHistoryView: React.FC = () => {
                         <span className="text-xs font-mono text-slate-400 font-bold">
                           #{index + 4}
                         </span>
-                        <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors break-keep truncate">
+                        <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors break-keep">
                           {game.title}
                         </h4>
                       </div>
@@ -304,7 +284,7 @@ export const GamingHistoryView: React.FC = () => {
                     <div className="flex-1 space-y-1">
                       <div className="flex justify-between items-center text-[11px] font-mono text-slate-400">
                         <span>플레이 시간</span>
-                        <span className="text-amber-300 font-semibold">{game.hoursPlayed}h</span>
+                        <span className="text-amber-300 font-semibold">{game.hoursPlayed}시간</span>
                       </div>
                       <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
                         <div
@@ -313,21 +293,17 @@ export const GamingHistoryView: React.FC = () => {
                         />
                       </div>
                     </div>
-
-                    <span className="text-xs font-mono text-slate-400 group-hover:text-cyan-300 transition-colors shrink-0">
-                      {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                    </span>
                   </div>
                 </div>
 
-                {/* Reference sound focus text (visible or accordion toggleable with one-line default) */}
-                <div className={`pt-2 border-t border-slate-800/60 ${isExpanded ? 'block' : 'block'}`}>
-                  <div className="flex flex-col sm:flex-row sm:items-start gap-1.5 text-xs sm:text-sm font-sans">
-                    <span className="font-mono font-bold text-cyan-400 shrink-0 flex items-center gap-1.5 text-xs">
+                {/* Reference sound focus text (Clean inline-flex without awkward breaking) */}
+                <div className="pt-2 border-t border-slate-800/60">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-1.5 text-xs sm:text-sm font-sans">
+                    <span className="font-mono font-bold text-cyan-400 whitespace-nowrap shrink-0 flex items-center gap-1.5 text-xs">
                       <Headphones className="w-3.5 h-3.5 text-cyan-400" />
                       주목해서 듣는 사운드:
                     </span>
-                    <span className="text-slate-300 break-keep leading-relaxed">
+                    <span className="text-slate-200 break-keep leading-relaxed">
                       {game.audioFocus}
                     </span>
                   </div>
