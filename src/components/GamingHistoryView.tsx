@@ -227,7 +227,9 @@ export const GamingHistoryView: React.FC = () => {
             >
               {/* Game Info Top Row */}
               <div className="flex items-center gap-3 min-w-0">
-                <GameLogoBadge gameId={game.id} size="compact" />
+                <div className="no-print shrink-0">
+                  <GameLogoBadge gameId={game.id} size="compact" />
+                </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5 mb-0.5">
                     <span className="text-[11px] font-mono font-bold text-cyan-400 bg-cyan-950/70 border border-cyan-500/30 px-1.5 py-0.2 rounded shrink-0">
