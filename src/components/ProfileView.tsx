@@ -77,30 +77,22 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
         <div className="space-y-5">
           <div className="flex items-center gap-2.5 border-b border-slate-800/80 pb-3">
             <Shield className="w-5 h-5 text-cyan-400" />
-            <h3 className="text-base sm:text-lg font-extrabold text-white">오디오 미들웨어 & 핵심 숙련도</h3>
+            <h3 className="text-base sm:text-lg font-extrabold text-white">오디오 미들웨어 & 작업 스킬</h3>
           </div>
 
-          <div className="space-y-3.5">
+          <div className="space-y-3">
             {profile.skills.map((skill, idx) => (
               <div
                 key={idx}
-                className="p-3.5 sm:p-4 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-slate-700/80 transition-colors space-y-1.5"
+                className="p-3.5 sm:p-4 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-cyan-500/40 hover:bg-[#0c0e17] transition-all space-y-1.5"
               >
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
                   <span className="text-sm sm:text-base text-slate-100 font-bold font-sans">
                     {skill.name}
                   </span>
-                  <span
-                    className={`px-2.5 py-0.5 rounded-full text-xs font-mono font-bold shrink-0 ${
-                      skill.tag === '주력'
-                        ? 'bg-cyan-950/90 border border-cyan-500/50 text-cyan-300'
-                        : 'bg-slate-800/90 border border-slate-700/80 text-slate-300'
-                    }`}
-                  >
-                    {skill.tag}
-                  </span>
                 </div>
-                <p className="text-[13px] sm:text-sm text-slate-400 font-sans leading-relaxed">
+                <p className="text-[13px] sm:text-sm text-slate-400 font-sans leading-relaxed pl-3.5">
                   {skill.description}
                 </p>
               </div>
