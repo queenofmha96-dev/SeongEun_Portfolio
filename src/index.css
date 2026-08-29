@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+/* Global Antialiasing & Jitter Prevention */
+*, *::before, *::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Eliminate subpixel icon / SVG raster jitter during scroll */
+svg, img {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  shape-rendering: geometricPrecision;
+}
+
+/* Ensure sticky/fixed elements remain on their own compositor layer */
+header {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: background-color, border-color, box-shadow;
+}
+
 /* Custom Cyber Studio Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
@@ -26,3 +50,4 @@
   scrollbar-width: thin;
   scrollbar-color: #1e293b #06070b;
 }
+

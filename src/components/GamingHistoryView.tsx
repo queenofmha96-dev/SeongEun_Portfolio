@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gamepad2, Clock, Headphones, Sparkles } from 'lucide-react';
+import { Gamepad2, Clock } from 'lucide-react';
 
 interface GameLogItem {
   id: string;
@@ -77,69 +77,112 @@ export const GAMING_LOGS: GameLogItem[] = [
   }
 ];
 
-// High quality custom game logo rendering
+// High quality official game vector icon / insignia rendering
 export const GameLogoBadge: React.FC<{ gameId: string; size?: 'normal' | 'compact' }> = ({ gameId, size = 'normal' }) => {
   const sizeClasses = size === 'compact' ? 'w-11 h-11' : 'w-13 h-13';
 
   switch (gameId) {
-    case 'pubg':
+    case 'lol':
       return (
-        <div className={`${sizeClasses} rounded-xl bg-[#f2a900] text-black font-black font-mono flex flex-col items-center justify-center shadow-md border border-amber-300 flex-shrink-0`}>
-          <span className="leading-none text-[12px] font-black">PUBG</span>
-          <span className="text-[6.5px] tracking-tighter opacity-95 font-bold">BATTLEGROUNDS</span>
-        </div>
-      );
-    case 'valorant':
-      return (
-        <div className={`${sizeClasses} rounded-xl bg-[#ff4655] text-white flex items-center justify-center shadow-md border border-rose-400 flex-shrink-0`}>
-          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-            <path d="M2.5 12l8.5-9.5H16L7.5 12 16 21.5h-5L2.5 12zm10 0l8.5-9.5H22.5L14 12l8.5 9.5H17.5L12.5 12z" />
-          </svg>
-        </div>
-      );
-    case 'cyberpunk':
-      return (
-        <div className={`${sizeClasses} rounded-xl bg-[#fcee0a] text-black font-black font-mono flex flex-col items-center justify-center shadow-md border border-yellow-300 flex-shrink-0`}>
-          <span className="text-[8.5px] leading-tight font-extrabold tracking-widest">CYBERPUNK</span>
-          <span className="text-xs font-black leading-none">2077</span>
-        </div>
-      );
-    case 'eldenring':
-      return (
-        <div className={`${sizeClasses} rounded-xl bg-[#12101d] border border-[#d4af37] text-[#e5c158] flex items-center justify-center shadow-md flex-shrink-0`}>
-          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="2" />
-            <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" strokeWidth="1.5" />
-            <circle cx="8" cy="14" r="4" fill="none" stroke="currentColor" strokeWidth="1.5" />
-            <circle cx="16" cy="14" r="4" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <div className={`${sizeClasses} rounded-xl bg-gradient-to-b from-[#0a1428] to-[#010a13] border border-[#c89b3c]/60 flex items-center justify-center shadow-lg flex-shrink-0 group-hover:border-[#f0e6d2] transition-colors overflow-hidden p-1.5`}>
+          {/* Official League of Legends 'L' Gold Crest Icon */}
+          <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">
+            <defs>
+              <linearGradient id="lolGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#f0e6d2" />
+                <stop offset="50%" stopColor="#c89b3c" />
+                <stop offset="100%" stopColor="#785a28" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M22 14h18v48h38v18H22V14z"
+              fill="url(#lolGold)"
+            />
+            <path
+              d="M32 24h6v36h28v6H32V24z"
+              fill="#060e1a"
+            />
+            <polygon points="66,74 78,62 78,74" fill="url(#lolGold)" />
           </svg>
         </div>
       );
     case 'overwatch':
       return (
-        <div className={`${sizeClasses} rounded-xl bg-[#f99e1a] text-white flex items-center justify-center shadow-md border border-amber-300 flex-shrink-0`}>
-          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.6 0 3.08.48 4.31 1.3L12 10.15 7.69 6.3C8.92 5.48 10.4 5 12 5zm-7 7c0-2.31.98-4.39 2.56-5.87l3.69 3.3-3.6 4.3C6.6 13.52 5 12 5 12zm7 7c-2.31 0-4.39-.98-5.87-2.56l4.31-5.14 4.31 5.14C16.39 18.02 14.31 19 12 19zm4.44-4.83l-3.6-4.3 3.69-3.3C18.02 8.05 19 10.13 19 12.44c0 0-1.6 1.52-2.56 1.73z" />
+        <div className={`${sizeClasses} rounded-xl bg-gradient-to-b from-[#ff9c00] to-[#e67e00] text-white flex items-center justify-center shadow-lg border border-amber-300/80 flex-shrink-0 group-hover:brightness-110 transition-all p-2`}>
+          {/* Official Overwatch 2 Ring & Winged Crest SVG */}
+          <svg className="w-full h-full fill-white drop-shadow-sm" viewBox="0 0 32 32">
+            <path d="M16 2.5C8.544 2.5 2.5 8.544 2.5 16S8.544 29.5 16 29.5 29.5 23.456 29.5 16 23.456 2.5 16 2.5zm0 3.375c2.08 0 4.02.583 5.67 1.594l-3.328 3.328c-.73-.207-1.516-.328-2.342-.328s-1.612.12-2.344.328L10.33 7.47c1.65-1.012 3.59-1.595 5.67-1.595zm-8.234 3.75l3.203 3.203c-1.12 1.258-1.844 2.875-1.953 4.672H4.47c.45-3.086 2.05-5.758 4.297-7.875zm16.468 0c2.246 2.117 3.847 4.79 4.297 7.875h-4.547c-.11-1.797-.832-3.414-1.953-4.672l3.203-3.203zM5.875 16h4.125c.14 2.454 1.488 4.54 3.453 5.625l-2.844 4.032C7.94 23.75 6.273 20.09 5.875 16zm20.25 0c-.398 4.09-2.066 7.75-4.734 9.656l-2.844-4.03c1.965-1.087 3.313-3.173 3.453-5.626h4.125zM16 13.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5z" />
+          </svg>
+        </div>
+      );
+    case 'valorant':
+      return (
+        <div className={`${sizeClasses} rounded-xl bg-[#0f1923] text-[#ff4655] flex items-center justify-center shadow-lg border border-[#ff4655]/60 flex-shrink-0 group-hover:border-[#ff4655] transition-all p-2`}>
+          {/* Official Valorant V Angular Slash Logo */}
+          <svg className="w-full h-full fill-[#ff4655] drop-shadow-[0_0_8px_rgba(255,70,85,0.5)]" viewBox="0 0 100 100">
+            <path d="M60.6 18.2H87L49.5 81.8H23.1L60.6 18.2Z" />
+            <path d="M13 18.2H39.4L20.8 49.8H7.4L13 18.2Z" />
+          </svg>
+        </div>
+      );
+    case 'pubg':
+      return (
+        <div className={`${sizeClasses} rounded-xl bg-gradient-to-b from-[#f2a900] to-[#d99000] text-black font-mono flex flex-col items-center justify-center shadow-lg border border-amber-200/80 flex-shrink-0 group-hover:brightness-110 transition-all p-1`}>
+          <div className="bg-black text-[#f2a900] px-1.5 py-0.5 rounded text-[11px] font-black tracking-wider leading-none shadow-sm">
+            PUBG
+          </div>
+          <span className="text-[6.5px] font-black tracking-tighter text-black uppercase mt-0.5 leading-none">
+            BATTLEGROUNDS
+          </span>
+        </div>
+      );
+    case 'cyberpunk':
+      return (
+        <div className={`${sizeClasses} rounded-xl bg-[#fee700] text-black flex flex-col items-center justify-center shadow-lg border border-yellow-200 flex-shrink-0 group-hover:brightness-110 transition-all p-1`}>
+          <span className="text-[8px] font-black tracking-tighter uppercase text-[#00f0ff] [text-shadow:1px_1px_0px_#000] leading-tight">
+            CYBERPUNK
+          </span>
+          <span className="text-[11px] font-black tracking-widest text-black leading-none mt-[-1px]">
+            2077
+          </span>
+        </div>
+      );
+    case 'eldenring':
+      return (
+        <div className={`${sizeClasses} rounded-xl bg-[#0d0d12] border border-[#c5a059]/70 text-[#c5a059] flex items-center justify-center shadow-lg flex-shrink-0 group-hover:border-[#e5c158] transition-all p-2`}>
+          {/* Elden Ring Golden Order Intersecting Great Runes Icon */}
+          <svg className="w-full h-full fill-none stroke-[#c5a059] stroke-[1.75]" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="14" />
+            <circle cx="18" cy="11" r="7" />
+            <circle cx="12" cy="22" r="7" />
+            <circle cx="24" cy="22" r="7" />
+            <line x1="18" y1="2" x2="18" y2="34" strokeWidth="2" strokeLinecap="round" />
+            <line x1="6" y1="18" x2="30" y2="18" strokeWidth="1.2" strokeDasharray="1 2" />
           </svg>
         </div>
       );
     case 'mhw':
       return (
-        <div className={`${sizeClasses} rounded-xl bg-[#1b4332] border border-[#52b788] text-[#95d5b2] font-mono flex flex-col items-center justify-center shadow-md flex-shrink-0`}>
-          <span className="text-[9px] font-black leading-none">MONSTER</span>
-          <span className="text-[8px] font-bold leading-none">HUNTER</span>
-        </div>
-      );
-    case 'lol':
-      return (
-        <div className={`${sizeClasses} rounded-xl bg-[#091428] border border-[#c8aa6e] text-[#c8aa6e] font-black font-serif text-sm sm:text-base flex items-center justify-center shadow-md flex-shrink-0`}>
-          LoL
+        <div className={`${sizeClasses} rounded-xl bg-gradient-to-b from-[#14281d] to-[#0a160f] border border-[#52b788]/60 text-[#74c69d] flex flex-col items-center justify-center shadow-lg flex-shrink-0 group-hover:border-[#52b788] transition-all p-1`}>
+          {/* Monster Hunter Dragon Claw / Guild Insignia */}
+          <svg className="w-5 h-5 fill-current mb-0.5 text-[#52b788]" viewBox="0 0 24 24">
+            <path d="M12 2L9 8h6l-3-6zm-6 8l-4 7 7-2-3-5zm12 0l-3 5 7 2-4-7zm-9 9l3 3 3-3-3-1-3 1z" />
+          </svg>
+          <span className="text-[6.5px] font-mono font-black tracking-tighter text-emerald-300 leading-none">
+            MH : WORLD
+          </span>
         </div>
       );
     case 'diablo':
       return (
-        <div className={`${sizeClasses} rounded-xl bg-[#2a0808] border border-[#800000] text-[#ff4d4d] font-serif font-black text-xs sm:text-sm flex items-center justify-center shadow-md flex-shrink-0`}>
-          D IV
+        <div className={`${sizeClasses} rounded-xl bg-gradient-to-b from-[#2a0404] to-[#120000] border border-[#ff3333]/60 text-[#ff4d4d] flex flex-col items-center justify-center shadow-lg flex-shrink-0 group-hover:border-[#ff3333] transition-all p-1`}>
+          {/* Diablo IV Stylized Blood Pentagram / Roman IV */}
+          <span className="font-serif font-black text-sm tracking-wider text-[#ff3333] drop-shadow-[0_0_6px_rgba(255,0,0,0.8)] leading-none">
+            IV
+          </span>
+          <span className="text-[6px] font-mono font-bold tracking-widest text-red-300/80 uppercase mt-0.5 leading-none">
+            DIABLO
+          </span>
         </div>
       );
     default:
@@ -155,144 +198,68 @@ export const GamingHistoryView: React.FC = () => {
   const totalHours = GAMING_LOGS.reduce((acc, curr) => acc + curr.hoursPlayed, 0);
   const maxHours = 520; // LoL hours
 
-  const top3Games = GAMING_LOGS.slice(0, 3);
-  const other5Games = GAMING_LOGS.slice(3);
-
   return (
-    <div className="w-full space-y-8 animate-fadeIn font-sans text-slate-100 py-2">
-      
+    <div className="w-full space-y-6 animate-fadeIn font-sans text-slate-100 py-1">
       {/* Section Header Info Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
         <div className="flex items-center gap-3">
           <Gamepad2 className="w-5 h-5 text-cyan-400 flex-shrink-0" />
           <p className="text-sm sm:text-base text-slate-300 break-keep">
-            플레이어로서 오래 들어온 게임들 — 사운드 디자인에 참고하는 레퍼런스 라이브러리
+            플레이어로서 깊이 있게 플레이해 온 게임 목록 및 누적 플레이 시간
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-amber-300 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl w-fit flex-shrink-0">
+        <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-amber-300 bg-slate-900/90 border border-slate-800 px-4 py-2 rounded-xl w-fit flex-shrink-0">
           <Clock className="w-4 h-4 text-amber-400" />
           <span className="font-bold">총 {totalHours.toLocaleString()}시간+ 플레이</span>
         </div>
       </div>
 
-      {/* Tier 1: Top 3 Featured References (Cards) */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            CORE REFERENCE GAMES (TOP PLAYTIME)
-          </span>
-        </div>
+      {/* Unified 8 Games Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {GAMING_LOGS.map((game, index) => {
+          const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          {top3Games.map((game, index) => {
-            const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
-            return (
-              <div
-                key={game.id}
-                className="p-5 rounded-2xl bg-[#0e1018] border border-slate-800/90 hover:border-cyan-500/60 transition-all duration-300 flex flex-col shadow-lg group"
-              >
-                <div className="space-y-3.5">
-                  {/* Header: Logo, Title, Rank */}
-                  <div className="flex items-start justify-between gap-3 min-h-[52px]">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <GameLogoBadge gameId={game.id} />
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono font-black text-cyan-400 bg-cyan-950/80 px-1.5 py-0.5 rounded border border-cyan-500/30">
-                            #{index + 1}
-                          </span>
-                          <h3 className="text-base font-bold text-white break-keep line-clamp-1 group-hover:text-cyan-300 transition-colors">
-                            {game.title}
-                          </h3>
-                        </div>
-                        <span className="text-xs font-mono text-slate-400 font-semibold block mt-1">
-                          {game.genre}
-                        </span>
-                      </div>
-                    </div>
+          return (
+            <div
+              key={game.id}
+              className="p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-cyan-500/50 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md group"
+            >
+              {/* Game Info Top Row */}
+              <div className="flex items-center gap-3 min-w-0">
+                <GameLogoBadge gameId={game.id} size="compact" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <span className="text-[11px] font-mono font-bold text-cyan-400 bg-cyan-950/70 border border-cyan-500/30 px-1.5 py-0.2 rounded shrink-0">
+                      #{index + 1}
+                    </span>
+                    <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep truncate">
+                      {game.title}
+                    </h4>
                   </div>
-
-                  {/* Relative Playtime Bar (6px+ height) */}
-                  <div className="space-y-1.5 pt-1">
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="text-slate-400 font-sans">누적 플레이</span>
-                      <span className="text-amber-300 font-mono font-bold">{game.hoursPlayed}시간</span>
-                    </div>
-                    <div className="w-full h-2.5 bg-slate-900/90 rounded-full overflow-hidden border border-slate-800">
-                      <div
-                        className="h-full bg-gradient-to-r from-teal-500 via-cyan-400 to-cyan-300 rounded-full transition-all duration-700"
-                        style={{ width: `${percentage}%` }}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Sound Reference Content */}
-                <div className="mt-4 pt-3.5 border-t border-slate-800/70 space-y-1.5 flex-1 flex flex-col justify-start">
-                  <div className="flex items-center gap-1.5 text-xs font-sans font-bold text-cyan-300">
-                    <Headphones className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
-                    <span>주목해서 듣는 사운드</span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans break-keep">
-                    {game.audioFocus}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Tier 2: Remaining 5 Compact Reference Tiles */}
-      <div className="space-y-3 pt-2">
-        <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block">
-          ADDITIONAL REFERENCE TITLES
-        </span>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {other5Games.map((game, index) => {
-            const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
-
-            return (
-              <div
-                key={game.id}
-                className="p-3 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-cyan-500/40 hover:bg-[#0c0e17] transition-all flex flex-col justify-between gap-2.5 group"
-              >
-                {/* Top: Logo & Game Name */}
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <GameLogoBadge gameId={game.id} size="compact" />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[11px] font-mono text-slate-400 font-bold">
-                        #{index + 4}
-                      </span>
-                      <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep truncate">
-                        {game.title}
-                      </h4>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom: Playtime Bar + Hours Number */}
-                <div className="flex items-center gap-2.5 pt-0.5">
-                  <div className="flex-1 h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
-                    <div
-                      className="h-full bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full transition-all duration-500"
-                      style={{ width: `${percentage}%` }}
-                    />
-                  </div>
-                  <span className="text-xs font-mono text-amber-300 font-bold whitespace-nowrap shrink-0">
-                    {game.hoursPlayed}h
+                  <span className="text-xs font-mono text-slate-400 block truncate">
+                    {game.genre}
                   </span>
                 </div>
               </div>
-            );
-          })}
-        </div>
-      </div>
 
+              {/* Playtime Progress Bar & Hours */}
+              <div className="space-y-1.5 pt-1 border-t border-slate-800/60">
+                <div className="flex justify-between items-center text-xs">
+                  <span className="text-slate-400 text-[11px] font-sans">누적 플레이</span>
+                  <span className="text-amber-300 font-mono font-bold text-xs">{game.hoursPlayed}시간</span>
+                </div>
+                <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                  <div
+                    className="h-full bg-gradient-to-r from-teal-500 via-cyan-400 to-cyan-300 rounded-full transition-all duration-500"
+                    style={{ width: `${percentage}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

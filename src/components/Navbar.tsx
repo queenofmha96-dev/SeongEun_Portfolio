@@ -1,29 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Radio, User, Gamepad2, FolderKanban, Mail, ChevronRight, Sparkles } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('director-stats');
   const [scrolled, setScrolled] = useState(false);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (rafRef.current !== null) return;
 
-      const sections = ['director-stats', 'gaming-history', 'showcase-reel', 'direct-contact'];
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 160 && rect.bottom >= 100) {
-            setActiveSection(sectionId);
-            break;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = null;
+        const isScrolled = window.scrollY > 20;
+        setScrolled(isScrolled);
+
+        const sections = ['director-stats', 'gaming-history', 'showcase-reel', 'direct-contact'];
+        for (const sectionId of sections) {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 160 && rect.bottom >= 100) {
+              setActiveSection((prev) => (prev !== sectionId ? sectionId : prev));
+              break;
+            }
           }
         }
-      }
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -36,17 +48,17 @@ export const Navbar: React.FC = () => {
 
   const navItems = [
     { id: 'director-stats', label: '프로필 & 경력', icon: User },
-    { id: 'gaming-history', label: '게이밍 레퍼런스', icon: Gamepad2 },
+    { id: 'gaming-history', label: '게이밍 경력', icon: Gamepad2 },
     { id: 'showcase-reel', label: '포트폴리오', icon: FolderKanban },
   ];
 
   return (
     <header 
-      className={`sticky top-0 z-50 transition-all duration-300 border-b ${
+      className={`sticky top-0 z-50 transition-[background-color,border-color,box-shadow] duration-200 border-b ${
         scrolled 
-          ? 'bg-[#06070c]/90 backdrop-blur-md border-slate-800/80 shadow-2xl py-3' 
-          : 'bg-[#08090f]/75 backdrop-blur-sm border-slate-800/50 py-4'
-      } px-4 sm:px-8 text-white`}
+          ? 'bg-[#06070c]/95 backdrop-blur-md border-slate-800/90 shadow-2xl' 
+          : 'bg-[#08090f]/85 backdrop-blur-sm border-slate-800/50'
+      } py-3.5 px-4 sm:px-8 text-white`}
     >
       <div className="max-w-[1640px] mx-auto flex items-center justify-between gap-4">
         {/* Brand Header */}
@@ -63,9 +75,9 @@ export const Navbar: React.FC = () => {
           }}
           className="flex items-center gap-4 text-left cursor-pointer group focus:outline-none"
         >
-          <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 via-teal-500 to-amber-400 p-[2px] shadow-lg group-hover:scale-105 transition-transform flex-shrink-0">
+          <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 via-teal-500 to-amber-400 p-[2px] shadow-lg group-hover:brightness-110 transition-[filter] flex-shrink-0">
             <div className="w-full h-full bg-[#080910] rounded-[10px] flex items-center justify-center relative overflow-hidden">
-              <Radio className="w-6 h-6 text-cyan-400 group-hover:rotate-12 transition-transform" />
+              <Radio className="w-6 h-6 text-cyan-400 group-hover:rotate-6 transition-transform" />
               <Sparkles className="w-3 h-3 text-amber-300 absolute top-1 right-1 opacity-80 animate-pulse" />
             </div>
           </div>
@@ -95,14 +107,14 @@ export const Navbar: React.FC = () => {
                 key={item.id}
                 aria-label={item.label}
                 onClick={() => scrollToSection(item.id)}
-                className={`px-3.5 sm:px-4 py-2.5 rounded-xl transition-all duration-200 cursor-pointer flex items-center gap-2 font-semibold text-sm ${
+                className={`px-3.5 sm:px-4 py-2.5 rounded-xl transition-colors duration-150 cursor-pointer flex items-center gap-2 font-semibold text-sm ${
                   isActive
                     ? 'bg-cyan-950/70 text-cyan-300 border border-cyan-500/50 font-bold shadow-md'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent'
                 }`}
               >
-                <Icon className={`w-4.5 h-4.5 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
-                <span className="hidden sm:inline">{item.label}</span>
+                <Icon className={`w-4.5 h-4.5 flex-shrink-0 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
+                <span className="hidden sm:inline whitespace-nowrap">{item.label}</span>
               </button>
             );
           })}
@@ -110,18 +122,19 @@ export const Navbar: React.FC = () => {
           <button
             aria-label="문의하기"
             onClick={() => scrollToSection('direct-contact')}
-            className={`ml-1 sm:ml-2 px-4 sm:px-5 py-2.5 rounded-xl text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
+            className={`ml-1 sm:ml-2 px-4 sm:px-5 py-2.5 rounded-xl text-sm font-black transition-colors duration-150 cursor-pointer flex items-center gap-2 ${
               activeSection === 'direct-contact'
-                ? 'bg-amber-500 text-slate-950 border border-amber-300 shadow-lg scale-105'
+                ? 'bg-amber-500 text-slate-950 border border-amber-300 shadow-lg'
                 : 'bg-amber-950/60 hover:bg-amber-900/70 border border-amber-500/50 text-amber-300 hover:text-white'
             }`}
           >
-            <Mail className="w-4.5 h-4.5" />
-            <span>문의하기</span>
-            <ChevronRight className="w-4 h-4 opacity-70 hidden sm:inline" />
+            <Mail className="w-4.5 h-4.5 flex-shrink-0" />
+            <span className="whitespace-nowrap">문의하기</span>
+            <ChevronRight className="w-4 h-4 opacity-70 hidden sm:inline flex-shrink-0" />
           </button>
         </nav>
       </div>
     </header>
   );
 };
+

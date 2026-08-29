@@ -29,22 +29,22 @@ export const ParticleCanvas: React.FC<{ isStartScreen?: boolean }> = () => {
 
     const colors = [
       'rgba(255, 255, 255, ',
-      'rgba(186, 230, 253, ', // cyan tint
-      'rgba(254, 243, 199, ', // soft gold tint
-      'rgba(203, 213, 225, '  // slate tint
+      'rgba(186, 230, 253, ', // soft cyan tint
+      'rgba(203, 213, 225, ', // soft slate tint
+      'rgba(148, 163, 184, '  // deep muted slate
     ];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.2 + 0.3,
-        alpha: Math.random() * 0.7 + 0.1,
-        targetAlpha: Math.random() * 0.8 + 0.2,
-        twinkleSpeed: Math.random() * 0.008 + 0.003,
+        radius: Math.random() * 1.1 + 0.3, // Slightly more defined yet delicate
+        alpha: Math.random() * 0.55 + 0.15, // Balanced opacity
+        targetAlpha: Math.random() * 0.65 + 0.2,
+        twinkleSpeed: Math.random() * 0.006 + 0.003,
         color: colors[Math.floor(Math.random() * colors.length)],
-        vx: (Math.random() - 0.5) * 0.1,
-        vy: (Math.random() - 0.5) * 0.1
+        vx: (Math.random() - 0.5) * 0.08,
+        vy: (Math.random() - 0.5) * 0.08
       });
     }
 
@@ -102,11 +102,12 @@ export const ParticleCanvas: React.FC<{ isStartScreen?: boolean }> = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0b12] via-[#07080e] to-[#05060a]" />
 
       {/* Star Canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-80" />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-70" />
 
-      {/* Very Soft & Natural Cyan / Gold Atmospheric Audio Spotlights */}
-      <div className="absolute -top-32 right-1/4 w-[700px] h-[700px] bg-cyan-950/20 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-amber-950/10 rounded-full blur-[150px] pointer-events-none" />
+      {/* Pure Cool Cyan & Deep Midnight Spotlights (No warm/amber/red tones) */}
+      <div className="absolute -top-32 right-1/4 w-[700px] h-[700px] bg-cyan-950/20 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-slate-900/30 rounded-full blur-[160px] pointer-events-none" />
     </div>
   );
 };
+
