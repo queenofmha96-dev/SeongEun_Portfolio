@@ -191,11 +191,11 @@ export const GamingHistoryView: React.FC = () => {
             return (
               <div
                 key={game.id}
-                className="p-5 rounded-2xl bg-[#0e1018] border border-slate-800/90 hover:border-cyan-500/60 transition-all duration-300 flex flex-col justify-between space-y-4 shadow-lg group"
+                className="p-5 rounded-2xl bg-[#0e1018] border border-slate-800/90 hover:border-cyan-500/60 transition-all duration-300 flex flex-col shadow-lg group"
               >
                 <div className="space-y-3.5">
                   {/* Header: Logo, Title, Rank */}
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-start justify-between gap-3 min-h-[52px]">
                     <div className="flex items-center gap-3 min-w-0">
                       <GameLogoBadge gameId={game.id} />
                       <div className="min-w-0">
@@ -203,7 +203,7 @@ export const GamingHistoryView: React.FC = () => {
                           <span className="text-xs font-mono font-black text-cyan-400 bg-cyan-950/80 px-1.5 py-0.5 rounded border border-cyan-500/30">
                             #{index + 1}
                           </span>
-                          <h3 className="text-base font-bold text-white break-keep line-clamp-2 leading-snug group-hover:text-cyan-300 transition-colors">
+                          <h3 className="text-base font-bold text-white break-keep line-clamp-1 group-hover:text-cyan-300 transition-colors">
                             {game.title}
                           </h3>
                         </div>
@@ -216,9 +216,9 @@ export const GamingHistoryView: React.FC = () => {
 
                   {/* Relative Playtime Bar (6px+ height) */}
                   <div className="space-y-1.5 pt-1">
-                    <div className="flex justify-between items-center text-xs font-mono">
-                      <span className="text-slate-400">누적 플레이</span>
-                      <span className="text-amber-300 font-bold">{game.hoursPlayed}시간</span>
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-slate-400 font-sans">누적 플레이</span>
+                      <span className="text-amber-300 font-mono font-bold">{game.hoursPlayed}시간</span>
                     </div>
                     <div className="w-full h-2.5 bg-slate-900/90 rounded-full overflow-hidden border border-slate-800">
                       <div
@@ -230,8 +230,8 @@ export const GamingHistoryView: React.FC = () => {
                 </div>
 
                 {/* Sound Reference Content */}
-                <div className="pt-2 border-t border-slate-800/70 space-y-1.5">
-                  <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-cyan-300 tracking-wider">
+                <div className="mt-4 pt-3.5 border-t border-slate-800/70 space-y-1.5 flex-1 flex flex-col justify-start">
+                  <div className="flex items-center gap-1.5 text-xs font-sans font-bold text-cyan-300">
                     <Headphones className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
                     <span>주목해서 듣는 사운드</span>
                   </div>
@@ -245,68 +245,47 @@ export const GamingHistoryView: React.FC = () => {
         </div>
       </div>
 
-      {/* Tier 2: Remaining 5 Compact Reference Rows */}
+      {/* Tier 2: Remaining 5 Compact Reference Tiles */}
       <div className="space-y-3 pt-2">
         <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block">
           ADDITIONAL REFERENCE TITLES
         </span>
 
-        <div className="space-y-2.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {other5Games.map((game, index) => {
             const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
 
             return (
               <div
                 key={game.id}
-                className="p-3.5 sm:p-4 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-slate-700 hover:bg-[#0c0e17] transition-all space-y-3 group"
+                className="p-3 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-cyan-500/40 hover:bg-[#0c0e17] transition-all flex flex-col justify-between gap-2.5 group"
               >
-                {/* Main Row: Logo, Title & Genre, Playtime Bar & Badge */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <GameLogoBadge gameId={game.id} size="compact" />
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono text-slate-400 font-bold">
-                          #{index + 4}
-                        </span>
-                        <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors break-keep">
-                          {game.title}
-                        </h4>
-                      </div>
-                      <span className="text-xs font-mono text-slate-400">
-                        {game.genre}
+                {/* Top: Logo & Game Name */}
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <GameLogoBadge gameId={game.id} size="compact" />
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[11px] font-mono text-slate-400 font-bold">
+                        #{index + 4}
                       </span>
-                    </div>
-                  </div>
-
-                  {/* Playtime Progress Bar & Hours Badge */}
-                  <div className="flex items-center gap-3 sm:w-64 md:w-72 shrink-0">
-                    <div className="flex-1 space-y-1">
-                      <div className="flex justify-between items-center text-[11px] font-mono text-slate-400">
-                        <span>플레이 시간</span>
-                        <span className="text-amber-300 font-semibold">{game.hoursPlayed}시간</span>
-                      </div>
-                      <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
-                        <div
-                          className="h-full bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full transition-all duration-500"
-                          style={{ width: `${percentage}%` }}
-                        />
-                      </div>
+                      <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep truncate">
+                        {game.title}
+                      </h4>
                     </div>
                   </div>
                 </div>
 
-                {/* Reference sound focus text (Clean inline-flex without awkward breaking) */}
-                <div className="pt-2 border-t border-slate-800/60">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-1.5 text-xs sm:text-sm font-sans">
-                    <span className="font-mono font-bold text-cyan-400 whitespace-nowrap shrink-0 flex items-center gap-1.5 text-xs">
-                      <Headphones className="w-3.5 h-3.5 text-cyan-400" />
-                      주목해서 듣는 사운드:
-                    </span>
-                    <span className="text-slate-200 break-keep leading-relaxed">
-                      {game.audioFocus}
-                    </span>
+                {/* Bottom: Playtime Bar + Hours Number */}
+                <div className="flex items-center gap-2.5 pt-0.5">
+                  <div className="flex-1 h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                    <div
+                      className="h-full bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full transition-all duration-500"
+                      style={{ width: `${percentage}%` }}
+                    />
                   </div>
+                  <span className="text-xs font-mono text-amber-300 font-bold whitespace-nowrap shrink-0">
+                    {game.hoursPlayed}h
+                  </span>
                 </div>
               </div>
             );
