@@ -32,8 +32,10 @@ export const Navbar: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    const unsubscribe = soundEngine.subscribe((muted) => setIsMuted(muted));
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      unsubscribe();
       if (rafRef.current !== null) {
         cancelAnimationFrame(rafRef.current);
       }
@@ -50,7 +52,16 @@ export const Navbar: React.FC = () => {
     setActiveSection(id);
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const headerEl = document.querySelector('header');
+      const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 70;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      // Position the section title tightly directly beneath the sticky header with zero excess gap
+      const offsetPosition = elementPosition - headerHeight + 22;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+      });
     }
   };
 

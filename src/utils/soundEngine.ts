@@ -14,6 +14,24 @@ class SoundEngine {
   private ambientOsc2: OscillatorNode | null = null;
   private ambientGain: GainNode | null = null;
   private isAmbientPlaying: boolean = false;
+  private listeners: Set<(isMuted: boolean) => void> = new Set();
+
+  public subscribe(callback: (isMuted: boolean) => void) {
+    this.listeners.add(callback);
+    return () => {
+      this.listeners.delete(callback);
+    };
+  }
+
+  private notifyListeners() {
+    this.listeners.forEach(cb => {
+      try {
+        cb(this.isMuted);
+      } catch {
+        // ignore
+      }
+    });
+  }
 
   private initContext() {
     if (!this.ctx) {
@@ -49,6 +67,7 @@ class SoundEngine {
     if (muted && this.isAmbientPlaying) {
       this.stopAmbient();
     }
+    this.notifyListeners();
   }
 
   public setVolume(vol: number) {

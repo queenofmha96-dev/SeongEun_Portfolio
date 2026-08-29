@@ -244,13 +244,23 @@ export const GamingHistoryView: React.FC = () => {
               <div className="space-y-1.5 pt-1 border-t border-slate-800/60">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-slate-400 text-[11px] font-sans">누적 플레이</span>
-                  <span className="text-amber-300 font-mono font-bold text-xs">{game.hoursPlayed}시간</span>
+                  <span className="text-slate-200 font-mono font-semibold text-xs">{game.hoursPlayed}시간</span>
                 </div>
-                <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800 no-print">
-                  <div
-                    className="h-full bg-gradient-to-r from-teal-500 via-cyan-400 to-cyan-300 rounded-full transition-all duration-500"
-                    style={{ width: `${percentage}%` }}
-                  />
+                <div className="w-full flex items-center gap-1 py-0.5 no-print" aria-hidden="true">
+                  {Array.from({ length: 14 }).map((_, i) => {
+                    const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
+                    const isActive = i < activeCount;
+                    return (
+                      <div
+                        key={i}
+                        className={`h-1.5 flex-1 -skew-x-12 rounded-[0.5px] transition-all duration-300 ${
+                          isActive
+                            ? 'bg-cyan-500/70'
+                            : 'bg-slate-800/40'
+                        }`}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </div>
