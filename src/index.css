@@ -53,35 +53,53 @@ header {
 
 /* Clean Print / PDF Export Styles */
 @media print {
+  @page {
+    margin: 1.2cm;
+    size: A4;
+  }
+
   body, html {
     background: #ffffff !important;
     color: #111827 !important;
+    font-size: 13px !important;
   }
 
-  header, canvas, .no-print, button {
+  header, canvas, .no-print, button, input {
     display: none !important;
   }
 
+  main {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    space-y: 1.5rem !important;
+  }
+
   * {
-    color: #111827 !important;
-    border-color: #e5e7eb !important;
+    color: #1f2937 !important;
+    border-color: #cbd5e1 !important;
     background-color: transparent !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
 
-  h1, h2, h3, h4, strong {
-    color: #000000 !important;
+  h1, h2, h3, h4, strong, .font-extrabold, .font-black {
+    color: #0f172a !important;
   }
 
   a {
     text-decoration: underline !important;
-    color: #0284c7 !important;
+    color: #0369a1 !important;
   }
 
   section {
     page-break-inside: avoid;
     margin-bottom: 2rem !important;
+    padding-top: 0.5rem !important;
+  }
+
+  /* Keep table borders visible and clean */
+  .border-t, .border-b, .border-l-2, .border {
+    border-color: #cbd5e1 !important;
   }
 }
 

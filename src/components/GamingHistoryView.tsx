@@ -249,7 +249,7 @@ export const GamingHistoryView: React.FC = () => {
                   <span className="text-slate-400 text-[11px] font-sans">누적 플레이</span>
                   <span className="text-amber-300 font-mono font-bold text-xs">{game.hoursPlayed}시간</span>
                 </div>
-                <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800 no-print">
                   <div
                     className="h-full bg-gradient-to-r from-teal-500 via-cyan-400 to-cyan-300 rounded-full transition-all duration-500"
                     style={{ width: `${percentage}%` }}
