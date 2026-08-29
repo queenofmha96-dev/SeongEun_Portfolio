@@ -13,65 +13,65 @@ interface GameLogItem {
 export const GAMING_LOGS: GameLogItem[] = [
   {
     id: "lol",
-    title: "리그 오브 레전드 (League of Legends)",
+    title: "리그 오브 레전드",
     hoursPlayed: 520,
-    genre: "MOBA / Strategy",
+    genre: "MOBA / 전략",
     audioFocus: "챔피언 스킬마다 타격음이 달라 시각 효과 없이도 상황이 들리는 점을 가장 오래 들어왔다",
     tag: "SKILL IMPACT"
   },
   {
     id: "overwatch",
-    title: "오버워치 2 (Overwatch 2)",
+    title: "오버워치 2",
     hoursPlayed: 450,
-    genre: "Hero Team Shooter",
+    genre: "팀 기반 히어로 슈터",
     audioFocus: "한타 중에도 궁극기 음성만은 또렷하게 들리는 우선순위 믹싱을 참고한다",
     tag: "PRIORITY MIXING"
   },
   {
     id: "valorant",
-    title: "발로란트 (VALORANT)",
+    title: "발로란트",
     hoursPlayed: 320,
-    genre: "Competitive Tactical Shooter",
+    genre: "택티컬 FPS",
     audioFocus: "벽 뒤 풋스텝 소리만으로 적 위치가 그려지는 공간 표현을 참고한다",
     tag: "SPATIAL AUDIO"
   },
   {
     id: "mhw",
-    title: "몬스터 헌터: 월드 (MH: World)",
+    title: "몬스터 헌터: 월드",
     hoursPlayed: 260,
-    genre: "Co-op Monster Action",
+    genre: "액션 RPG",
     audioFocus: "대형 몬스터의 묵직한 포효와 타격감, 지형 재질에 따른 발소리 연출을 참고한다",
     tag: "CREATURE SFX"
   },
   {
     id: "cyberpunk",
-    title: "사이버펑크 2077 (Cyberpunk 2077)",
+    title: "사이버펑크 2077",
     hoursPlayed: 210,
-    genre: "Open World Sci-Fi RPG",
+    genre: "오픈월드 SF RPG",
     audioFocus: "나이트 시티의 미래지향적 총기·차량 사운드와 신디사이저 음악의 결합을 참고한다",
     tag: "SCI-FI & SYNTH"
   },
   {
     id: "diablo",
-    title: "디아블로 4 (Diablo IV)",
+    title: "디아블로 4",
     hoursPlayed: 190,
-    genre: "Dark Fantasy Hack & Slash",
+    genre: "다크 판타지 핵앤슬래시",
     audioFocus: "몰이사냥의 서브 베이스 타격감과 던전의 어둡고 묵직한 앰비언스를 참고한다",
     tag: "DARK AMBIENCE"
   },
   {
     id: "eldenring",
-    title: "엘든 링 (Elden Ring)",
+    title: "엘든 링",
     hoursPlayed: 180,
-    genre: "Dark Fantasy Action RPG",
+    genre: "다크 판타지 액션 RPG",
     audioFocus: "보스 페이즈 전환 시의 음악 연출과 대형 무기의 묵직한 피격감을 참고한다",
     tag: "BOSS MUSIC & HIT"
   },
   {
     id: "pubg",
-    title: "배틀그라운드 (PUBG: BATTLEGROUNDS)",
+    title: "배틀그라운드",
     hoursPlayed: 130,
-    genre: "Tactical FPS / Battle Royale",
+    genre: "배틀로얄 FPS",
     audioFocus: "원거리 총성 반향과 실내외 오클루전 등 현실적인 방향 감각을 참고한다",
     tag: "OCCLUSION & DISTANCE"
   }
@@ -233,11 +233,11 @@ export const GamingHistoryView: React.FC = () => {
                     <span className="text-[11px] font-mono font-bold text-cyan-400 bg-cyan-950/70 border border-cyan-500/30 px-1.5 py-0.2 rounded shrink-0">
                       #{index + 1}
                     </span>
-                    <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep truncate">
+                    <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep">
                       {game.title}
                     </h4>
                   </div>
-                  <span className="text-xs font-mono text-slate-400 block truncate">
+                  <span className="text-xs font-mono text-slate-400 block break-keep">
                     {game.genre}
                   </span>
                 </div>

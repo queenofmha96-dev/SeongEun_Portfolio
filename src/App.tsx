@@ -32,12 +32,11 @@ export default function App() {
 
   const [profile, setProfile] = useState<SoundDirectorProfile>(() => {
     try {
-      const saved = localStorage.getItem('seongeun_sound_profile') || localStorage.getItem('jiho_sound_profile');
+      const saved = localStorage.getItem('seongeun_sound_profile');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed.name && parsed.name.includes('JIHO')) {
-          parsed.name = "SEONGEUN (성은)";
-          parsed.bio = parsed.bio.replace(/지호/g, '성은');
+        if (parsed.email && parsed.email !== 'queenofmha96@gmail.com') {
+          return INITIAL_PROFILE;
         }
         return parsed;
       }
@@ -101,14 +100,14 @@ export default function App() {
 
         <main className="flex-1 px-4 sm:px-8 md:px-12 lg:px-16 max-w-[1640px] w-full mx-auto space-y-24 pt-12 sm:pt-16 md:pt-20 pb-36">
           
-          {/* Section 1: Director Resume & Profile */}
+          {/* Section 1: Sound Designer Profile */}
           <section id="director-stats" className="scroll-mt-28 space-y-7">
             <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
               <span className="px-3 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-sm font-black">
                 01
               </span>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
-                디렉터 이력서 & 개발 프로필
+                사운드 디자이너 프로필 & 역량
               </h2>
             </div>
             <ProfileView profile={profile} />

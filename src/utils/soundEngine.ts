@@ -2,7 +2,13 @@
 
 class SoundEngine {
   private ctx: AudioContext | null = null;
-  private isMuted: boolean = false;
+  private isMuted: boolean = (() => {
+    try {
+      return localStorage.getItem('seongeun_sound_muted') === 'true';
+    } catch {
+      return false;
+    }
+  })();
   private volume: number = 0.25;
   private ambientOsc1: OscillatorNode | null = null;
   private ambientOsc2: OscillatorNode | null = null;
@@ -19,8 +25,27 @@ class SoundEngine {
     }
   }
 
+  public getIsMuted(): boolean {
+    return this.isMuted;
+  }
+
+  public toggleMute(): boolean {
+    const nextState = !this.isMuted;
+    this.setMuted(nextState);
+    if (!nextState) {
+      // Play brief activation sound when unmuted
+      this.playClick();
+    }
+    return nextState;
+  }
+
   public setMuted(muted: boolean) {
     this.isMuted = muted;
+    try {
+      localStorage.setItem('seongeun_sound_muted', String(muted));
+    } catch {
+      // ignore
+    }
     if (muted && this.isAmbientPlaying) {
       this.stopAmbient();
     }

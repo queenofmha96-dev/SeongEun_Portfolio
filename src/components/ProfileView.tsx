@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
-  Award, Cpu, Disc, Mail, MapPin, Briefcase, Shield, Sliders, Radio, Sparkles, CheckCircle
+  Award, Cpu, Disc, Mail, MapPin, Briefcase, Shield, Sliders, Radio, Sparkles, CheckCircle,
+  Printer, Share2, Check, FileText
 } from 'lucide-react';
 import { SoundDirectorProfile } from '../types';
+import { soundEngine } from '../utils/soundEngine';
 
 interface ProfileViewProps {
   profile: SoundDirectorProfile;
 }
 
 export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handlePrint = () => {
+    soundEngine.playClick();
+    window.print();
+  };
+
+  const handleShare = async () => {
+    soundEngine.playClick();
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // fallback
+    }
+  };
+
   return (
     <div className="w-full space-y-14 animate-fadeIn text-slate-100 font-sans py-2">
       
@@ -34,7 +54,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
                 </span>
                 <span className="px-3 py-1 rounded-lg bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm font-mono font-bold flex items-center gap-1.5 whitespace-nowrap">
                   <Briefcase className="w-3.5 h-3.5" />
-                  {profile.experienceYears}년 차
+                  신입 / JUNIOR SOUND DESIGNER
                 </span>
               </div>
 
@@ -44,16 +64,54 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
             </div>
           </div>
 
-          {/* Contact Badges */}
-          <div className="flex flex-wrap items-center gap-4 text-sm font-mono">
-            <div className="flex items-center gap-2 text-slate-300">
-              <Mail className="w-4.5 h-4.5 text-cyan-400" />
-              <span className="font-bold text-white text-sm sm:text-base">{profile.email}</span>
+          {/* Contact Badges & Quick Action Buttons */}
+          <div className="flex flex-col sm:items-end gap-3.5">
+            <div className="flex flex-wrap items-center gap-4 text-sm font-mono">
+              <div className="flex items-center gap-2 text-slate-300">
+                <Mail className="w-4.5 h-4.5 text-cyan-400" />
+                <span className="font-bold text-white text-sm sm:text-base">{profile.email}</span>
+              </div>
+              <span className="text-slate-600 hidden sm:inline text-base">•</span>
+              <div className="flex items-center gap-2 text-slate-300">
+                <MapPin className="w-4.5 h-4.5 text-amber-400" />
+                <span className="text-sm sm:text-base">{profile.location}</span>
+              </div>
             </div>
-            <span className="text-slate-600 hidden sm:inline text-base">•</span>
-            <div className="flex items-center gap-2 text-slate-300">
-              <MapPin className="w-4.5 h-4.5 text-amber-400" />
-              <span className="text-sm sm:text-base">{profile.location}</span>
+
+            {/* Quick Share & Print Actions */}
+            <div className="flex items-center gap-2.5 pt-1">
+              <button
+                onClick={handleShare}
+                onMouseEnter={() => soundEngine.playHover()}
+                className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer flex items-center gap-2 border ${
+                  copied
+                    ? 'bg-emerald-950/80 border-emerald-500/60 text-emerald-300 shadow-md'
+                    : 'bg-slate-900/90 hover:bg-slate-800 border-slate-700/80 text-slate-200 hover:text-cyan-300 hover:border-cyan-500/50'
+                }`}
+                title="포트폴리오 주소 복사하기"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-400" />
+                    <span>링크 복사완료!</span>
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="w-4 h-4 text-cyan-400" />
+                    <span>포트폴리오 공유</span>
+                  </>
+                )}
+              </button>
+
+              <button
+                onClick={handlePrint}
+                onMouseEnter={() => soundEngine.playHover()}
+                className="px-3.5 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 hover:border-amber-500/50 text-slate-200 hover:text-amber-300 text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer flex items-center gap-2 shadow-sm"
+                title="이력서 요약 인쇄 및 PDF 다운로드"
+              >
+                <Printer className="w-4 h-4 text-amber-400" />
+                <span>이력서 인쇄 / PDF</span>
+              </button>
             </div>
           </div>
         </div>
@@ -61,7 +119,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
         {/* Bio Section */}
         <div className="space-y-3">
           <h3 className="text-sm font-mono font-black text-cyan-400 uppercase tracking-wider flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-amber-400" /> ABOUT DIRECTOR
+            <Sparkles className="w-4 h-4 text-amber-400" /> ABOUT SOUND DESIGNER
           </h3>
           <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-sans max-w-5xl break-keep">
             {profile.bio}
@@ -149,7 +207,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
         <div className="flex items-center gap-3">
           <Award className="w-6 h-6 text-cyan-400" />
           <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
-            주요 경력 사항 (CAREER HISTORY)
+            프로젝트 & 사운드 디자인 이력 (PROJECT & EXPERIENCE)
           </h2>
         </div>
 

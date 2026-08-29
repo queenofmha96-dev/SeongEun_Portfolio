@@ -1,6 +1,6 @@
 {
-  "name": "Sound Director Portfolio",
-  "description": "8년 차 게임 사운드 디렉터 양성은의 포트폴리오. SFX·BGM·폴리 사운드 디자인과 FMOD/Wwise 인터랙티브 오디오 작업을 소개합니다.",
+  "name": "Game Sound Portfolio",
+  "description": "게임 사운드 디자이너 양성은의 포트폴리오. SFX·BGM·폴리 사운드 디자인과 FMOD/Wwise 인터랙티브 오디오 작업을 소개합니다.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

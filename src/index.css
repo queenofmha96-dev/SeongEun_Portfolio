@@ -51,3 +51,37 @@ header {
   scrollbar-color: #1e293b #06070b;
 }
 
+/* Clean Print / PDF Export Styles */
+@media print {
+  body, html {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  header, canvas, .no-print, button {
+    display: none !important;
+  }
+
+  * {
+    color: #111827 !important;
+    border-color: #e5e7eb !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  h1, h2, h3, h4, strong {
+    color: #000000 !important;
+  }
+
+  a {
+    text-decoration: underline !important;
+    color: #0284c7 !important;
+  }
+
+  section {
+    page-break-inside: avoid;
+    margin-bottom: 2rem !important;
+  }
+}
+

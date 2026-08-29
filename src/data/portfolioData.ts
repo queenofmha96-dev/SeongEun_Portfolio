@@ -1,75 +1,75 @@
 import { SoundProject, SoundDirectorProfile, SfxPreset } from '../types';
 
 export const INITIAL_PROFILE: SoundDirectorProfile = {
-  name: "SEONGEUN (성은)",
-  title: "Game Sound Director & Audio Lead",
-  tagline: "게임의 몰입감을 극대화하는 임팩트 있는 사운드 디자인 & 음악 연출",
-  email: "livurlife94@naver.com",
+  name: "양성은 (SEONGEUN)",
+  title: "Game Sound Designer & Audio Artist",
+  tagline: "게임의 몰입감을 극대화하는 임팩트 있는 SFX 디자인 & 인터랙티브 오디오 연출",
+  email: "queenofmha96@gmail.com",
   location: "Seoul, South Korea",
-  experienceYears: 8,
-  bio: "게임 연출의 심장인 SFX, BGM, Voice, Foley를 총괄 설계하는 8년 차 게임 사운드 디렉터 성은입니다. 사이버펑크 SF부터 다크 판타지 MMORPG, 모바일 캐주얼까지 게임의 세계관과 타격감을 완성하는 시그니처 사운드를 제작합니다. FMOD/Wwise 미들웨어 인터랙티브 사운드 구현과 폴리(Foley) 스튜디오 레코딩에 강점이 있습니다.",
+  experienceYears: 1,
+  bio: "게임 연출의 핵심인 SFX, BGM, Voice, Foley를 세밀하게 설계하는 게임 사운드 디자이너 양성은입니다. 사이버펑크 SF부터 다크 판타지 액션, 캐주얼 장르까지 게임 세계관과 타격감을 완성하는 시그니처 사운드를 제작합니다. FMOD/Wwise 오디오 미들웨어 인터랙티브 구현과 Foley 스튜디오 레코딩, 디테일한 레이어링 사운드 디자인을 바탕으로 플레이어에게 깊은 몰입감을 전달합니다.",
   philosophy: "사운드는 단순한 효과음이 아닌, 플레이어가 게임 환경 및 캐릭터와 교감하는 '청각적 햅틱 반응'입니다. 화면보다 먼저 인지되는 타격감과 명확한 피드백으로 게임의 만족도를 완성합니다.",
   skills: [
     {
       name: "FMOD / Wwise Integration",
       tag: "주력",
-      description: "상용 프로젝트 인터랙티브 사운드 구현 및 파라미터 연동 설계"
+      description: "게임 엔진 연동 인터랙티브 사운드 파라미터 제어 및 오디오 이벤트 설계"
     },
     {
       name: "SFX Design & Creature Voice",
       tag: "주력",
-      description: "타격감 SFX 1,200종 제작, 크리처 보이스 디자인"
+      description: "액션 타격감 SFX, 마법·메카닉 이펙트, 크리처 보이스 멀티 레이어링"
     },
     {
       name: "Foley Recording & Layering",
       tag: "주력",
-      description: "스튜디오 폴리 레코딩 및 멀티 레이어링"
+      description: "스튜디오 폴리 레코딩, 재질별 발소리 및 환경음 커스텀 라이브러리 구축"
     },
     {
       name: "Pro Tools & Reaper DAW",
       tag: "실무",
-      description: "믹싱·마스터링 및 사운드 에디팅 메인 DAW"
+      description: "믹싱·마스터링, 배치 프로세싱 및 사운드 에디팅 메인 DAW"
     },
     {
       name: "Unreal Engine 5 / Unity Audio",
       tag: "실무",
-      description: "엔진 내 3D 공간 음향 설계 및 오디오 구현"
+      description: "엔진 내 3D 공간 음향(Spatial Audio), 감쇄 곡선 및 앰비언스 연동"
     },
     {
       name: "Game BGM Composition & Adaptive Audio",
       tag: "실무",
-      description: "테마 BGM 작곡 및 어댑티브 뮤직 시스템 구성"
+      description: "테마 BGM 작곡 및 인게임 상황 변화에 따른 적응형 오디오 연출"
     },
   ],
   tools: [
-    { name: "FMOD Studio", icon: "Radio", description: "인터랙티브 파라미터 제어 및 적응형 BGM 디렉션" },
-    { name: "Audiokinetic Wwise", icon: "Disc", description: "3D Spatial Audio 및 동적 오디오 오버라이드 시스템 구축" },
-    { name: "Pro Tools Ultimate", icon: "Sliders", description: "시네마틱 트레일러 마스터링 및 보이스 에디팅" },
-    { name: "Reaper", icon: "Activity", description: "대규모 SFX 배치 프로세싱 및 커스텀 스크립트 오토메이션" },
-    { name: "Kyma / Max MSP", icon: "Cpu", description: "SF 및 메카닉 특수 합성음 생성" },
-    { name: "Ableton Live", icon: "Music", description: "신디사이저 및 EDM/하이브리드 오케스트라 BGM 작곡" },
+    { name: "FMOD Studio", icon: "Radio", description: "인터랙티브 파라미터 제어 및 적응형 사운드 이벤트 구축" },
+    { name: "Audiokinetic Wwise", icon: "Disc", description: "3D Spatial Audio 및 동적 사운드 파이프라인 설계" },
+    { name: "Pro Tools Ultimate", icon: "Sliders", description: "시네마틱 오디오 믹싱 마스터링 및 보이스 에디팅" },
+    { name: "Reaper", icon: "Activity", description: "대규모 SFX 배치 프로세싱 및 오토메이션" },
+    { name: "Kyma / Max MSP", icon: "Cpu", description: "SF 및 메카닉 특수 합성음 디자인" },
+    { name: "Ableton Live", icon: "Music", description: "신디사이저 및 하이브리드 게임 테마 BGM 작곡" },
   ],
   experience: [
     {
-      period: "2023 - Present",
-      role: "Lead Sound Director",
-      company: "Neon Cyber Studios",
+      period: "2024 - Present",
+      role: "Game Sound Designer (Personal & Redesign)",
+      company: "Sound Portfolio & Redesign Lab",
       projects: ["Project: CYBER-X", "Overdrive Boss Arena", "Aether Saga SFX"],
-      description: "UE5 기반 AAA 사이버펑크 액션 RPG 사운드 전체 총괄 디렉팅. 3D 공간 음향 설계 및 폴리 사운드 디렉션."
+      description: "AAA급 게임 트레일러 및 인게임 플레이 전면 사운드 리디자인. SFX 100% 자체 제작, 폴리 레코딩, 3D 사운드 믹싱 마스터링."
     },
     {
-      period: "2021 - 2023",
-      role: "Senior SFX Designer",
-      company: "Nexus Game Labs",
-      projects: ["Dark Abyss MMORPG", "Chrono Strike UI"],
-      description: "다크 판타지 마법 이펙트, 보스 몬스터 음성 및 타격감 SFX 1,200종 제작. FMOD 에디터 연동."
+      period: "2023 - 2024",
+      role: "Technical Audio & Middleware Specialist",
+      company: "Interactive Audio Research",
+      projects: ["Dark Abyss MMORPG", "Chrono Strike UI Sound"],
+      description: "FMOD Studio 및 Wwise 연동 인터랙티브 사운드 시스템 구현. 다크 판타지 마법 SFX 및 UI 사운드 팩 제작."
     },
     {
-      period: "2018 - 2021",
-      role: "Game Audio Composer & Sound Designer",
-      company: "Freelance Sound Studio",
-      projects: ["Mobile Casual Legends", "Indie Pixel Quest", "VR Space Combat"],
-      description: "20여 개 게임 타이틀 SFX, BGM, Cutscene 오디오 제작 및 믹싱 마스터링."
+      period: "2022 - 2023",
+      role: "Audio Creator & Foley Artist",
+      company: "Indie Project & Sound Creation",
+      projects: ["Mobile Action Sound Pack", "Pixel Quest", "Sci-Fi Foley Library"],
+      description: "인디 게임 및 미디어 사운드 디자인, Foley 현장/스튜디오 녹음, 테마 BGM 작곡 및 믹싱."
     }
   ],
   hardware: [

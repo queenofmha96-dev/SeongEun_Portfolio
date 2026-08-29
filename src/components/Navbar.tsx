@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Radio, User, Gamepad2, FolderKanban, Mail, ChevronRight, Sparkles } from 'lucide-react';
+import { Radio, User, Gamepad2, FolderKanban, Mail, ChevronRight, Sparkles, Volume2, VolumeX } from 'lucide-react';
+import { soundEngine } from '../utils/soundEngine';
 
 export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('director-stats');
   const [scrolled, setScrolled] = useState(false);
+  const [isMuted, setIsMuted] = useState<boolean>(() => soundEngine.getIsMuted());
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -38,7 +40,13 @@ export const Navbar: React.FC = () => {
     };
   }, []);
 
+  const handleToggleMute = () => {
+    const nextMuted = soundEngine.toggleMute();
+    setIsMuted(nextMuted);
+  };
+
   const scrollToSection = (id: string) => {
+    soundEngine.playClick();
     setActiveSection(id);
     const el = document.getElementById(id);
     if (el) {
@@ -47,7 +55,7 @@ export const Navbar: React.FC = () => {
   };
 
   const navItems = [
-    { id: 'director-stats', label: '프로필 & 경력', icon: User },
+    { id: 'director-stats', label: '프로필 & 역량', icon: User },
     { id: 'gaming-history', label: '게이밍 경력', icon: Gamepad2 },
     { id: 'showcase-reel', label: '포트폴리오', icon: FolderKanban },
   ];
@@ -85,54 +93,81 @@ export const Navbar: React.FC = () => {
           <div className="flex flex-col">
             <div className="flex items-center gap-2.5">
               <span className="text-lg sm:text-xl font-black font-sans tracking-tight text-white group-hover:text-cyan-300 transition-colors whitespace-nowrap break-keep">
-                성은 <span className="text-slate-400 text-sm font-mono font-normal">(SEONGEUN)</span>
+                양성은 <span className="text-slate-400 text-sm font-mono font-normal">(SEONGEUN)</span>
               </span>
               <span className="hidden md:inline-block px-2.5 py-0.5 rounded-md bg-cyan-950/90 border border-cyan-500/40 text-xs font-mono font-bold text-cyan-300">
-                AUDIO DIRECTOR
+                SOUND DESIGNER
               </span>
             </div>
             <span className="text-xs sm:text-sm font-mono text-cyan-400 font-medium tracking-wide">
-              Game Sound Director & Audio Lead
+              Game Sound Designer & Audio Artist
             </span>
           </div>
         </div>
 
-        {/* Scroll Navigation Pills */}
-        <nav className="flex items-center gap-1.5 sm:gap-2.5 font-sans text-sm">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeSection === item.id;
-            return (
-              <button
-                key={item.id}
-                aria-label={item.label}
-                onClick={() => scrollToSection(item.id)}
-                className={`px-3.5 sm:px-4 py-2.5 rounded-xl transition-colors duration-150 cursor-pointer flex items-center gap-2 font-semibold text-sm ${
-                  isActive
-                    ? 'bg-cyan-950/70 text-cyan-300 border border-cyan-500/50 font-bold shadow-md'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent'
-                }`}
-              >
-                <Icon className={`w-4.5 h-4.5 flex-shrink-0 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
-                <span className="hidden sm:inline whitespace-nowrap">{item.label}</span>
-              </button>
-            );
-          })}
+        {/* Scroll Navigation Pills & Controls */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <nav className="flex items-center gap-1.5 sm:gap-2.5 font-sans text-sm">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  aria-label={item.label}
+                  onClick={() => scrollToSection(item.id)}
+                  onMouseEnter={() => soundEngine.playHover()}
+                  className={`px-3.5 sm:px-4 py-2.5 rounded-xl transition-colors duration-150 cursor-pointer flex items-center gap-2 font-semibold text-sm ${
+                    isActive
+                      ? 'bg-cyan-950/70 text-cyan-300 border border-cyan-500/50 font-bold shadow-md'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent'
+                  }`}
+                >
+                  <Icon className={`w-4.5 h-4.5 flex-shrink-0 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
+                  <span className="hidden sm:inline whitespace-nowrap">{item.label}</span>
+                </button>
+              );
+            })}
 
-          <button
-            aria-label="문의하기"
-            onClick={() => scrollToSection('direct-contact')}
-            className={`ml-1 sm:ml-2 px-4 sm:px-5 py-2.5 rounded-xl text-sm font-black transition-colors duration-150 cursor-pointer flex items-center gap-2 ${
-              activeSection === 'direct-contact'
-                ? 'bg-amber-500 text-slate-950 border border-amber-300 shadow-lg'
-                : 'bg-amber-950/60 hover:bg-amber-900/70 border border-amber-500/50 text-amber-300 hover:text-white'
-            }`}
-          >
-            <Mail className="w-4.5 h-4.5 flex-shrink-0" />
-            <span className="whitespace-nowrap">문의하기</span>
-            <ChevronRight className="w-4 h-4 opacity-70 hidden sm:inline flex-shrink-0" />
-          </button>
-        </nav>
+            <button
+              aria-label="문의하기"
+              onClick={() => scrollToSection('direct-contact')}
+              onMouseEnter={() => soundEngine.playHover()}
+              className={`ml-1 sm:ml-2 px-4 sm:px-5 py-2.5 rounded-xl text-sm font-black transition-colors duration-150 cursor-pointer flex items-center gap-2 ${
+                activeSection === 'direct-contact'
+                  ? 'bg-amber-500 text-slate-950 border border-amber-300 shadow-lg'
+                  : 'bg-amber-950/60 hover:bg-amber-900/70 border border-amber-500/50 text-amber-300 hover:text-white'
+              }`}
+            >
+              <Mail className="w-4.5 h-4.5 flex-shrink-0" />
+              <span className="whitespace-nowrap">문의하기</span>
+              <ChevronRight className="w-4 h-4 opacity-70 hidden sm:inline flex-shrink-0" />
+            </button>
+          </nav>
+
+          {/* Sound FX ON/OFF Mute Toggle */}
+          <div className="pl-1 sm:pl-2 border-l border-slate-800 flex items-center">
+            <button
+              onClick={handleToggleMute}
+              title={isMuted ? 'UI 효과음 켜기 (SFX: OFF)' : 'UI 효과음 끄기 (SFX: ON)'}
+              aria-label={isMuted ? 'UI 효과음 켜기' : 'UI 효과음 끄기'}
+              className={`p-2.5 rounded-xl transition-all duration-200 cursor-pointer flex items-center gap-1.5 text-xs font-mono font-bold ${
+                isMuted
+                  ? 'bg-slate-900/90 text-slate-500 border border-slate-800 hover:text-slate-300 hover:border-slate-700'
+                  : 'bg-cyan-950/80 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-900/80 hover:border-cyan-400 shadow-sm'
+              }`}
+            >
+              {isMuted ? (
+                <VolumeX className="w-4.5 h-4.5 text-slate-500" />
+              ) : (
+                <Volume2 className="w-4.5 h-4.5 text-cyan-400" />
+              )}
+              <span className="hidden lg:inline uppercase text-[11px] tracking-wider">
+                {isMuted ? 'SFX OFF' : 'SFX ON'}
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );

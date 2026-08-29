@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { X, Sparkles, CheckCircle2, Layers, Wrench, UserCheck } from 'lucide-react';
+import { X, Sparkles, CheckCircle2, Layers, Wrench, UserCheck, ExternalLink, PlaySquare } from 'lucide-react';
 import { SoundProject } from '../types';
+import { soundEngine } from '../utils/soundEngine';
 
 interface VideoPlayerModalProps {
   project: SoundProject;
@@ -56,6 +57,16 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
     return project.videoUrl;
   };
 
+  // Helper for watch on YouTube link
+  const getWatchUrl = () => {
+    if (!project.videoUrl) return 'https://www.youtube.com';
+    if (project.videoUrl.includes('embed/')) {
+      const videoId = project.videoUrl.split('embed/')[1]?.split('?')[0];
+      return videoId ? `https://www.youtube.com/watch?v=${videoId}` : project.videoUrl;
+    }
+    return project.videoUrl;
+  };
+
   const isDirectVideo =
     project.videoType === 'direct' ||
     project.videoUrl.endsWith('.mp4') ||
@@ -81,13 +92,31 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             </span>
           </div>
 
-          <button
-            onClick={onClose}
-            className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500/60 text-slate-200 hover:text-cyan-300 transition-all cursor-pointer flex items-center gap-2 text-xs sm:text-sm font-mono group"
-          >
-            <X className="w-4.5 h-4.5 group-hover:rotate-90 transition-transform" />
-            <span className="font-bold hidden sm:inline">닫기 (ESC)</span>
-          </button>
+          <div className="flex items-center gap-2.5">
+            {/* Watch on YouTube External Link Button */}
+            <a
+              href={getWatchUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => soundEngine.playClick()}
+              onMouseEnter={() => soundEngine.playHover()}
+              className="px-3.5 py-2 rounded-xl bg-red-950/60 border border-red-500/50 hover:bg-red-900/60 hover:border-red-400 text-red-300 hover:text-white transition-all cursor-pointer flex items-center gap-2 text-xs sm:text-sm font-mono font-bold group shadow-sm"
+              title="YouTube 원본 영상 새 탭에서 열기"
+            >
+              <PlaySquare className="w-4 h-4 text-red-400 group-hover:scale-110 transition-transform" />
+              <span>YouTube에서 직접 보기</span>
+              <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+
+            <button
+              onClick={onClose}
+              onMouseEnter={() => soundEngine.playHover()}
+              className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500/60 text-slate-200 hover:text-cyan-300 transition-all cursor-pointer flex items-center gap-2 text-xs sm:text-sm font-mono group"
+            >
+              <X className="w-4.5 h-4.5 group-hover:rotate-90 transition-transform" />
+              <span className="font-bold hidden sm:inline">닫기 (ESC)</span>
+            </button>
+          </div>
         </div>
 
         {/* Modal Scrollable Content Body */}
@@ -113,6 +142,23 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                   allowFullScreen
                 />
               )}
+            </div>
+
+            {/* Quick Watch on YouTube sub-banner */}
+            <div className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#06070c] border border-slate-800/80 text-xs font-mono text-slate-400">
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                HD Audio & Video Master Available
+              </span>
+              <a
+                href={getWatchUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-400 hover:text-cyan-300 hover:underline flex items-center gap-1 font-bold"
+              >
+                <span>원본 영상 바로가기</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </div>
 
             {/* Key Sound Design Highlights Card */}

@@ -12,8 +12,8 @@ interface ContactViewProps {
 export const ContactView: React.FC<ContactViewProps> = ({ profile }) => {
   const [copiedType, setCopiedType] = useState<'phone' | 'email' | null>(null);
 
-  const phoneNum = "010-2144-6086";
-  const emailAddr = profile.email || "livurlife94@naver.com";
+  const phoneNum = "010-4991-1314";
+  const emailAddr = profile.email || "queenofmha96@gmail.com";
 
   const handleCopy = (text: string, type: 'phone' | 'email', e: React.MouseEvent) => {
     e.stopPropagation();
