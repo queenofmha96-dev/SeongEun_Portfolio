@@ -72,7 +72,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                     </h4>
                   </div>
                   <span className="font-mono text-xs font-semibold text-slate-500 shrink-0">
-                    {proj.releaseYear} | {proj.genre}
+                    {proj.genre}
                   </span>
                 </div>
 
@@ -147,9 +147,6 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-slate-300">
                     <span className="px-3 py-1.5 rounded-lg bg-[#06070b] border border-slate-800 text-slate-200 font-semibold">
                       {featuredProject.genre}
-                    </span>
-                    <span className="px-3 py-1.5 rounded-lg bg-[#06070b] border border-slate-800 text-cyan-300 font-black">
-                      {featuredProject.releaseYear}
                     </span>
                   </div>
                 </div>
@@ -283,11 +280,6 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 {/* Category Badge */}
                 <div className="absolute top-3 left-3 px-3 py-1 rounded-lg bg-black/85 border border-slate-800 text-cyan-300 text-xs font-mono tracking-wider font-bold shadow-md">
                   {proj.genre.toUpperCase()}
-                </div>
-
-                {/* Release Year */}
-                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-black/85 text-slate-200 text-xs font-mono font-bold shadow-md">
-                  {proj.releaseYear}
                 </div>
               </div>
 

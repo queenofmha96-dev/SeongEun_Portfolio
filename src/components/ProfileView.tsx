@@ -44,7 +44,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
               </div>
             </div>
 
-            <div className="space-y-1.5 min-w-0">
+            <div className="space-y-1 min-w-0">
               <div className="flex flex-wrap items-center gap-3">
                 <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight whitespace-nowrap break-keep">
                   {profile.name}
@@ -52,15 +52,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
                 <span className="px-3 py-1 rounded-lg bg-cyan-950/90 border border-cyan-500/40 text-cyan-300 text-xs sm:text-sm font-mono font-bold whitespace-nowrap">
                   {profile.title}
                 </span>
-                <span className="px-3 py-1 rounded-lg bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm font-mono font-bold flex items-center gap-1.5 whitespace-nowrap">
-                  <Briefcase className="w-3.5 h-3.5" />
-                  신입 / JUNIOR SOUND DESIGNER
-                </span>
               </div>
-
-              <p className="text-amber-300 font-semibold text-sm sm:text-base break-keep">
-                {profile.tagline}
-              </p>
             </div>
           </div>
 

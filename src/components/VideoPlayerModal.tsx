@@ -188,13 +188,13 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
           <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               
-              {/* Category & Year Header Badges */}
+              {/* Category & Genre Header Badges */}
               <div className="flex items-center gap-2.5">
                 <span className="px-3.5 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 font-mono text-xs sm:text-sm font-bold tracking-wide">
                   {project.client || 'Seongeun Studio'}
                 </span>
                 <span className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-mono text-xs sm:text-sm font-bold">
-                  {project.releaseYear}
+                  {project.genre}
                 </span>
               </div>
 

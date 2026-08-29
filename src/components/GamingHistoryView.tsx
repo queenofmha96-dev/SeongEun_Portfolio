@@ -231,14 +231,9 @@ export const GamingHistoryView: React.FC = () => {
                   <GameLogoBadge gameId={game.id} size="compact" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-1.5 mb-0.5">
-                    <span className="text-[11px] font-mono font-bold text-cyan-400 bg-cyan-950/70 border border-cyan-500/30 px-1.5 py-0.2 rounded shrink-0">
-                      #{index + 1}
-                    </span>
-                    <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep">
-                      {game.title}
-                    </h4>
-                  </div>
+                  <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep mb-0.5">
+                    {game.title}
+                  </h4>
                   <span className="text-xs font-mono text-slate-400 block break-keep">
                     {game.genre}
                   </span>
