@@ -102,7 +102,7 @@ export default function App() {
         <main className="flex-1 px-4 sm:px-8 md:px-12 lg:px-16 max-w-[1640px] w-full mx-auto space-y-24 pt-12 sm:pt-16 md:pt-20 pb-36">
           
           {/* Section 1: Director Resume & Profile */}
-          <section id="director-stats" className="scroll-mt-24 space-y-7">
+          <section id="director-stats" className="scroll-mt-28 space-y-7">
             <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
               <span className="px-3 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-sm font-black">
                 01
@@ -115,7 +115,7 @@ export default function App() {
           </section>
 
           {/* Section 2: Gaming History & Sound Research */}
-          <section id="gaming-history" className="scroll-mt-24 space-y-7">
+          <section id="gaming-history" className="scroll-mt-28 space-y-7">
             <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
               <span className="px-3 py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-sm font-black">
                 02
@@ -128,7 +128,7 @@ export default function App() {
           </section>
 
           {/* Section 3: Portfolio Showcase Reel */}
-          <section id="showcase-reel" className="scroll-mt-24 space-y-7">
+          <section id="showcase-reel" className="scroll-mt-28 space-y-7">
             <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
               <span className="px-3 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-sm font-black">
                 03
@@ -144,7 +144,7 @@ export default function App() {
           </section>
 
           {/* Section 4: Contact */}
-          <section id="direct-contact" className="scroll-mt-24 space-y-7">
+          <section id="direct-contact" className="scroll-mt-28 space-y-7">
             <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
               <span className="px-3 py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-sm font-black">
                 04

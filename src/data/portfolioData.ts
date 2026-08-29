@@ -3,22 +3,46 @@ import { SoundProject, SoundDirectorProfile, SfxPreset } from '../types';
 export const INITIAL_PROFILE: SoundDirectorProfile = {
   name: "SEONGEUN (성은)",
   title: "Game Sound Director & Audio Lead",
-  tagline: "게임의 몰입감을 극대화하는 임팩트 있는 사운드 디자인 & 음악 상감",
+  tagline: "게임의 몰입감을 극대화하는 임팩트 있는 사운드 디자인 & 음악 연출",
   email: "livurlife94@naver.com",
   location: "Seoul, South Korea",
-  experienceYears: 7,
-  bio: "게임 연출의 심장인 SFX, BGM, Voice, Foley를 총괄 설계하는 7년 차 게임 사운드 디렉터 성은입니다. 사이버펑크 SF부터 다크 판타지 MMORPG, 모바일 캐주얼까지 게임의 세계관과 타격감을 완성하는 시그니처 사운드를 제작합니다. FMOD/Wwise 미들웨어 인터렉티브 사운드 구현과 폴리(Foley) 스튜디오 레코딩에 강점이 있습니다.",
+  experienceYears: 8,
+  bio: "게임 연출의 심장인 SFX, BGM, Voice, Foley를 총괄 설계하는 8년 차 게임 사운드 디렉터 성은입니다. 사이버펑크 SF부터 다크 판타지 MMORPG, 모바일 캐주얼까지 게임의 세계관과 타격감을 완성하는 시그니처 사운드를 제작합니다. FMOD/Wwise 미들웨어 인터랙티브 사운드 구현과 폴리(Foley) 스튜디오 레코딩에 강점이 있습니다.",
   philosophy: "사운드는 단순한 효과음이 아닌, 플레이어가 게임 환경 및 캐릭터와 교감하는 '청각적 햅틱 반응'입니다. 화면보다 먼저 인지되는 타격감과 명확한 피드백으로 게임의 만족도를 완성합니다.",
   skills: [
-    { name: "FMOD / Wwise Integration", level: 96, category: "Middleware & Engine" },
-    { name: "Unreal Engine 5 / Unity Audio", level: 92, category: "Middleware & Engine" },
-    { name: "SFX Design & Creature Voice", level: 98, category: "Sound Design & Mixing" },
-    { name: "Game BGM Composition & Adaptive Audio", level: 90, category: "Sound Design & Mixing" },
-    { name: "Foley Recording & Layering", level: 94, category: "Recording & Foley" },
-    { name: "Pro Tools & Reaper DAW", level: 95, category: "DAW & Audio Tools" },
+    {
+      name: "FMOD / Wwise Integration",
+      tag: "주력",
+      description: "상용 프로젝트 인터랙티브 사운드 구현 및 파라미터 연동 설계"
+    },
+    {
+      name: "SFX Design & Creature Voice",
+      tag: "주력",
+      description: "타격감 SFX 1,200종 제작, 크리처 보이스 디자인"
+    },
+    {
+      name: "Foley Recording & Layering",
+      tag: "주력",
+      description: "스튜디오 폴리 레코딩 및 멀티 레이어링"
+    },
+    {
+      name: "Pro Tools & Reaper DAW",
+      tag: "실무",
+      description: "믹싱·마스터링 및 사운드 에디팅 메인 DAW"
+    },
+    {
+      name: "Unreal Engine 5 / Unity Audio",
+      tag: "실무",
+      description: "엔진 내 3D 공간 음향 설계 및 오디오 구현"
+    },
+    {
+      name: "Game BGM Composition & Adaptive Audio",
+      tag: "실무",
+      description: "테마 BGM 작곡 및 어댑티브 뮤직 시스템 구성"
+    },
   ],
   tools: [
-    { name: "FMOD Studio", icon: "Radio", description: "인터렉티브 파라미터 제어 및 적응형 BGM 디렉션" },
+    { name: "FMOD Studio", icon: "Radio", description: "인터랙티브 파라미터 제어 및 적응형 BGM 디렉션" },
     { name: "Audiokinetic Wwise", icon: "Disc", description: "3D Spatial Audio 및 동적 오디오 오버라이드 시스템 구축" },
     { name: "Pro Tools Ultimate", icon: "Sliders", description: "시네마틱 트레일러 마스터링 및 보이스 에디팅" },
     { name: "Reaper", icon: "Activity", description: "대규모 SFX 배치 프로세싱 및 커스텀 스크립트 오토메이션" },
@@ -116,7 +140,8 @@ export const INITIAL_PROFILE: SoundDirectorProfile = {
 export const INITIAL_PROJECTS: SoundProject[] = [
   {
     id: "proj-youtube-1",
-    title: "Official Sound Design Showcase #1",
+    title: "스타레일 '비소' 트레일러 — Sound Redesign",
+    showcaseLabel: "Official Sound Design Showcase #1",
     subtitle: "게임 사운드 디자인 & 이펙트 타격감 연출",
     category: "game-sfx",
     videoUrl: "https://www.youtube.com/embed/uPEYirPn22U",
@@ -143,7 +168,8 @@ export const INITIAL_PROJECTS: SoundProject[] = [
   },
   {
     id: "proj-youtube-2",
-    title: "Official Sound Design Showcase #2",
+    title: "젠레스 존 제로 '미야비' 인게임 전투 — Sound Redesign",
+    showcaseLabel: "Official Sound Design Showcase #2",
     subtitle: "특수 효과음 & 시네마틱 오디오 스컬프팅",
     category: "game-sfx",
     videoUrl: "https://www.youtube.com/embed/Zvj8r6n-DDM",
@@ -168,7 +194,8 @@ export const INITIAL_PROJECTS: SoundProject[] = [
   },
   {
     id: "proj-youtube-3",
-    title: "Official Sound Design Showcase #3",
+    title: "젠레스 존 제로 '미야비' 트레일러 — Sound Redesign",
+    showcaseLabel: "Official Sound Design Showcase #3",
     subtitle: "게임 트레일러 오디오 믹싱 & 오케스트라 BGM 연출",
     category: "trailer",
     videoUrl: "https://www.youtube.com/embed/HAL_B3SpPsM",
@@ -179,7 +206,7 @@ export const INITIAL_PROJECTS: SoundProject[] = [
     genre: "Trailer Audio & Orchestral BGM",
     role: ["Audio Director", "Composer", "Mastering Engineer"],
     toolsUsed: ["Pro Tools Ultimate", "Cubase", "Ableton Live"],
-    description: "세계관과 스토리 라인의 서사를 극대화하는 트레일러 오디오 믹싱 & 음악 상감 작업 영상입니다.",
+    description: "세계관과 스토리 라인의 서사를 극대화하는 트레일러 오디오 믹싱 & 음악 연출 작업 영상입니다.",
     soundHighlights: [
       "오케스트라 & 하이브리드 BGM 믹싱 디렉팅",
       "트레일러 피크 지점 라이저 및 임팩트 서브 레이어링",
@@ -193,7 +220,8 @@ export const INITIAL_PROJECTS: SoundProject[] = [
   },
   {
     id: "proj-youtube-4",
-    title: "Official Sound Design Showcase #4",
+    title: "고스트 오브 쓰시마 — Sound Redesign",
+    showcaseLabel: "Official Sound Design Showcase #4",
     subtitle: "액션 이펙트 & 독창적 UI 효과음 세트",
     category: "ui-sound",
     videoUrl: "https://www.youtube.com/embed/YPSPi7DNk4k",
@@ -216,8 +244,9 @@ export const INITIAL_PROJECTS: SoundProject[] = [
   },
   {
     id: "proj-youtube-5",
-    title: "Official Sound Design Showcase #5",
-    subtitle: "인터렉티브 테마 BGM & 서사적 작곡",
+    title: "프로젝트 스펙트럼 트레일러 — Sound Redesign",
+    showcaseLabel: "Official Sound Design Showcase #5",
+    subtitle: "인터랙티브 테마 BGM & 서사적 작곡",
     category: "bgm",
     videoUrl: "https://www.youtube.com/embed/-Qk1Hn6YuNQ",
     videoType: "embed",
@@ -240,7 +269,8 @@ export const INITIAL_PROJECTS: SoundProject[] = [
   },
   {
     id: "proj-youtube-6",
-    title: "Official Sound Design Showcase #6",
+    title: "빈딕투스 트레일러 — Sound Redesign",
+    showcaseLabel: "Official Sound Design Showcase #6",
     subtitle: "환경 스케이프 & 크리처 오디오 레코딩",
     category: "foley",
     videoUrl: "https://www.youtube.com/embed/dICQycXCkco",
@@ -264,7 +294,8 @@ export const INITIAL_PROJECTS: SoundProject[] = [
   },
   {
     id: "proj-youtube-7",
-    title: "Official Sound Design Showcase #7",
+    title: "프래그마타 전투 영상 — Sound Redesign",
+    showcaseLabel: "Official Sound Design Showcase #7",
     subtitle: "실시간 게임 오디오 구현 & SFX 파이프라인",
     category: "game-sfx",
     videoUrl: "https://www.youtube.com/embed/Hxm194LwU2Q",

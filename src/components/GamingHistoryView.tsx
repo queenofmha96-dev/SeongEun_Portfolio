@@ -40,7 +40,7 @@ export const GAMING_LOGS: GameLogItem[] = [
     title: "엘든 링 (Elden Ring)",
     hoursPlayed: 180,
     genre: "Dark Fantasy Action RPG",
-    audioFocus: "보스 페이즈 트랜지션 BGM, 대형 무기 피격감 타격음 및 동적 리버브 자일런스 분석",
+    audioFocus: "보스 페이즈 트랜지션 BGM, 대형 무기 피격감 타격음 및 동적 리버브 사일런스 분석",
     tag: "ACTION IMPACT"
   },
   {
@@ -64,7 +64,7 @@ export const GAMING_LOGS: GameLogItem[] = [
     title: "리그 오브 레전드 (League of Legends)",
     hoursPlayed: 520,
     genre: "MOBA / Strategy",
-    audioFocus: "챔피언 스킬 타격음의 시각-청각 동기화 & 한타 교전 시 가두리 믹싱 음향 우선순위 분석",
+    audioFocus: "챔피언 스킬 타격음의 시각-청각 동기화 & 한타 교전 시 한타 국면별 사운드 우선순위 믹싱 분석",
     tag: "SKILL IMPACT"
   },
   {
@@ -155,21 +155,16 @@ export const GamingHistoryView: React.FC = () => {
   return (
     <div className="w-full space-y-8 animate-fadeIn font-sans text-slate-100 py-2">
       
-      {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-5">
-        <div className="flex items-center gap-3.5">
-          <Gamepad2 className="w-6 h-6 text-cyan-400" />
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              게이밍 경력 & 사운드 연구 분석
-            </h2>
-            <p className="text-sm text-slate-300 mt-1">
-              플레이어 관점에서의 사운드 메카닉, 공간 오디오, 타격감 및 BGM 탐구
-            </p>
-          </div>
+      {/* Section Header Info Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
+        <div className="flex items-center gap-3">
+          <Gamepad2 className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+          <p className="text-sm sm:text-base text-slate-300 break-keep">
+            플레이어 관점에서의 사운드 메카닉, 공간 오디오, 타격감 및 BGM 탐구
+          </p>
         </div>
 
-        <div className="flex items-center gap-2.5 text-sm font-mono text-amber-300 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl w-fit">
+        <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-amber-300 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl w-fit flex-shrink-0">
           <Clock className="w-4 h-4 text-amber-400" />
           <span className="font-bold">{totalHours.toLocaleString()}시간+ 오디오 연구</span>
         </div>
@@ -187,7 +182,7 @@ export const GamingHistoryView: React.FC = () => {
               <div className="flex items-center gap-3.5 min-w-0">
                 <GameLogoBadge gameId={game.id} />
                 <div className="min-w-0">
-                  <h3 className="text-base sm:text-lg font-bold text-white truncate">
+                  <h3 className="text-base sm:text-lg font-bold text-white truncate break-keep">
                     {game.title}
                   </h3>
                   <span className="text-xs sm:text-sm font-mono text-cyan-300 font-semibold">
@@ -205,11 +200,11 @@ export const GamingHistoryView: React.FC = () => {
 
             {/* Audio Analysis Comment Text (Clean, no inner card box) */}
             <div className="pl-1 space-y-1.5">
-              <div className="flex items-center gap-2 text-xs font-mono font-black text-slate-300">
+              <div className="flex items-center gap-2 text-xs font-mono font-black text-slate-300 tracking-wider">
                 <Headphones className="w-4 h-4 text-cyan-400" />
                 <span>RESEARCH POINT</span>
               </div>
-              <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans">
+              <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans break-keep">
                 {game.audioFocus}
               </p>
             </div>

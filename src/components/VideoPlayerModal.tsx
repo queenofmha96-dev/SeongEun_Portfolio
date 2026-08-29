@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { X, Sparkles, CheckCircle2, Layers, Wrench, UserCheck } from 'lucide-react';
-import { SoundProject, AudioStem } from '../types';
+import { SoundProject } from '../types';
 
 interface VideoPlayerModalProps {
   project: SoundProject;
@@ -11,23 +11,24 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
   project,
   onClose
 }) => {
-  const [stems, setStems] = useState<AudioStem[]>(project.stems || []);
-
+  // Lock body scroll and listen for ESC key
   useEffect(() => {
-    setStems(project.stems || []);
-  }, [project]);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
 
-  const toggleStemMute = (stemId: string) => {
-    setStems((prev) =>
-      prev.map((s) => (s.id === stemId ? { ...s, isMuted: !s.isMuted } : s))
-    );
-  };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
 
-  const toggleStemSolo = (stemId: string) => {
-    setStems((prev) =>
-      prev.map((s) => (s.id === stemId ? { ...s, isSoloed: !s.isSoloed } : s))
-    );
-  };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
 
   // Helper to resolve video embed link with autoplay
   const getEmbedSource = () => {
@@ -62,8 +63,14 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
     project.videoUrl.startsWith('blob:');
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md overflow-y-auto animate-fadeIn">
-      <div className="relative w-full max-w-6xl max-h-[92vh] flex flex-col bg-[#090a12] border border-slate-800/90 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] my-auto text-white font-sans">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md overflow-y-auto animate-fadeIn cursor-pointer"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-6xl max-h-[92vh] flex flex-col bg-[#090a12] border border-slate-800/90 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] my-auto text-white font-sans cursor-default"
+      >
         
         {/* Modal Top Bar */}
         <div className="flex items-center justify-between px-6 py-4 bg-[#05060a] border-b border-slate-800/80 font-mono flex-shrink-0">
@@ -123,7 +130,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                       className="flex items-start gap-3 bg-[#06070c] px-4 py-3 rounded-xl border border-slate-800/70 hover:border-slate-700 transition-colors"
                     >
                       <CheckCircle2 className="w-4.5 h-4.5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                      <span className="leading-relaxed font-sans text-slate-200 font-medium">{highlight}</span>
+                      <span className="leading-relaxed font-sans text-slate-200 font-medium break-keep">{highlight}</span>
                     </div>
                   ))}
                 </div>
@@ -147,34 +154,34 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
 
               {/* Title & Subtitle */}
               <div>
-                <h2 className="text-2xl sm:text-3xl font-black font-sans text-white tracking-tight leading-snug">
+                <h2 className="text-2xl sm:text-3xl font-black font-sans text-white tracking-tight leading-snug break-keep">
                   {project.title}
                 </h2>
-                <p className="text-sm sm:text-base text-amber-300 font-mono font-bold mt-1.5">
+                <p className="text-sm sm:text-base text-amber-300 font-mono font-bold mt-1.5 break-keep">
                   {project.subtitle}
                 </p>
               </div>
 
               {/* Description Card */}
               <div className="bg-[#0e1018] p-5 rounded-2xl border border-slate-800/80">
-                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans">
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans break-keep">
                   {project.description}
                 </p>
               </div>
 
-              {/* Audio Stems Layer Breakdown */}
-              {stems.length > 0 && (
+              {/* Audio Stems Layer Breakdown (Static composition list) */}
+              {project.stems && project.stems.length > 0 && (
                 <div className="bg-[#0e1018] p-5 rounded-2xl border border-slate-800/80 space-y-3.5">
                   <div className="flex items-center justify-between font-mono text-xs sm:text-sm text-cyan-300">
                     <span className="flex items-center gap-2 font-black tracking-wide">
                       <Layers className="w-4.5 h-4.5 text-cyan-400" />
-                      AUDIO STEMS BREAKDOWN
+                      AUDIO STEMS COMPOSITION
                     </span>
-                    <span className="text-xs text-slate-400">Solo / Mute Control</span>
+                    <span className="text-xs text-slate-400 font-mono">Layer Specs</span>
                   </div>
 
                   <div className="space-y-2.5">
-                    {stems.map((stem) => (
+                    {project.stems.map((stem) => (
                       <div
                         key={stem.id}
                         className="p-3 rounded-xl bg-[#06070c] border border-slate-800/80 flex items-center justify-between gap-3 text-xs sm:text-sm font-mono"
@@ -187,28 +194,9 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                           <span className="text-slate-200 truncate font-semibold">{stem.name}</span>
                         </div>
 
-                        <div className="flex items-center gap-2 flex-shrink-0">
-                          <button
-                            onClick={() => toggleStemMute(stem.id)}
-                            className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all cursor-pointer ${
-                              stem.isMuted
-                                ? 'bg-rose-950/90 border-rose-500 text-rose-300 shadow-sm'
-                                : 'bg-slate-900 border-slate-700 text-slate-300 hover:text-white hover:border-slate-600'
-                            }`}
-                          >
-                            MUTE
-                          </button>
-                          <button
-                            onClick={() => toggleStemSolo(stem.id)}
-                            className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all cursor-pointer ${
-                              stem.isSoloed
-                                ? 'bg-amber-950/90 border-amber-500 text-amber-300 shadow-sm'
-                                : 'bg-slate-900 border-slate-700 text-slate-300 hover:text-white hover:border-slate-600'
-                            }`}
-                          >
-                            SOLO
-                          </button>
-                        </div>
+                        <span className="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-cyan-300 text-xs font-mono font-bold flex-shrink-0">
+                          {stem.type.toUpperCase()}
+                        </span>
                       </div>
                     ))}
                   </div>

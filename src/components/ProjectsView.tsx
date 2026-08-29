@@ -43,20 +43,27 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
         <div className="relative rounded-3xl overflow-hidden bg-[#0e1018] border border-slate-800 p-7 md:p-10 shadow-2xl">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-xs font-mono font-bold">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                FEATURED AUDIO SHOWCASE
+              <div className="flex flex-wrap items-center gap-2.5">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-xs font-mono font-bold">
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  FEATURED AUDIO SHOWCASE
+                </div>
+                {featuredProject.showcaseLabel && (
+                  <span className="text-xs font-mono text-slate-400 font-bold">
+                    // {featuredProject.showcaseLabel}
+                  </span>
+                )}
               </div>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-sans text-white leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-sans text-white leading-tight break-keep">
                 {featuredProject.title}
               </h2>
 
-              <p className="text-amber-300 font-mono text-sm sm:text-base font-bold">
+              <p className="text-amber-300 font-mono text-sm sm:text-base font-bold break-keep">
                 {featuredProject.subtitle}
               </p>
 
-              <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-2xl">
+              <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-2xl break-keep">
                 {featuredProject.description}
               </p>
 
@@ -88,11 +95,21 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
             {/* Right Thumbnail preview */}
             <div className="lg:col-span-5">
               <div
+                role="button"
+                tabIndex={0}
+                aria-label={`추천 비디오 재생: ${featuredProject.title}`}
                 onClick={() => {
                   soundEngine.playClick();
                   onSelectProject(featuredProject);
                 }}
-                className="relative aspect-video rounded-2xl overflow-hidden border border-slate-800 group cursor-pointer shadow-2xl bg-black"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    soundEngine.playClick();
+                    onSelectProject(featuredProject);
+                  }
+                }}
+                className="relative aspect-video rounded-2xl overflow-hidden border border-slate-800 focus:border-cyan-400 focus:outline-none group cursor-pointer shadow-2xl bg-black"
               >
                 <img
                   src={featuredProject.thumbnailUrl || 'https://picsum.photos/seed/cyber/800/450'}
@@ -153,12 +170,22 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
           <div
             key={proj.id}
             id={`project-card-${proj.id}`}
+            role="button"
+            tabIndex={0}
+            aria-label={`프로젝트 상세 보기: ${proj.title}`}
             onClick={() => {
               soundEngine.playClick();
               onSelectProject(proj);
             }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                soundEngine.playClick();
+                onSelectProject(proj);
+              }
+            }}
             onMouseEnter={() => soundEngine.playHover()}
-            className="group relative bg-[#0e1018] border border-slate-800 hover:border-cyan-500/70 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col cursor-pointer"
+            className="group relative bg-[#0e1018] border border-slate-800 hover:border-cyan-500/70 focus:border-cyan-400 focus:outline-none rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col cursor-pointer"
           >
             {/* Thumbnail */}
             <div className="relative aspect-video overflow-hidden bg-black">
@@ -191,13 +218,18 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
             {/* Content Body */}
             <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
               <div>
-                <h3 className="text-lg sm:text-xl font-extrabold font-sans text-white group-hover:text-cyan-300 transition-colors line-clamp-1">
+                {proj.showcaseLabel && (
+                  <span className="text-xs font-mono text-cyan-400/90 font-bold block mb-1">
+                    {proj.showcaseLabel}
+                  </span>
+                )}
+                <h3 className="text-lg sm:text-xl font-extrabold font-sans text-white group-hover:text-cyan-300 transition-colors line-clamp-2 break-keep">
                   {proj.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-amber-300 font-mono mt-1 line-clamp-1 font-bold">
                   {proj.subtitle}
                 </p>
-                <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2.5 line-clamp-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2.5 line-clamp-2 leading-relaxed break-keep">
                   {proj.description}
                 </p>
               </div>

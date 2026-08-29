@@ -30,9 +30,7 @@ export const Navbar: React.FC = () => {
     setActiveSection(id);
     const el = document.getElementById(id);
     if (el) {
-      const yOffset = -80;
-      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -53,8 +51,17 @@ export const Navbar: React.FC = () => {
       <div className="max-w-[1640px] mx-auto flex items-center justify-between gap-4">
         {/* Brand Header */}
         <div 
+          role="button"
+          tabIndex={0}
+          aria-label="상단 프로필 및 경력으로 이동"
           onClick={() => scrollToSection('director-stats')}
-          className="flex items-center gap-4 text-left cursor-pointer group"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              scrollToSection('director-stats');
+            }
+          }}
+          className="flex items-center gap-4 text-left cursor-pointer group focus:outline-none"
         >
           <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 via-teal-500 to-amber-400 p-[2px] shadow-lg group-hover:scale-105 transition-transform flex-shrink-0">
             <div className="w-full h-full bg-[#080910] rounded-[10px] flex items-center justify-center relative overflow-hidden">
@@ -65,7 +72,7 @@ export const Navbar: React.FC = () => {
 
           <div className="flex flex-col">
             <div className="flex items-center gap-2.5">
-              <span className="text-lg sm:text-xl font-black font-sans tracking-tight text-white group-hover:text-cyan-300 transition-colors">
+              <span className="text-lg sm:text-xl font-black font-sans tracking-tight text-white group-hover:text-cyan-300 transition-colors whitespace-nowrap break-keep">
                 성은 <span className="text-slate-400 text-sm font-mono font-normal">(SEONGEUN)</span>
               </span>
               <span className="hidden md:inline-block px-2.5 py-0.5 rounded-md bg-cyan-950/90 border border-cyan-500/40 text-xs font-mono font-bold text-cyan-300">
@@ -86,6 +93,7 @@ export const Navbar: React.FC = () => {
             return (
               <button
                 key={item.id}
+                aria-label={item.label}
                 onClick={() => scrollToSection(item.id)}
                 className={`px-3.5 sm:px-4 py-2.5 rounded-xl transition-all duration-200 cursor-pointer flex items-center gap-2 font-semibold text-sm ${
                   isActive
@@ -100,6 +108,7 @@ export const Navbar: React.FC = () => {
           })}
 
           <button
+            aria-label="문의하기"
             onClick={() => scrollToSection('direct-contact')}
             className={`ml-1 sm:ml-2 px-4 sm:px-5 py-2.5 rounded-xl text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
               activeSection === 'direct-contact'

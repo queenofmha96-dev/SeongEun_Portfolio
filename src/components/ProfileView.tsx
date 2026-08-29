@@ -24,21 +24,21 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
               </div>
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-1.5 min-w-0">
               <div className="flex flex-wrap items-center gap-3">
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight whitespace-nowrap break-keep">
                   {profile.name}
                 </h1>
-                <span className="px-3 py-1 rounded-lg bg-cyan-950/90 border border-cyan-500/40 text-cyan-300 text-sm font-mono font-bold">
+                <span className="px-3 py-1 rounded-lg bg-cyan-950/90 border border-cyan-500/40 text-cyan-300 text-xs sm:text-sm font-mono font-bold whitespace-nowrap">
                   {profile.title}
                 </span>
-                <span className="px-3 py-1 rounded-lg bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 text-sm font-mono font-bold flex items-center gap-1.5">
+                <span className="px-3 py-1 rounded-lg bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm font-mono font-bold flex items-center gap-1.5 whitespace-nowrap">
                   <Briefcase className="w-3.5 h-3.5" />
                   {profile.experienceYears}년 차
                 </span>
               </div>
 
-              <p className="text-amber-300 font-semibold text-sm sm:text-base">
+              <p className="text-amber-300 font-semibold text-sm sm:text-base break-keep">
                 {profile.tagline}
               </p>
             </div>
@@ -63,7 +63,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
           <h3 className="text-sm font-mono font-black text-cyan-400 uppercase tracking-wider flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-amber-400" /> ABOUT DIRECTOR
           </h3>
-          <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-sans max-w-5xl">
+          <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-sans max-w-5xl break-keep">
             {profile.bio}
           </p>
         </div>
@@ -80,19 +80,29 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
             <h3 className="text-base sm:text-lg font-extrabold text-white">오디오 미들웨어 & 핵심 숙련도</h3>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3.5">
             {profile.skills.map((skill, idx) => (
-              <div key={idx} className="space-y-1.5">
-                <div className="flex justify-between items-center text-sm sm:text-base">
-                  <span className="text-slate-100 font-semibold">{skill.name}</span>
-                  <span className="text-cyan-300 font-mono font-bold text-xs sm:text-sm">{skill.level}%</span>
+              <div
+                key={idx}
+                className="p-3.5 sm:p-4 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-slate-700/80 transition-colors space-y-1.5"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-sm sm:text-base text-slate-100 font-bold font-sans">
+                    {skill.name}
+                  </span>
+                  <span
+                    className={`px-2.5 py-0.5 rounded-full text-xs font-mono font-bold shrink-0 ${
+                      skill.tag === '주력'
+                        ? 'bg-cyan-950/90 border border-cyan-500/50 text-cyan-300'
+                        : 'bg-slate-800/90 border border-slate-700/80 text-slate-300'
+                    }`}
+                  >
+                    {skill.tag}
+                  </span>
                 </div>
-                <div className="h-2.5 w-full bg-slate-900 rounded-full overflow-hidden border border-slate-800/50">
-                  <div
-                    className="h-full bg-gradient-to-r from-teal-500 via-cyan-400 to-cyan-300 rounded-full transition-all duration-700"
-                    style={{ width: `${skill.level}%` }}
-                  />
-                </div>
+                <p className="text-[13px] sm:text-sm text-slate-400 font-sans leading-relaxed">
+                  {skill.description}
+                </p>
               </div>
             ))}
           </div>
@@ -129,9 +139,9 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
               </span>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-slate-200 font-mono text-xs sm:text-sm">
                 {profile.hardware.map((hw, idx) => (
-                  <li key={idx} className="flex items-center gap-2.5">
-                    <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                    <span className="truncate">{hw}</span>
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <span className="leading-snug break-words">{hw}</span>
                   </li>
                 ))}
               </ul>

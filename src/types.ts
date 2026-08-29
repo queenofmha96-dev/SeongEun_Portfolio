@@ -14,6 +14,7 @@ export interface SoundProject {
   id: string;
   title: string;
   subtitle: string;
+  showcaseLabel?: string;
   category: ProjectCategory;
   videoUrl: string; // YouTube, Vimeo, or MP4 URL / Blob URL
   videoType: 'youtube' | 'vimeo' | 'direct' | 'embed';
@@ -62,8 +63,8 @@ export interface SoundDirectorProfile {
   philosophy: string;
   skills: {
     name: string;
-    level: number; // 0-100
-    category: 'DAW & Audio Tools' | 'Middleware & Engine' | 'Sound Design & Mixing' | 'Recording & Foley';
+    tag: '주력' | '실무';
+    description: string;
   }[];
   tools: {
     name: string;
