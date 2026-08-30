@@ -103,34 +103,35 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
       <div className="no-print space-y-9">
         {/* Featured Reel Hero Card */}
         {featuredProject && (
-          <div className="relative rounded-3xl overflow-hidden bg-[#0e1018] border border-slate-800 p-7 md:p-10 shadow-2xl">
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-7 space-y-4">
-                <div className="flex flex-wrap items-center gap-2.5">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-xs font-mono font-bold">
-                    <Sparkles className="w-4 h-4 text-amber-400" />
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#0e1018] border border-slate-800 p-4 sm:p-7 md:p-10 shadow-2xl">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center">
+              {/* Text Description Content */}
+              <div className="lg:col-span-7 space-y-3.5 sm:space-y-4 order-2 lg:order-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-[11px] sm:text-xs font-mono font-bold">
+                    <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
                     FEATURED AUDIO SHOWCASE
                   </div>
                   {featuredProject.showcaseLabel && (
-                    <span className="text-xs font-mono text-slate-400 font-bold">
+                    <span className="text-[11px] sm:text-xs font-mono text-slate-400 font-bold">
                       // {featuredProject.showcaseLabel}
                     </span>
                   )}
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-sans text-white leading-tight break-keep">
+                <h2 className="text-xl sm:text-3xl md:text-4xl font-black font-sans text-white leading-tight break-keep">
                   {featuredProject.title}
                 </h2>
 
-                <p className="text-amber-300 font-mono text-sm sm:text-base font-bold break-keep">
+                <p className="text-amber-300 font-mono text-xs sm:text-base font-bold break-keep">
                   {featuredProject.subtitle}
                 </p>
 
-                <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-2xl break-keep">
+                <p className="text-slate-200 text-xs sm:text-base leading-relaxed max-w-2xl break-keep">
                   {featuredProject.description}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-3.5 pt-3">
+                <div className="flex flex-wrap items-center gap-3 pt-2 sm:pt-3">
                   <button
                     id={`btn-play-featured-${featuredProject.id}`}
                     onClick={() => {
@@ -138,22 +139,22 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                       onSelectProject(featuredProject);
                     }}
                     onMouseEnter={() => soundEngine.playHover()}
-                    className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-slate-950 font-mono font-black text-sm flex items-center gap-2.5 shadow-xl hover:brightness-110 hover:scale-105 transition-all cursor-pointer"
+                    className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-mono font-black text-xs sm:text-sm gap-2 shadow-lg shadow-cyan-500/20 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
                   >
-                    <Play className="w-4.5 h-4.5 fill-current" />
+                    <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
                     <span>PLAY VIDEO</span>
                   </button>
 
-                  <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-slate-300">
-                    <span className="px-3 py-1.5 rounded-lg bg-[#06070b] border border-slate-800 text-slate-200 font-semibold">
+                  <div className="inline-flex items-center text-xs font-mono text-slate-300">
+                    <span className="px-3 py-2 sm:py-2.5 rounded-xl bg-[#06070b] border border-slate-800 text-slate-300 font-semibold text-xs whitespace-nowrap">
                       {featuredProject.genre}
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Right Thumbnail preview */}
-              <div className="lg:col-span-5">
+              {/* Video Thumbnail Preview - Displays first on mobile */}
+              <div className="lg:col-span-5 order-1 lg:order-2">
                 <div
                   role="button"
                   tabIndex={0}
@@ -169,7 +170,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                       onSelectProject(featuredProject);
                     }
                   }}
-                  className="relative aspect-video rounded-2xl overflow-hidden border border-slate-800 focus:border-cyan-400 focus:outline-none group cursor-pointer shadow-2xl bg-black"
+                  className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden border border-slate-800 focus:border-cyan-400 focus:outline-none group cursor-pointer shadow-2xl bg-black"
                 >
                   <img
                     src={featuredProject.thumbnailUrl || 'https://picsum.photos/seed/cyber/800/450'}
@@ -178,8 +179,8 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all">
-                      <Play className="w-8 h-8 fill-current translate-x-0.5" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all">
+                      <Play className="w-6 h-6 sm:w-8 sm:h-8 fill-current translate-x-0.5" />
                     </div>
                   </div>
                 </div>
@@ -189,9 +190,9 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
         )}
 
         {/* Filter Tabs & Search Bar */}
-        <div className="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-4 bg-[#0e1018] p-4 sm:p-5 rounded-2xl border border-slate-800 font-mono">
+        <div className="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-3 sm:gap-4 bg-[#0e1018] p-3 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-800 font-mono">
           {/* Filter categories */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 flex-1">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2.5 flex-1">
             {categories.map((cat) => {
               const count = getCategoryCount(cat.id);
               const isSelected = selectedCategory === cat.id;
@@ -203,7 +204,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                     setSelectedCategory(cat.id);
                   }}
                   onMouseEnter={() => soundEngine.playHover()}
-                  className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
+                  className={`px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
                     isSelected
                       ? 'bg-cyan-500/20 border border-cyan-400 text-cyan-300 shadow-sm'
                       : 'bg-[#06070b] border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700'
@@ -211,7 +212,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 >
                   <span>{cat.label}</span>
                   <span
-                    className={`px-2 py-0.5 rounded-md text-[11px] font-mono font-black ${
+                    className={`px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-mono font-black ${
                       isSelected
                         ? 'bg-cyan-400 text-slate-950 shadow-sm'
                         : 'bg-slate-800/90 text-slate-400 group-hover:text-slate-200'
@@ -226,19 +227,19 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
           {/* Search input */}
           <div className="relative w-full xl:w-72 flex-shrink-0">
-            <Search className="w-4.5 h-4.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search className="w-4 h-4 sm:w-4.5 sm:h-4.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
               placeholder="Search projects..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#06070b] border border-slate-800 focus:border-cyan-400 rounded-xl pl-10 pr-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-400 outline-none transition-colors"
+              className="w-full bg-[#06070b] border border-slate-800 focus:border-cyan-400 rounded-xl pl-9 sm:pl-10 pr-3.5 py-2 sm:py-2.5 text-xs sm:text-sm text-white placeholder-slate-400 outline-none transition-colors"
             />
           </div>
         </div>
 
         {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-7">
           {filteredProjects.map((proj) => (
             <div
               key={proj.id}
@@ -258,7 +259,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 }
               }}
               onMouseEnter={() => soundEngine.playHover()}
-              className="group relative bg-[#0e1018] border border-slate-800 hover:border-cyan-500/70 focus:border-cyan-400 focus:outline-none rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col cursor-pointer"
+              className="group relative bg-[#0e1018] border border-slate-800 hover:border-cyan-500/70 focus:border-cyan-400 focus:outline-none rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col cursor-pointer"
             >
               {/* Thumbnail */}
               <div className="relative aspect-video overflow-hidden bg-black">
@@ -272,45 +273,45 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
                 {/* Play Overlay Button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
-                  <div className="w-14 h-14 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center shadow-xl scale-90 group-hover:scale-100 transition-transform">
-                    <Play className="w-7 h-7 fill-current translate-x-0.5" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center shadow-xl scale-90 group-hover:scale-100 transition-transform">
+                    <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-current translate-x-0.5" />
                   </div>
                 </div>
 
                 {/* Category Badge */}
-                <div className="absolute top-3 left-3 px-3 py-1 rounded-lg bg-black/85 border border-slate-800 text-cyan-300 text-xs font-mono tracking-wider font-bold shadow-md">
+                <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-lg bg-black/85 border border-slate-800 text-cyan-300 text-[11px] sm:text-xs font-mono tracking-wider font-bold shadow-md">
                   {proj.genre.toUpperCase()}
                 </div>
               </div>
 
               {/* Content Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-3 sm:space-y-4">
                 <div>
                   {proj.showcaseLabel && (
-                    <span className="text-xs font-mono text-cyan-400/90 font-bold block mb-1">
+                    <span className="text-[11px] sm:text-xs font-mono text-cyan-400/90 font-bold block mb-1">
                       {proj.showcaseLabel}
                     </span>
                   )}
-                  <h3 className="text-lg sm:text-xl font-extrabold font-sans text-white group-hover:text-cyan-300 transition-colors line-clamp-2 break-keep">
+                  <h3 className="text-base sm:text-xl font-extrabold font-sans text-white group-hover:text-cyan-300 transition-colors line-clamp-2 break-keep">
                     {proj.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-amber-300 font-mono mt-1 line-clamp-1 font-bold">
+                  <p className="text-xs sm:text-sm text-amber-300 font-mono mt-0.5 sm:mt-1 line-clamp-1 font-bold">
                     {proj.subtitle}
                   </p>
-                  <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2.5 line-clamp-2 leading-relaxed break-keep">
+                  <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2 line-clamp-2 leading-relaxed break-keep">
                     {proj.description}
                   </p>
                 </div>
 
                 {/* Roles & Tools list */}
-                <div className="pt-3.5 border-t border-slate-800/80 flex flex-wrap gap-1.5 text-xs font-mono">
+                <div className="pt-3 border-t border-slate-800/80 flex flex-wrap gap-1.5 text-xs font-mono">
                   {proj.role.slice(0, 2).map((r, idx) => (
-                    <span key={idx} className="px-2.5 py-1 rounded-md bg-[#06070b] border border-cyan-500/40 text-cyan-300 font-bold">
+                    <span key={idx} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#06070b] border border-cyan-500/40 text-cyan-300 text-[11px] sm:text-xs font-bold">
                       {r}
                     </span>
                   ))}
                   {proj.toolsUsed.slice(0, 2).map((t, idx) => (
-                    <span key={idx} className="px-2.5 py-1 rounded-md bg-[#06070b] border border-amber-500/40 text-amber-300 font-bold">
+                    <span key={idx} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#06070b] border border-amber-500/40 text-amber-300 text-[11px] sm:text-xs font-bold">
                       {t}
                     </span>
                   ))}

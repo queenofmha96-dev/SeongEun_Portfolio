@@ -40,7 +40,7 @@ export const FloatingControls: React.FC = () => {
   return (
     <aside
       aria-label="Floating Controls"
-      className={`fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2.5 no-print transition-all duration-300 transform ${
+      className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-center gap-2 sm:gap-2.5 no-print transition-all duration-300 transform ${
         showTopBtn
           ? 'opacity-100 translate-y-0 pointer-events-auto'
           : 'opacity-0 translate-y-4 pointer-events-none'
@@ -53,14 +53,14 @@ export const FloatingControls: React.FC = () => {
           type="button"
           onClick={handleToggleSound}
           onMouseEnter={() => soundEngine.playHover()}
-          className="p-3 rounded-full bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-slate-500 shadow-xl backdrop-blur-md transition-all duration-300 flex items-center justify-center"
+          className="p-2.5 sm:p-3 rounded-full bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-slate-500 shadow-xl backdrop-blur-md transition-all duration-300 flex items-center justify-center cursor-pointer"
           aria-label={!isMuted ? 'UI 사운드 음소거' : 'UI 사운드 켜기'}
           title={!isMuted ? 'SFX ON (클릭하여 끄기)' : 'SFX OFF (클릭하여 켜기)'}
         >
           {!isMuted ? (
-            <Volume2 className="w-5 h-5 transition-transform group-hover:scale-110 text-slate-200" />
+            <Volume2 className="w-4.5 h-4.5 sm:w-5 sm:h-5 transition-transform group-hover:scale-110 text-slate-200" />
           ) : (
-            <VolumeX className="w-5 h-5 transition-transform group-hover:scale-110 text-slate-500" />
+            <VolumeX className="w-4.5 h-4.5 sm:w-5 sm:h-5 transition-transform group-hover:scale-110 text-slate-500" />
           )}
         </button>
 
@@ -77,11 +77,11 @@ export const FloatingControls: React.FC = () => {
           type="button"
           onClick={handleScrollTop}
           onMouseEnter={() => soundEngine.playHover()}
-          className="p-3 rounded-full bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-slate-500 shadow-xl backdrop-blur-md transition-all duration-300 flex items-center justify-center"
+          className="p-2.5 sm:p-3 rounded-full bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-slate-500 shadow-xl backdrop-blur-md transition-all duration-300 flex items-center justify-center cursor-pointer"
           aria-label="페이지 최상단으로 이동"
           title="맨 위로 이동"
         >
-          <ArrowUp className="w-5 h-5 transition-transform group-hover:-translate-y-0.5" />
+          <ArrowUp className="w-4.5 h-4.5 sm:w-5 sm:h-5 transition-transform group-hover:-translate-y-0.5" />
         </button>
 
         {/* Hover Label Tooltip */}

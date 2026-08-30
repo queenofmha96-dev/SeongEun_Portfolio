@@ -84,48 +84,63 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
       >
         
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#05060a] border-b border-slate-800/80 font-mono flex-shrink-0">
-          <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(0,243,255,0.8)]" />
-            <span className="text-cyan-300 font-black text-xs sm:text-sm tracking-wider">
-              {project.genre.toUpperCase()} <span className="text-slate-600">//</span> OFFICIAL SHOWCASE
-            </span>
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 bg-[#05060a] border-b border-slate-800/80 font-mono flex-shrink-0 gap-2">
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(0,243,255,0.8)] flex-shrink-0" />
+            <div className="flex items-center gap-1.5 text-xs sm:text-sm">
+              <span className="text-cyan-300 font-black tracking-wider whitespace-nowrap hidden sm:inline">
+                {project.genre.toUpperCase()}
+              </span>
+              <span className="text-cyan-300 font-black tracking-wider whitespace-nowrap sm:hidden">
+                SHOWCASE
+              </span>
+              <span className="text-slate-600 hidden md:inline">//</span>
+              <span className="text-slate-400 text-xs font-semibold hidden md:inline uppercase">
+                OFFICIAL REEL
+              </span>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2.5">
-            {/* Watch on YouTube External Link Button */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
+            {/* Watch on YouTube Button */}
             <a
               href={getWatchUrl()}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => soundEngine.playClick()}
               onMouseEnter={() => soundEngine.playHover()}
-              className="px-3.5 py-2 rounded-xl bg-red-950/60 border border-red-500/50 hover:bg-red-900/60 hover:border-red-400 text-red-300 hover:text-white transition-all cursor-pointer flex items-center gap-2 text-xs sm:text-sm font-mono font-bold group shadow-sm"
+              className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-red-950/40 border border-red-500/40 hover:bg-red-900/50 hover:border-red-400 text-red-300 hover:text-white transition-all cursor-pointer flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold whitespace-nowrap shadow-sm"
               title="YouTube 원본 영상 새 탭에서 열기"
             >
-              <PlaySquare className="w-4 h-4 text-red-400 group-hover:scale-110 transition-transform" />
-              <span>YouTube에서 직접 보기</span>
-              <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <PlaySquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-400 flex-shrink-0" />
+              <span className="hidden sm:inline">YouTube에서 보기</span>
+              <span className="inline sm:hidden">YouTube</span>
+              <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70 flex-shrink-0" />
             </a>
 
+            {/* Close Button */}
             <button
-              onClick={onClose}
+              onClick={() => {
+                soundEngine.playClick();
+                onClose();
+              }}
               onMouseEnter={() => soundEngine.playHover()}
-              className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500/60 text-slate-200 hover:text-cyan-300 transition-all cursor-pointer flex items-center gap-2 text-xs sm:text-sm font-mono group"
+              className="p-1.5 sm:px-3.5 sm:py-2 rounded-lg sm:rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500/60 text-slate-200 hover:text-cyan-300 transition-all cursor-pointer flex items-center gap-1.5 text-xs sm:text-sm font-mono group"
+              aria-label="닫기"
             >
-              <X className="w-4.5 h-4.5 group-hover:rotate-90 transition-transform" />
-              <span className="font-bold hidden sm:inline">닫기 (ESC)</span>
+              <X className="w-4 h-4 sm:w-4.5 sm:h-4.5 group-hover:rotate-90 transition-transform" />
+              <span className="font-bold hidden sm:inline">닫기</span>
             </button>
           </div>
         </div>
 
         {/* Modal Scrollable Content Body */}
-        <div className="p-6 sm:p-8 overflow-y-auto grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-9">
+        <div className="p-3.5 sm:p-7 md:p-8 overflow-y-auto grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8">
           
           {/* Left Column: Immersive Cinema Video Player + Highlights */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-3.5 sm:space-y-5">
             {/* Cinema Frame */}
-            <div className="relative aspect-video rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-[0_0_30px_rgba(0,0,0,0.5)] group">
+            <div className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-[0_0_30px_rgba(0,0,0,0.5)] group">
               {isDirectVideo ? (
                 <video
                   src={project.videoUrl}
@@ -144,21 +159,13 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
               )}
             </div>
 
-            {/* Quick Watch on YouTube sub-banner */}
-            <div className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#06070c] border border-slate-800/80 text-xs font-mono text-slate-400">
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                HD Audio & Video Master Available
-              </span>
-              <a
-                href={getWatchUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-cyan-400 hover:text-cyan-300 hover:underline flex items-center gap-1 font-bold"
-              >
-                <span>원본 영상 바로가기</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
+            {/* Audio Master Quality Specs Info Bar */}
+            <div className="flex items-center justify-between px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-[#06070c] border border-slate-800/80 text-[11px] sm:text-xs font-mono">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+                <span className="text-slate-300 font-semibold whitespace-nowrap">HD Master Audio</span>
+              </div>
+              <span className="text-cyan-400 font-bold tracking-wide whitespace-nowrap">48kHz / 24-bit</span>
             </div>
 
             {/* Key Sound Design Highlights Card */}
@@ -189,11 +196,11 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             <div className="space-y-4">
               
               {/* Category & Genre Header Badges */}
-              <div className="flex items-center gap-2.5">
-                <span className="px-3.5 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 font-mono text-xs sm:text-sm font-bold tracking-wide">
-                  {project.client || 'Seongeun Studio'}
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 font-mono text-xs sm:text-sm font-bold tracking-wide">
+                  SOUND REDESIGN
                 </span>
-                <span className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-mono text-xs sm:text-sm font-bold">
+                <span className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-mono text-xs sm:text-sm font-semibold">
                   {project.genre}
                 </span>
               </div>

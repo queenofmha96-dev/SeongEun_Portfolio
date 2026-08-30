@@ -99,15 +99,15 @@ export default function App() {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
 
-        <main className="flex-1 px-4 sm:px-8 md:px-12 lg:px-16 max-w-[1640px] w-full mx-auto space-y-16 sm:space-y-20 pt-4 sm:pt-6 md:pt-8 pb-36">
+        <main className="flex-1 px-4 sm:px-6 md:px-8 max-w-[1240px] w-full mx-auto flex flex-col gap-12 sm:gap-20 pt-4 sm:pt-6 md:pt-8 pb-12 sm:pb-20">
           
           {/* Section 1: Sound Designer Profile */}
-          <section id="director-stats" className="scroll-mt-8 space-y-7">
-            <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
-              <span className="px-3 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-sm font-black">
+          <section id="director-stats" className="space-y-6 sm:space-y-8">
+            <div className="flex items-center gap-2.5 sm:gap-3.5 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
+              <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-xs sm:text-sm font-black">
                 01
               </span>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
                 사운드 디자이너 프로필 & 역량
               </h2>
             </div>
@@ -115,12 +115,12 @@ export default function App() {
           </section>
 
           {/* Section 2: Gaming History */}
-          <section id="gaming-history" className="scroll-mt-8 space-y-7">
-            <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
-              <span className="px-3 py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-sm font-black">
+          <section id="gaming-history" className="space-y-6 sm:space-y-8">
+            <div className="flex items-center gap-2.5 sm:gap-3.5 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
+              <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-xs sm:text-sm font-black">
                 02
               </span>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
                 게이밍 경력
               </h2>
             </div>
@@ -128,12 +128,12 @@ export default function App() {
           </section>
 
           {/* Section 3: Portfolio Showcase Reel */}
-          <section id="showcase-reel" className="scroll-mt-8 space-y-7">
-            <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
-              <span className="px-3 py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-sm font-black">
+          <section id="showcase-reel" className="space-y-6 sm:space-y-8">
+            <div className="flex items-center gap-2.5 sm:gap-3.5 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
+              <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-xs sm:text-sm font-black">
                 03
               </span>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
                 게임 사운드 포트폴리오
               </h2>
             </div>
@@ -144,12 +144,12 @@ export default function App() {
           </section>
 
           {/* Section 4: Contact */}
-          <section id="direct-contact" className="scroll-mt-8 space-y-7">
-            <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4 font-mono">
-              <span className="px-3 py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-sm font-black">
+          <section id="direct-contact" className="space-y-6 sm:space-y-8">
+            <div className="flex items-center gap-2.5 sm:gap-3.5 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
+              <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-xs sm:text-sm font-black">
                 04
               </span>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
                 CONTACT
               </h2>
             </div>
@@ -159,14 +159,17 @@ export default function App() {
               onExportData={handleExportData}
             />
           </section>
-
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-slate-800/80 bg-[#06070b] py-10 text-center text-sm font-mono text-slate-400">
-          <div className="max-w-[1640px] mx-auto px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© 2026 SEONGEUN SOUND STUDIO. ALL RIGHTS RESERVED.</p>
-            <p className="text-purple-300 font-bold text-sm">FMOD / WWISE INTEGRATION COMPATIBLE</p>
+        <footer className="border-t border-slate-800/80 bg-[#06070b] py-6 sm:py-8 text-center font-mono text-slate-500">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-8 flex flex-col items-center justify-center gap-1.5">
+            <p className="text-[11px] sm:text-xs tracking-wider text-slate-400">
+              © 2026 SEONGEUN YANG. All Rights Reserved.
+            </p>
+            <p className="text-[10px] sm:text-[11px] text-slate-600">
+              Game Sound Designer & Audio Artist Portfolio
+            </p>
           </div>
         </footer>
       </div>

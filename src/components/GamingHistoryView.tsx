@@ -201,15 +201,15 @@ export const GamingHistoryView: React.FC = () => {
   return (
     <div className="w-full space-y-6 animate-fadeIn font-sans text-slate-100 py-1">
       {/* Section Header Info Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
+        <div className="flex items-center gap-2.5">
           <Gamepad2 className="w-5 h-5 text-cyan-400 flex-shrink-0" />
           <p className="text-sm sm:text-base text-slate-300 break-keep">
             플레이어로서 깊이 있게 플레이해 온 게임 목록 및 누적 플레이 시간
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-amber-300 bg-slate-900/90 border border-slate-800 px-4 py-2 rounded-xl w-fit flex-shrink-0">
+        <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-amber-300 bg-slate-900/90 border border-slate-800 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl w-fit flex-shrink-0">
           <Clock className="w-4 h-4 text-amber-400" />
           <span className="font-bold">총 {totalHours.toLocaleString()}시간+ 플레이</span>
         </div>
@@ -250,12 +250,22 @@ export const GamingHistoryView: React.FC = () => {
                   {Array.from({ length: 14 }).map((_, i) => {
                     const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
                     const isActive = i < activeCount;
+                    
+                    // Progressive color gradient: deep cyan -> bright cyan -> warm golden yellow -> soft amber
+                    const getActiveColor = (index: number) => {
+                      if (index < 4) return 'bg-cyan-600/90';
+                      if (index < 7) return 'bg-cyan-400/95';
+                      if (index < 10) return 'bg-teal-300';
+                      if (index < 12) return 'bg-amber-300';
+                      return 'bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.35)]'; // Soft warm amber gold
+                    };
+
                     return (
                       <div
                         key={i}
                         className={`h-1.5 flex-1 -skew-x-12 rounded-[0.5px] transition-all duration-300 ${
                           isActive
-                            ? 'bg-cyan-500/70'
+                            ? getActiveColor(i)
                             : 'bg-slate-800/40'
                         }`}
                       />
