@@ -5,21 +5,51 @@ import { soundEngine } from '../utils/soundEngine';
 export const FloatingControls: React.FC = () => {
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [isMuted, setIsMuted] = useState(() => soundEngine.getIsMuted());
+  const [bottomOffset, setBottomOffset] = useState<number>(24);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 240) {
-        setShowTopBtn(true);
-      } else {
-        setShowTopBtn(false);
+    let ticking = false;
+
+    const handleScrollAndResize = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // 1. Show / Hide based on scroll depth
+          if (window.scrollY > 240) {
+            setShowTopBtn(true);
+          } else {
+            setShowTopBtn(false);
+          }
+
+          // 2. Adjust bottom position to stay above footer when footer is in view
+          const isMobile = window.innerWidth < 640;
+          const baseMargin = isMobile ? 16 : 24;
+          const footer = document.querySelector('footer');
+
+          if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const overlap = Math.max(0, windowHeight - footerRect.top);
+            setBottomOffset(overlap + baseMargin);
+          } else {
+            setBottomOffset(baseMargin);
+          }
+
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Initial check
+    handleScrollAndResize();
+
+    window.addEventListener('scroll', handleScrollAndResize, { passive: true });
+    window.addEventListener('resize', handleScrollAndResize, { passive: true });
     const unsubscribe = soundEngine.subscribe((muted) => setIsMuted(muted));
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScrollAndResize);
+      window.removeEventListener('resize', handleScrollAndResize);
       unsubscribe();
     };
   }, []);
@@ -40,7 +70,8 @@ export const FloatingControls: React.FC = () => {
   return (
     <aside
       aria-label="Floating Controls"
-      className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-center gap-2 sm:gap-2.5 no-print transition-all duration-300 transform ${
+      style={{ bottom: `${bottomOffset}px` }}
+      className={`fixed right-4 sm:right-6 z-50 flex flex-col items-center gap-2 sm:gap-2.5 no-print transition-opacity duration-300 transform ${
         showTopBtn
           ? 'opacity-100 translate-y-0 pointer-events-auto'
           : 'opacity-0 translate-y-4 pointer-events-none'
