@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Award, Cpu, Disc, Mail, MapPin, Briefcase, Shield, Sliders, Radio, Sparkles, CheckCircle,
-  Printer, Share2, Check, FileText
+  Printer, Share2, Check, FileText, Globe, Languages
 } from 'lucide-react';
 import { SoundDirectorProfile } from '../types';
 import { soundEngine } from '../utils/soundEngine';
@@ -48,25 +48,22 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
               <div className="absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-emerald-500 border-2 border-[#0b0d18]" title="Available for Sound Design" />
             </div>
 
-            {/* Name & Contact Info */}
+            {/* Name & Language / Global Meta */}
             <div className="space-y-1 sm:space-y-1.5 min-w-0">
               <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight break-keep">
                 {profile.name}
               </h1>
 
-              {/* Contact meta (Email & Location) */}
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:text-sm font-mono text-slate-400">
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="flex items-center gap-1.5 hover:text-cyan-300 transition-colors"
-                >
-                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" />
-                  <span className="text-slate-300 hover:underline break-all">{profile.email}</span>
-                </a>
+              {/* Chinese Native & Global Directing Info (Clean, Flat, Unified Styling) */}
+              <div className="flex flex-wrap items-center gap-x-3.5 gap-y-1.5 text-xs sm:text-sm font-medium">
+                <div className="flex items-center gap-1.5 text-cyan-300">
+                  <Languages className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" />
+                  <span className="whitespace-nowrap font-medium">중국어 Native (원어민)</span>
+                </div>
                 <span className="text-slate-700 hidden sm:inline">•</span>
                 <div className="flex items-center gap-1.5 text-slate-300">
-                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
-                  <span className="whitespace-nowrap">{profile.location}</span>
+                  <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" />
+                  <span className="whitespace-nowrap">글로벌 보이스 디렉팅 & LQA</span>
                 </div>
               </div>
             </div>

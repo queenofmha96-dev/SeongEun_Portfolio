@@ -7,7 +7,7 @@ export const INITIAL_PROFILE: SoundDirectorProfile = {
   email: "queenofmha96@gmail.com",
   location: "Seoul, South Korea",
   experienceYears: 1,
-  bio: "게임 연출의 핵심인 SFX, BGM, Voice, Foley를 세밀하게 설계하는 게임 사운드 디자이너 양성은입니다. 사이버펑크 SF부터 다크 판타지 액션, 캐주얼 장르까지 게임 세계관과 타격감을 완성하는 시그니처 사운드를 제작합니다. FMOD/Wwise 오디오 미들웨어 인터랙티브 구현과 Foley 스튜디오 레코딩, 디테일한 레이어링 사운드 디자인을 바탕으로 플레이어에게 깊은 몰입감을 전달합니다.",
+  bio: "게임 연출의 핵심인 SFX, BGM, Voice, Foley를 세밀하게 설계하는 게임 사운드 디자이너 양성은입니다. 사이버펑크 SF부터 다크 판타지 액션, 캐주얼 장르까지 게임 세계관과 타격감을 완성하는 시그니처 사운드를 제작합니다. FMOD/Wwise 오디오 미들웨어 인터랙티브 구현과 Foley 스튜디오 레코딩을 주력으로 다루며, 원어민 수준의 중국어 구사 능력을 바탕으로 중화권 성우 보이스 디렉팅 및 글로벌 협업에서도 확실한 강점을 발휘합니다.",
   philosophy: "사운드는 단순한 효과음이 아닌, 플레이어가 게임 환경 및 캐릭터와 교감하는 '청각적 햅틱 반응'입니다. 화면보다 먼저 인지되는 타격감과 명확한 피드백으로 게임의 만족도를 완성합니다.",
   skills: [
     {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { ParticleCanvas } from './components/ParticleCanvas';
 import { ProjectsView } from './components/ProjectsView';
@@ -129,13 +130,25 @@ export default function App() {
 
           {/* Section 3: Portfolio Showcase Reel */}
           <section id="showcase-reel" className="space-y-6 sm:space-y-8">
-            <div className="flex items-center gap-2.5 sm:gap-3.5 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
-              <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-xs sm:text-sm font-black">
-                03
-              </span>
-              <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
-                게임 사운드 포트폴리오
-              </h2>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
+              <div className="flex items-center gap-2.5 sm:gap-3.5">
+                <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-xs sm:text-sm font-black">
+                  03
+                </span>
+                <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
+                  게임 사운드 포트폴리오
+                </h2>
+              </div>
+
+              <a
+                href="https://www.youtube.com/playlist?list=PLiDQe1dL5sFu2nkE2KD_ch_H1XRMxvpmK"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-950/70 hover:bg-red-900/80 border border-red-500/50 text-red-200 hover:text-white text-xs font-sans font-semibold transition-all shadow-xs shrink-0"
+              >
+                <span>YouTube 전체 재생목록</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-red-400" />
+              </a>
             </div>
             <ProjectsView
               projects={projects}

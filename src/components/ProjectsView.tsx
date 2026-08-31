@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Play, Search, Disc, Sparkles, ExternalLink, Video } from 'lucide-react';
+import { Play, Search, Disc, Sparkles, ExternalLink, Video, ListMusic, ArrowUpRight } from 'lucide-react';
 import { SoundProject, ProjectCategory } from '../types';
 import { soundEngine } from '../utils/soundEngine';
+
+const YOUTUBE_PLAYLIST_URL = "https://www.youtube.com/playlist?list=PLiDQe1dL5sFu2nkE2KD_ch_H1XRMxvpmK";
 
 interface ProjectsViewProps {
   projects: SoundProject[];
@@ -123,7 +125,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   {featuredProject.title}
                 </h2>
 
-                <p className="text-amber-300 font-mono text-xs sm:text-base font-bold break-keep">
+                <p className="text-amber-300 font-sans text-xs sm:text-base font-semibold break-keep">
                   {featuredProject.subtitle}
                 </p>
 
@@ -295,7 +297,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   <h3 className="text-base sm:text-xl font-extrabold font-sans text-white group-hover:text-cyan-300 transition-colors line-clamp-2 break-keep">
                     {proj.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-amber-300 font-mono mt-0.5 sm:mt-1 line-clamp-1 font-bold">
+                  <p className="text-xs sm:text-sm text-amber-300 font-sans mt-0.5 sm:mt-1 line-clamp-1 font-semibold">
                     {proj.subtitle}
                   </p>
                   <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2 line-clamp-2 leading-relaxed break-keep">
@@ -319,6 +321,35 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
               </div>
             </div>
           ))}
+        </div>
+
+        {/* YouTube Full Playlist Direct Link Banner */}
+        <div className="rounded-xl sm:rounded-2xl p-5 sm:p-6 bg-[#0e1018] border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+          <div className="flex items-center gap-3.5 sm:gap-4 text-center sm:text-left">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-red-950/40 border border-red-500/30 text-red-400 flex items-center justify-center shrink-0 shadow-xs">
+              <ListMusic className="w-5 h-5 sm:w-6 sm:h-6" />
+            </div>
+            <div className="space-y-0.5">
+              <h4 className="text-sm sm:text-base font-bold text-white font-sans">
+                YouTube 전체 사운드트랙 & 포트폴리오 재생목록
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-400 font-sans break-keep">
+                업로드된 모든 게임 사운드 리디자인, BGM, SFX 작업물을 YouTube 재생목록에서 바로 감상하실 수 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <a
+            href={YOUTUBE_PLAYLIST_URL}
+            target="_blank"
+            rel="noreferrer noopener"
+            onClick={() => soundEngine.playClick()}
+            onMouseEnter={() => soundEngine.playHover()}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:py-2.5 rounded-xl bg-red-900/75 hover:bg-red-800/85 border border-red-500/50 text-white font-sans font-semibold text-xs sm:text-sm transition-all shadow-md shadow-red-950/50 hover:scale-[1.02] active:scale-95 shrink-0"
+          >
+            <span>전체 재생목록 열기</span>
+            <ArrowUpRight className="w-4 h-4 text-red-200" />
+          </a>
         </div>
 
         {filteredProjects.length === 0 && (

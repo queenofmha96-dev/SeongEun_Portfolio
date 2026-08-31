@@ -231,20 +231,22 @@ export const GamingHistoryView: React.FC = () => {
                   <GameLogoBadge gameId={game.id} size="compact" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep mb-0.5">
+                  <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep mb-0.5 font-sans">
                     {game.title}
                   </h4>
-                  <span className="text-xs font-mono text-slate-400 block break-keep">
+                  <span className="text-xs font-sans font-medium text-slate-400 block break-keep">
                     {game.genre}
                   </span>
                 </div>
               </div>
 
               {/* Playtime Progress Bar & Hours */}
-              <div className="space-y-1.5 pt-1 border-t border-slate-800/60">
+              <div className="space-y-1.5 pt-1.5 border-t border-slate-800/60 font-sans">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-slate-400 text-[11px] font-sans">누적 플레이</span>
-                  <span className="text-slate-200 font-mono font-semibold text-xs">{game.hoursPlayed}시간</span>
+                  <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">누적 플레이</span>
+                  <span className="text-slate-200 text-xs font-medium">
+                    <span className="font-mono font-semibold">{game.hoursPlayed}</span>시간
+                  </span>
                 </div>
                 <div className="w-full flex items-center gap-1 py-0.5 no-print" aria-hidden="true">
                   {Array.from({ length: 14 }).map((_, i) => {
