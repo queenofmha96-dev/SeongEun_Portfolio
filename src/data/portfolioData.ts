@@ -315,6 +315,32 @@ export const INITIAL_PROJECTS: SoundProject[] = [
       { id: "s1", name: "SFX / Interactive Engine Layer", type: "sfx", volume: 1.0, isMuted: false, isSoloed: false, color: "#00f3ff" }
     ],
     isFeatured: false
+  },
+  {
+    id: "proj-youtube-8",
+    title: "게임 사운드 트랙 & SFX 컬렉션 — Sound Showcase",
+    showcaseLabel: "Official Sound Design Showcase #8",
+    subtitle: "포트폴리오 전체 사운드트랙 & SFX 리디자인 재생목록",
+    category: "game-sfx",
+    videoUrl: "https://www.youtube.com/embed/kPJ4oYJ29YU",
+    videoType: "embed",
+    thumbnailUrl: "https://img.youtube.com/vi/kPJ4oYJ29YU/hqdefault.jpg",
+    client: "Seongeun Sound Studio",
+    releaseYear: "2024",
+    genre: "Game SFX & Full Soundtrack",
+    role: ["Sound Director", "SFX Designer", "Composer"],
+    toolsUsed: ["Pro Tools", "Reaper", "Wwise", "Serum"],
+    description: "업로드된 모든 게임 사운드 디자인, 전투 SFX, BGM 작업물을 연속해서 감상할 수 있는 공식 YouTube 재생목록 쇼케이스입니다.",
+    soundHighlights: [
+      "전체 사운드트랙 및 SFX 리디자인 연속 스트리밍 쇼케이스",
+      "장르별 액션 임팩트, 마법 이펙트 및 시네마틱 오디오 수록",
+      "글로벌 마스터링 규격(LUFS -14) 완비"
+    ],
+    stems: [
+      { id: "s1", name: "SFX / Composite Mix Layer", type: "sfx", volume: 1.0, isMuted: false, isSoloed: false, color: "#00f3ff" },
+      { id: "s2", name: "BGM / Master Track", type: "bgm", volume: 0.9, isMuted: false, isSoloed: false, color: "#ff007f" }
+    ],
+    isFeatured: false
   }
 ];
 

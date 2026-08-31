@@ -43,6 +43,14 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
   const featuredProject = projects.find((p) => p.isFeatured) || projects[0];
 
+  // Grid projects: exclude featured project when browsing ALL to avoid duplicate hero display
+  const gridProjects = filteredProjects.filter((p) => {
+    if (selectedCategory === 'all' && !searchQuery && featuredProject) {
+      return p.id !== featuredProject.id;
+    }
+    return true;
+  });
+
   // Helper to extract clean youtube watch url
   const getWatchUrl = (url: string) => {
     if (url.includes('/embed/')) {
@@ -241,87 +249,104 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
         </div>
 
         {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-7">
-          {filteredProjects.map((proj) => (
-            <div
-              key={proj.id}
-              id={`project-card-${proj.id}`}
-              role="button"
-              tabIndex={0}
-              aria-label={`프로젝트 상세 보기: ${proj.title}`}
+        {gridProjects.length === 0 ? (
+          <div className="rounded-2xl p-12 text-center bg-[#0e1018] border border-slate-800 space-y-2">
+            <p className="text-sm sm:text-base text-slate-400 font-sans">
+              검색 조건에 맞는 프로젝트가 없습니다.
+            </p>
+            <button
               onClick={() => {
-                soundEngine.playClick();
-                onSelectProject(proj);
+                setSelectedCategory('all');
+                setSearchQuery('');
               }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
+              className="text-xs text-cyan-400 hover:text-cyan-300 font-sans font-semibold underline underline-offset-4"
+            >
+              전체 프로젝트 보기
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-7">
+            {gridProjects.map((proj) => (
+              <div
+                key={proj.id}
+                id={`project-card-${proj.id}`}
+                role="button"
+                tabIndex={0}
+                aria-label={`프로젝트 상세 보기: ${proj.title}`}
+                onClick={() => {
                   soundEngine.playClick();
                   onSelectProject(proj);
-                }
-              }}
-              onMouseEnter={() => soundEngine.playHover()}
-              className="group relative bg-[#0e1018] border border-slate-800 hover:border-cyan-500/70 focus:border-cyan-400 focus:outline-none rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col cursor-pointer"
-            >
-              {/* Thumbnail */}
-              <div className="relative aspect-video overflow-hidden bg-black">
-                <img
-                  src={proj.thumbnailUrl || 'https://picsum.photos/seed/sound/800/450'}
-                  alt={proj.title}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1018] via-transparent to-transparent" />
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    soundEngine.playClick();
+                    onSelectProject(proj);
+                  }
+                }}
+                onMouseEnter={() => soundEngine.playHover()}
+                className="group relative bg-[#0e1018] border border-slate-800 hover:border-cyan-500/70 focus:border-cyan-400 focus:outline-none rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col cursor-pointer"
+              >
+                {/* Thumbnail */}
+                <div className="relative aspect-video overflow-hidden bg-black">
+                  <img
+                    src={proj.thumbnailUrl || 'https://picsum.photos/seed/sound/800/450'}
+                    alt={proj.title}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e1018] via-transparent to-transparent" />
 
-                {/* Play Overlay Button */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center shadow-xl scale-90 group-hover:scale-100 transition-transform">
-                    <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-current translate-x-0.5" />
+                  {/* Play Overlay Button */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center shadow-xl scale-90 group-hover:scale-100 transition-transform">
+                      <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-current translate-x-0.5" />
+                    </div>
+                  </div>
+
+                  {/* Category Badge */}
+                  <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-lg bg-black/85 border border-slate-800 text-cyan-300 text-[11px] sm:text-xs font-mono tracking-wider font-bold shadow-md">
+                    {proj.genre.toUpperCase()}
                   </div>
                 </div>
 
-                {/* Category Badge */}
-                <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-lg bg-black/85 border border-slate-800 text-cyan-300 text-[11px] sm:text-xs font-mono tracking-wider font-bold shadow-md">
-                  {proj.genre.toUpperCase()}
+                {/* Content Body */}
+                <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-3 sm:space-y-4">
+                  <div>
+                    {proj.showcaseLabel && (
+                      <span className="text-[11px] sm:text-xs font-mono text-cyan-400/90 font-bold block mb-1">
+                        {proj.showcaseLabel}
+                      </span>
+                    )}
+                    <h3 className="text-base sm:text-xl font-extrabold font-sans text-white group-hover:text-cyan-300 transition-colors line-clamp-2 break-keep">
+                      {proj.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-amber-300 font-sans mt-0.5 sm:mt-1 line-clamp-1 font-semibold">
+                      {proj.subtitle}
+                    </p>
+                    <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2 line-clamp-2 leading-relaxed break-keep">
+                      {proj.description}
+                    </p>
+                  </div>
+
+                  {/* Roles & Tools list */}
+                  <div className="pt-3 border-t border-slate-800/80 flex flex-wrap gap-1.5 text-xs font-mono">
+                    {proj.role.slice(0, 2).map((r, idx) => (
+                      <span key={idx} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#06070b] border border-cyan-500/40 text-cyan-300 text-[11px] sm:text-xs font-bold">
+                        {r}
+                      </span>
+                    ))}
+                    {proj.toolsUsed.slice(0, 2).map((t, idx) => (
+                      <span key={idx} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#06070b] border border-amber-500/40 text-amber-300 text-[11px] sm:text-xs font-bold">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-
-              {/* Content Body */}
-              <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-3 sm:space-y-4">
-                <div>
-                  {proj.showcaseLabel && (
-                    <span className="text-[11px] sm:text-xs font-mono text-cyan-400/90 font-bold block mb-1">
-                      {proj.showcaseLabel}
-                    </span>
-                  )}
-                  <h3 className="text-base sm:text-xl font-extrabold font-sans text-white group-hover:text-cyan-300 transition-colors line-clamp-2 break-keep">
-                    {proj.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-amber-300 font-sans mt-0.5 sm:mt-1 line-clamp-1 font-semibold">
-                    {proj.subtitle}
-                  </p>
-                  <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2 line-clamp-2 leading-relaxed break-keep">
-                    {proj.description}
-                  </p>
-                </div>
-
-                {/* Roles & Tools list */}
-                <div className="pt-3 border-t border-slate-800/80 flex flex-wrap gap-1.5 text-xs font-mono">
-                  {proj.role.slice(0, 2).map((r, idx) => (
-                    <span key={idx} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#06070b] border border-cyan-500/40 text-cyan-300 text-[11px] sm:text-xs font-bold">
-                      {r}
-                    </span>
-                  ))}
-                  {proj.toolsUsed.slice(0, 2).map((t, idx) => (
-                    <span key={idx} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#06070b] border border-amber-500/40 text-amber-300 text-[11px] sm:text-xs font-bold">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* YouTube Full Playlist Direct Link Banner */}
         <div className="rounded-xl sm:rounded-2xl p-5 sm:p-6 bg-[#0e1018] border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
