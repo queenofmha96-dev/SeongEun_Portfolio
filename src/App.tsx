@@ -15,16 +15,12 @@ export default function App() {
   // Persistence in localStorage
   const [projects, setProjects] = useState<SoundProject[]>(() => {
     try {
-      const saved = localStorage.getItem('seongeun_sound_projects');
+      const saved = localStorage.getItem('seongeun_sound_projects_v3');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length < INITIAL_PROJECTS.length) {
-          return INITIAL_PROJECTS;
+        if (Array.isArray(parsed) && parsed.length >= INITIAL_PROJECTS.length) {
+          return parsed;
         }
-        if (Array.isArray(parsed) && parsed.some(p => p.videoUrl && p.videoUrl.includes('dQw4w9WgXcQ'))) {
-          return INITIAL_PROJECTS;
-        }
-        return parsed;
       }
     } catch {
       // fallback
@@ -53,7 +49,7 @@ export default function App() {
   // Sync state to LocalStorage
   useEffect(() => {
     try {
-      localStorage.setItem('seongeun_sound_projects', JSON.stringify(projects));
+      localStorage.setItem('seongeun_sound_projects_v3', JSON.stringify(projects));
     } catch {
       // ignore
     }
