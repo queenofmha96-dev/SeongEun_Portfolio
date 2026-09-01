@@ -297,10 +297,10 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0e1018] via-transparent to-transparent" />
 
-                  {/* Play Overlay Button */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center shadow-xl scale-90 group-hover:scale-100 transition-transform">
-                      <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-current translate-x-0.5" />
+                  {/* Play Overlay Button (Always visible on mobile, enhanced on hover for desktop) */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 bg-black/35 group-hover:bg-black/25 backdrop-blur-[1px] sm:backdrop-blur-[2px]">
+                    <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center shadow-xl shadow-cyan-500/30 scale-100 sm:scale-90 sm:group-hover:scale-105 transition-transform">
+                      <Play className="w-5 h-5 sm:w-7 sm:h-7 fill-current translate-x-0.5" />
                     </div>
                   </div>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Radio, User, Gamepad2, FolderKanban, Mail, ChevronRight, Sparkles, Volume2, VolumeX, Menu, X } from 'lucide-react';
+import { Radio, User, Gamepad2, FolderKanban, FileText, ChevronRight, Sparkles, Volume2, VolumeX, Menu, X } from 'lucide-react';
 import { soundEngine } from '../utils/soundEngine';
 
 export const Navbar: React.FC = () => {
@@ -18,7 +18,7 @@ export const Navbar: React.FC = () => {
         const isScrolled = window.scrollY > 20;
         setScrolled(isScrolled);
 
-        const sections = ['director-stats', 'gaming-history', 'showcase-reel', 'direct-contact'];
+        const sections = ['director-stats', 'gaming-history', 'showcase-reel', 'cover-letter'];
         for (const sectionId of sections) {
           const el = document.getElementById(sectionId);
           if (el) {
@@ -93,6 +93,7 @@ export const Navbar: React.FC = () => {
     { id: 'director-stats', num: '01', label: '프로필 & 역량', subtitle: 'Profile & Skills', icon: User },
     { id: 'gaming-history', num: '02', label: '게이밍 경력', subtitle: 'Gaming History', icon: Gamepad2 },
     { id: 'showcase-reel', num: '03', label: '게임 사운드 포트폴리오', subtitle: 'Sound Showcase Reel', icon: FolderKanban },
+    { id: 'cover-letter', num: '04', label: '자기소개서', subtitle: 'Cover Letter', icon: FileText },
   ];
 
   return (
@@ -165,22 +166,6 @@ export const Navbar: React.FC = () => {
                   </button>
                 );
               })}
-
-              <button
-                aria-label="문의하기"
-                onClick={() => scrollToSection('direct-contact')}
-                onMouseEnter={() => soundEngine.playHover()}
-                className={`ml-1 lg:ml-2 px-4 lg:px-5 py-2.5 rounded-xl text-sm font-black transition-colors duration-150 cursor-pointer flex items-center gap-2 ${
-                  activeSection === 'direct-contact'
-                    ? 'bg-amber-500 text-slate-950 border border-amber-300 shadow-lg'
-                    : 'bg-amber-950/60 hover:bg-amber-900/70 border border-amber-500/50 text-amber-300 hover:text-white'
-                }`}
-                title="문의하기"
-              >
-                <Mail className="w-4.5 h-4.5 flex-shrink-0" />
-                <span className="whitespace-nowrap">문의하기</span>
-                <ChevronRight className="w-4 h-4 opacity-70 flex-shrink-0" />
-              </button>
             </nav>
 
             {/* Sound FX ON/OFF Mute Toggle */}
@@ -207,19 +192,8 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Mobile Right Controls (< md / 768px): Contact Quick Button + Sound Mute + Hamburger Toggle */}
-          <div className="flex md:hidden items-center gap-1.5 shrink-0">
-            {/* Quick Contact Button */}
-            <button
-              onClick={() => scrollToSection('direct-contact')}
-              onMouseEnter={() => soundEngine.playHover()}
-              className="px-2.5 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:text-amber-200 font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer active:scale-95"
-              aria-label="문의하기"
-            >
-              <Mail className="w-3.5 h-3.5 text-amber-400" />
-              <span className="font-sans font-semibold">문의</span>
-            </button>
-
+          {/* Mobile Right Controls (< md / 768px): Sound Mute + Hamburger Toggle */}
+          <div className="flex md:hidden items-center gap-2 shrink-0">
             {/* Sound Mute Toggle */}
             <button
               onClick={handleToggleMute}
@@ -299,32 +273,6 @@ export const Navbar: React.FC = () => {
                   </button>
                 );
               })}
-
-              {/* 04 Contact Link in Drawer */}
-              <button
-                onClick={() => scrollToSection('direct-contact')}
-                className={`w-full p-3.5 rounded-xl text-left flex items-center justify-between transition-all cursor-pointer border ${
-                  activeSection === 'direct-contact'
-                    ? 'bg-amber-950/80 border-amber-500/60 text-white shadow-lg'
-                    : 'bg-slate-900/60 border-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white'
-                }`}
-              >
-                <div className="flex items-center gap-3.5">
-                  <div className={`p-2 rounded-lg ${activeSection === 'direct-contact' ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-400'}`}>
-                    <Mail className="w-4.5 h-4.5" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className={`text-xs font-mono font-bold ${activeSection === 'direct-contact' ? 'text-amber-300' : 'text-slate-500'}`}>
-                        04
-                      </span>
-                      <span className="font-bold text-sm text-white">문의하기</span>
-                    </div>
-                    <span className="text-xs text-slate-400 font-mono block mt-0.5">Contact & Inquiries</span>
-                  </div>
-                </div>
-                <ChevronRight className={`w-4 h-4 ${activeSection === 'direct-contact' ? 'text-amber-400' : 'text-slate-600'}`} />
-              </button>
             </nav>
           </div>
         </div>

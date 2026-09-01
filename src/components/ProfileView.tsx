@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  Award, Cpu, Disc, Mail, MapPin, Briefcase, Shield, Sliders, Radio, Sparkles, CheckCircle,
+  Award, Cpu, Disc, Mail, MapPin, Phone, Shield, Sliders, Radio, Sparkles, CheckCircle,
   Printer, Share2, Check, FileText, Globe, Languages
 } from 'lucide-react';
 import { SoundDirectorProfile } from '../types';
@@ -54,16 +54,36 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
                 {profile.name}
               </h1>
 
-              {/* Chinese Native & Global Directing Info (Clean, Flat, Unified Styling) */}
-              <div className="flex flex-wrap items-center gap-x-3.5 gap-y-1.5 text-xs sm:text-sm font-medium">
-                <div className="flex items-center gap-1.5 text-cyan-300">
-                  <Languages className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" />
-                  <span className="whitespace-nowrap font-medium">중국어 Native (원어민)</span>
-                </div>
+              {/* Contact Meta: Email & Phone & Language (Clean, Flat, Click-to-copy) */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm font-medium pt-1">
+                {/* Email */}
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 transition-colors font-mono"
+                  title="이메일 보내기"
+                >
+                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                  <span className="whitespace-nowrap font-bold">{profile.email}</span>
+                </a>
+
                 <span className="text-slate-700 hidden sm:inline">•</span>
+
+                {/* Phone */}
+                <a
+                  href="tel:010-4991-1314"
+                  className="flex items-center gap-1.5 text-cyan-300 hover:text-cyan-200 transition-colors font-mono"
+                  title="전화 걸기"
+                >
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" />
+                  <span className="whitespace-nowrap font-bold">010-4991-1314</span>
+                </a>
+
+                <span className="text-slate-700 hidden sm:inline">•</span>
+
+                {/* Chinese Native */}
                 <div className="flex items-center gap-1.5 text-slate-300">
-                  <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" />
-                  <span className="whitespace-nowrap">글로벌 보이스 디렉팅 & LQA</span>
+                  <Languages className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" />
+                  <span className="whitespace-nowrap">중국어 Native (원어민)</span>
                 </div>
               </div>
             </div>

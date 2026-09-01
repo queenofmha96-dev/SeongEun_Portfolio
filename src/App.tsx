@@ -6,7 +6,7 @@ import { ProjectsView } from './components/ProjectsView';
 import { VideoPlayerModal } from './components/VideoPlayerModal';
 import { ProfileView } from './components/ProfileView';
 import { GamingHistoryView } from './components/GamingHistoryView';
-import { ContactView } from './components/ContactView';
+import { CoverLetterSection } from './components/CoverLetterSection';
 import { FloatingControls } from './components/FloatingControls';
 import { SoundProject, SoundDirectorProfile } from './types';
 import { INITIAL_PROJECTS, INITIAL_PROFILE } from './data/portfolioData';
@@ -152,33 +152,48 @@ export default function App() {
             />
           </section>
 
-          {/* Section 4: Contact */}
-          <section id="direct-contact" className="space-y-6 sm:space-y-8">
+          {/* Section 4: Cover Letter / Self-Introduction */}
+          <section id="cover-letter" className="space-y-6 sm:space-y-8">
             <div className="flex items-center gap-2.5 sm:gap-3.5 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
               <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-xs sm:text-sm font-black">
                 04
               </span>
               <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
-                CONTACT
+                자기소개서
               </h2>
             </div>
-            <ContactView
-              profile={profile}
-              onResetDefaults={handleResetDefaults}
-              onExportData={handleExportData}
-            />
+            <CoverLetterSection />
           </section>
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-slate-800/80 bg-[#06070b] py-6 sm:py-8 text-center font-mono text-slate-500">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-8 flex flex-col items-center justify-center gap-1.5">
-            <p className="text-[11px] sm:text-xs tracking-wider text-slate-400">
-              © 2026 SEONGEUN YANG. All Rights Reserved.
-            </p>
-            <p className="text-[10px] sm:text-[11px] text-slate-600">
-              Game Sound Designer & Audio Artist Portfolio
-            </p>
+        <footer className="border-t border-slate-800/80 bg-[#06070b] py-8 sm:py-10 font-mono text-slate-400">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div className="space-y-1">
+              <p className="text-xs sm:text-sm font-bold text-white tracking-wider">
+                양성은 (SEONGEUN) • Game Sound Designer
+              </p>
+              <p className="text-[11px] sm:text-xs text-slate-500">
+                © 2026 SEONGEUN YANG. All Rights Reserved.
+              </p>
+            </div>
+
+            {/* Quick Contact Links in Footer */}
+            <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+              <a
+                href="mailto:queenofmha96@gmail.com"
+                className="text-amber-300 hover:text-amber-200 transition-colors font-bold flex items-center gap-1.5"
+              >
+                <span>✉ queenofmha96@gmail.com</span>
+              </a>
+              <span className="text-slate-700 hidden sm:inline">•</span>
+              <a
+                href="tel:010-4991-1314"
+                className="text-cyan-300 hover:text-cyan-200 transition-colors font-bold flex items-center gap-1.5"
+              >
+                <span>☎ 010-4991-1314</span>
+              </a>
+            </div>
           </div>
         </footer>
       </div>
