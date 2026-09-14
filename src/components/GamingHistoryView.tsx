@@ -632,21 +632,36 @@ export const GamingHistoryView: React.FC = () => {
                 {/* Header Image & Rank Badge */}
                 <div className="relative rounded-xl overflow-hidden border border-slate-800/90 bg-[#080b14] aspect-[460/215] w-full flex items-center justify-center">
                   {game.headerImg ? (
-                    <img
-                      src={game.headerImg}
-                      alt={game.name}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                      onError={(e) => {
-                        if (!p || p === 'steam') {
-                          (e.target as HTMLImageElement).src = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.appId}/capsule_231x87.jpg`;
-                        } else {
-                          // Hide image and show fallback
-                          (e.target as HTMLImageElement).style.display = 'none';
-                        }
-                      }}
-                    />
+                    <>
+                      <img
+                        src={game.headerImg}
+                        alt={game.name}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          if (!p || p === 'steam') {
+                            target.src = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.appId}/capsule_231x87.jpg`;
+                          } else {
+                            target.style.display = 'none';
+                            const fallback = target.nextElementSibling as HTMLElement;
+                            if (fallback) fallback.style.display = 'flex';
+                          }
+                        }}
+                      />
+                      <div className="w-full h-full hidden flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-[#0c1222] to-[#080d18] relative">
+                        <div className="w-9 h-9 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center mb-1.5 shadow-inner">
+                          <Smartphone className="w-5 h-5 text-emerald-400" />
+                        </div>
+                        <span className="text-[11px] font-bold text-slate-200 line-clamp-1 break-keep px-2">
+                          {game.name}
+                        </span>
+                        <span className="text-[9px] font-mono text-emerald-400/80 mt-0.5">
+                          MOBILE AUDIO LOG
+                        </span>
+                      </div>
+                    </>
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-[#0c1222] to-[#080d18] relative group-hover:from-[#0f172a] group-hover:to-[#0b1324] transition-all">
                       <div className="w-9 h-9 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center mb-1.5 shadow-inner">
