@@ -1,3 +1,5 @@
+export type GamePlatform = 'steam' | 'ps5' | 'switch' | 'mobile';
+
 export interface PlayedGameItem {
   appId: string;
   name: string;
@@ -7,6 +9,7 @@ export interface PlayedGameItem {
   tag: string;
   headerImg: string;
   steamUrl: string;
+  platform?: GamePlatform;
 }
 
 export const PLAYED_GAMES_LIST: PlayedGameItem[] = [
@@ -341,14 +344,14 @@ export const PLAYED_GAMES_LIST: PlayedGameItem[] = [
     steamUrl: "https://store.steampowered.com/app/1172620/"
   },
   {
-    appId: "1354560",
+    appId: "1252600",
     name: "ANOTHER EDEN (어나더 에덴)",
     hoursPlayed: 47.1,
     genre: "시공초월 모바일/PC RPG",
     audioFocus: "미츠다 야스노리 특유의 서정적인 어쿠스틱 오케스트레이션과 시대별 마을 테마",
     tag: "JRPG ORCHESTRA",
-    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1354560/header.jpg",
-    steamUrl: "https://store.steampowered.com/app/1354560/"
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1252600/header_koreana.jpg",
+    steamUrl: "https://store.steampowered.com/app/1252600/"
   },
   {
     appId: "1188930",
@@ -491,14 +494,14 @@ export const PLAYED_GAMES_LIST: PlayedGameItem[] = [
     steamUrl: "https://store.steampowered.com/app/1149460/"
   },
   {
-    appId: "2159370",
-    name: "더 스파이크 크로스 (The Spike)",
+    appId: "3983810",
+    name: "더 스파이크 크로스 (The Spike Cross)",
     hoursPlayed: 30.4,
     genre: "2D 배구 스포츠 액션",
     audioFocus: "강력한 스파이크 임팩트 샷과 체육관 실내 코트 마찰음(스니커즈 스퀴크)",
     tag: "SPORTS IMPACT & COURT",
-    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2159370/header.jpg",
-    steamUrl: "https://store.steampowered.com/app/2159370/"
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3983810/8c3b601b67c3cd20f1c63bf9a042ed16622fbc29/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/3983810/"
   },
   {
     appId: "1621690",
@@ -601,14 +604,14 @@ export const PLAYED_GAMES_LIST: PlayedGameItem[] = [
     steamUrl: "https://store.steampowered.com/app/272510/"
   },
   {
-    appId: "2671440",
+    appId: "3059070",
     name: "The Headliners",
     hoursPlayed: 20.3,
     genre: "캐주얼 / 시뮬레이션",
     audioFocus: "헤드라인 뉴스 속보 징글과 유쾌한 카툰 스타일 UI 사운드",
     tag: "CARTOON UI & JINGLE",
-    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2671440/header.jpg",
-    steamUrl: "https://store.steampowered.com/app/2671440/"
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3059070/62f137f87bbbe03ff34fe64f79aec4059532e849/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/3059070/"
   },
   {
     appId: "1042550",
@@ -668,6 +671,164 @@ export const PLAYED_GAMES_LIST: PlayedGameItem[] = [
     audioFocus: "커스텀 유저 모드 사운드트랙 확장 및 신규 무기 피격 효과음 통합",
     tag: "MOD AUDIO EXTENSION",
     headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1281930/header.jpg",
-    steamUrl: "https://store.steampowered.com/app/1281930/"
+    steamUrl: "https://store.steampowered.com/app/1281930/",
+    platform: "steam"
+  },
+  // --- PlayStation 5 ---
+  {
+    appId: "ps5-gow-ragnarok",
+    name: "God of War Ragnarök (갓 오브 워 라그나로크)",
+    hoursPlayed: 75.0,
+    genre: "액션 어드벤처",
+    audioFocus: "리바이어던 도끼 귀환 시 듀얼센스 햅틱 모터와 연동되는 저음역 임팩트, 북유럽 신화 콰이어",
+    tag: "3D AUDIO & DUALSENSE",
+    headerImg: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://www.playstation.com/ko-kr/games/god-of-war-ragnarok/",
+    platform: "ps5"
+  },
+  {
+    appId: "ps5-spiderman-2",
+    name: "Marvel's Spider-Man 2",
+    hoursPlayed: 52.0,
+    genre: "오픈월드 슈퍼히어로 액션",
+    audioFocus: "웹스윙 가속 시 풍절음 3D 오디오 패닝과 적응형 트리거 저항감 피드백 사운드",
+    tag: "TEMPEST 3D & ADAPTIVE",
+    headerImg: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://www.playstation.com/ko-kr/games/marvels-spider-man-2/",
+    platform: "ps5"
+  },
+  {
+    appId: "ps5-demons-souls",
+    name: "Demon's Souls (데몬즈 소울 리메이크)",
+    hoursPlayed: 68.0,
+    genre: "다크 판타지 액션 RPG",
+    audioFocus: "볼레타리아 성벽의 적막한 바람 소리, 칼날 튕겨나가는 패링 반향과 심장 박동 럼블",
+    tag: "SPATIAL REVERB & TENSION",
+    headerImg: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://www.playstation.com/ko-kr/games/demons-souls/",
+    platform: "ps5"
+  },
+  // --- Nintendo Switch ---
+  {
+    appId: "switch-pokemon-violet",
+    name: "포켓몬스터 바이올렛 (Pokémon Violet)",
+    hoursPlayed: 75.0,
+    genre: "오픈월드 RPG",
+    audioFocus: "테라스탈 변신 시 크리스탈 프리즘 사운드와 에드 시런(Ed Sheeran) 콜라보 삽입곡 테마",
+    tag: "TERASTAL & OPEN WORLD",
+    headerImg: "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://www.pokemonkorea.co.kr/scarlet_violet",
+    platform: "switch"
+  },
+  {
+    appId: "switch-mh-rise",
+    name: "몬스터 헌터 라이즈 (스위치판)",
+    hoursPlayed: 70.0,
+    genre: "헌팅 액션",
+    audioFocus: "카무라 마을의 와풍(和風) 코러스 보컬 테마와 밧줄벌레 와이어 액션 풍절음 및 무기 타격음",
+    tag: "WAFU VOCAL & WIREBUG",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1446780/header.jpg",
+    steamUrl: "https://www.monsterhunter.com/rise/kr/",
+    platform: "switch"
+  },
+  {
+    appId: "switch-pokemon-arceus",
+    name: "포켓몬 레전드 아르세우스 (Legends Arceus)",
+    hoursPlayed: 40.0,
+    genre: "액션 RPG",
+    audioFocus: "히스이 지방의 고대 일본풍 국악기 편곡과 몬스터볼 투척 및 수풀 은신 잔디 스퀴크 사운드",
+    tag: "HISUI FOLK & STEALTH",
+    headerImg: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://www.pokemonkorea.co.kr/legends_arceus",
+    platform: "switch"
+  },
+  {
+    appId: "switch-pokemon-sword",
+    name: "포켓몬스터 소드 (Pokémon Sword)",
+    hoursPlayed: 35.0,
+    genre: "RPG",
+    audioFocus: "가라르 체육관 관중 함성과 다이맥스 배틀 시 웅장한 EDM·스타디움 락 비트",
+    tag: "STADIUM EDM & CHEER",
+    headerImg: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://www.pokemonkorea.co.kr/sword_shield",
+    platform: "switch"
+  },
+  {
+    appId: "switch-pokemon-za",
+    name: "포켓몬 레전드 Z-A (Legends Z-A)",
+    hoursPlayed: 30.0,
+    genre: "도시 재개발 액션 RPG",
+    audioFocus: "미르시티 메갈로폴리스 도시 환경음과 메가진화 복각 시의 고주파 에너지 파동 SFX",
+    tag: "URBAN REDEVELOP & MEGA",
+    headerImg: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://www.pokemon.com/us/pokemon-video-games/pokemon-legends-z-a",
+    platform: "switch"
+  },
+  {
+    appId: "switch-pokemon-champions",
+    name: "포켓몬 챔피언스 (Pokémon Champions)",
+    hoursPlayed: 20.0,
+    genre: "배틀 토너먼트 / 전략",
+    audioFocus: "챔피언 로드 결승전 일렉트로 브라스 테마와 몬스터볼 필드 등장 라이저 사운드",
+    tag: "CHAMPION THEME & BRASS",
+    headerImg: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://www.pokemonkorea.co.kr/",
+    platform: "switch"
+  },
+  {
+    appId: "switch-hades-2",
+    name: "하데스 2 (Hades II - Switch)",
+    hoursPlayed: 9.0,
+    genre: "로그라이크 액션 RPG",
+    audioFocus: "멜리노에의 마법 주술 시전음, 대런 코브(Darren Korb)의 지중해 메탈 프로그레시브 락",
+    tag: "MEDITERRANEAN METAL",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/header.jpg",
+    steamUrl: "https://www.supergiantgames.com/games/hades-ii/",
+    platform: "switch"
+  },
+  {
+    appId: "switch-mario-3d-world",
+    name: "슈퍼 마리오 3D 월드 + 퓨리 월드",
+    hoursPlayed: 6.0,
+    genre: "3D 액션 플랫포머",
+    audioFocus: "빅밴드 브라스 재즈 스윙 연주와 고양이 마리오 변신 귀여운 야옹 폴리 효과음",
+    tag: "BIGBAND JAZZ & CAT FOLEY",
+    headerImg: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://www.nintendo.com/ko-kr/switch/3dworld/",
+    platform: "switch"
+  },
+  // --- Mobile ---
+  {
+    appId: "mobile-blue-archive",
+    name: "블루 아카이브 (Blue Archive)",
+    hoursPlayed: 320.0,
+    genre: "학원 서브컬처 수집형 RPG",
+    audioFocus: "미츠키요(Mitsukiyo)·카루트(KARUT) 감성의 퓨처 베이스(Future Bass) 및 발랄한 총격 SFX",
+    tag: "FUTURE BASS & GUNPLAY",
+    headerImg: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://bluearchive.nexon.com/",
+    platform: "mobile"
+  },
+  {
+    appId: "mobile-genshin",
+    name: "원신 (Genshin Impact)",
+    hoursPlayed: 410.0,
+    genre: "오픈월드 어드벤처 RPG",
+    audioFocus: "국가별(몬드·리월·이나즈마·수메르·폰타인) 실제 전통 악기 오케스트라 녹음 및 원소 반응 SFX",
+    tag: "TRADITIONAL ORCHESTRA",
+    headerImg: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://genshin.hoyoverse.com/",
+    platform: "mobile"
+  },
+  {
+    appId: "mobile-reverse1999",
+    name: "리버스: 1999 (Reverse: 1999)",
+    hoursPlayed: 125.0,
+    genre: "세기말 타임슬립 턴제 RPG",
+    audioFocus: "20세기 시대극 빈티지 라디오 LP 지직거림, 영국식 영문 풀더빙 및 클래시컬 체임버 뮤직",
+    tag: "VINTAGE LP & CHAMBER",
+    headerImg: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80",
+    steamUrl: "https://reverse1999.haoplay.com/",
+    platform: "mobile"
   }
 ];
