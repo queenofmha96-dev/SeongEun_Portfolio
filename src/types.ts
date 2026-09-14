@@ -41,6 +41,28 @@ export interface SfxPreset {
   type: string;
 }
 
+export interface SteamGame {
+  appId: string;
+  name: string;
+  link: string;
+  icon: string;
+  logo: string;
+  hours2wk: number;
+  hoursTotal: number;
+}
+
+export interface SteamProfileData {
+  steamID64: string;
+  steamID: string;
+  onlineState: string;
+  stateMessage: string;
+  avatarMedium: string;
+  avatarFull: string;
+  memberSince: string;
+  location: string;
+  games: SteamGame[];
+}
+
 export interface GameplayLog {
   id: string;
   title: string;          // e.g. "배틀그라운드 (PUBG)"

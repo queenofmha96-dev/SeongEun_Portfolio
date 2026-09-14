@@ -1,5 +1,7 @@
-import React from 'react';
-import { Gamepad2, Clock } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio } from 'lucide-react';
+import { OFFICIAL_STEAM_PROFILE_DATA } from '../data/steamData';
+import { SteamProfileData } from '../types';
 
 interface GameLogItem {
   id: string;
@@ -195,90 +197,325 @@ export const GameLogoBadge: React.FC<{ gameId: string; size?: 'normal' | 'compac
 };
 
 export const GamingHistoryView: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<'steam' | 'all'>('steam');
+  const [steamData, setSteamData] = useState<SteamProfileData>(OFFICIAL_STEAM_PROFILE_DATA);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [lastSyncTime, setLastSyncTime] = useState<string | null>(null);
+  const [syncStatus, setSyncStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Real-time live sync with Steam on mount or on demand
+  const fetchLiveSteamData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/steam-sync');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.profile) {
+          setSteamData(data.profile);
+          setLastSyncTime(new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
+          setSyncStatus('success');
+        }
+      } else {
+        setSyncStatus('error');
+      }
+    } catch {
+      setSyncStatus('error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLiveSteamData();
+  }, []);
+
   const totalHours = GAMING_LOGS.reduce((acc, curr) => acc + curr.hoursPlayed, 0);
   const maxHours = 520; // LoL hours
 
+  const steamTotalHours = steamData.games.reduce((acc, g) => acc + g.hoursTotal, 0);
+  const steamMaxHours = Math.max(...steamData.games.map(g => g.hoursTotal), 100);
+
   return (
     <div className="w-full space-y-6 animate-fadeIn font-sans text-slate-100 py-1">
-      {/* Section Header Info Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
-        <div className="flex items-center gap-2.5">
-          <Gamepad2 className="w-5 h-5 text-cyan-400 flex-shrink-0" />
-          <p className="text-sm sm:text-base text-slate-300 break-keep">
-            플레이어로서 깊이 있게 플레이해 온 게임 목록 및 누적 플레이 시간
-          </p>
-        </div>
+      {/* Official Steam Verified Profile Showcase Banner */}
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0d1424] via-[#09101f] to-[#0d1527] border border-cyan-500/40 p-4 sm:p-6 shadow-xl">
+        <div className="absolute top-0 right-0 w-80 h-full bg-radial-gradient pointer-events-none opacity-20" />
+        
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 relative z-10">
+          {/* Steam User Profile Info */}
+          <div className="flex items-center gap-4">
+            <div className="relative shrink-0">
+              <img
+                src={steamData.avatarFull || OFFICIAL_STEAM_PROFILE_DATA.avatarFull}
+                alt={steamData.steamID}
+                className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl border-2 border-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.35)] object-cover"
+                referrerPolicy="no-referrer"
+              />
+              <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-[#09101f]"></span>
+              </span>
+            </div>
 
-        <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-amber-300 bg-slate-900/90 border border-slate-800 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl w-fit flex-shrink-0">
-          <Clock className="w-4 h-4 text-amber-400" />
-          <span className="font-bold">총 {totalHours.toLocaleString()}시간+ 플레이</span>
-        </div>
-      </div>
-
-      {/* Unified 8 Games Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {GAMING_LOGS.map((game, index) => {
-          const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
-
-          return (
-            <div
-              key={game.id}
-              className="p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-cyan-500/50 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md group"
-            >
-              {/* Game Info Top Row */}
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="no-print shrink-0">
-                  <GameLogoBadge gameId={game.id} size="compact" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep mb-0.5 font-sans">
-                    {game.title}
-                  </h4>
-                  <span className="text-xs font-sans font-medium text-slate-400 block break-keep">
-                    {game.genre}
-                  </span>
-                </div>
+            <div className="space-y-1">
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <h3 className="text-xl sm:text-2xl font-black text-white font-sans tracking-wide">
+                  {steamData.steamID}
+                </h3>
+                <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold bg-cyan-950/90 text-cyan-300 border border-cyan-500/50 px-2.5 py-0.5 rounded-full">
+                  <ShieldCheck className="w-3 h-3 text-cyan-400" />
+                  STEAM VERIFIED
+                </span>
+                <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded-full">
+                  <Radio className="w-2.5 h-2.5 text-emerald-400 animate-pulse" />
+                  LIVE SYNC
+                </span>
               </div>
+              <p className="text-xs sm:text-sm text-slate-400 font-sans flex items-center gap-3 flex-wrap">
+                <span>Steam ID: <strong className="font-mono text-slate-300">{steamData.steamID64}</strong></span>
+                <span className="hidden sm:inline text-slate-600">•</span>
+                <span>가입일: <strong className="font-mono text-slate-300">{steamData.memberSince}</strong></span>
+                <span className="hidden sm:inline text-slate-600">•</span>
+                <span>국가: <strong className="text-slate-300">대한민국 (KR)</strong></span>
+              </p>
+            </div>
+          </div>
 
-              {/* Playtime Progress Bar & Hours */}
-              <div className="space-y-1.5 pt-1.5 border-t border-slate-800/60 font-sans">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">누적 플레이</span>
-                  <span className="text-slate-200 text-xs font-medium">
-                    <span className="font-mono font-semibold">{game.hoursPlayed}</span>시간
-                  </span>
-                </div>
-                <div className="w-full flex items-center gap-1 py-0.5 no-print" aria-hidden="true">
-                  {Array.from({ length: 14 }).map((_, i) => {
-                    const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
-                    const isActive = i < activeCount;
-                    
-                    // Progressive color gradient: deep cyan -> bright cyan -> warm golden yellow -> soft amber
-                    const getActiveColor = (index: number) => {
-                      if (index < 4) return 'bg-cyan-600/90';
-                      if (index < 7) return 'bg-cyan-400/95';
-                      if (index < 10) return 'bg-teal-300';
-                      if (index < 12) return 'bg-amber-300';
-                      return 'bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.35)]'; // Soft warm amber gold
-                    };
-
-                    return (
-                      <div
-                        key={i}
-                        className={`h-1.5 flex-1 -skew-x-12 rounded-[0.5px] transition-all duration-300 ${
-                          isActive
-                            ? getActiveColor(i)
-                            : 'bg-slate-800/40'
-                        }`}
-                      />
-                    );
-                  })}
-                </div>
+          {/* Steam Stat & Profile Link Button */}
+          <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end flex-wrap">
+            <div className="bg-[#050912]/80 border border-slate-800 px-4 py-2 rounded-xl text-center">
+              <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider flex items-center justify-center gap-1">
+                <span>스팀 실시간 누적</span>
+                <button
+                  onClick={fetchLiveSteamData}
+                  disabled={isLoading}
+                  title="스팀 실시간 동기화 새로고침"
+                  className="p-1 hover:text-cyan-300 transition-colors disabled:opacity-50"
+                >
+                  <RefreshCw className={`w-3 h-3 ${isLoading ? 'animate-spin text-cyan-400' : ''}`} />
+                </button>
+              </div>
+              <div className="text-lg font-mono font-bold text-amber-300">
+                {steamTotalHours.toLocaleString()}시간+
               </div>
             </div>
-          );
-        })}
+
+            <a
+              href={`https://steamcommunity.com/profiles/${steamData.steamID64}/`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-medium text-xs sm:text-sm shadow-lg shadow-cyan-950/50 transition-all hover:scale-[1.02] shrink-0"
+            >
+              {/* Official Steam Logo */}
+              <svg className="w-4 h-4 fill-white shrink-0" viewBox="0 0 24 24">
+                <path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.029 4.524 4.524s-2.03 4.524-4.524 4.524h-.105l-4.076 2.911c0 .052.005.105.005.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 12-5.373 12-12S18.605 0 11.979 0z" />
+              </svg>
+              <span>스팀 프로필 바로가기</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
       </div>
+
+      {/* Tabs / Filter Controls */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setActiveTab('steam')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
+              activeTab === 'steam'
+                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 shadow-sm'
+                : 'text-slate-400 hover:text-white bg-slate-900/60 border border-slate-800'
+            }`}
+          >
+            <Zap className="w-3.5 h-3.5" />
+            <span>최근 플레이한 게임 ({steamData.games.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('all')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
+              activeTab === 'all'
+                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/50 shadow-sm'
+                : 'text-slate-400 hover:text-white bg-slate-900/60 border border-slate-800'
+            }`}
+          >
+            <Gamepad2 className="w-3.5 h-3.5" />
+            <span>플레이한 게임 목록 ({GAMING_LOGS.length})</span>
+          </button>
+        </div>
+
+        <div className="flex items-center gap-3">
+          {lastSyncTime && (
+            <span className="text-[11px] font-mono text-slate-500 hidden sm:inline">
+              최근 동기화: {lastSyncTime}
+            </span>
+          )}
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-amber-300 bg-slate-900/90 border border-slate-800 px-3.5 py-1.5 rounded-xl w-fit shrink-0">
+            <Clock className="w-4 h-4 text-amber-400" />
+            <span className="font-bold">
+              {activeTab === 'steam'
+                ? `스팀 총 ${steamTotalHours.toLocaleString()}시간+ 플레이`
+                : `총 ${totalHours.toLocaleString()}시간+ 플레이`}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Tab 1: Steam Connected Games */}
+      {activeTab === 'steam' && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-fadeIn">
+          {steamData.games.map((game) => {
+            const percentage = Math.min(100, Math.round((game.hoursTotal / steamMaxHours) * 100));
+
+            return (
+              <a
+                key={game.appId}
+                href={game.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-cyan-500/60 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md relative overflow-hidden"
+              >
+                {/* Game Capsule Thumbnail Header */}
+                <div className="relative rounded-xl overflow-hidden border border-slate-800/90 bg-slate-950 aspect-[184/69] w-full">
+                  <img
+                    src={game.logo}
+                    alt={game.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                  
+                  {game.hours2wk > 0 && (
+                    <span className="absolute top-2 right-2 inline-flex items-center gap-1 text-[10px] font-mono font-bold bg-emerald-950/90 text-emerald-400 border border-emerald-500/50 px-2 py-0.5 rounded-md shadow-sm">
+                      <Flame className="w-3 h-3 text-emerald-400" />
+                      최근 2주: {game.hours2wk}시간
+                    </span>
+                  )}
+                </div>
+
+                {/* Title and App ID */}
+                <div className="space-y-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors break-keep truncate font-sans">
+                      {game.name}
+                    </h4>
+                    <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 shrink-0 transition-colors" />
+                  </div>
+                  <div className="text-[11px] font-mono text-slate-500">
+                    AppID: {game.appId}
+                  </div>
+                </div>
+
+                {/* Playtime Bar */}
+                <div className="space-y-1.5 pt-1.5 border-t border-slate-800/60 font-sans">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">스팀 기록 플레이타임</span>
+                    <span className="text-slate-200 text-xs font-medium">
+                      <span className="font-mono font-bold text-amber-300 text-sm">{game.hoursTotal}</span>시간
+                    </span>
+                  </div>
+
+                  <div className="w-full flex items-center gap-1 py-0.5" aria-hidden="true">
+                    {Array.from({ length: 14 }).map((_, i) => {
+                      const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
+                      const isActive = i < activeCount;
+                      
+                      const getActiveColor = (index: number) => {
+                        if (index < 4) return 'bg-cyan-600/90';
+                        if (index < 7) return 'bg-cyan-400/95';
+                        if (index < 10) return 'bg-teal-300';
+                        if (index < 12) return 'bg-amber-300';
+                        return 'bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.35)]';
+                      };
+
+                      return (
+                        <div
+                          key={i}
+                          className={`h-1.5 flex-1 -skew-x-12 rounded-[0.5px] transition-all duration-300 ${
+                            isActive ? getActiveColor(i) : 'bg-slate-800/40'
+                          }`}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Tab 2: All 8 Sound-Study Titles */}
+      {activeTab === 'all' && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-fadeIn">
+          {GAMING_LOGS.map((game) => {
+            const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
+
+            return (
+              <div
+                key={game.id}
+                className="p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-cyan-500/50 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md group"
+              >
+                {/* Game Info Top Row */}
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="no-print shrink-0">
+                    <GameLogoBadge gameId={game.id} size="compact" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep mb-0.5 font-sans">
+                      {game.title}
+                    </h4>
+                    <span className="text-xs font-sans font-medium text-slate-400 block break-keep">
+                      {game.genre}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Audio Focus Note */}
+                <p className="text-xs text-slate-400 break-keep leading-relaxed border-l border-cyan-500/40 pl-2">
+                  {game.audioFocus}
+                </p>
+
+                {/* Playtime Progress Bar & Hours */}
+                <div className="space-y-1.5 pt-1.5 border-t border-slate-800/60 font-sans">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">누적 플레이</span>
+                    <span className="text-slate-200 text-xs font-medium">
+                      <span className="font-mono font-semibold">{game.hoursPlayed}</span>시간
+                    </span>
+                  </div>
+                  <div className="w-full flex items-center gap-1 py-0.5 no-print" aria-hidden="true">
+                    {Array.from({ length: 14 }).map((_, i) => {
+                      const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
+                      const isActive = i < activeCount;
+                      
+                      const getActiveColor = (index: number) => {
+                        if (index < 4) return 'bg-cyan-600/90';
+                        if (index < 7) return 'bg-cyan-400/95';
+                        if (index < 10) return 'bg-teal-300';
+                        if (index < 12) return 'bg-amber-300';
+                        return 'bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.35)]';
+                      };
+
+                      return (
+                        <div
+                          key={i}
+                          className={`h-1.5 flex-1 -skew-x-12 rounded-[0.5px] transition-all duration-300 ${
+                            isActive
+                              ? getActiveColor(i)
+                              : 'bg-slate-800/40'
+                          }`}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };
