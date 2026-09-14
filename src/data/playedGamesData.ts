@@ -1,6 +1,7 @@
 import { MOBILE_GAMES_LIST } from './mobileGamesData';
+import { OTHER_GAMES_LIST } from './otherGamesData';
 
-export type GamePlatform = 'steam' | 'ps5' | 'switch' | 'mobile';
+export type GamePlatform = 'steam' | 'ps5' | 'switch' | 'mobile' | 'other';
 
 export interface PlayedGameItem {
   appId: string;
@@ -942,6 +943,8 @@ export const PLAYED_GAMES_LIST: PlayedGameItem[] = [
     steamUrl: "https://www.nintendo.com/ko-kr/switch/3dworld/",
     platform: "switch"
   },
+  // --- Other Standalone / Battle.net / Riot Games (그외 게임) ---
+  ...OTHER_GAMES_LIST,
   // --- Mobile Games (277 Titles, No hours displayed) ---
   ...MOBILE_GAMES_LIST
 ];

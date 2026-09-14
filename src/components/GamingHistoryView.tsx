@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio, Smartphone, Monitor, Disc, CreditCard, Edit3, Check, RotateCcw, DollarSign } from 'lucide-react';
+import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio, Smartphone, Monitor, Disc, CreditCard, Edit3, Check, RotateCcw, DollarSign, Layers } from 'lucide-react';
 import { OFFICIAL_STEAM_PROFILE_DATA } from '../data/steamData';
 import { PLAYED_GAMES_LIST, PlayedGameItem, GamePlatform } from '../data/playedGamesData';
 import { SteamProfileData } from '../types';
@@ -301,6 +301,7 @@ export const GamingHistoryView: React.FC = () => {
       ps5: PLAYED_GAMES_LIST.filter(g => g.platform === 'ps5').length,
       switch: PLAYED_GAMES_LIST.filter(g => g.platform === 'switch').length,
       mobile: PLAYED_GAMES_LIST.filter(g => g.platform === 'mobile').length,
+      other: PLAYED_GAMES_LIST.filter(g => g.platform === 'other').length,
     };
   }, []);
 
@@ -511,6 +512,19 @@ export const GamingHistoryView: React.FC = () => {
               <span>Mobile</span>
               <span className="text-[10px] font-mono opacity-70">({platformCounts.mobile})</span>
             </button>
+
+            <button
+              onClick={() => setPlatformFilter('other')}
+              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
+                platformFilter === 'other'
+                  ? 'bg-purple-500/25 text-purple-300 border border-purple-500/50'
+                  : 'text-slate-400 hover:text-slate-200 bg-slate-900/50 border border-slate-800/80'
+              }`}
+            >
+              <Layers className="w-3 h-3 text-purple-400" />
+              <span>그외 게임</span>
+              <span className="text-[10px] font-mono opacity-70">({platformCounts.other})</span>
+            </button>
           </div>
         )}
       </div>
@@ -614,6 +628,8 @@ export const GamingHistoryView: React.FC = () => {
                   return { label: 'SWITCH', color: 'bg-red-950/90 text-red-300 border-red-500/50' };
                 case 'mobile':
                   return { label: 'MOBILE', color: 'bg-emerald-950/90 text-emerald-300 border-emerald-500/50' };
+                case 'other':
+                  return { label: 'OTHER', color: 'bg-purple-950/90 text-purple-300 border-purple-500/50' };
                 default:
                   return { label: 'STEAM', color: 'bg-cyan-950/90 text-cyan-300 border-cyan-500/50' };
               }
@@ -651,27 +667,31 @@ export const GamingHistoryView: React.FC = () => {
                         }}
                       />
                       <div className="w-full h-full hidden flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-[#0c1222] to-[#080d18] relative">
-                        <div className="w-9 h-9 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center mb-1.5 shadow-inner">
-                          <Smartphone className="w-5 h-5 text-emerald-400" />
+                        <div className={`w-9 h-9 rounded-xl border flex items-center justify-center mb-1.5 shadow-inner ${
+                          p === 'other' ? 'bg-purple-950/80 border-purple-500/40 text-purple-400' : 'bg-emerald-950/80 border-emerald-500/40 text-emerald-400'
+                        }`}>
+                          {p === 'other' ? <Layers className="w-5 h-5" /> : <Smartphone className="w-5 h-5" />}
                         </div>
                         <span className="text-[11px] font-bold text-slate-200 line-clamp-1 break-keep px-2">
                           {game.name}
                         </span>
-                        <span className="text-[9px] font-mono text-emerald-400/80 mt-0.5">
-                          MOBILE AUDIO LOG
+                        <span className={`text-[9px] font-mono mt-0.5 ${p === 'other' ? 'text-purple-400/80' : 'text-emerald-400/80'}`}>
+                          {p === 'other' ? 'GAME AUDIO LOG' : 'MOBILE AUDIO LOG'}
                         </span>
                       </div>
                     </>
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-[#0c1222] to-[#080d18] relative group-hover:from-[#0f172a] group-hover:to-[#0b1324] transition-all">
-                      <div className="w-9 h-9 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center mb-1.5 shadow-inner">
-                        <Smartphone className="w-5 h-5 text-emerald-400" />
+                      <div className={`w-9 h-9 rounded-xl border flex items-center justify-center mb-1.5 shadow-inner ${
+                        p === 'other' ? 'bg-purple-950/80 border-purple-500/40 text-purple-400' : 'bg-emerald-950/80 border-emerald-500/40 text-emerald-400'
+                      }`}>
+                        {p === 'other' ? <Layers className="w-5 h-5" /> : <Smartphone className="w-5 h-5" />}
                       </div>
                       <span className="text-[11px] font-bold text-slate-200 line-clamp-1 break-keep px-2">
                         {game.name}
                       </span>
-                      <span className="text-[9px] font-mono text-emerald-400/80 mt-0.5">
-                        MOBILE AUDIO LOG
+                      <span className={`text-[9px] font-mono mt-0.5 ${p === 'other' ? 'text-purple-400/80' : 'text-emerald-400/80'}`}>
+                        {p === 'other' ? 'GAME AUDIO LOG' : 'MOBILE AUDIO LOG'}
                       </span>
                     </div>
                   )}
@@ -709,7 +729,7 @@ export const GamingHistoryView: React.FC = () => {
                       <span className="font-mono text-slate-500 text-[10px] shrink-0">AppID: {game.appId}</span>
                     ) : (
                       <span className="font-mono text-slate-500 text-[10px] shrink-0">
-                        {p === 'mobile' ? 'Mobile App' : p.toUpperCase()}
+                        {p === 'mobile' ? 'Mobile App' : p === 'other' ? 'Standalone / PC' : p.toUpperCase()}
                       </span>
                     )}
                   </div>
@@ -755,11 +775,17 @@ export const GamingHistoryView: React.FC = () => {
                   </div>
                 ) : (
                   <div className="pt-1.5 border-t border-slate-800/60 flex items-center justify-between text-xs text-slate-500 font-sans">
-                    <span className="text-[11px] text-emerald-400/80 font-mono flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
+                    <span className={`text-[11px] font-mono flex items-center gap-1 ${
+                      p === 'other' ? 'text-purple-400/80' : 'text-emerald-400/80'
+                    }`}>
+                      <span className={`w-1.5 h-1.5 rounded-full animate-pulse inline-block ${
+                        p === 'other' ? 'bg-purple-400' : 'bg-emerald-400'
+                      }`} />
                       플레이 이력 보관
                     </span>
-                    <span className="text-[11px] font-mono text-slate-500">Google Play</span>
+                    <span className="text-[11px] font-mono text-slate-500">
+                      {p === 'other' ? 'Official Site' : 'Google Play'}
+                    </span>
                   </div>
                 )}
               </a>
