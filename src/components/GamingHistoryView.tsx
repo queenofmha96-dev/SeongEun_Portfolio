@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio } from 'lucide-react';
 import { OFFICIAL_STEAM_PROFILE_DATA } from '../data/steamData';
+import { PLAYED_GAMES_LIST, PlayedGameItem } from '../data/playedGamesData';
 import { SteamProfileData } from '../types';
 
 interface GameLogItem {
@@ -229,8 +230,8 @@ export const GamingHistoryView: React.FC = () => {
     fetchLiveSteamData();
   }, []);
 
-  const totalHours = GAMING_LOGS.reduce((acc, curr) => acc + curr.hoursPlayed, 0);
-  const maxHours = 520; // LoL hours
+  const totalHours = PLAYED_GAMES_LIST.reduce((acc, curr) => acc + curr.hoursPlayed, 0);
+  const maxHours = Math.max(...PLAYED_GAMES_LIST.map(g => g.hoursPlayed), 100);
 
   const steamTotalHours = steamData.games.reduce((acc, g) => acc + g.hoursTotal, 0);
   const steamMaxHours = Math.max(...steamData.games.map(g => g.hoursTotal), 100);
@@ -341,7 +342,7 @@ export const GamingHistoryView: React.FC = () => {
             }`}
           >
             <Gamepad2 className="w-3.5 h-3.5" />
-            <span>플레이한 게임 목록 ({GAMING_LOGS.length})</span>
+            <span>플레이한 게임 목록 ({PLAYED_GAMES_LIST.length})</span>
           </button>
         </div>
 
@@ -446,50 +447,79 @@ export const GamingHistoryView: React.FC = () => {
         </div>
       )}
 
-      {/* Tab 2: All 8 Sound-Study Titles */}
+      {/* Tab 2: Full Played Games List (33 Games from Steam Library) */}
       {activeTab === 'all' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-fadeIn">
-          {GAMING_LOGS.map((game) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 animate-fadeIn">
+          {PLAYED_GAMES_LIST.map((game, index) => {
             const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
 
             return (
-              <div
-                key={game.id}
-                className="p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-cyan-500/50 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md group"
+              <a
+                key={game.appId}
+                href={game.steamUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3.5 sm:p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-amber-500/60 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md group relative overflow-hidden"
               >
-                {/* Game Info Top Row */}
-                <div className="flex items-center gap-3 min-w-0">
-                  <div className="no-print shrink-0">
-                    <GameLogoBadge gameId={game.id} size="compact" />
+                {/* Header Image & Rank Badge */}
+                <div className="relative rounded-xl overflow-hidden border border-slate-800/90 bg-slate-950 aspect-[460/215] w-full">
+                  <img
+                    src={game.headerImg}
+                    alt={game.name}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.appId}/capsule_231x87.jpg`;
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c14] via-transparent to-black/30 pointer-events-none" />
+
+                  {/* Rank Badge */}
+                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded-lg bg-black/80 backdrop-blur-md border border-amber-500/40 text-[10px] font-mono font-bold text-amber-300 flex items-center gap-1">
+                    <span>#{index + 1}</span>
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors break-keep mb-0.5 font-sans">
-                      {game.title}
-                    </h4>
-                    <span className="text-xs font-sans font-medium text-slate-400 block break-keep">
-                      {game.genre}
+
+                  {/* Audio Tag */}
+                  <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                    <span className="text-[9px] font-mono font-bold text-cyan-300 bg-black/80 px-2 py-0.5 rounded-md border border-cyan-500/30 truncate max-w-[85%]">
+                      {game.tag}
                     </span>
                   </div>
                 </div>
 
+                {/* Game Title & Genre */}
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <h4 className="text-sm font-bold text-white group-hover:text-amber-300 transition-colors break-keep truncate font-sans">
+                      {game.name}
+                    </h4>
+                    <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 shrink-0 transition-colors" />
+                  </div>
+                  <div className="flex items-center justify-between text-[11px] text-slate-400 font-sans">
+                    <span className="truncate">{game.genre}</span>
+                    <span className="font-mono text-slate-500 text-[10px] shrink-0">AppID: {game.appId}</span>
+                  </div>
+                </div>
+
                 {/* Audio Focus Note */}
-                <p className="text-xs text-slate-400 break-keep leading-relaxed border-l border-cyan-500/40 pl-2">
+                <p className="text-xs text-slate-400 break-keep leading-relaxed border-l-2 border-amber-500/50 pl-2 bg-slate-900/30 py-1 rounded-r-lg">
                   {game.audioFocus}
                 </p>
 
                 {/* Playtime Progress Bar & Hours */}
                 <div className="space-y-1.5 pt-1.5 border-t border-slate-800/60 font-sans">
                   <div className="flex justify-between items-center text-xs">
-                    <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">누적 플레이</span>
+                    <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">스팀 누적 플레이</span>
                     <span className="text-slate-200 text-xs font-medium">
-                      <span className="font-mono font-semibold">{game.hoursPlayed}</span>시간
+                      <span className="font-mono font-bold text-amber-300 text-sm">{game.hoursPlayed}</span>시간
                     </span>
                   </div>
                   <div className="w-full flex items-center gap-1 py-0.5 no-print" aria-hidden="true">
                     {Array.from({ length: 14 }).map((_, i) => {
                       const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
                       const isActive = i < activeCount;
-                      
+
                       const getActiveColor = (index: number) => {
                         if (index < 4) return 'bg-cyan-600/90';
                         if (index < 7) return 'bg-cyan-400/95';
@@ -502,16 +532,14 @@ export const GamingHistoryView: React.FC = () => {
                         <div
                           key={i}
                           className={`h-1.5 flex-1 -skew-x-12 rounded-[0.5px] transition-all duration-300 ${
-                            isActive
-                              ? getActiveColor(i)
-                              : 'bg-slate-800/40'
+                            isActive ? getActiveColor(i) : 'bg-slate-800/40'
                           }`}
                         />
                       );
                     })}
                   </div>
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>
