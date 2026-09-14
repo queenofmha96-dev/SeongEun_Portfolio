@@ -2,6 +2,7 @@ import { SoundProject, SoundDirectorProfile, SfxPreset } from '../types';
 
 export const INITIAL_PROFILE: SoundDirectorProfile = {
   name: "양성은 (SEONGEUN)",
+  avatarUrl: undefined,
   title: "Game Sound Designer & Audio Artist",
   tagline: "게임의 몰입감을 극대화하는 임팩트 있는 SFX 디자인 & 인터랙티브 오디오 연출",
   email: "queenofmha96@gmail.com",

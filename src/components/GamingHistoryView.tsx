@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio, Smartphone, Monitor, Disc } from 'lucide-react';
+import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio, Smartphone, Monitor, Disc, CreditCard, Edit3, Check, RotateCcw, DollarSign } from 'lucide-react';
 import { OFFICIAL_STEAM_PROFILE_DATA } from '../data/steamData';
 import { PLAYED_GAMES_LIST, PlayedGameItem, GamePlatform } from '../data/playedGamesData';
 import { SteamProfileData } from '../types';
+import { soundEngine } from '../utils/soundEngine';
 
 interface GameLogItem {
   id: string;
@@ -205,6 +206,60 @@ export const GamingHistoryView: React.FC = () => {
   const [lastSyncTime, setLastSyncTime] = useState<string | null>(null);
   const [syncStatus, setSyncStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  // Platform Cash Purchase Totals (Steam, Google Play, App Store) with localStorage persistence
+  const [purchaseAmounts, setPurchaseAmounts] = useState<{ steam: number; googlePlay: number; appStore: number }>(() => {
+    const defaults = {
+      steam: 6688000,
+      googlePlay: 2372200,
+      appStore: 2729500
+    };
+    try {
+      const saved = localStorage.getItem('seongeun_game_purchases');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return {
+          ...defaults,
+          ...parsed,
+          steam: parsed.steam === 3450000 ? 6688000 : (parsed.steam ?? 6688000),
+          googlePlay: parsed.googlePlay === 1850000 ? 2372200 : (parsed.googlePlay ?? 2372200),
+          appStore: parsed.appStore === 920000 ? 2729500 : (parsed.appStore ?? 2729500)
+        };
+      }
+    } catch {
+      // ignore
+    }
+    return defaults;
+  });
+
+  const [isEditingPurchases, setIsEditingPurchases] = useState(false);
+  const [tempAmounts, setTempAmounts] = useState(purchaseAmounts);
+
+  const totalSpent = purchaseAmounts.steam + purchaseAmounts.googlePlay + purchaseAmounts.appStore;
+
+  const handleSavePurchases = () => {
+    soundEngine.playClick();
+    setPurchaseAmounts(tempAmounts);
+    try {
+      localStorage.setItem('seongeun_game_purchases', JSON.stringify(tempAmounts));
+    } catch {
+      // ignore
+    }
+    setIsEditingPurchases(false);
+  };
+
+  const handleResetPurchases = () => {
+    soundEngine.playClick();
+    const defaults = { steam: 6688000, googlePlay: 2372200, appStore: 2729500 };
+    setPurchaseAmounts(defaults);
+    setTempAmounts(defaults);
+    try {
+      localStorage.setItem('seongeun_game_purchases', JSON.stringify(defaults));
+    } catch {
+      // ignore
+    }
+    setIsEditingPurchases(false);
+  };
+
   // Real-time live sync with Steam on mount or on demand
   const fetchLiveSteamData = async () => {
     setIsLoading(true);
@@ -249,9 +304,9 @@ export const GamingHistoryView: React.FC = () => {
     };
   }, []);
 
-  const totalHours = PLAYED_GAMES_LIST.reduce((acc, curr) => acc + curr.hoursPlayed, 0);
-  const filteredHours = filteredPlayedGames.reduce((acc, curr) => acc + curr.hoursPlayed, 0);
-  const maxHours = Math.max(...PLAYED_GAMES_LIST.map(g => g.hoursPlayed), 100);
+  const totalHours = PLAYED_GAMES_LIST.reduce((acc, curr) => acc + (curr.hoursPlayed || 0), 0);
+  const filteredHours = filteredPlayedGames.reduce((acc, curr) => acc + (curr.hoursPlayed || 0), 0);
+  const maxHours = Math.max(...PLAYED_GAMES_LIST.map(g => g.hoursPlayed || 0), 100);
 
   const steamTotalHours = steamData.games.reduce((acc, g) => acc + g.hoursTotal, 0);
   const steamMaxHours = Math.max(...steamData.games.map(g => g.hoursTotal), 100);
@@ -378,8 +433,10 @@ export const GamingHistoryView: React.FC = () => {
               <span className="font-bold">
                 {activeTab === 'steam'
                   ? `스팀 총 ${steamTotalHours.toLocaleString()}시간+ 플레이`
+                  : platformFilter === 'mobile'
+                  ? `모바일 총 ${platformCounts.mobile}개 타이틀 플레이`
                   : platformFilter === 'all'
-                  ? `총 ${totalHours.toLocaleString()}시간+ 플레이`
+                  ? `총 ${totalHours.toLocaleString()}시간+ 플레이 (${PLAYED_GAMES_LIST.length}개 타이틀)`
                   : `${filteredHours.toLocaleString()}시간 플레이`}
               </span>
             </div>
@@ -573,17 +630,36 @@ export const GamingHistoryView: React.FC = () => {
                 className="p-3.5 sm:p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-amber-500/60 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md group relative overflow-hidden"
               >
                 {/* Header Image & Rank Badge */}
-                <div className="relative rounded-xl overflow-hidden border border-slate-800/90 bg-slate-950 aspect-[460/215] w-full">
-                  <img
-                    src={game.headerImg}
-                    alt={game.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.appId}/capsule_231x87.jpg`;
-                    }}
-                  />
+                <div className="relative rounded-xl overflow-hidden border border-slate-800/90 bg-[#080b14] aspect-[460/215] w-full flex items-center justify-center">
+                  {game.headerImg ? (
+                    <img
+                      src={game.headerImg}
+                      alt={game.name}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        if (!p || p === 'steam') {
+                          (e.target as HTMLImageElement).src = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.appId}/capsule_231x87.jpg`;
+                        } else {
+                          // Hide image and show fallback
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-[#0c1222] to-[#080d18] relative group-hover:from-[#0f172a] group-hover:to-[#0b1324] transition-all">
+                      <div className="w-9 h-9 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center mb-1.5 shadow-inner">
+                        <Smartphone className="w-5 h-5 text-emerald-400" />
+                      </div>
+                      <span className="text-[11px] font-bold text-slate-200 line-clamp-1 break-keep px-2">
+                        {game.name}
+                      </span>
+                      <span className="text-[9px] font-mono text-emerald-400/80 mt-0.5">
+                        MOBILE AUDIO LOG
+                      </span>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c14] via-transparent to-black/30 pointer-events-none" />
 
                   {/* Rank Badge & Platform Badge */}
@@ -614,8 +690,12 @@ export const GamingHistoryView: React.FC = () => {
                   </div>
                   <div className="flex items-center justify-between text-[11px] text-slate-400 font-sans">
                     <span className="truncate">{game.genre}</span>
-                    {p === 'steam' && (
+                    {p === 'steam' ? (
                       <span className="font-mono text-slate-500 text-[10px] shrink-0">AppID: {game.appId}</span>
+                    ) : (
+                      <span className="font-mono text-slate-500 text-[10px] shrink-0">
+                        {p === 'mobile' ? 'Mobile App' : p.toUpperCase()}
+                      </span>
                     )}
                   </div>
                 </div>
@@ -625,43 +705,301 @@ export const GamingHistoryView: React.FC = () => {
                   {game.audioFocus}
                 </p>
 
-                {/* Playtime Progress Bar & Hours */}
-                <div className="space-y-1.5 pt-1.5 border-t border-slate-800/60 font-sans">
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">누적 플레이</span>
-                    <span className="text-slate-200 text-xs font-medium">
-                      <span className="font-mono font-bold text-amber-300 text-sm">{game.hoursPlayed}</span>시간
+                {/* Playtime Progress Bar & Hours (Hidden if hoursPlayed is 0 or undefined, as requested) */}
+                {game.hoursPlayed && game.hoursPlayed > 0 ? (
+                  <div className="space-y-1.5 pt-1.5 border-t border-slate-800/60 font-sans">
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">누적 플레이</span>
+                      <span className="text-slate-200 text-xs font-medium">
+                        <span className="font-mono font-bold text-amber-300 text-sm">{game.hoursPlayed}</span>시간
+                      </span>
+                    </div>
+                    <div className="w-full flex items-center gap-1 py-0.5 no-print" aria-hidden="true">
+                      {Array.from({ length: 14 }).map((_, i) => {
+                        const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
+                        const isActive = i < activeCount;
+
+                        const getActiveColor = (idx: number) => {
+                          if (idx < 4) return 'bg-cyan-600/90';
+                          if (idx < 7) return 'bg-cyan-400/95';
+                          if (idx < 10) return 'bg-teal-300';
+                          if (idx < 12) return 'bg-amber-300';
+                          return 'bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.35)]';
+                        };
+
+                        return (
+                          <div
+                            key={i}
+                            className={`h-1.5 flex-1 -skew-x-12 rounded-[0.5px] transition-all duration-300 ${
+                              isActive ? getActiveColor(i) : 'bg-slate-800/40'
+                            }`}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="pt-1.5 border-t border-slate-800/60 flex items-center justify-between text-xs text-slate-500 font-sans">
+                    <span className="text-[11px] text-emerald-400/80 font-mono flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
+                      플레이 이력 보관
                     </span>
+                    <span className="text-[11px] font-mono text-slate-500">Google Play</span>
                   </div>
-                  <div className="w-full flex items-center gap-1 py-0.5 no-print" aria-hidden="true">
-                    {Array.from({ length: 14 }).map((_, i) => {
-                      const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
-                      const isActive = i < activeCount;
-
-                      const getActiveColor = (index: number) => {
-                        if (index < 4) return 'bg-cyan-600/90';
-                        if (index < 7) return 'bg-cyan-400/95';
-                        if (index < 10) return 'bg-teal-300';
-                        if (index < 12) return 'bg-amber-300';
-                        return 'bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.35)]';
-                      };
-
-                      return (
-                        <div
-                          key={i}
-                          className={`h-1.5 flex-1 -skew-x-12 rounded-[0.5px] transition-all duration-300 ${
-                            isActive ? getActiveColor(i) : 'bg-slate-800/40'
-                          }`}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
+                )}
               </a>
             );
           })}
         </div>
       )}
+
+      {/* Cash Purchase Totals (Steam / Google Play / App Store) */}
+      <div className="pt-4 border-t border-slate-800/80">
+        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-[#0b0f1a] to-[#070910] border border-slate-800/90 shadow-lg relative overflow-hidden">
+          {/* Subtle Ambient Glow */}
+          <div className="absolute top-0 right-0 w-72 h-36 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+
+          {/* Header & Controls */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-slate-800/70">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-amber-950/70 border border-amber-500/40 flex items-center justify-center shrink-0 shadow-inner">
+                <CreditCard className="w-4 h-4 text-amber-400" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h4 className="text-sm sm:text-base font-bold text-slate-200 tracking-wide font-sans">
+                    게임 플랫폼 현금 결제 누적 총액
+                  </h4>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-semibold">
+                    총 {totalSpent.toLocaleString()}원
+                  </span>
+                </div>
+                <p className="text-xs text-slate-400 mt-0.5 break-keep">
+                  PC 및 모바일 플랫폼에서 실제 라이브러리 구매와 인게임 결제에 소모된 누적 투자 규모
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
+              {isEditingPurchases ? (
+                <>
+                  <button
+                    onClick={handleSavePurchases}
+                    type="button"
+                    className="px-2.5 py-1 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/50 text-xs font-medium flex items-center gap-1.5 transition-all shadow-sm"
+                  >
+                    <Check className="w-3.5 h-3.5" />
+                    <span>저장</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      soundEngine.playClick();
+                      setTempAmounts(purchaseAmounts);
+                      setIsEditingPurchases(false);
+                    }}
+                    type="button"
+                    className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-medium transition-all"
+                  >
+                    취소
+                  </button>
+                  <button
+                    onClick={handleResetPurchases}
+                    type="button"
+                    title="초기 기본값으로 복원"
+                    className="p-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-slate-200 border border-slate-700 transition-colors"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={() => {
+                    soundEngine.playClick();
+                    setTempAmounts(purchaseAmounts);
+                    setIsEditingPurchases(true);
+                  }}
+                  type="button"
+                  className="px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-cyan-300 border border-slate-800 hover:border-cyan-500/40 text-xs font-mono flex items-center gap-1.5 transition-all"
+                >
+                  <Edit3 className="w-3 h-3 text-cyan-400" />
+                  <span>금액 직접 수정</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* 3 Platform Cards: Steam / Google Play / App Store */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-3.5">
+            {/* 1. Steam */}
+            <div className="p-3.5 rounded-xl bg-[#0d1220] border border-cyan-500/30 hover:border-cyan-500/60 transition-all flex flex-col justify-between gap-3 relative overflow-hidden group">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-cyan-950/80 border border-cyan-500/50 flex items-center justify-center p-1.5 shrink-0">
+                    <svg className="w-full h-full fill-cyan-400" viewBox="0 0 24 24">
+                      <path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.029 4.524 4.524s-2.03 4.524-4.524 4.524h-.105l-4.076 2.911c0 .052.005.105.005.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 12-5.373 12-12S18.605 0 11.979 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-slate-200 block leading-tight">스팀 (Steam)</span>
+                    <span className="text-[10px] text-cyan-400 font-mono">PC 라이브러리 & 게임 패키지</span>
+                  </div>
+                </div>
+                <span className="text-[10px] font-mono text-slate-500 uppercase px-1.5 py-0.5 rounded bg-black/40 border border-slate-800">
+                  PC
+                </span>
+              </div>
+
+              {isEditingPurchases ? (
+                <div className="pt-1">
+                  <label className="text-[10px] text-slate-400 font-mono block mb-1">결제 총액 (원):</label>
+                  <input
+                    type="number"
+                    step="10000"
+                    value={tempAmounts.steam}
+                    onChange={(e) => setTempAmounts(prev => ({ ...prev, steam: Number(e.target.value) || 0 }))}
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-950 border border-cyan-500/50 text-white font-mono text-sm focus:outline-none focus:border-cyan-400"
+                  />
+                </div>
+              ) : (
+                <div className="space-y-1">
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-xs text-slate-400">누적 결제액</span>
+                    <div className="text-right">
+                      <span className="text-lg sm:text-xl font-mono font-black text-cyan-300">
+                        {purchaseAmounts.steam.toLocaleString()}
+                      </span>
+                      <span className="text-xs text-slate-400 ml-1 font-sans">원</span>
+                    </div>
+                  </div>
+                  <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                    <div
+                      className="bg-cyan-400 h-full rounded-full transition-all duration-500"
+                      style={{ width: `${totalSpent > 0 ? (purchaseAmounts.steam / totalSpent) * 100 : 0}%` }}
+                    />
+                  </div>
+                  <div className="flex justify-between text-[10px] font-mono text-slate-500 pt-0.5">
+                    <span>전체 결제의 {totalSpent > 0 ? Math.round((purchaseAmounts.steam / totalSpent) * 100) : 0}%</span>
+                    <span>패키지 및 DLC</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* 2. Google Play */}
+            <div className="p-3.5 rounded-xl bg-[#0d1220] border border-emerald-500/30 hover:border-emerald-500/60 transition-all flex flex-col justify-between gap-3 relative overflow-hidden group">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-emerald-950/80 border border-emerald-500/50 flex items-center justify-center p-1.5 shrink-0">
+                    <svg className="w-full h-full" viewBox="0 0 24 24" fill="none">
+                      <path d="M3.609 1.814L13.793 12 3.61 22.186A2.298 2.298 0 013 20.575V3.425c0-.62.228-1.2.609-1.611z" fill="#00E676" />
+                      <path d="M17.186 8.607L13.793 12l3.393 3.393 3.829-2.209c1.096-.632 1.096-1.736 0-2.368l-3.829-2.209z" fill="#FFD600" />
+                      <path d="M13.793 12L3.61 1.814c.381-.412.93-.652 1.542-.299l12.034 6.942L13.793 12z" fill="#00B0FF" />
+                      <path d="M13.793 12l3.393 3.443-12.034 6.942c-.612.353-1.161.113-1.542-.299L13.793 12z" fill="#FF3D00" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-slate-200 block leading-tight">구글 플레이 (Google Play)</span>
+                    <span className="text-[10px] text-emerald-400 font-mono">안드로이드 인게임 과금 & 패스</span>
+                  </div>
+                </div>
+                <span className="text-[10px] font-mono text-slate-500 uppercase px-1.5 py-0.5 rounded bg-black/40 border border-slate-800">
+                  AOS
+                </span>
+              </div>
+
+              {isEditingPurchases ? (
+                <div className="pt-1">
+                  <label className="text-[10px] text-slate-400 font-mono block mb-1">결제 총액 (원):</label>
+                  <input
+                    type="number"
+                    step="10000"
+                    value={tempAmounts.googlePlay}
+                    onChange={(e) => setTempAmounts(prev => ({ ...prev, googlePlay: Number(e.target.value) || 0 }))}
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-950 border border-emerald-500/50 text-white font-mono text-sm focus:outline-none focus:border-emerald-400"
+                  />
+                </div>
+              ) : (
+                <div className="space-y-1">
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-xs text-slate-400">누적 결제액</span>
+                    <div className="text-right">
+                      <span className="text-lg sm:text-xl font-mono font-black text-emerald-300">
+                        {purchaseAmounts.googlePlay.toLocaleString()}
+                      </span>
+                      <span className="text-xs text-slate-400 ml-1 font-sans">원</span>
+                    </div>
+                  </div>
+                  <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                    <div
+                      className="bg-emerald-400 h-full rounded-full transition-all duration-500"
+                      style={{ width: `${totalSpent > 0 ? (purchaseAmounts.googlePlay / totalSpent) * 100 : 0}%` }}
+                    />
+                  </div>
+                  <div className="flex justify-between text-[10px] font-mono text-slate-500 pt-0.5">
+                    <span>전체 결제의 {totalSpent > 0 ? Math.round((purchaseAmounts.googlePlay / totalSpent) * 100) : 0}%</span>
+                    <span>월정액 및 패스권</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* 3. App Store */}
+            <div className="p-3.5 rounded-xl bg-[#0d1220] border border-sky-500/30 hover:border-sky-500/60 transition-all flex flex-col justify-between gap-3 relative overflow-hidden group">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-sky-950/80 border border-sky-500/50 flex items-center justify-center p-1.5 shrink-0">
+                    <svg className="w-full h-full fill-sky-300" viewBox="0 0 24 24">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.64 1.35-.56.65-1.06 1.71-.92 2.74 1.01.08 2.03-.49 2.64-1.24z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-slate-200 block leading-tight">앱스토어 (App Store)</span>
+                    <span className="text-[10px] text-sky-400 font-mono">iOS 인게임 아이템 & 유료 앱</span>
+                  </div>
+                </div>
+                <span className="text-[10px] font-mono text-slate-500 uppercase px-1.5 py-0.5 rounded bg-black/40 border border-slate-800">
+                  iOS
+                </span>
+              </div>
+
+              {isEditingPurchases ? (
+                <div className="pt-1">
+                  <label className="text-[10px] text-slate-400 font-mono block mb-1">결제 총액 (원):</label>
+                  <input
+                    type="number"
+                    step="10000"
+                    value={tempAmounts.appStore}
+                    onChange={(e) => setTempAmounts(prev => ({ ...prev, appStore: Number(e.target.value) || 0 }))}
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-950 border border-sky-500/50 text-white font-mono text-sm focus:outline-none focus:border-sky-400"
+                  />
+                </div>
+              ) : (
+                <div className="space-y-1">
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-xs text-slate-400">누적 결제액</span>
+                    <div className="text-right">
+                      <span className="text-lg sm:text-xl font-mono font-black text-sky-300">
+                        {purchaseAmounts.appStore.toLocaleString()}
+                      </span>
+                      <span className="text-xs text-slate-400 ml-1 font-sans">원</span>
+                    </div>
+                  </div>
+                  <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                    <div
+                      className="bg-sky-400 h-full rounded-full transition-all duration-500"
+                      style={{ width: `${totalSpent > 0 ? (purchaseAmounts.appStore / totalSpent) * 100 : 0}%` }}
+                    />
+                  </div>
+                  <div className="flex justify-between text-[10px] font-mono text-slate-500 pt-0.5">
+                    <span>전체 결제의 {totalSpent > 0 ? Math.round((purchaseAmounts.appStore / totalSpent) * 100) : 0}%</span>
+                    <span>유료 앱 및 인게임 구매</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

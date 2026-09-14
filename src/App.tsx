@@ -35,6 +35,7 @@ export default function App() {
         const parsed = JSON.parse(saved);
         return {
           ...parsed,
+          avatarUrl: INITIAL_PROFILE.avatarUrl,
           skills: INITIAL_PROFILE.skills,
           tools: INITIAL_PROFILE.tools,
         };
