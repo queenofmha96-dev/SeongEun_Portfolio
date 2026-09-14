@@ -30,13 +30,14 @@ export default function App() {
 
   const [profile, setProfile] = useState<SoundDirectorProfile>(() => {
     try {
-      const saved = localStorage.getItem('seongeun_sound_profile');
+      const saved = localStorage.getItem('seongeun_sound_profile_v4');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed.email && parsed.email !== 'queenofmha96@gmail.com') {
-          return INITIAL_PROFILE;
-        }
-        return parsed;
+        return {
+          ...parsed,
+          skills: INITIAL_PROFILE.skills,
+          tools: INITIAL_PROFILE.tools,
+        };
       }
     } catch {
       // fallback
@@ -57,7 +58,8 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('seongeun_sound_profile', JSON.stringify(profile));
+      localStorage.removeItem('seongeun_sound_profile');
+      localStorage.setItem('seongeun_sound_profile_v4', JSON.stringify(profile));
     } catch {
       // ignore
     }

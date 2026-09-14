@@ -16,9 +16,9 @@ export const INITIAL_PROFILE: SoundDirectorProfile = {
       description: "게임 엔진 연동 인터랙티브 사운드 파라미터 제어 및 오디오 이벤트 설계"
     },
     {
-      name: "SFX Design & Creature Voice",
-      tag: "주력",
-      description: "액션 타격감 SFX, 마법·메카닉 이펙트, 크리처 보이스 멀티 레이어링"
+      name: "Unreal Engine 5 / MetaSound",
+      tag: "실무",
+      description: "엔진 내 MetaSound 노드 기반 절차적 사운드 설계, 3D 공간 음향(Spatial Audio) 및 앰비언스 연동"
     },
     {
       name: "Foley Recording & Layering",
@@ -29,25 +29,13 @@ export const INITIAL_PROFILE: SoundDirectorProfile = {
       name: "Pro Tools & Reaper DAW",
       tag: "실무",
       description: "믹싱·마스터링, 배치 프로세싱 및 사운드 에디팅 메인 DAW"
-    },
-    {
-      name: "Unreal Engine 5 / Unity Audio",
-      tag: "실무",
-      description: "엔진 내 3D 공간 음향(Spatial Audio), 감쇄 곡선 및 앰비언스 연동"
-    },
-    {
-      name: "Game BGM Composition & Adaptive Audio",
-      tag: "실무",
-      description: "테마 BGM 작곡 및 인게임 상황 변화에 따른 적응형 오디오 연출"
-    },
+    }
   ],
   tools: [
     { name: "FMOD Studio", icon: "Radio", description: "인터랙티브 파라미터 제어 및 적응형 사운드 이벤트 구축" },
     { name: "Audiokinetic Wwise", icon: "Disc", description: "3D Spatial Audio 및 동적 사운드 파이프라인 설계" },
     { name: "Pro Tools Ultimate", icon: "Sliders", description: "시네마틱 오디오 믹싱 마스터링 및 보이스 에디팅" },
     { name: "Reaper", icon: "Activity", description: "대규모 SFX 배치 프로세싱 및 오토메이션" },
-    { name: "Kyma / Max MSP", icon: "Cpu", description: "SF 및 메카닉 특수 합성음 디자인" },
-    { name: "Ableton Live", icon: "Music", description: "신디사이저 및 하이브리드 게임 테마 BGM 작곡" },
   ],
   experience: [
     {

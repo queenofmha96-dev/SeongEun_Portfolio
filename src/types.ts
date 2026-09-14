@@ -53,6 +53,7 @@ export interface GameplayLog {
 
 export interface SoundDirectorProfile {
   name: string;
+  avatarUrl?: string;
   title: string;
   tagline: string;
   notionLink?: string;
@@ -63,7 +64,7 @@ export interface SoundDirectorProfile {
   philosophy: string;
   skills: {
     name: string;
-    tag: '주력' | '실무';
+    tag?: string;
     description: string;
   }[];
   tools: {
