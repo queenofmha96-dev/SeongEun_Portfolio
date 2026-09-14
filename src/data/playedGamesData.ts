@@ -942,6 +942,6 @@ export const PLAYED_GAMES_LIST: PlayedGameItem[] = [
     steamUrl: "https://www.nintendo.com/ko-kr/switch/3dworld/",
     platform: "switch"
   },
-  // --- Mobile Games (211 Titles, No hours displayed) ---
+  // --- Mobile Games (278 Titles, No hours displayed) ---
   ...MOBILE_GAMES_LIST
 ];

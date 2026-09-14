@@ -2110,5 +2110,675 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "headerImg": "",
     "steamUrl": "https://play.google.com/store/search?q=%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%8F%E3%83%B3%E3%82%BF%E3%83%BC%20%E3%83%A9%E3%82%A4%E3%83%80%E3%83%BC%E3%82%BA&c=apps",
     "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-0-211",
+    "name": "브롤스타즈",
+    "genre": "실시간 대전 액션",
+    "audioFocus": "경쾌한 아케이드 팝 SFX와 개성 넘치는 캐릭터 시그니처 보이스",
+    "tag": "ARCADE POP SFX",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%B8%8C%EB%A1%A4%EC%8A%A4%ED%83%80%EC%A6%88&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-1-212",
+    "name": "스타러쉬",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%8A%A4%ED%83%80%EB%9F%AC%EC%89%AC&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-2-213",
+    "name": "회색병동",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%9A%8C%EC%83%89%EB%B3%91%EB%8F%99&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-3-214",
+    "name": "협동타워디펜스",
+    "genre": "전략 / 타워디펜스",
+    "audioFocus": "유닛 소환 클릭음과 몰려오는 웨이브 저음역 타격 믹스",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%98%91%EB%8F%99%ED%83%80%EC%9B%8C%EB%94%94%ED%8E%9C%EC%8A%A4&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-4-215",
+    "name": "명일방주엔드필드",
+    "genre": "서브컬처 수집형 RPG",
+    "audioFocus": "앰비언트 인더스트리얼 신스 및 정밀한 전술 배치 오디오",
+    "tag": "TACTICAL AMBIENT",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%AA%85%EC%9D%BC%EB%B0%A9%EC%A3%BC%EC%97%94%EB%93%9C%ED%95%84%EB%93%9C&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-5-216",
+    "name": "어나더던전",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%96%B4%EB%82%98%EB%8D%94%EB%8D%98%EC%A0%84&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-6-217",
+    "name": "카오스제로나이트",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%B9%B4%EC%98%A4%EC%8A%A4%EC%A0%9C%EB%A1%9C%EB%82%98%EC%9D%B4%ED%8A%B8&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-7-218",
+    "name": "명일방주",
+    "genre": "서브컬처 수집형 RPG",
+    "audioFocus": "앰비언트 인더스트리얼 신스 및 정밀한 전술 배치 오디오",
+    "tag": "TACTICAL AMBIENT",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%AA%85%EC%9D%BC%EB%B0%A9%EC%A3%BC&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-8-219",
+    "name": "가디스오더",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EA%B0%80%EB%94%94%EC%8A%A4%EC%98%A4%EB%8D%94&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-9-220",
+    "name": "픽셀우주선",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%94%BD%EC%85%80%EC%9A%B0%EC%A3%BC%EC%84%A0&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-10-221",
+    "name": "그랜드크로스",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EA%B7%B8%EB%9E%9C%EB%93%9C%ED%81%AC%EB%A1%9C%EC%8A%A4&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-11-222",
+    "name": "문명",
+    "genre": "전략 / 타워디펜스",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%AC%B8%EB%AA%85&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-12-223",
+    "name": "쉐도우버스",
+    "genre": "전략 카드 배틀 (CCG)",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%89%90%EB%8F%84%EC%9A%B0%EB%B2%84%EC%8A%A4&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-13-224",
+    "name": "세븐나이츠 리버스",
+    "genre": "서브컬처 수집형 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%84%B8%EB%B8%90%EB%82%98%EC%9D%B4%EC%B8%A0%20%EB%A6%AC%EB%B2%84%EC%8A%A4&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-14-225",
+    "name": "운빨돌격대",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%9A%B4%EB%B9%A8%EB%8F%8C%EA%B2%A9%EB%8C%80&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-15-226",
+    "name": "트라이브 나인",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%8A%B8%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EB%82%98%EC%9D%B8&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-16-227",
+    "name": "리메멘토",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%A6%AC%EB%A9%94%EB%A9%98%ED%86%A0&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-17-228",
+    "name": "소울나이트",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%86%8C%EC%9A%B8%EB%82%98%EC%9D%B4%ED%8A%B8&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-18-229",
+    "name": "메카아라시",
+    "genre": "액션 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%A9%94%EC%B9%B4%EC%95%84%EB%9D%BC%EC%8B%9C&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-19-230",
+    "name": "울빤존많겜",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%9A%B8%EB%B9%A4%EC%A1%B4%EB%A7%8E%EA%B2%9C&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-20-231",
+    "name": "슬레이어키우기",
+    "genre": "방치형 / 클리커",
+    "audioFocus": "중독성 있는 재화 파밍 챠링음 및 폭발적인 크리티컬 타격 효과음",
+    "tag": "IDLE REWARD FOLEY",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%8A%AC%EB%A0%88%EC%9D%B4%EC%96%B4%ED%82%A4%EC%9A%B0%EA%B8%B0&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-21-232",
+    "name": "소드오브콘발라리아",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%86%8C%EB%93%9C%EC%98%A4%EB%B8%8C%EC%BD%98%EB%B0%9C%EB%9D%BC%EB%A6%AC%EC%95%84&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-22-233",
+    "name": "스노우블레이크",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B8%94%EB%A0%88%EC%9D%B4%ED%81%AC&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-23-234",
+    "name": "젠레스존제로",
+    "genre": "액션 RPG",
+    "audioFocus": "트렌디한 시티 팝/일렉트로닉 비트와 극강의 타격 버스트 트랜지언트",
+    "tag": "CITY BEATS & IMPACT",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%A0%A0%EB%A0%88%EC%8A%A4%EC%A1%B4%EC%A0%9C%EB%A1%9C&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-24-235",
+    "name": "쿠키런오븐브레이크",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%BF%A0%ED%82%A4%EB%9F%B0%EC%98%A4%EB%B8%90%EB%B8%8C%EB%A0%88%EC%9D%B4%ED%81%AC&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-25-236",
+    "name": "쿠키런모험의탑",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%BF%A0%ED%82%A4%EB%9F%B0%EB%AA%A8%ED%97%98%EC%9D%98%ED%83%91&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-26-237",
+    "name": "아너오브킹즈",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%95%84%EB%84%88%EC%98%A4%EB%B8%8C%ED%82%B9%EC%A6%88&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-27-238",
+    "name": "나혼자만레벨업",
+    "genre": "액션 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%82%98%ED%98%BC%EC%9E%90%EB%A7%8C%EB%A0%88%EB%B2%A8%EC%97%85&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-28-239",
+    "name": "운빨디펜스",
+    "genre": "전략 / 타워디펜스",
+    "audioFocus": "유닛 소환 클릭음과 몰려오는 웨이브 저음역 타격 믹스",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%9A%B4%EB%B9%A8%EB%94%94%ED%8E%9C%EC%8A%A4&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-29-240",
+    "name": "스쿼드 버스터즈",
+    "genre": "실시간 대전 액션",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%8A%A4%EC%BF%BC%EB%93%9C%20%EB%B2%84%EC%8A%A4%ED%84%B0%EC%A6%88&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-5-241",
+    "name": "페르소나5더팬텀",
+    "genre": "서브컬처 수집형 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%985%EB%8D%94%ED%8C%AC%ED%85%80&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-flyhigh-242",
+    "name": "하이큐FLYHIGH",
+    "genre": "스포츠 / 육성 시뮬레이션",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%95%98%EC%9D%B4%ED%81%90FLYHIGH&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-2-243",
+    "name": "별이되어라2",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%B3%84%EC%9D%B4%EB%90%98%EC%96%B4%EB%9D%BC2&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-33-244",
+    "name": "아스니아트리거",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%95%84%EC%8A%A4%EB%8B%88%EC%95%84%ED%8A%B8%EB%A6%AC%EA%B1%B0&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-34-245",
+    "name": "코노스바 모바일",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%BD%94%EB%85%B8%EC%8A%A4%EB%B0%94%20%EB%AA%A8%EB%B0%94%EC%9D%BC&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-35-246",
+    "name": "창세기전 모바일",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%B0%BD%EC%84%B8%EA%B8%B0%EC%A0%84%20%EB%AA%A8%EB%B0%94%EC%9D%BC&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-36-247",
+    "name": "워크래프트럼블",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%9B%8C%ED%81%AC%EB%9E%98%ED%94%84%ED%8A%B8%EB%9F%BC%EB%B8%94&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-37-248",
+    "name": "옥토패스 트래블러 대륙의패자",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%98%A5%ED%86%A0%ED%8C%A8%EC%8A%A4%20%ED%8A%B8%EB%9E%98%EB%B8%94%EB%9F%AC%20%EB%8C%80%EB%A5%99%EC%9D%98%ED%8C%A8%EC%9E%90&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-38-249",
+    "name": "마대자 로그라이크",
+    "genre": "로그라이크 / 퍼즐",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%A7%88%EB%8C%80%EC%9E%90%20%EB%A1%9C%EA%B7%B8%EB%9D%BC%EC%9D%B4%ED%81%AC&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-m-250",
+    "name": "진삼국무쌍M",
+    "genre": "액션 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%A7%84%EC%82%BC%EA%B5%AD%EB%AC%B4%EC%8C%8DM&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-40-251",
+    "name": "엘리멘탈",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%97%98%EB%A6%AC%EB%A9%98%ED%83%88&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-41-252",
+    "name": "실력자가 되고싶어서",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%8B%A4%EB%A0%A5%EC%9E%90%EA%B0%80%20%EB%90%98%EA%B3%A0%EC%8B%B6%EC%96%B4%EC%84%9C&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-42-253",
+    "name": "빌딩앤파이터",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%B9%8C%EB%94%A9%EC%95%A4%ED%8C%8C%EC%9D%B4%ED%84%B0&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-1999-254",
+    "name": "리버스1999",
+    "genre": "서브컬처 수집형 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%A6%AC%EB%B2%84%EC%8A%A41999&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-44-255",
+    "name": "트릭컬리바이브",
+    "genre": "서브컬처 수집형 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%8A%B8%EB%A6%AD%EC%BB%AC%EB%A6%AC%EB%B0%94%EC%9D%B4%EB%B8%8C&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-45-256",
+    "name": "몬스터헌터나우",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%AA%AC%EC%8A%A4%ED%84%B0%ED%97%8C%ED%84%B0%EB%82%98%EC%9A%B0&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-46-257",
+    "name": "세븐나이츠키우기",
+    "genre": "방치형 / 클리커",
+    "audioFocus": "중독성 있는 재화 파밍 챠링음 및 폭발적인 크리티컬 타격 효과음",
+    "tag": "IDLE REWARD FOLEY",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%84%B8%EB%B8%90%EB%82%98%EC%9D%B4%EC%B8%A0%ED%82%A4%EC%9A%B0%EA%B8%B0&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-47-258",
+    "name": "아레스 라이즈오브가디언즈",
+    "genre": "전략 / 타워디펜스",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%95%84%EB%A0%88%EC%8A%A4%20%EB%9D%BC%EC%9D%B4%EC%A6%88%EC%98%A4%EB%B8%8C%EA%B0%80%EB%94%94%EC%96%B8%EC%A6%88&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-48-259",
+    "name": "해리포터 께어난마법",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%95%B4%EB%A6%AC%ED%8F%AC%ED%84%B0%20%EA%BB%98%EC%96%B4%EB%82%9C%EB%A7%88%EB%B2%95&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-2-260",
+    "name": "브라운더스트2",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%B8%8C%EB%9D%BC%EC%9A%B4%EB%8D%94%EC%8A%A4%ED%8A%B82&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-50-261",
+    "name": "기동전대 아이언사가",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EA%B8%B0%EB%8F%99%EC%A0%84%EB%8C%80%20%EC%95%84%EC%9D%B4%EC%96%B8%EC%82%AC%EA%B0%80&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-51-262",
+    "name": "림보스컴퍼니",
+    "genre": "서브컬처 수집형 RPG",
+    "audioFocus": "밀리(Mili) 특유의 아방가르드 아트 록 사운드트랙과 묵직한 타격감",
+    "tag": "AVANT-GARDE ROCK",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%A6%BC%EB%B3%B4%EC%8A%A4%EC%BB%B4%ED%8D%BC%EB%8B%88&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-52-263",
+    "name": "해븐 번즈레드",
+    "genre": "서브컬처 수집형 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%95%B4%EB%B8%90%20%EB%B2%88%EC%A6%88%EB%A0%88%EB%93%9C&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-53-264",
+    "name": "에버소울",
+    "genre": "서브컬처 수집형 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%97%90%EB%B2%84%EC%86%8C%EC%9A%B8&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-54-265",
+    "name": "니케",
+    "genre": "서브컬처 수집형 RPG",
+    "audioFocus": "강렬한 록/인더스트리얼 EDM BGM 및 총기 메카닉 격발 Foley 사운드",
+    "tag": "CYBER METALLIC FOLEY",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%8B%88%EC%BC%80&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-55-266",
+    "name": "무기미도",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%AC%B4%EA%B8%B0%EB%AF%B8%EB%8F%84&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-56-267",
+    "name": "마블스냅",
+    "genre": "전략 카드 배틀 (CCG)",
+    "audioFocus": "카드 플립 햅틱 사운드 및 스냅 시 긴장감 넘치는 베이스 드롭",
+    "tag": "CCG IMPACT SFX",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%A7%88%EB%B8%94%EC%8A%A4%EB%83%85&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-57-268",
+    "name": "메멘토 모리",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%A9%94%EB%A9%98%ED%86%A0%20%EB%AA%A8%EB%A6%AC&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-58-269",
+    "name": "라이즈오브킹덤즈",
+    "genre": "전략 / 타워디펜스",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%9D%BC%EC%9D%B4%EC%A6%88%EC%98%A4%EB%B8%8C%ED%82%B9%EB%8D%A4%EC%A6%88&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-59-270",
+    "name": "로닌",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%A1%9C%EB%8B%8C&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-60-271",
+    "name": "이블헌터 타이쿤",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%9D%B4%EB%B8%94%ED%97%8C%ED%84%B0%20%ED%83%80%EC%9D%B4%EC%BF%A4&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-61-272",
+    "name": "타워오브판타지",
+    "genre": "전략 / 타워디펜스",
+    "audioFocus": "유닛 소환 클릭음과 몰려오는 웨이브 저음역 타격 믹스",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%83%80%EC%9B%8C%EC%98%A4%EB%B8%8C%ED%8C%90%ED%83%80%EC%A7%80&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-62-273",
+    "name": "모바일레전드",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%A0%88%EC%A0%84%EB%93%9C&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-63-274",
+    "name": "세븐나이츠 레볼루션",
+    "genre": "모바일 RPG",
+    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
+    "tag": "MOBILE AUDIO LOG",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%84%B8%EB%B8%90%EB%82%98%EC%9D%B4%EC%B8%A0%20%EB%A0%88%EB%B3%BC%EB%A3%A8%EC%85%98&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-64-275",
+    "name": "우마무스메",
+    "genre": "스포츠 / 육성 시뮬레이션",
+    "audioFocus": "박진감 넘치는 라이브 보컬곡과 관중 함성, 경기장 아나운서 실황 오디오",
+    "tag": "LIVE STADIUM AUDIO",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EC%9A%B0%EB%A7%88%EB%AC%B4%EC%8A%A4%EB%A9%94&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-65-276",
+    "name": "퍼니싱 그레이레이븐",
+    "genre": "액션 RPG",
+    "audioFocus": "초고속 비트 사이버네틱 브레이크비트 및 정밀한 회피 불릿타임 SFX",
+    "tag": "CYBERNETIC ACTION",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%ED%8D%BC%EB%8B%88%EC%8B%B1%20%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%A0%88%EC%9D%B4%EB%B8%90&c=apps",
+    "platform": "mobile"
+  },
+  {
+    "appId": "mobile-mob-66-277",
+    "name": "디아블로이모탈",
+    "genre": "액션 RPG",
+    "audioFocus": "어두운 고딕 오케스트라 앰비언스와 악마 처치 고어 임팩트",
+    "tag": "GOTHIC DARK ORCHESTRA",
+    "headerImg": "",
+    "steamUrl": "https://play.google.com/store/search?q=%EB%94%94%EC%95%84%EB%B8%94%EB%A1%9C%EC%9D%B4%EB%AA%A8%ED%83%88&c=apps",
+    "platform": "mobile"
   }
 ];
