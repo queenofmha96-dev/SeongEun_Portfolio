@@ -1,24 +1,8 @@
 import React from 'react';
-import { Sparkles, Target, Headphones, Users, Compass } from 'lucide-react';
 
 export const CoverLetterSection: React.FC = () => {
   return (
-    <div className="rounded-2xl bg-[#0c0e18] border border-slate-800/80 p-6 sm:p-9 md:p-12 shadow-xl space-y-10">
-      
-      {/* Title Header */}
-      <div className="space-y-3 pb-6 border-b border-slate-800/80">
-        <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs sm:text-sm font-bold tracking-wider">
-          <Sparkles className="w-4 h-4 text-amber-400" />
-          <span>COVER LETTER & DESIGN PHILOSOPHY</span>
-        </div>
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-snug break-keep">
-          사운드로 플레이어에게 잊지 못할 몰입과 손끝의 타격감을 선사하는 사운드 디자이너
-        </h3>
-        <p className="text-sm sm:text-base text-slate-400 font-sans break-keep">
-          게임 연출의 핵심인 SFX, Foley, 3D 공간 음향 설계를 통해 게임 세계관의 완성도를 끌어올립니다.
-        </p>
-      </div>
-
+    <div className="rounded-2xl bg-[#0c0e18] border border-slate-800/80 p-6 sm:p-9 md:p-12 shadow-xl">
       {/* Main Narrative Paragraphs */}
       <div className="space-y-8 text-slate-200 text-sm sm:text-base md:text-[17px] font-sans leading-relaxed sm:leading-loose break-keep">
         
@@ -85,44 +69,6 @@ export const CoverLetterSection: React.FC = () => {
               게임을 진심으로 좋아하는 게이머이지만 개인적인 취향이 있었기에 과거에는 많이 접하지 않았던 장르들도 있었습니다. 하지만 전문 사운드 디자이너로서의 스펙트럼을 넓히기 위해, 개인적인 선호와 상관없이 평소 접해보지 않았던 다양한 장르의 게임들까지 직접 플레이하고 뜯어보며 오디오 구조를 분석하는 노력을 지속하고 있습니다.
             </p>
           </div>
-        </div>
-
-      </div>
-
-      {/* Core Values / Summary Grid */}
-      <div className="pt-6 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-3 gap-4">
-        
-        <div className="p-4 rounded-xl bg-[#080a12] border border-slate-800/80 space-y-2">
-          <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase">
-            <Headphones className="w-4 h-4" />
-            <span>Sound Craft</span>
-          </div>
-          <h5 className="text-white font-bold text-sm">차별화된 오디오 퀄리티</h5>
-          <p className="text-xs text-slate-400 leading-relaxed font-sans">
-            자체 폴리 레코딩과 정밀 레이어링으로 게임 고유의 아이덴티티를 살리는 시그니처 사운드 구현
-          </p>
-        </div>
-
-        <div className="p-4 rounded-xl bg-[#080a12] border border-slate-800/80 space-y-2">
-          <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase">
-            <Target className="w-4 h-4" />
-            <span>Interactive Tech</span>
-          </div>
-          <h5 className="text-white font-bold text-sm">실시간 인터랙티브 연동</h5>
-          <p className="text-xs text-slate-400 leading-relaxed font-sans">
-            UE5 MetaSound 및 미들웨어 기반 파라미터 제어로 상황에 맞게 반응하는 적응형 오디오 구축
-          </p>
-        </div>
-
-        <div className="p-4 rounded-xl bg-[#080a12] border border-slate-800/80 space-y-2">
-          <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold uppercase">
-            <Users className="w-4 h-4" />
-            <span>Global & Team</span>
-          </div>
-          <h5 className="text-white font-bold text-sm">적극적인 소통 & 글로벌</h5>
-          <p className="text-xs text-slate-400 leading-relaxed font-sans">
-            타 파트와의 긴밀한 싱크 조율 및 중국어 원어민 역량을 통한 해외 보이스 디렉팅 지원
-          </p>
         </div>
 
       </div>

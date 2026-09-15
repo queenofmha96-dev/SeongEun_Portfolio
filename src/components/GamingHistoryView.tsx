@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio, Smartphone, Monitor, Disc, CreditCard, Edit3, Check, RotateCcw, DollarSign, Layers } from 'lucide-react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio, Smartphone, Monitor, Disc, CreditCard, Edit3, Check, RotateCcw, DollarSign, Layers, ChevronLeft, ChevronRight } from 'lucide-react';
 import { OFFICIAL_STEAM_PROFILE_DATA } from '../data/steamData';
 import { PLAYED_GAMES_LIST, PlayedGameItem, GamePlatform } from '../data/playedGamesData';
 import { SteamProfileData } from '../types';
@@ -199,7 +199,7 @@ export const GameLogoBadge: React.FC<{ gameId: string; size?: 'normal' | 'compac
 };
 
 export const GamingHistoryView: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'steam' | 'all'>('all');
+  const [activeTab, setActiveTab] = useState<'steam' | 'all'>('steam');
   const [platformFilter, setPlatformFilter] = useState<'all' | GamePlatform>('all');
   const [steamData, setSteamData] = useState<SteamProfileData>(OFFICIAL_STEAM_PROFILE_DATA);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -312,6 +312,67 @@ export const GamingHistoryView: React.FC = () => {
   const steamTotalHours = steamData.games.reduce((acc, g) => acc + g.hoursTotal, 0);
   const steamMaxHours = Math.max(...steamData.games.map(g => g.hoursTotal), 100);
 
+  // 1열 4칸(4열) 기준, 밑으로 2행까지 = 한 페이지당 8개
+  const ITEMS_PER_PAGE = 8;
+  const [steamPage, setSteamPage] = useState<number>(1);
+  const [playedGamesPage, setPlayedGamesPage] = useState<number>(1);
+  const gamesListTopRef = useRef<HTMLDivElement>(null);
+
+  const steamTotalPages = Math.max(1, Math.ceil(steamData.games.length / ITEMS_PER_PAGE));
+  const paginatedSteamGames = useMemo(() => {
+    const start = (steamPage - 1) * ITEMS_PER_PAGE;
+    return steamData.games.slice(start, start + ITEMS_PER_PAGE);
+  }, [steamData.games, steamPage]);
+
+  const playedTotalPages = Math.max(1, Math.ceil(filteredPlayedGames.length / ITEMS_PER_PAGE));
+  const paginatedPlayedGames = useMemo(() => {
+    const start = (playedGamesPage - 1) * ITEMS_PER_PAGE;
+    return filteredPlayedGames.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredPlayedGames, playedGamesPage]);
+
+  const handleTabChange = (tab: 'steam' | 'all') => {
+    soundEngine.playClick();
+    setActiveTab(tab);
+    setSteamPage(1);
+    setPlayedGamesPage(1);
+  };
+
+  const handlePlatformChange = (platform: 'all' | GamePlatform) => {
+    soundEngine.playClick();
+    setPlatformFilter(platform);
+    setPlayedGamesPage(1);
+  };
+
+  const handleSteamPageChange = (newPage: number) => {
+    if (newPage < 1 || newPage > steamTotalPages || newPage === steamPage) return;
+    soundEngine.playClick();
+    setSteamPage(newPage);
+    gamesListTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const handlePlayedPageChange = (newPage: number) => {
+    if (newPage < 1 || newPage > playedTotalPages || newPage === playedGamesPage) return;
+    soundEngine.playClick();
+    setPlayedGamesPage(newPage);
+    gamesListTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const getPageNumbers = (current: number, total: number) => {
+    if (total <= 7) {
+      return Array.from({ length: total }, (_, i) => i + 1);
+    }
+    const pages: (number | string)[] = [1];
+    if (current > 3) pages.push('ellipsis-start');
+    const start = Math.max(2, current - 1);
+    const end = Math.min(total - 1, current + 1);
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+    if (current < total - 2) pages.push('ellipsis-end');
+    pages.push(total);
+    return pages;
+  };
+
   return (
     <div className="w-full space-y-6 animate-fadeIn font-sans text-slate-100 py-1">
       {/* Official Steam Verified Profile Showcase Banner */}
@@ -395,11 +456,11 @@ export const GamingHistoryView: React.FC = () => {
       </div>
 
       {/* Tabs / Filter Controls */}
-      <div className="space-y-3 pb-1">
+      <div ref={gamesListTopRef} className="space-y-3 pb-1 scroll-mt-20">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <button
-              onClick={() => setActiveTab('steam')}
+              onClick={() => handleTabChange('steam')}
               className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
                 activeTab === 'steam'
                   ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 shadow-sm'
@@ -411,7 +472,7 @@ export const GamingHistoryView: React.FC = () => {
             </button>
 
             <button
-              onClick={() => setActiveTab('all')}
+              onClick={() => handleTabChange('all')}
               className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
                 activeTab === 'all'
                   ? 'bg-amber-500/20 text-amber-300 border border-amber-500/50 shadow-sm'
@@ -450,7 +511,7 @@ export const GamingHistoryView: React.FC = () => {
             <span className="text-[11px] text-slate-500 font-mono shrink-0 mr-1">플랫폼 필터:</span>
             
             <button
-              onClick={() => setPlatformFilter('all')}
+              onClick={() => handlePlatformChange('all')}
               className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
                 platformFilter === 'all'
                   ? 'bg-amber-500/20 text-amber-300 border border-amber-500/50'
@@ -462,7 +523,7 @@ export const GamingHistoryView: React.FC = () => {
             </button>
 
             <button
-              onClick={() => setPlatformFilter('steam')}
+              onClick={() => handlePlatformChange('steam')}
               className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
                 platformFilter === 'steam'
                   ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50'
@@ -475,7 +536,7 @@ export const GamingHistoryView: React.FC = () => {
             </button>
 
             <button
-              onClick={() => setPlatformFilter('ps5')}
+              onClick={() => handlePlatformChange('ps5')}
               className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
                 platformFilter === 'ps5'
                   ? 'bg-blue-500/25 text-blue-300 border border-blue-500/50'
@@ -488,7 +549,7 @@ export const GamingHistoryView: React.FC = () => {
             </button>
 
             <button
-              onClick={() => setPlatformFilter('switch')}
+              onClick={() => handlePlatformChange('switch')}
               className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
                 platformFilter === 'switch'
                   ? 'bg-red-500/25 text-red-300 border border-red-500/50'
@@ -501,7 +562,7 @@ export const GamingHistoryView: React.FC = () => {
             </button>
 
             <button
-              onClick={() => setPlatformFilter('mobile')}
+              onClick={() => handlePlatformChange('mobile')}
               className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
                 platformFilter === 'mobile'
                   ? 'bg-emerald-500/25 text-emerald-300 border border-emerald-500/50'
@@ -514,7 +575,7 @@ export const GamingHistoryView: React.FC = () => {
             </button>
 
             <button
-              onClick={() => setPlatformFilter('other')}
+              onClick={() => handlePlatformChange('other')}
               className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
                 platformFilter === 'other'
                   ? 'bg-purple-500/25 text-purple-300 border border-purple-500/50'
@@ -531,234 +592,69 @@ export const GamingHistoryView: React.FC = () => {
 
       {/* Tab 1: Steam Connected Games */}
       {activeTab === 'steam' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-fadeIn">
-          {steamData.games.map((game) => {
-            const percentage = Math.min(100, Math.round((game.hoursTotal / steamMaxHours) * 100));
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fadeIn">
+            {paginatedSteamGames.map((game) => {
+              const percentage = Math.min(100, Math.round((game.hoursTotal / steamMaxHours) * 100));
 
-            return (
-              <a
-                key={game.appId}
-                href={game.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-cyan-500/60 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md relative overflow-hidden"
-              >
-                {/* Game Capsule Thumbnail Header */}
-                <div className="relative rounded-xl overflow-hidden border border-slate-800/90 bg-slate-950 aspect-[184/69] w-full">
-                  <img
-                    src={game.logo}
-                    alt={game.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                  
-                  {game.hours2wk > 0 && (
-                    <span className="absolute top-2 right-2 inline-flex items-center gap-1 text-[10px] font-mono font-bold bg-emerald-950/90 text-emerald-400 border border-emerald-500/50 px-2 py-0.5 rounded-md shadow-sm">
-                      <Flame className="w-3 h-3 text-emerald-400" />
-                      최근 2주: {game.hours2wk}시간
-                    </span>
-                  )}
-                </div>
-
-                {/* Title and App ID */}
-                <div className="space-y-1 min-w-0">
-                  <div className="flex items-center justify-between gap-2">
-                    <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors break-keep truncate font-sans">
-                      {game.name}
-                    </h4>
-                    <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 shrink-0 transition-colors" />
-                  </div>
-                  <div className="text-[11px] font-mono text-slate-500">
-                    AppID: {game.appId}
-                  </div>
-                </div>
-
-                {/* Playtime Bar */}
-                <div className="space-y-1.5 pt-1.5 border-t border-slate-800/60 font-sans">
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">스팀 기록 플레이타임</span>
-                    <span className="text-slate-200 text-xs font-medium">
-                      <span className="font-mono font-bold text-amber-300 text-sm">{game.hoursTotal}</span>시간
-                    </span>
-                  </div>
-
-                  <div className="w-full flex items-center gap-1 py-0.5" aria-hidden="true">
-                    {Array.from({ length: 14 }).map((_, i) => {
-                      const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
-                      const isActive = i < activeCount;
-                      
-                      const getActiveColor = (index: number) => {
-                        if (index < 4) return 'bg-cyan-600/90';
-                        if (index < 7) return 'bg-cyan-400/95';
-                        if (index < 10) return 'bg-teal-300';
-                        if (index < 12) return 'bg-amber-300';
-                        return 'bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.35)]';
-                      };
-
-                      return (
-                        <div
-                          key={i}
-                          className={`h-1.5 flex-1 -skew-x-12 rounded-[0.5px] transition-all duration-300 ${
-                            isActive ? getActiveColor(i) : 'bg-slate-800/40'
-                          }`}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      )}
-
-      {/* Tab 2: Full Played Games List with Platform Filtering */}
-      {activeTab === 'all' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 animate-fadeIn">
-          {filteredPlayedGames.map((game, index) => {
-            const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
-            const p = game.platform || 'steam';
-
-            const getPlatformBadge = () => {
-              switch (p) {
-                case 'ps5':
-                  return { label: 'PS5', color: 'bg-blue-950/90 text-blue-300 border-blue-500/50' };
-                case 'switch':
-                  return { label: 'SWITCH', color: 'bg-red-950/90 text-red-300 border-red-500/50' };
-                case 'mobile':
-                  return { label: 'MOBILE', color: 'bg-emerald-950/90 text-emerald-300 border-emerald-500/50' };
-                case 'other':
-                  return { label: 'OTHER', color: 'bg-purple-950/90 text-purple-300 border-purple-500/50' };
-                default:
-                  return { label: 'STEAM', color: 'bg-cyan-950/90 text-cyan-300 border-cyan-500/50' };
-              }
-            };
-
-            const badge = getPlatformBadge();
-
-            return (
-              <a
-                key={game.appId}
-                href={game.steamUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3.5 sm:p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-amber-500/60 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md group relative overflow-hidden"
-              >
-                {/* Header Image & Rank Badge */}
-                <div className="relative rounded-xl overflow-hidden border border-slate-800/90 bg-[#080b14] aspect-[460/215] w-full flex items-center justify-center">
-                  {game.headerImg ? (
-                    <>
-                      <img
-                        src={game.headerImg}
-                        alt={game.name}
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                        referrerPolicy="no-referrer"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          if (!p || p === 'steam') {
-                            target.src = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.appId}/capsule_231x87.jpg`;
-                          } else {
-                            target.style.display = 'none';
-                            const fallback = target.nextElementSibling as HTMLElement;
-                            if (fallback) fallback.style.display = 'flex';
-                          }
-                        }}
-                      />
-                      <div className="w-full h-full hidden flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-[#0c1222] to-[#080d18] relative">
-                        <div className={`w-9 h-9 rounded-xl border flex items-center justify-center mb-1.5 shadow-inner ${
-                          p === 'other' ? 'bg-purple-950/80 border-purple-500/40 text-purple-400' : 'bg-emerald-950/80 border-emerald-500/40 text-emerald-400'
-                        }`}>
-                          {p === 'other' ? <Layers className="w-5 h-5" /> : <Smartphone className="w-5 h-5" />}
-                        </div>
-                        <span className="text-[11px] font-bold text-slate-200 line-clamp-1 break-keep px-2">
-                          {game.name}
-                        </span>
-                        <span className={`text-[9px] font-mono mt-0.5 ${p === 'other' ? 'text-purple-400/80' : 'text-emerald-400/80'}`}>
-                          {p === 'other' ? 'GAME AUDIO LOG' : 'MOBILE AUDIO LOG'}
-                        </span>
-                      </div>
-                    </>
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-[#0c1222] to-[#080d18] relative group-hover:from-[#0f172a] group-hover:to-[#0b1324] transition-all">
-                      <div className={`w-9 h-9 rounded-xl border flex items-center justify-center mb-1.5 shadow-inner ${
-                        p === 'other' ? 'bg-purple-950/80 border-purple-500/40 text-purple-400' : 'bg-emerald-950/80 border-emerald-500/40 text-emerald-400'
-                      }`}>
-                        {p === 'other' ? <Layers className="w-5 h-5" /> : <Smartphone className="w-5 h-5" />}
-                      </div>
-                      <span className="text-[11px] font-bold text-slate-200 line-clamp-1 break-keep px-2">
-                        {game.name}
-                      </span>
-                      <span className={`text-[9px] font-mono mt-0.5 ${p === 'other' ? 'text-purple-400/80' : 'text-emerald-400/80'}`}>
-                        {p === 'other' ? 'GAME AUDIO LOG' : 'MOBILE AUDIO LOG'}
-                      </span>
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c14] via-transparent to-black/30 pointer-events-none" />
-
-                  {/* Rank Badge & Platform Badge */}
-                  <div className="absolute top-2 left-2 flex items-center gap-1.5">
-                    <div className="px-2 py-0.5 rounded-lg bg-black/80 backdrop-blur-md border border-amber-500/40 text-[10px] font-mono font-bold text-amber-300 flex items-center gap-1">
-                      <span>#{index + 1}</span>
-                    </div>
-                    <div className={`px-2 py-0.5 rounded-lg border text-[9px] font-mono font-bold backdrop-blur-md ${badge.color}`}>
-                      <span>{badge.label}</span>
-                    </div>
-                  </div>
-
-                  {/* Audio Tag */}
-                  <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
-                    <span className="text-[9px] font-mono font-bold text-cyan-300 bg-black/80 px-2 py-0.5 rounded-md border border-cyan-500/30 truncate max-w-[85%]">
-                      {game.tag}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Game Title & Genre */}
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <h4 className="text-sm font-bold text-white group-hover:text-amber-300 transition-colors break-keep truncate font-sans">
-                      {game.name}
-                    </h4>
-                    <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 shrink-0 transition-colors" />
-                  </div>
-                  <div className="flex items-center justify-between text-[11px] text-slate-400 font-sans">
-                    <span className="truncate">{game.genre}</span>
-                    {p === 'steam' ? (
-                      <span className="font-mono text-slate-500 text-[10px] shrink-0">AppID: {game.appId}</span>
-                    ) : (
-                      <span className="font-mono text-slate-500 text-[10px] shrink-0">
-                        {p === 'mobile' ? 'Mobile App' : p === 'other' ? 'Standalone / PC' : p.toUpperCase()}
+              return (
+                <a
+                  key={game.appId}
+                  href={game.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-cyan-500/60 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md relative overflow-hidden"
+                >
+                  {/* Game Capsule Thumbnail Header */}
+                  <div className="relative rounded-xl overflow-hidden border border-slate-800/90 bg-slate-950 aspect-[184/69] w-full">
+                    <img
+                      src={game.logo}
+                      alt={game.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                    
+                    {game.hours2wk > 0 && (
+                      <span className="absolute top-2 right-2 inline-flex items-center gap-1 text-[10px] font-mono font-bold bg-emerald-950/90 text-emerald-400 border border-emerald-500/50 px-2 py-0.5 rounded-md shadow-sm">
+                        <Flame className="w-3 h-3 text-emerald-400" />
+                        최근 2주: {game.hours2wk}시간
                       </span>
                     )}
                   </div>
-                </div>
 
-                {/* Audio Focus Note */}
-                <p className="text-xs text-slate-400 break-keep leading-relaxed border-l-2 border-amber-500/50 pl-2 bg-slate-900/30 py-1 rounded-r-lg">
-                  {game.audioFocus}
-                </p>
+                  {/* Title and App ID */}
+                  <div className="space-y-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors break-keep truncate font-sans">
+                        {game.name}
+                      </h4>
+                      <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 shrink-0 transition-colors" />
+                    </div>
+                    <div className="text-[11px] font-mono text-slate-500">
+                      AppID: {game.appId}
+                    </div>
+                  </div>
 
-                {/* Playtime Progress Bar & Hours (Hidden if hoursPlayed is 0 or undefined, as requested) */}
-                {game.hoursPlayed && game.hoursPlayed > 0 ? (
+                  {/* Playtime Bar */}
                   <div className="space-y-1.5 pt-1.5 border-t border-slate-800/60 font-sans">
                     <div className="flex justify-between items-center text-xs">
-                      <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">누적 플레이</span>
+                      <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">스팀 기록 플레이타임</span>
                       <span className="text-slate-200 text-xs font-medium">
-                        <span className="font-mono font-bold text-amber-300 text-sm">{game.hoursPlayed}</span>시간
+                        <span className="font-mono font-bold text-amber-300 text-sm">{game.hoursTotal}</span>시간
                       </span>
                     </div>
-                    <div className="w-full flex items-center gap-1 py-0.5 no-print" aria-hidden="true">
+
+                    <div className="w-full flex items-center gap-1 py-0.5" aria-hidden="true">
                       {Array.from({ length: 14 }).map((_, i) => {
                         const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
                         const isActive = i < activeCount;
-
-                        const getActiveColor = (idx: number) => {
-                          if (idx < 4) return 'bg-cyan-600/90';
-                          if (idx < 7) return 'bg-cyan-400/95';
-                          if (idx < 10) return 'bg-teal-300';
-                          if (idx < 12) return 'bg-amber-300';
+                        
+                        const getActiveColor = (index: number) => {
+                          if (index < 4) return 'bg-cyan-600/90';
+                          if (index < 7) return 'bg-cyan-400/95';
+                          if (index < 10) return 'bg-teal-300';
+                          if (index < 12) return 'bg-amber-300';
                           return 'bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.35)]';
                         };
 
@@ -773,24 +669,326 @@ export const GamingHistoryView: React.FC = () => {
                       })}
                     </div>
                   </div>
-                ) : (
-                  <div className="pt-1.5 border-t border-slate-800/60 flex items-center justify-between text-xs text-slate-500 font-sans">
-                    <span className={`text-[11px] font-mono flex items-center gap-1 ${
-                      p === 'other' ? 'text-purple-400/80' : 'text-emerald-400/80'
-                    }`}>
-                      <span className={`w-1.5 h-1.5 rounded-full animate-pulse inline-block ${
-                        p === 'other' ? 'bg-purple-400' : 'bg-emerald-400'
-                      }`} />
-                      플레이 이력 보관
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-500">
-                      {p === 'other' ? 'Official Site' : 'Google Play'}
-                    </span>
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Steam Games Pagination */}
+          <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="text-xs text-slate-400 font-mono">
+              스팀 배너 게임: 총 <span className="text-cyan-400 font-bold">{steamData.games.length}</span>개 중{' '}
+              <span className="text-slate-200 font-bold">
+                {(steamPage - 1) * ITEMS_PER_PAGE + 1} ~ {Math.min(steamPage * ITEMS_PER_PAGE, steamData.games.length)}
+              </span>개 표시 (페이지 {steamPage} / {steamTotalPages})
+            </div>
+
+            {steamTotalPages > 1 && (
+              <div className="flex items-center gap-1.5 flex-wrap justify-center">
+                <button
+                  type="button"
+                  onClick={() => handleSteamPageChange(steamPage - 1)}
+                  disabled={steamPage === 1}
+                  aria-label="이전 페이지"
+                  className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
+                    steamPage === 1
+                      ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
+                      : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                  }`}
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>이전</span>
+                </button>
+
+                {getPageNumbers(steamPage, steamTotalPages).map((p, idx) => {
+                  if (typeof p === 'string') {
+                    return <span key={`steam-dot-${idx}`} className="px-2 text-slate-600 font-mono">•••</span>;
+                  }
+                  const isActive = p === steamPage;
+                  return (
+                    <button
+                      key={`steam-page-${p}`}
+                      type="button"
+                      onClick={() => handleSteamPageChange(p)}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={`min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold flex items-center justify-center border transition-all ${
+                        isActive
+                          ? 'border-cyan-500/70 bg-cyan-950 text-cyan-300 shadow-sm shadow-cyan-500/30'
+                          : 'border-slate-800 text-slate-400 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                      }`}
+                    >
+                      {p}
+                    </button>
+                  );
+                })}
+
+                <button
+                  type="button"
+                  onClick={() => handleSteamPageChange(steamPage + 1)}
+                  disabled={steamPage === steamTotalPages}
+                  aria-label="다음 페이지"
+                  className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
+                    steamPage === steamTotalPages
+                      ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
+                      : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                  }`}
+                >
+                  <span>다음</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Tab 2: Full Played Games List with Platform Filtering */}
+      {activeTab === 'all' && (
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fadeIn">
+            {paginatedPlayedGames.map((game, index) => {
+              const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
+              const p = game.platform || 'steam';
+
+              const getPlatformBadge = () => {
+                switch (p) {
+                  case 'ps5':
+                    return { label: 'PS5', color: 'bg-blue-950/90 text-blue-300 border-blue-500/50' };
+                  case 'switch':
+                    return { label: 'SWITCH', color: 'bg-red-950/90 text-red-300 border-red-500/50' };
+                  case 'mobile':
+                    return { label: 'MOBILE', color: 'bg-emerald-950/90 text-emerald-300 border-emerald-500/50' };
+                  case 'other':
+                    return { label: 'OTHER', color: 'bg-purple-950/90 text-purple-300 border-purple-500/50' };
+                  default:
+                    return { label: 'STEAM', color: 'bg-cyan-950/90 text-cyan-300 border-cyan-500/50' };
+                }
+              };
+
+              const badge = getPlatformBadge();
+
+              return (
+                <a
+                  key={game.appId}
+                  href={game.steamUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3.5 sm:p-4 rounded-2xl bg-[#0a0c14] border border-slate-800/80 hover:border-amber-500/60 hover:bg-[#0d101a] transition-all duration-300 flex flex-col justify-between gap-3 shadow-md group relative overflow-hidden"
+                >
+                  {/* Header Image & Rank Badge */}
+                  <div className="relative rounded-xl overflow-hidden border border-slate-800/90 bg-[#080b14] aspect-[460/215] w-full flex items-center justify-center">
+                    {game.headerImg ? (
+                      <>
+                        <img
+                          src={game.headerImg}
+                          alt={game.name}
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                          referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            if (!p || p === 'steam') {
+                              target.src = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.appId}/capsule_231x87.jpg`;
+                            } else {
+                              target.style.display = 'none';
+                              const fallback = target.nextElementSibling as HTMLElement;
+                              if (fallback) fallback.style.display = 'flex';
+                            }
+                          }}
+                        />
+                        <div className="w-full h-full hidden flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-[#0c1222] to-[#080d18] relative">
+                          <div className={`w-9 h-9 rounded-xl border flex items-center justify-center mb-1.5 shadow-inner ${
+                            p === 'other' ? 'bg-purple-950/80 border-purple-500/40 text-purple-400' : 'bg-emerald-950/80 border-emerald-500/40 text-emerald-400'
+                          }`}>
+                            {p === 'other' ? <Layers className="w-5 h-5" /> : <Smartphone className="w-5 h-5" />}
+                          </div>
+                          <span className="text-[11px] font-bold text-slate-200 line-clamp-1 break-keep px-2">
+                            {game.name}
+                          </span>
+                          <span className={`text-[9px] font-mono mt-0.5 ${p === 'other' ? 'text-purple-400/80' : 'text-emerald-400/80'}`}>
+                            {p === 'other' ? 'GAME AUDIO LOG' : 'MOBILE AUDIO LOG'}
+                          </span>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-[#0c1222] to-[#080d18] relative group-hover:from-[#0f172a] group-hover:to-[#0b1324] transition-all">
+                        <div className={`w-9 h-9 rounded-xl border flex items-center justify-center mb-1.5 shadow-inner ${
+                          p === 'other' ? 'bg-purple-950/80 border-purple-500/40 text-purple-400' : 'bg-emerald-950/80 border-emerald-500/40 text-emerald-400'
+                        }`}>
+                          {p === 'other' ? <Layers className="w-5 h-5" /> : <Smartphone className="w-5 h-5" />}
+                        </div>
+                        <span className="text-[11px] font-bold text-slate-200 line-clamp-1 break-keep px-2">
+                          {game.name}
+                        </span>
+                        <span className={`text-[9px] font-mono mt-0.5 ${p === 'other' ? 'text-purple-400/80' : 'text-emerald-400/80'}`}>
+                          {p === 'other' ? 'GAME AUDIO LOG' : 'MOBILE AUDIO LOG'}
+                        </span>
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c14] via-transparent to-black/30 pointer-events-none" />
+
+                    {/* Rank Badge & Platform Badge */}
+                    <div className="absolute top-2 left-2 flex items-center gap-1.5">
+                      <div className="px-2 py-0.5 rounded-lg bg-black/80 backdrop-blur-md border border-amber-500/40 text-[10px] font-mono font-bold text-amber-300 flex items-center gap-1">
+                        <span>#{(playedGamesPage - 1) * ITEMS_PER_PAGE + index + 1}</span>
+                      </div>
+                      <div className={`px-2 py-0.5 rounded-lg border text-[9px] font-mono font-bold backdrop-blur-md ${badge.color}`}>
+                        <span>{badge.label}</span>
+                      </div>
+                    </div>
+
+                    {/* Audio Tag */}
+                    <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                      <span className="text-[9px] font-mono font-bold text-cyan-300 bg-black/80 px-2 py-0.5 rounded-md border border-cyan-500/30 truncate max-w-[85%]">
+                        {game.tag}
+                      </span>
+                    </div>
                   </div>
-                )}
-              </a>
-            );
-          })}
+
+                  {/* Game Title & Genre */}
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <h4 className="text-sm font-bold text-white group-hover:text-amber-300 transition-colors break-keep truncate font-sans">
+                        {game.name}
+                      </h4>
+                      <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 shrink-0 transition-colors" />
+                    </div>
+                    <div className="flex items-center justify-between text-[11px] text-slate-400 font-sans">
+                      <span className="truncate">{game.genre}</span>
+                      {p === 'steam' ? (
+                        <span className="font-mono text-slate-500 text-[10px] shrink-0">AppID: {game.appId}</span>
+                      ) : (
+                        <span className="font-mono text-slate-500 text-[10px] shrink-0">
+                          {p === 'mobile' ? 'Mobile App' : p === 'other' ? 'Standalone / PC' : p.toUpperCase()}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Audio Focus Note */}
+                  <p className="text-xs text-slate-400 break-keep leading-relaxed border-l-2 border-amber-500/50 pl-2 bg-slate-900/30 py-1 rounded-r-lg">
+                    {game.audioFocus}
+                  </p>
+
+                  {/* Playtime Progress Bar & Hours */}
+                  {game.hoursPlayed && game.hoursPlayed > 0 ? (
+                    <div className="space-y-1.5 pt-1.5 border-t border-slate-800/60 font-sans">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-slate-400 font-sans font-medium text-xs tracking-tight">누적 플레이</span>
+                        <span className="text-slate-200 text-xs font-medium">
+                          <span className="font-mono font-bold text-amber-300 text-sm">{game.hoursPlayed}</span>시간
+                        </span>
+                      </div>
+                      <div className="w-full flex items-center gap-1 py-0.5 no-print" aria-hidden="true">
+                        {Array.from({ length: 14 }).map((_, i) => {
+                          const activeCount = Math.max(1, Math.round((percentage / 100) * 14));
+                          const isActive = i < activeCount;
+
+                          const getActiveColor = (idx: number) => {
+                            if (idx < 4) return 'bg-cyan-600/90';
+                            if (idx < 7) return 'bg-cyan-400/95';
+                            if (idx < 10) return 'bg-teal-300';
+                            if (idx < 12) return 'bg-amber-300';
+                            return 'bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.35)]';
+                          };
+
+                          return (
+                            <div
+                              key={i}
+                              className={`h-1.5 flex-1 -skew-x-12 rounded-[0.5px] transition-all duration-300 ${
+                                isActive ? getActiveColor(i) : 'bg-slate-800/40'
+                              }`}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="pt-1.5 border-t border-slate-800/60 flex items-center justify-between text-xs text-slate-500 font-sans">
+                      <span className={`text-[11px] font-mono flex items-center gap-1 ${
+                        p === 'other' ? 'text-purple-400/80' : 'text-emerald-400/80'
+                      }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full animate-pulse inline-block ${
+                          p === 'other' ? 'bg-purple-400' : 'bg-emerald-400'
+                        }`} />
+                        플레이 이력 보관
+                      </span>
+                      <span className="text-[11px] font-mono text-slate-500">
+                        {p === 'other' ? 'Official Site' : 'Google Play'}
+                      </span>
+                    </div>
+                  )}
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Tab 2 Pagination */}
+          <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="text-xs text-slate-400 font-mono">
+              {platformFilter === 'all' ? '전체 게임' : `${platformFilter.toUpperCase()} 게임`}: 총{' '}
+              <span className="text-amber-400 font-bold">{filteredPlayedGames.length}</span>개 중{' '}
+              <span className="text-slate-200 font-bold">
+                {(playedGamesPage - 1) * ITEMS_PER_PAGE + 1} ~ {Math.min(playedGamesPage * ITEMS_PER_PAGE, filteredPlayedGames.length)}
+              </span>개 표시 (페이지 {playedGamesPage} / {playedTotalPages})
+            </div>
+
+            {playedTotalPages > 1 && (
+              <div className="flex items-center gap-1.5 flex-wrap justify-center">
+                <button
+                  type="button"
+                  onClick={() => handlePlayedPageChange(playedGamesPage - 1)}
+                  disabled={playedGamesPage === 1}
+                  aria-label="이전 페이지"
+                  className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
+                    playedGamesPage === 1
+                      ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
+                      : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                  }`}
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>이전</span>
+                </button>
+
+                {getPageNumbers(playedGamesPage, playedTotalPages).map((p, idx) => {
+                  if (typeof p === 'string') {
+                    return <span key={`played-dot-${idx}`} className="px-2 text-slate-600 font-mono">•••</span>;
+                  }
+                  const isActive = p === playedGamesPage;
+                  return (
+                    <button
+                      key={`played-page-${p}`}
+                      type="button"
+                      onClick={() => handlePlayedPageChange(p)}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={`min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold flex items-center justify-center border transition-all ${
+                        isActive
+                          ? 'border-amber-500/70 bg-amber-950 text-amber-300 shadow-sm shadow-amber-500/30'
+                          : 'border-slate-800 text-slate-400 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                      }`}
+                    >
+                      {p}
+                    </button>
+                  );
+                })}
+
+                <button
+                  type="button"
+                  onClick={() => handlePlayedPageChange(playedGamesPage + 1)}
+                  disabled={playedGamesPage === playedTotalPages}
+                  aria-label="다음 페이지"
+                  className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
+                    playedGamesPage === playedTotalPages
+                      ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
+                      : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                  }`}
+                >
+                  <span>다음</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
