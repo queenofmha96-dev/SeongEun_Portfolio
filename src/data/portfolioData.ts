@@ -40,25 +40,18 @@ export const INITIAL_PROFILE: SoundDirectorProfile = {
   ],
   experience: [
     {
-      period: "2024 - Present",
-      role: "Game Sound Designer (Personal & Redesign)",
-      company: "Sound Portfolio & Redesign Lab",
-      projects: ["Project: CYBER-X", "Overdrive Boss Arena", "Aether Saga SFX"],
-      description: "AAA급 게임 트레일러 및 인게임 플레이 전면 사운드 리디자인. SFX 100% 자체 제작, 폴리 레코딩, 3D 사운드 믹싱 마스터링."
+      period: "2026 - Present",
+      role: "사운드 기획 및 오디오 협업 (진행 중)",
+      company: "게임 'OMG' 협업 프로젝트",
+      projects: ["게임 OMG 사운드 기획", "오디오 시스템 콘셉트 설계"],
+      description: "게임 'OMG' 개발팀과 협업하여 전반적인 사운드 방향성 수립, 인게임 오디오 시스템 기획 및 사운드 연출 진행 중."
     },
     {
-      period: "2023 - 2024",
-      role: "Technical Audio & Middleware Specialist",
-      company: "Interactive Audio Research",
-      projects: ["Dark Abyss MMORPG", "Chrono Strike UI Sound"],
-      description: "FMOD Studio 및 Wwise 연동 인터랙티브 사운드 시스템 구현. 다크 판타지 마법 SFX 및 UI 사운드 팩 제작."
-    },
-    {
-      period: "2022 - 2023",
-      role: "Audio Creator & Foley Artist",
-      company: "Indie Project & Sound Creation",
-      projects: ["Mobile Action Sound Pack", "Pixel Quest", "Sci-Fi Foley Library"],
-      description: "인디 게임 및 미디어 사운드 디자인, Foley 현장/스튜디오 녹음, 테마 BGM 작곡 및 믹싱."
+      period: "2024 - 2026",
+      role: "포트폴리오 제작 및 역량 강화",
+      company: "152 사운드랩",
+      projects: ["게임 사운드 디자인 포트폴리오", "실무 사운드 디자인 역량 강화"],
+      description: "152 사운드랩에서 게임 사운드 디자인 포트폴리오 제작 및 실무 역량 강화, 게임 오디오 파이프라인 연구."
     }
   ],
   hardware: [

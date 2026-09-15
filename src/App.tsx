@@ -28,27 +28,11 @@ export default function App() {
     return INITIAL_PROJECTS;
   });
 
-  const [profile, setProfile] = useState<SoundDirectorProfile>(() => {
-    try {
-      const saved = localStorage.getItem('seongeun_sound_profile_v4');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        return {
-          ...parsed,
-          avatarUrl: INITIAL_PROFILE.avatarUrl,
-          skills: INITIAL_PROFILE.skills,
-          tools: INITIAL_PROFILE.tools,
-        };
-      }
-    } catch {
-      // fallback
-    }
-    return INITIAL_PROFILE;
-  });
+  const [profile, setProfile] = useState<SoundDirectorProfile>(INITIAL_PROFILE);
 
   const [selectedProjectForModal, setSelectedProjectForModal] = useState<SoundProject | null>(null);
 
-  // Sync state to LocalStorage
+  // Sync state to LocalStorage (Projects only)
   useEffect(() => {
     try {
       localStorage.setItem('seongeun_sound_projects_v3', JSON.stringify(projects));
@@ -57,14 +41,18 @@ export default function App() {
     }
   }, [projects]);
 
+  // Always clean up legacy profile cache to guarantee latest profile data is displayed
   useEffect(() => {
     try {
       localStorage.removeItem('seongeun_sound_profile');
-      localStorage.setItem('seongeun_sound_profile_v4', JSON.stringify(profile));
+      localStorage.removeItem('seongeun_sound_profile_v2');
+      localStorage.removeItem('seongeun_sound_profile_v3');
+      localStorage.removeItem('seongeun_sound_profile_v4');
+      localStorage.removeItem('seongeun_sound_profile_v5');
     } catch {
       // ignore
     }
-  }, [profile]);
+  }, []);
 
   const handleResetDefaults = () => {
     setProjects(INITIAL_PROJECTS);

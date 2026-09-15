@@ -263,42 +263,69 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
 
         {/* Open Timeline without nested boxes */}
         <div className="relative border-l-2 border-slate-800 ml-3 sm:ml-4 pl-5 sm:pl-7 space-y-10">
-          {profile.experience.map((exp, idx) => (
-            <div key={idx} className="relative space-y-3 group">
-              {/* Dot on line */}
-              <div className="absolute -left-[29px] sm:-left-[37px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#0b0d18] border-2 border-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.45)] group-hover:scale-125 group-hover:bg-cyan-400 transition-all" />
+          {profile.experience.map((exp, idx) => {
+            const isCurrent = exp.period.includes('Present') || exp.role.includes('진행 중');
+            return (
+              <div key={idx} className="relative space-y-3 group">
+                {/* Dot on line */}
+                <div
+                  className={`absolute -left-[29px] sm:-left-[37px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#0b0d18] border-2 transition-all ${
+                    isCurrent
+                      ? 'border-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.7)] group-hover:scale-125 group-hover:bg-emerald-400'
+                      : 'border-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.45)] group-hover:scale-125 group-hover:bg-cyan-400'
+                  }`}
+                />
 
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono text-cyan-200 font-extrabold px-2.5 py-0.5 sm:px-3.5 sm:py-1 rounded-lg bg-cyan-950 border border-cyan-400/70 shadow-[0_0_12px_rgba(6,182,212,0.2)] shrink-0 whitespace-nowrap">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
-                  {exp.period}
-                </span>
-                <h3 className="text-base sm:text-xl font-extrabold text-white tracking-tight">
-                  {exp.company}
-                </h3>
-                <span className="text-slate-500 text-sm hidden sm:inline">•</span>
-                <span className="text-xs sm:text-base font-bold text-amber-300">
-                  {exp.role}
-                </span>
-              </div>
-
-              <p className="text-xs sm:text-base text-slate-200 leading-relaxed font-sans break-keep">
-                {exp.description}
-              </p>
-
-              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1">
-                <span className="text-xs sm:text-sm font-mono text-slate-400 font-bold">프로젝트:</span>
-                {exp.projects.map((p, i) => (
-                  <span 
-                    key={i} 
-                    className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs sm:text-sm font-mono"
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <span
+                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-extrabold px-2.5 py-0.5 sm:px-3.5 sm:py-1 rounded-lg border shadow-sm shrink-0 whitespace-nowrap ${
+                      isCurrent
+                        ? 'text-emerald-300 bg-emerald-950/90 border-emerald-500/70 shadow-[0_0_14px_rgba(16,185,129,0.25)]'
+                        : 'text-cyan-200 bg-cyan-950 border-cyan-400/70 shadow-[0_0_12px_rgba(6,182,212,0.2)]'
+                    }`}
                   >
-                    {p}
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                        isCurrent ? 'bg-emerald-400 animate-pulse' : 'bg-cyan-400'
+                      }`}
+                    />
+                    {exp.period}
                   </span>
-                ))}
+                  <h3 className="text-base sm:text-xl font-extrabold text-white tracking-tight">
+                    {exp.company}
+                  </h3>
+                  <span className="text-slate-500 text-sm hidden sm:inline">•</span>
+                  <span
+                    className={`text-xs sm:text-base font-bold ${
+                      isCurrent ? 'text-emerald-300' : 'text-amber-300'
+                    }`}
+                  >
+                    {exp.role}
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-base text-slate-200 leading-relaxed font-sans break-keep">
+                  {exp.description}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1">
+                  <span className="text-xs sm:text-sm font-mono text-slate-400 font-bold">프로젝트:</span>
+                  {exp.projects.map((p, i) => (
+                    <span 
+                      key={i} 
+                      className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg border text-xs sm:text-sm font-mono ${
+                        isCurrent
+                          ? 'bg-emerald-950/40 border-emerald-500/30 text-emerald-200'
+                          : 'bg-slate-900 border-slate-800 text-slate-200'
+                      }`}
+                    >
+                      {p}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>
