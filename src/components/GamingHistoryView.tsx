@@ -455,139 +455,238 @@ export const GamingHistoryView: React.FC = () => {
         </div>
       </div>
 
-      {/* Tabs / Filter Controls */}
-      <div ref={gamesListTopRef} className="space-y-3 pb-1 scroll-mt-20">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => handleTabChange('steam')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
-                activeTab === 'steam'
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 shadow-sm'
-                  : 'text-slate-400 hover:text-white bg-slate-900/60 border border-slate-800'
-              }`}
-            >
-              <Zap className="w-3.5 h-3.5" />
-              <span>최근 플레이한 게임 ({steamData.games.length})</span>
-            </button>
-
-            <button
-              onClick={() => handleTabChange('all')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
-                activeTab === 'all'
-                  ? 'bg-amber-500/20 text-amber-300 border border-amber-500/50 shadow-sm'
-                  : 'text-slate-400 hover:text-white bg-slate-900/60 border border-slate-800'
-              }`}
-            >
-              <Gamepad2 className="w-3.5 h-3.5" />
-              <span>플레이한 게임 목록 ({PLAYED_GAMES_LIST.length})</span>
-            </button>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {lastSyncTime && (
-              <span className="text-[11px] font-mono text-slate-500 hidden sm:inline">
-                최근 동기화: {lastSyncTime}
+      {/* Tabs / Filter Controls - High-Visibility Game Library Mode Selector Dock */}
+      <div ref={gamesListTopRef} className="space-y-4 scroll-mt-20">
+        <div className="rounded-2xl bg-[#090d1c] border-2 border-slate-700/90 p-3.5 sm:p-5 shadow-[0_12px_32px_rgba(0,0,0,0.6)] space-y-3.5">
+          {/* Top Label & Status Summary */}
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/90 pb-3">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shrink-0" />
+              <span className="text-xs sm:text-sm font-mono font-bold text-slate-200 tracking-wide uppercase flex items-center gap-1.5">
+                <Layers className="w-4 h-4 text-cyan-400" />
+                게임 라이브러리 모드 선택
               </span>
-            )}
-            <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-amber-300 bg-slate-900/90 border border-slate-800 px-3.5 py-1.5 rounded-xl w-fit shrink-0">
-              <Clock className="w-4 h-4 text-amber-400" />
-              <span className="font-bold">
-                {activeTab === 'steam'
-                  ? `스팀 총 ${steamTotalHours.toLocaleString()}시간+ 플레이`
-                  : platformFilter === 'mobile'
-                  ? `모바일 총 ${platformCounts.mobile}개 타이틀 플레이`
-                  : platformFilter === 'all'
-                  ? `총 ${totalHours.toLocaleString()}시간+ 플레이 (${PLAYED_GAMES_LIST.length}개 타이틀)`
-                  : `${filteredHours.toLocaleString()}시간 플레이`}
+              <span className="text-[11px] text-cyan-400/90 bg-cyan-950/80 border border-cyan-500/40 px-2 py-0.5 rounded-md font-medium hidden xs:inline-block">
+                탭을 눌러 모드를 전환하세요
               </span>
             </div>
+
+            <div className="flex items-center gap-3 ml-auto">
+              {lastSyncTime && (
+                <span className="text-[11px] font-mono text-slate-400 hidden md:inline">
+                  최근 동기화: {lastSyncTime}
+                </span>
+              )}
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-mono text-amber-300 bg-black/60 border border-amber-500/30 px-3 py-1.5 rounded-xl shrink-0">
+                <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+                <span className="font-bold">
+                  {activeTab === 'steam'
+                    ? `스팀 총 ${steamTotalHours.toLocaleString()}시간+`
+                    : platformFilter === 'mobile'
+                    ? `모바일 총 ${platformCounts.mobile}개`
+                    : platformFilter === 'all'
+                    ? `총 ${totalHours.toLocaleString()}시간+ (${PLAYED_GAMES_LIST.length}개)`
+                    : `${filteredHours.toLocaleString()}시간`}
+                </span>
+              </div>
+            </div>
           </div>
+
+          {/* Big 2-Column High-Contrast Tab Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {/* Tab 1: 최근 플레이한 게임 (Steam Live) */}
+            <button
+              onClick={() => handleTabChange('steam')}
+              onMouseEnter={() => soundEngine.playHover()}
+              className={`relative flex items-center justify-between gap-3 p-3.5 sm:p-4 rounded-xl text-left transition-all cursor-pointer ${
+                activeTab === 'steam'
+                  ? 'bg-gradient-to-r from-cyan-950 via-[#0a273c] to-cyan-900/90 border-2 border-cyan-400 shadow-[0_0_24px_rgba(6,182,212,0.4)] ring-1 ring-cyan-400/60 text-white'
+                  : 'bg-slate-900/80 hover:bg-slate-800/90 border border-slate-700/80 hover:border-slate-500 text-slate-300 hover:text-white'
+              }`}
+            >
+              <div className="flex items-center gap-3 min-w-0">
+                <div
+                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                    activeTab === 'steam'
+                      ? 'bg-cyan-500 text-slate-950 shadow-[0_0_15px_rgba(6,182,212,0.6)]'
+                      : 'bg-slate-800 text-slate-400'
+                  }`}
+                >
+                  <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="text-base sm:text-lg font-black tracking-tight text-white truncate">
+                      최근 플레이한 게임
+                    </span>
+                    {activeTab === 'steam' && (
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-400 text-slate-950 shrink-0">
+                        ACTIVE
+                      </span>
+                    )}
+                  </div>
+                  <p
+                    className={`text-xs font-sans truncate ${
+                      activeTab === 'steam' ? 'text-cyan-200/90' : 'text-slate-400'
+                    }`}
+                  >
+                    스팀 실시간 연동 • 최근 활동
+                  </p>
+                </div>
+              </div>
+
+              <span
+                className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-mono font-black shrink-0 transition-colors ${
+                  activeTab === 'steam'
+                    ? 'bg-cyan-400 text-slate-950 shadow-[0_0_12px_rgba(6,182,212,0.5)]'
+                    : 'bg-slate-800 text-slate-300 border border-slate-700'
+                }`}
+              >
+                {steamData.games.length}개
+              </span>
+            </button>
+
+            {/* Tab 2: 플레이한 게임 목록 (All Games Catalog) */}
+            <button
+              onClick={() => handleTabChange('all')}
+              onMouseEnter={() => soundEngine.playHover()}
+              className={`relative flex items-center justify-between gap-3 p-3.5 sm:p-4 rounded-xl text-left transition-all cursor-pointer ${
+                activeTab === 'all'
+                  ? 'bg-gradient-to-r from-amber-950 via-[#331f08] to-amber-900/90 border-2 border-amber-400 shadow-[0_0_24px_rgba(245,158,11,0.4)] ring-1 ring-amber-400/60 text-white'
+                  : 'bg-slate-900/80 hover:bg-slate-800/90 border border-slate-700/80 hover:border-slate-500 text-slate-300 hover:text-white'
+              }`}
+            >
+              <div className="flex items-center gap-3 min-w-0">
+                <div
+                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                    activeTab === 'all'
+                      ? 'bg-amber-400 text-slate-950 shadow-[0_0_15px_rgba(245,158,11,0.6)]'
+                      : 'bg-slate-800 text-slate-400'
+                  }`}
+                >
+                  <Gamepad2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="text-base sm:text-lg font-black tracking-tight text-white truncate">
+                      플레이한 게임 목록
+                    </span>
+                    {activeTab === 'all' && (
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-400 text-slate-950 shrink-0">
+                        ACTIVE
+                      </span>
+                    )}
+                  </div>
+                  <p
+                    className={`text-xs font-sans truncate ${
+                      activeTab === 'all' ? 'text-amber-200/90' : 'text-slate-400'
+                    }`}
+                  >
+                    콘솔 • PC • 모바일 전체 라이브러리
+                  </p>
+                </div>
+              </div>
+
+              <span
+                className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-mono font-black shrink-0 transition-colors ${
+                  activeTab === 'all'
+                    ? 'bg-amber-400 text-slate-950 shadow-[0_0_12px_rgba(245,158,11,0.5)]'
+                    : 'bg-slate-800 text-slate-300 border border-slate-700'
+                }`}
+              >
+                {PLAYED_GAMES_LIST.length}개
+              </span>
+            </button>
+          </div>
+
+          {/* Platform Filter Buttons (Active in 'all' tab) */}
+          {activeTab === 'all' && (
+            <div className="pt-2 border-t border-slate-800/80">
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 pt-1 scrollbar-none">
+                <span className="text-xs text-amber-400 font-mono font-bold shrink-0 mr-1 flex items-center gap-1">
+                  플랫폼 필터:
+                </span>
+                
+                <button
+                  onClick={() => handlePlatformChange('all')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 flex items-center gap-1.5 ${
+                    platformFilter === 'all'
+                      ? 'bg-amber-500/25 text-amber-300 border-2 border-amber-400 shadow-xs'
+                      : 'text-slate-400 hover:text-slate-200 bg-slate-900/60 border border-slate-800'
+                  }`}
+                >
+                  <span>전체 (ALL)</span>
+                  <span className="text-[11px] font-mono opacity-80 font-bold">({platformCounts.all})</span>
+                </button>
+
+                <button
+                  onClick={() => handlePlatformChange('steam')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 flex items-center gap-1.5 ${
+                    platformFilter === 'steam'
+                      ? 'bg-cyan-500/25 text-cyan-300 border-2 border-cyan-400 shadow-xs'
+                      : 'text-slate-400 hover:text-slate-200 bg-slate-900/60 border border-slate-800'
+                  }`}
+                >
+                  <Monitor className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>PC / Steam</span>
+                  <span className="text-[11px] font-mono opacity-80 font-bold">({platformCounts.steam})</span>
+                </button>
+
+                <button
+                  onClick={() => handlePlatformChange('ps5')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 flex items-center gap-1.5 ${
+                    platformFilter === 'ps5'
+                      ? 'bg-blue-500/30 text-blue-300 border-2 border-blue-400 shadow-xs'
+                      : 'text-slate-400 hover:text-slate-200 bg-slate-900/60 border border-slate-800'
+                  }`}
+                >
+                  <Disc className="w-3.5 h-3.5 text-blue-400" />
+                  <span>PlayStation 5</span>
+                  <span className="text-[11px] font-mono opacity-80 font-bold">({platformCounts.ps5})</span>
+                </button>
+
+                <button
+                  onClick={() => handlePlatformChange('switch')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 flex items-center gap-1.5 ${
+                    platformFilter === 'switch'
+                      ? 'bg-red-500/30 text-red-300 border-2 border-red-400 shadow-xs'
+                      : 'text-slate-400 hover:text-slate-200 bg-slate-900/60 border border-slate-800'
+                  }`}
+                >
+                  <Gamepad2 className="w-3.5 h-3.5 text-red-400" />
+                  <span>Nintendo Switch</span>
+                  <span className="text-[11px] font-mono opacity-80 font-bold">({platformCounts.switch})</span>
+                </button>
+
+                <button
+                  onClick={() => handlePlatformChange('mobile')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 flex items-center gap-1.5 ${
+                    platformFilter === 'mobile'
+                      ? 'bg-emerald-500/30 text-emerald-300 border-2 border-emerald-400 shadow-xs'
+                      : 'text-slate-400 hover:text-slate-200 bg-slate-900/60 border border-slate-800'
+                  }`}
+                >
+                  <Smartphone className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Mobile</span>
+                  <span className="text-[11px] font-mono opacity-80 font-bold">({platformCounts.mobile})</span>
+                </button>
+
+                <button
+                  onClick={() => handlePlatformChange('other')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 flex items-center gap-1.5 ${
+                    platformFilter === 'other'
+                      ? 'bg-purple-500/30 text-purple-300 border-2 border-purple-400 shadow-xs'
+                      : 'text-slate-400 hover:text-slate-200 bg-slate-900/60 border border-slate-800'
+                  }`}
+                >
+                  <Layers className="w-3.5 h-3.5 text-purple-400" />
+                  <span>그외 게임</span>
+                  <span className="text-[11px] font-mono opacity-80 font-bold">({platformCounts.other})</span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-
-        {/* Platform Filter Buttons (Active in 'all' tab) */}
-        {activeTab === 'all' && (
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1 scrollbar-none">
-            <span className="text-[11px] text-slate-500 font-mono shrink-0 mr-1">플랫폼 필터:</span>
-            
-            <button
-              onClick={() => handlePlatformChange('all')}
-              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
-                platformFilter === 'all'
-                  ? 'bg-amber-500/20 text-amber-300 border border-amber-500/50'
-                  : 'text-slate-400 hover:text-slate-200 bg-slate-900/50 border border-slate-800/80'
-              }`}
-            >
-              <span>전체 (ALL)</span>
-              <span className="text-[10px] font-mono opacity-70">({platformCounts.all})</span>
-            </button>
-
-            <button
-              onClick={() => handlePlatformChange('steam')}
-              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
-                platformFilter === 'steam'
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50'
-                  : 'text-slate-400 hover:text-slate-200 bg-slate-900/50 border border-slate-800/80'
-              }`}
-            >
-              <Monitor className="w-3 h-3 text-cyan-400" />
-              <span>PC / Steam</span>
-              <span className="text-[10px] font-mono opacity-70">({platformCounts.steam})</span>
-            </button>
-
-            <button
-              onClick={() => handlePlatformChange('ps5')}
-              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
-                platformFilter === 'ps5'
-                  ? 'bg-blue-500/25 text-blue-300 border border-blue-500/50'
-                  : 'text-slate-400 hover:text-slate-200 bg-slate-900/50 border border-slate-800/80'
-              }`}
-            >
-              <Disc className="w-3 h-3 text-blue-400" />
-              <span>PlayStation 5</span>
-              <span className="text-[10px] font-mono opacity-70">({platformCounts.ps5})</span>
-            </button>
-
-            <button
-              onClick={() => handlePlatformChange('switch')}
-              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
-                platformFilter === 'switch'
-                  ? 'bg-red-500/25 text-red-300 border border-red-500/50'
-                  : 'text-slate-400 hover:text-slate-200 bg-slate-900/50 border border-slate-800/80'
-              }`}
-            >
-              <Gamepad2 className="w-3 h-3 text-red-400" />
-              <span>Nintendo Switch</span>
-              <span className="text-[10px] font-mono opacity-70">({platformCounts.switch})</span>
-            </button>
-
-            <button
-              onClick={() => handlePlatformChange('mobile')}
-              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
-                platformFilter === 'mobile'
-                  ? 'bg-emerald-500/25 text-emerald-300 border border-emerald-500/50'
-                  : 'text-slate-400 hover:text-slate-200 bg-slate-900/50 border border-slate-800/80'
-              }`}
-            >
-              <Smartphone className="w-3 h-3 text-emerald-400" />
-              <span>Mobile</span>
-              <span className="text-[10px] font-mono opacity-70">({platformCounts.mobile})</span>
-            </button>
-
-            <button
-              onClick={() => handlePlatformChange('other')}
-              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
-                platformFilter === 'other'
-                  ? 'bg-purple-500/25 text-purple-300 border border-purple-500/50'
-                  : 'text-slate-400 hover:text-slate-200 bg-slate-900/50 border border-slate-800/80'
-              }`}
-            >
-              <Layers className="w-3 h-3 text-purple-400" />
-              <span>그외 게임</span>
-              <span className="text-[10px] font-mono opacity-70">({platformCounts.other})</span>
-            </button>
-          </div>
-        )}
       </div>
 
       {/* Tab 1: Steam Connected Games */}

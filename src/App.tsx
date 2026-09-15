@@ -103,11 +103,11 @@ export default function App() {
           
           {/* Section 1: Sound Designer Profile */}
           <section id="director-stats" className="space-y-6 sm:space-y-8">
-            <div className="flex items-center gap-2.5 sm:gap-3.5 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
-              <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-xs sm:text-sm font-black">
+            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 pb-4 sm:pb-5 font-mono">
+              <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-cyan-950/90 border-2 border-cyan-400/70 text-cyan-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(6,182,212,0.25)] shrink-0 whitespace-nowrap">
                 01
               </span>
-              <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white font-sans tracking-tight break-keep">
                 사운드 디자이너 프로필 & 역량
               </h2>
             </div>
@@ -116,11 +116,11 @@ export default function App() {
 
           {/* Section 2: Gaming History */}
           <section id="gaming-history" className="space-y-6 sm:space-y-8">
-            <div className="flex items-center gap-2.5 sm:gap-3.5 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
-              <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-xs sm:text-sm font-black">
+            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 pb-4 sm:pb-5 font-mono">
+              <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-amber-950/90 border-2 border-amber-400/70 text-amber-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(245,158,11,0.25)] shrink-0 whitespace-nowrap">
                 02
               </span>
-              <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white font-sans tracking-tight break-keep">
                 게이밍 경력
               </h2>
             </div>
@@ -129,12 +129,12 @@ export default function App() {
 
           {/* Section 3: Portfolio Showcase Reel */}
           <section id="showcase-reel" className="space-y-6 sm:space-y-8">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
-              <div className="flex items-center gap-2.5 sm:gap-3.5">
-                <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 text-xs sm:text-sm font-black">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-4 sm:pb-5 font-mono">
+              <div className="flex items-center gap-3.5 sm:gap-5">
+                <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-cyan-950/90 border-2 border-cyan-400/70 text-cyan-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(6,182,212,0.25)] shrink-0 whitespace-nowrap">
                   03
                 </span>
-                <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white font-sans tracking-tight break-keep">
                   게임 사운드 포트폴리오
                 </h2>
               </div>
@@ -143,10 +143,10 @@ export default function App() {
                 href="https://www.youtube.com/playlist?list=PLiDQe1dL5sFu2nkE2KD_ch_H1XRMxvpmK"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-950/70 hover:bg-red-900/80 border border-red-500/50 text-red-200 hover:text-white text-xs font-sans font-semibold transition-all shadow-xs shrink-0"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-red-950/70 hover:bg-red-900/80 border border-red-500/50 text-red-200 hover:text-white text-xs sm:text-sm font-sans font-semibold transition-all shadow-xs shrink-0"
               >
                 <span>YouTube 전체 재생목록</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-red-400" />
+                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-400" />
               </a>
             </div>
             <ProjectsView
@@ -157,11 +157,11 @@ export default function App() {
 
           {/* Section 4: Cover Letter / Self-Introduction */}
           <section id="cover-letter" className="space-y-6 sm:space-y-8">
-            <div className="flex items-center gap-2.5 sm:gap-3.5 border-b border-slate-800/80 pb-3.5 sm:pb-4 font-mono">
-              <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-amber-950/90 border border-amber-500/50 text-amber-300 text-xs sm:text-sm font-black">
+            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 pb-4 sm:pb-5 font-mono">
+              <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-amber-950/90 border-2 border-amber-400/70 text-amber-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(245,158,11,0.25)] shrink-0 whitespace-nowrap">
                 04
               </span>
-              <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white font-sans tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white font-sans tracking-tight break-keep">
                 자기소개서
               </h2>
             </div>

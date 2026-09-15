@@ -149,8 +149,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
         </div>
 
         {/* Bio Section */}
-        <div className="p-5 sm:p-7 rounded-2xl bg-[#0a0c16]/80 border border-slate-800/80 shadow-md space-y-3">
-          <div className="flex items-center justify-between border-b border-slate-800/60 pb-2.5">
+        <div className="p-5 sm:p-7 md:p-8 rounded-2xl bg-[#0a0c16]/90 border border-slate-800/80 shadow-md space-y-5">
+          <div className="flex items-center justify-between border-b border-slate-800/70 pb-3">
             <h3 className="text-xs sm:text-sm font-mono font-black text-cyan-400 uppercase tracking-wider flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-400" /> ABOUT SOUND DESIGNER • 소개
             </h3>
@@ -158,12 +158,14 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
               SOUND PHILOSOPHY & DIRECTION
             </span>
           </div>
-          <p className="text-sm sm:text-base md:text-[17px] text-slate-200 leading-relaxed sm:leading-loose font-sans break-keep">
+
+          <p className="text-sm sm:text-base md:text-[16.5px] text-slate-200 leading-[1.95] sm:leading-[2.05] font-sans break-keep">
             {profile.bio}
           </p>
-          <div className="pt-2 flex items-center gap-2 text-xs sm:text-sm text-slate-400 font-sans italic border-t border-slate-800/50">
-            <span className="text-cyan-400 font-bold font-mono">Philosophy:</span>
-            <span>"{profile.philosophy}"</span>
+
+          <div className="p-4 sm:p-5 rounded-xl bg-cyan-950/20 border-l-4 border-cyan-400 text-xs sm:text-sm md:text-[14.5px] text-slate-200 font-sans leading-relaxed">
+            <span className="text-cyan-300 font-bold font-mono block mb-1">SOUND PHILOSOPHY :</span>
+            <span className="italic">"{profile.philosophy}"</span>
           </div>
         </div>
 

@@ -1,6 +1,7 @@
 import { PlayedGameItem } from './playedGamesData';
 
 export const OTHER_GAMES_LIST: PlayedGameItem[] = [
+  // --- 기존 온라인 / 배틀넷 / 라이엇 타이틀 ---
   {
     appId: "other-lol",
     name: "League of Legends (리그 오브 레전드)",
@@ -14,7 +15,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     appId: "other-overwatch2",
-    name: "오버워치 2 (Overwatch 2 - Battle.net)",
+    name: "오버워치 2 (Overwatch 2)",
     hoursPlayed: 450.0,
     genre: "팀 기반 히어로 FPS",
     audioFocus: "난전 상황에서도 적군과 아군의 궁극기 시전 음성을 1순위로 마스킹 없이 뚫고 나오게 하는 엄격한 사운드 믹싱 우선순위 계층",
@@ -25,7 +26,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     appId: "other-valorant",
-    name: "발로란트 (VALORANT - Riot Games)",
+    name: "발로란트 (VALORANT)",
     hoursPlayed: 320.0,
     genre: "택티컬 5v5 FPS",
     audioFocus: "벽 뒤 풋스텝 재질음과 스파이크 설치/해체 사운드만으로 3D 적 위치와 잔여 시간을 완벽하게 연상시키는 초정밀 HRTF 공간 음향",
@@ -36,7 +37,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     appId: "other-diablo4",
-    name: "디아블로 4 (Diablo IV - Battle.net)",
+    name: "디아블로 4 (Diablo IV)",
     hoursPlayed: 190.0,
     genre: "다크 판타지 액션 RPG",
     audioFocus: "몰이사냥 시 묵직하게 터지는 서브우퍼 저음역 임팩트와 성역 던전의 음산하고 공간감 넘치는 암흑 앰비언스",
@@ -47,7 +48,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     appId: "other-lostark",
-    name: "로스트아크 (LOST ARK - Smilegate)",
+    name: "로스트아크 (LOST ARK)",
     hoursPlayed: 160.0,
     genre: "쿼터뷰 핵앤슬래시 MMORPG",
     audioFocus: "대규모 레이드 카단·발탄 보스전의 웅장한 심포니 오케스트레이션과 카운터 어택 성공 시 강렬한 쾌감을 선사하는 브레이크 핑 사운드",
@@ -58,13 +59,444 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     appId: "other-starcraft2",
-    name: "스타크래프트 2 (StarCraft II - Battle.net)",
+    name: "스타크래프트 2 (StarCraft II)",
     hoursPlayed: 120.0,
     genre: "SF 실시간 전략 (RTS)",
     audioFocus: "테란 공성전차 시즈모드 포격음의 가슴을 울리는 트랜지언트와 저그 유기체 점막 질감의 사실적인 생체 폴리 사운드",
     tag: "SIEGE IMPACT & BIO FOLEY",
     headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt6d5d5904d98a729e/SC2_Header.jpg",
     steamUrl: "https://starcraft2.blizzard.com/ko-kr/",
+    platform: "other"
+  },
+
+  // --- 유저 요청 게임 추가 목록 ---
+  {
+    appId: "other-diablo3",
+    name: "디아블로 3 (Diablo III)",
+    hoursPlayed: 340.0,
+    genre: "핵앤슬래시 액션 RPG",
+    audioFocus: "전설/세트 아이템 드랍 시 허공을 가르는 전율의 기둥 핑(Ping) 사운드와 대균열 무한 학살의 타격 쾌감 믹싱",
+    tag: "LEGENDARY BEAM & SLAUGHTER FOLEY",
+    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt9754f24c30c33a9c/62e0391d1797c5108f97a51d/D3_Header.jpg",
+    steamUrl: "https://diablo3.blizzard.com/ko-kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-diablo2",
+    name: "디아블로 2: 레저렉션 (Diablo II: Resurrected)",
+    hoursPlayed: 280.0,
+    genre: "다크 액션 RPG",
+    audioFocus: "물약 복용 시의 걸쭉한 액체 효과음, 보석 장착 사운드, 카우 레벨의 해학적이면서도 기괴한 무(Moo) 폴리 보이스",
+    tag: "CLASSIC DARK AMBIENCE & GEM SOUNDS",
+    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blteeb51582294191c7/62e038827eb0981156fe4549/D2R_Header.jpg",
+    steamUrl: "https://diablo2.blizzard.com/ko-kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-witcher3",
+    name: "더 위쳐 3: 와일드 헌트 (The Witcher 3: Wild Hunt)",
+    hoursPlayed: 210.0,
+    genre: "오픈월드 다크 판타지 RPG",
+    audioFocus: "슬라브 민속 악기와 닐프가드 전장의 처절한 코러스, 벨렌 늪지대 바람과 풀벌레 소리의 생생한 자연 환경 음향",
+    tag: "SLAVIC FOLK OST & SWAMP AMBIENCE",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/292030/",
+    platform: "other"
+  },
+  {
+    appId: "other-fallout-nv",
+    name: "폴아웃: 뉴 베가스 (Fallout: New Vegas)",
+    hoursPlayed: 145.0,
+    genre: "포스트 아포칼립스 액션 RPG",
+    audioFocus: "모하비 황무지의 건조한 모래바람과 V.A.T.S. 조준 슬로우모션 연출, 50년대 레트로 빈티지 라디오 카바레 사운드",
+    tag: "V.A.T.S. SLOW-MO & VINTAGE RADIO",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/22380/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/22380/",
+    platform: "other"
+  },
+  {
+    appId: "other-fallout4",
+    name: "폴아웃 4 (Fallout 4)",
+    hoursPlayed: 165.0,
+    genre: "오픈월드 액션 RPG",
+    audioFocus: "파워 아머 탑승 시의 묵직한 서보모터 유압음과 파이프 피스톨 격발음의 금속성 잔향, 보스턴 황무지의 방사능 비 앰비언스",
+    tag: "POWER ARMOR HYDRAULIC & AMBIENT RAIN",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/377160/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/377160/",
+    platform: "other"
+  },
+  {
+    appId: "other-skyrim",
+    name: "엘더스크롤 5: 스카이림 (The Elder Scrolls V: Skyrim)",
+    hoursPlayed: 310.0,
+    genre: "오픈월드 판타지 RPG",
+    audioFocus: "드래곤본 용언 푸스 로 다(Fus Ro Dah)의 포효 트랜지언트와 설산의 휘몰아치는 블리자드 환경음, 제레미 소울의 신화적 오케스트라",
+    tag: "DRAGON SHOUT & FROST PEAK WIND",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489830/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/489830/",
+    platform: "other"
+  },
+  {
+    appId: "other-starcitizen",
+    name: "스타 시티즌 (Star Citizen)",
+    hoursPlayed: 130.0,
+    genre: "SF 우주 시뮬레이션 MMO",
+    audioFocus: "우주선 퀀텀 드라이브 워프 시의 공간 찢김 음향과 행성 대기 진입 시 선체 표면 공기 마찰 압력 저주파 진동",
+    tag: "QUANTUM WARP & COCKPIT ATMOSPHERE",
+    headerImg: "https://robertsspaceindustries.com/media/bq3m25p1ox0zgr/source/Star_Citizen_KeyArt.jpg",
+    steamUrl: "https://robertsspaceindustries.com/",
+    platform: "other"
+  },
+  {
+    appId: "other-starfield",
+    name: "스타필드 (Starfield)",
+    hoursPlayed: 95.0,
+    genre: "차세대 SF RPG",
+    audioFocus: "무중력 공간 총격 시의 감쇄된 사운드 전파와 우주복 산소 호흡음, 신비로운 유물 접촉 시의 영적 하모닉스 사운드",
+    tag: "ZERO-G MUFFLE & ARTIFACT RESONANCE",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1716740/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/1716740/",
+    platform: "other"
+  },
+  {
+    appId: "other-tarkov",
+    name: "이스케이프 프롬 타르코프 (Escape from Tarkov)",
+    hoursPlayed: 410.0,
+    genre: "하드코어 익스트랙션 택티컬 FPS",
+    audioFocus: "방탄모 착용 시 헤드셋(ComTac) 증폭 사운드와 유리조각/나무바닥/자갈 재질별 풋스텝, 초근접 총격 소닉붐의 극단적 사실주의",
+    tag: "SURREAL HARDCORE AUDIO & TACTICAL COMTAC",
+    headerImg: "https://assets.escapefromtarkov.com/uploads/content/news/eft_header_new.jpg",
+    steamUrl: "https://www.escapefromtarkov.com/",
+    platform: "other"
+  },
+  {
+    appId: "other-mario1",
+    name: "슈퍼 마리오 브라더스 (Super Mario Bros. 1)",
+    hoursPlayed: 55.0,
+    genre: "레트로 2D 액션 플랫포머",
+    audioFocus: "코인 획득, 슈퍼버섯 변신, 깃발 터치 등 비디오 게임 역사상 가장 완벽한 피드백을 구축한 8비트 사각파·삼각파 칩튠의 정수",
+    tag: "8-BIT CHIPTUNE & COIN SOUND SIGNATURE",
+    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000012332/desc/01_hero",
+    steamUrl: "https://www.nintendo.co.kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-mario2",
+    name: "슈퍼 마리오 브라더스 2 (Super Mario Bros. 2 / USA)",
+    hoursPlayed: 40.0,
+    genre: "2D 액션 플랫포머",
+    audioFocus: "무를 땅에서 뽑아 던지는 독창적인 플럭(Pluck) 효과음과 캐릭터별 점프 체공 물리 사운드",
+    tag: "RETRO PLUCK FOLEY & CHARACTER DYNAMICS",
+    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000012332/desc/02_mario2",
+    steamUrl: "https://www.nintendo.co.kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-mario3",
+    name: "슈퍼 마리오 브라더스 3 (Super Mario Bros. 3)",
+    hoursPlayed: 75.0,
+    genre: "2D 액션 플랫포머 걸작",
+    audioFocus: "꼬리 마리오 나뭇잎 활공 퍼덕임 음향과 쿠파 군단 비행선 엔진 진동의 리드미컬한 브라스 타악기 시퀀싱",
+    tag: "LEAF FLAP FOLEY & AIRSHIP BRASS PERCUSSION",
+    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000012332/desc/03_mario3",
+    steamUrl: "https://www.nintendo.co.kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-commandos",
+    name: "코만도스 시리즈 (Commandos: Behind Enemy Lines)",
+    hoursPlayed: 85.0,
+    genre: "실시간 잠입 전술 전략",
+    audioFocus: "독일군 보초병 시야 반경 및 호각 경보음, 단검 기습 시의 섬뜩한 음향과 그린베레의 절제된 잠입 보이스 오더",
+    tag: "STEALTH TACTICS & ALARM WHISTLE",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/6800/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/6800/",
+    platform: "other"
+  },
+  {
+    appId: "other-cod",
+    name: "콜 오브 듀티 시리즈 (Call of Duty: Modern Warfare / Warzone)",
+    hoursPlayed: 380.0,
+    genre: "시네마틱 군사 FPS",
+    audioFocus: "총기 약실 재장전 철컥임과 탄피 배출 바닥 튕김음, 아머 플레이트 크랙 피격 핑의 독보적인 사운드 펀치력",
+    tag: "WEAPON RELOAD FOLEY & ARMOR CRACK SFX",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1938090/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/1938090/",
+    platform: "other"
+  },
+  {
+    appId: "other-dyinglight",
+    name: "다잉 라이트 (Dying Light)",
+    hoursPlayed: 110.0,
+    genre: "오픈월드 파쿠르 좀비 서바이벌",
+    audioFocus: "밤이 찾아올 때 울리는 볼래틸의 소름끼치는 비명과 지붕 위 파쿠르 착지 발소리, 둔기 골절 타격 임팩트",
+    tag: "VOLATILE SCREAM & ROOFTOP PARKOUR FOLEY",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/239140/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/239140/",
+    platform: "other"
+  },
+  {
+    appId: "other-prototype",
+    name: "프로토타입 (Prototype)",
+    hoursPlayed: 70.0,
+    genre: "오픈월드 하이퍼 바이오 액션",
+    audioFocus: "알렉스 머서의 신체 변형 블레이드와 채찍 변환 유기체 사운드, 헬기와 탱크를 내던지는 파괴적인 저음역 폭발음",
+    tag: "BIOMORPHIC TRANSFORMATION & MASS CRUSH",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/10150/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/10150/",
+    platform: "other"
+  },
+  {
+    appId: "other-bayonetta",
+    name: "베요네타 (Bayonetta)",
+    hoursPlayed: 90.0,
+    genre: "스타일리시 논스톱 클라이맥스 액션",
+    audioFocus: "위치 타임(Witch Time) 발동 시 왜곡되는 시공간 잔향과 하이힐 총격음, 경쾌하면서 화려한 재즈 팝 오케스트라",
+    tag: "WITCH TIME DISTORTION & HIGH-HEEL GUNPLAY",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/460790/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/460790/",
+    platform: "other"
+  },
+  {
+    appId: "other-mgs",
+    name: "메탈기어 솔리드 시리즈 (Metal Gear Solid)",
+    hoursPlayed: 240.0,
+    genre: "택티컬 에스피오나지 액션 (잠입)",
+    audioFocus: "적 발견 시 긴장감을 극대화하는 전설적인 느낌표 사운드('!'), 소음기 장착 권총의 공기 압축 격발음 및 무전 코덱 사운드",
+    tag: "EXCLAMATION ALERT SFX & SILENCED SHOT",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/287700/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/287700/",
+    platform: "other"
+  },
+  {
+    appId: "other-kirby",
+    name: "별의 커비 시리즈 (Kirby)",
+    hoursPlayed: 65.0,
+    genre: "액션 플랫포머",
+    audioFocus: "적을 빨아들이는 진공 흡입 효과음과 별 내뱉기 사운드, 둥글고 사랑스러운 카와이 신시사이저 테마 멜로디",
+    tag: "VACUUM INHALE SFX & CUTE SYNTH POP",
+    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/ko_KR/games/switch/k/kirby-and-the-forgotten-land-switch/hero",
+    steamUrl: "https://www.nintendo.co.kr/switch/kirby/",
+    platform: "other"
+  },
+  {
+    appId: "other-pkmn-dp",
+    name: "포켓몬스터 DP 디아루가·펄기아 (Pokémon Diamond & Pearl)",
+    hoursPlayed: 180.0,
+    genre: "몬스터 수집 턴제 RPG",
+    audioFocus: "시간과 공간의 신화 전설의 포켓몬 디아루가·펄기아의 웅장한 신스 울음소리와 난천(신디아) 피아노 배틀 테마",
+    tag: "LEGENDARY ROAR & CYNTHIA PIANO THEME",
+    headerImg: "https://pokemonkorea.co.kr/archive/games/2021/08/18/d8e11a24d55b8829ef2ff4fd79a2bbd2.jpg",
+    steamUrl: "https://pokemonkorea.co.kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-pkmn-emerald",
+    name: "포켓몬스터 에메랄드 (Pokémon Emerald)",
+    hoursPlayed: 150.0,
+    genre: "GBA 몬스터 RPG 명작",
+    audioFocus: "호연 지방 특유의 풍성한 GBA 브라스 관악기 팡파르와 레쿠쟈 천공의 분노 사운드트랙 연출",
+    tag: "HOENN BRASS FANFARE & RAYQUAZA ROAR",
+    headerImg: "https://pokemonkorea.co.kr/archive/games/2021/08/18/3455ae0e6ea87a242f36bc6474bdf739.jpg",
+    steamUrl: "https://pokemonkorea.co.kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-pkmn-blue",
+    name: "포켓몬 불가사의 던전 파랑 구조대 (Pokémon Mystery Dungeon)",
+    hoursPlayed: 95.0,
+    genre: "로그라이크 던전 RPG",
+    audioFocus: "감동적인 이별 테마 곡의 서정적인 플루트 선율과 턴제 이동 시 리드미컬한 던전 타일 풋스텝 및 스킬 피드백",
+    tag: "EMOTIONAL FLUTE THEME & TURN FOOTSTEPS",
+    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/ko_KR/games/switch/p/pokemon-mystery-dungeon-rescue-team-dx-switch/hero",
+    steamUrl: "https://pokemonkorea.co.kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-mh4g",
+    name: "몬스터 헌터 4G (Monster Hunter 4 Ultimate)",
+    hoursPlayed: 320.0,
+    genre: "헌팅 액션 RPG",
+    audioFocus: "차지액스 초고출력 속성해방베기의 육중한 기계 전개음과 고어 마가라 광룡화 바이러스 발동 시의 심연 포효 사운드",
+    tag: "CHARGE BLADE EXPULSION & FRENZY ROAR",
+    headerImg: "https://www.monsterhunter.com/4g/images/main_visual.jpg",
+    steamUrl: "https://www.capcom.co.jp/monsterhunter/",
+    platform: "other"
+  },
+  {
+    appId: "other-mhp",
+    name: "몬스터 헌터 포터블 (Monster Hunter Freedom / Portable 2nd G)",
+    hoursPlayed: 290.0,
+    genre: "헌팅 액션",
+    audioFocus: "PSP 아날로그 시절 티가렉스 전진 포효의 충격파 이명음과 포케 마을 BGM의 포근한 어쿠스틱 기타 선율",
+    tag: "TIGREX SHOCKWAVE & POKKE VILLAGE GUITAR",
+    headerImg: "https://www.capcom.co.jp/monsterhunter/images/pkg_p2g.jpg",
+    steamUrl: "https://www.capcom.co.jp/monsterhunter/",
+    platform: "other"
+  },
+  {
+    appId: "other-dw",
+    name: "진·삼국무쌍 시리즈 (Dynasty Warriors)",
+    hoursPlayed: 180.0,
+    genre: "일기당천 택티컬 액션",
+    audioFocus: "수백 명의 적병을 일거에 날려버리는 차지 콤보의 청량한 타격감과 질주하는 전자기타 하드록 BGM",
+    tag: "1 VS 1000 MASS SWEEP & HARD ROCK BGM",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/278080/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/278080/",
+    platform: "other"
+  },
+  {
+    appId: "other-orochi",
+    name: "무쌍 오로치 시리즈 (Warriors Orochi)",
+    hoursPlayed: 140.0,
+    genre: "크로스오버 택티컬 액션",
+    audioFocus: "삼국지와 전국시대 무장 3인 교체 스위칭 사운드와 오로치 마왕 강림의 묵직한 오컬트 오케스트라",
+    tag: "CHARACTER SWITCH SFX & DARK SORCERY BGM",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/831540/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/831540/",
+    platform: "other"
+  },
+  {
+    appId: "other-dnf",
+    name: "던전앤파이터 (Dungeon & Fighter / DNF)",
+    hoursPlayed: 680.0,
+    genre: "2D 횡스크롤 콤보 액션 RPG",
+    audioFocus: "귀검사 평타와 단공참의 날카로운 쇠 절단음, 레인저 난사 시 탄피 폭포 효과음과 세리아의 방 명작 BGM",
+    tag: "COMBO SLASH FOLEY & SERIA'S ROOM BGM",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/495910/header.jpg",
+    steamUrl: "https://df.nexon.com/",
+    platform: "other"
+  },
+  {
+    appId: "other-aion",
+    name: "아이온 (AION - The Tower of AION)",
+    hoursPlayed: 360.0,
+    genre: "판타지 MMORPG",
+    audioFocus: "날개를 펼쳐 활강할 때의 바람 가르는 공기역학 사운드와 천족/마족 어비스 공중전의 웅대한 심포니",
+    tag: "GLIDING WIND SOUND & ABYSS FLIGHT SYMPHONY",
+    headerImg: "https://aion.plaync.com/aion/images/common/og_image.jpg",
+    steamUrl: "https://aion.plaync.com/",
+    platform: "other"
+  },
+  {
+    appId: "other-aion2",
+    name: "아이온 2 (AION 2)",
+    hoursPlayed: 40.0,
+    genre: "차세대 언리얼 엔진 MMORPG",
+    audioFocus: "차세대 공간 음향 엔진을 통한 입체적인 대규모 필드 전투 사운드와 정밀한 물리 기반 무기 충돌 Foley",
+    tag: "NEXT-GEN 3D COMBAT & PHYSICAL FOLEY",
+    headerImg: "https://aion2.plaync.com/images/common/og_image.jpg",
+    steamUrl: "https://aion2.plaync.com/",
+    platform: "other"
+  },
+  {
+    appId: "other-wc3",
+    name: "워크래프트 3: 프로즌 쓰론 (Warcraft III: The Frozen Throne)",
+    hoursPlayed: 590.0,
+    genre: "판타지 실시간 전략 (RTS)",
+    audioFocus: "아서스 메네실과 일리단 대결의 서사시적 BGM과 아크메이지 블리자드 빙결음, 언데드 지구라트 생성 생체 효과음",
+    tag: "HERO VOICE ACTING & BLIZZARD SPELL SFX",
+    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/bltb8b16c89116e7884/6446e5ba27eb954be4a2ef69/WC3_Header.jpg",
+    steamUrl: "https://warcraft3.blizzard.com/ko-kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-sc1",
+    name: "스타크래프트 1: 브루드 워 (StarCraft: Brood War)",
+    hoursPlayed: 620.0,
+    genre: "SF 실시간 전략 (RTS 전설)",
+    audioFocus: "시즈탱크 포격음의 전설적인 트랜지언트, 질럿 사이오닉 블레이드 절단음, 배틀크루저 야마토 캐논 발사 사운드",
+    tag: "LEGENDARY RTS FOLEY & YAMATO CANNON SFX",
+    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt6d5d5904d98a729e/SC1_Header.jpg",
+    steamUrl: "https://starcraft.blizzard.com/ko-kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-wonderking",
+    name: "원더킹 온라인 (WonderKing Online)",
+    hoursPlayed: 110.0,
+    genre: "2D 횡스크롤 액션 MMORPG",
+    audioFocus: "아기자기하고 동화 같은 마을 BGM과 2D 횡스크롤 점프 대시 사운드, 밝고 명쾌한 스킬 타격음 피드백",
+    tag: "FAIRYTALE 2D RPG & BRIGHT IMPACT",
+    headerImg: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2k34.jpg",
+    steamUrl: "https://www.wonderking.co.kr/",
+    platform: "other"
+  },
+  {
+    appId: "other-maplestory",
+    name: "메이플스토리 (MapleStory)",
+    hoursPlayed: 720.0,
+    genre: "2D 횡스크롤 MMORPG",
+    audioFocus: "리스항구·엘리니아·루디브리엄 등 게임계 역사에 남은 명작 BGM과 레벨업 팡파르, 큐브 감정 시 심장 쫄깃한 효과음",
+    tag: "ICONIC NOSTALGIC OST & LEVEL UP FANFARE",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/216150/header.jpg",
+    steamUrl: "https://maplestory.nexon.com/",
+    platform: "other"
+  },
+  {
+    appId: "other-suddenattack",
+    name: "서든어택 (Sudden Attack)",
+    hoursPlayed: 540.0,
+    genre: "대한민국 대표 온라인 FPS",
+    audioFocus: "제3보급창고 B사이트 폭탄 설치음과 해체 카운트다운 사운드, TRG-21 저격총 격발음의 묵직한 고음역 반동 잔향",
+    tag: "BOMB DEFUSE BEEPS & TRG-21 SNIPER SHOT",
+    headerImg: "https://sa.nexon.com/images/common/og_image.jpg",
+    steamUrl: "https://sa.nexon.com/",
+    platform: "other"
+  },
+  {
+    appId: "other-crossfire",
+    name: "크로스파이어 (Crossfire)",
+    hoursPlayed: 380.0,
+    genre: "글로벌 밀리터리 택티컬 FPS",
+    audioFocus: "고스트 매치에서 투명 적의 가쁜 숨소리와 발소리로 위치를 추적하는 극강의 긴장감 사운드 믹싱",
+    tag: "GHOST BREATHING AUDITORY CUES & FAST PACED FPS",
+    headerImg: "https://images.contentstack.io/v3/assets/blt9c12f249ac15c7ec/bltb8b16c89116e7884/CF_Header.jpg",
+    steamUrl: "https://crossfire.z8games.com/",
+    platform: "other"
+  },
+  {
+    appId: "other-gta5",
+    name: "Grand Theft Auto V (GTA 5)",
+    hoursPlayed: 270.0,
+    genre: "오픈월드 범죄 액션 어드벤처",
+    audioFocus: "로스 산토스 도심의 차량 배기음, 라디오 방송국의 방대한 라이선스 트랙과 경찰 사이렌 도플러 효과(Doppler Effect)",
+    tag: "DOPPLER SIREN & VEHICLE ENGINE EXHAUST",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/271590/",
+    platform: "other"
+  },
+  {
+    appId: "other-p4g",
+    name: "페르소나 4 더 골든 (Persona 4 Golden)",
+    hoursPlayed: 125.0,
+    genre: "스타일리시 쥬브나일 RPG",
+    audioFocus: "메구로 쇼지의 상큼한 애시드 재즈 팝과 심야 텔레비전 진입 시 왜곡되는 노이즈 글리치 효과음",
+    tag: "ACID JAZZ SOUNDTRACK & TV STATIC GLITCH",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1113000/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/1113000/",
+    platform: "other"
+  },
+  {
+    appId: "other-akiba",
+    name: "아키바스 스트립 (AKIBA'S TRIP: Undead & Undressed)",
+    hoursPlayed: 60.0,
+    genre: "오타쿠 컬처 스트립 액션 RPG",
+    audioFocus: "실제 아키하바라 거리의 소란스러운 매장 홍보 방송 앰비언스와 탈의 스트립 시 통쾌한 원단 파열 폴리 사운드",
+    tag: "AKIHABARA STREET NOISE & CLOTH TEAR FOLEY",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/333980/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/333980/",
+    platform: "other"
+  },
+  {
+    appId: "other-megaman-x",
+    name: "록맨 X / 메가맨 X 시리즈 (Mega Man X)",
+    hoursPlayed: 110.0,
+    genre: "하이 스피드 2D 액션 슈팅",
+    audioFocus: "엑스의 차지 샷 모음 고주파 피치 상승과 발사 폭음, 제로 세이버의 전기 빔 절단음과 전설적인 질주감의 일렉 기타 OST",
+    tag: "CHARGE SHOT PITCH RISER & BEAM SABER SLASH",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/743890/header.jpg",
+    steamUrl: "https://store.steampowered.com/app/743890/",
     platform: "other"
   }
 ];
