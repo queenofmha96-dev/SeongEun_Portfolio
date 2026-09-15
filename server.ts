@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import { fileURLToPath } from "url";
 import { createServer as createViteServer } from "vite";
 
@@ -90,6 +91,34 @@ async function startServer() {
     } catch (err: any) {
       console.error("Steam sync error:", err);
       return res.status(500).json({ error: err.message || "Internal server error" });
+    }
+  });
+
+  // Save user profile photo permanently to public/profile.png
+  app.post("/api/save-profile-photo", express.json({ limit: "25mb" }), (req, res) => {
+    try {
+      const { imageBase64 } = req.body;
+      if (!imageBase64) {
+        return res.status(400).json({ error: "No image data provided" });
+      }
+      const base64Data = imageBase64.replace(/^data:image\/\w+;base64,/, "");
+      const buffer = Buffer.from(base64Data, "base64");
+      const publicDir = path.join(process.cwd(), "public");
+      if (!fs.existsSync(publicDir)) {
+        fs.mkdirSync(publicDir, { recursive: true });
+      }
+      fs.writeFileSync(path.join(publicDir, "profile.png"), buffer);
+      
+      // Also write to dist if it exists
+      const distDir = path.join(process.cwd(), "dist");
+      if (fs.existsSync(distDir)) {
+        fs.writeFileSync(path.join(distDir, "profile.png"), buffer);
+      }
+      
+      return res.json({ success: true, message: "Profile photo saved" });
+    } catch (err: any) {
+      console.error("Save profile photo error:", err);
+      return res.status(500).json({ error: err.message || "Failed to save photo" });
     }
   });
 

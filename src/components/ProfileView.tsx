@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   Award, Cpu, Disc, Mail, MapPin, Phone, Shield, Sliders, Radio, Sparkles, CheckCircle,
-  Printer, Share2, Check, FileText, Globe, Languages, Camera, User, Upload, Trash2
+  Printer, Share2, Check, FileText, Globe, Languages, User
 } from 'lucide-react';
 import { SoundDirectorProfile } from '../types';
 import { soundEngine } from '../utils/soundEngine';
+import profilePhoto from '../assets/profile.png';
 
 interface ProfileViewProps {
   profile: SoundDirectorProfile;
@@ -12,14 +13,6 @@ interface ProfileViewProps {
 
 export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
   const [copied, setCopied] = useState(false);
-  const [photo, setPhoto] = useState<string | null>(() => {
-    return localStorage.getItem('resume_profile_photo_custom') || 
-           localStorage.getItem('resume_profile_photo') || 
-           profile.avatarUrl || 
-           null;
-  });
-  const [isDragging, setIsDragging] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handlePrint = () => {
     soundEngine.playClick();
@@ -37,64 +30,11 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
     }
   };
 
-  const handleImageFile = (file: File) => {
-    if (!file.type.startsWith('image/')) {
-      alert('이미지 파일(JPG, PNG 등)만 등록 가능합니다.');
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const result = e.target?.result as string;
-      if (result) {
-        setPhoto(result);
-        localStorage.setItem('resume_profile_photo_custom', result);
-        soundEngine.playClick();
-      }
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      handleImageFile(file);
-    }
-  };
-
-  const handleRemovePhoto = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    soundEngine.playClick();
-    setPhoto(null);
-    localStorage.removeItem('resume_profile_photo_custom');
-    localStorage.removeItem('resume_profile_photo');
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragging(false);
-    const file = e.dataTransfer.files?.[0];
-    if (file) {
-      handleImageFile(file);
-    }
-  };
-
   return (
     <div className="w-full space-y-14 animate-fadeIn text-slate-100 font-sans py-2">
       
       {/* 1. Header & Bio Intro */}
       <div className="space-y-6">
-        
-        {/* Hidden File Input for Resume Photo */}
-        <input
-          type="file"
-          ref={fileInputRef}
-          accept="image/*"
-          className="hidden"
-          onChange={handleFileChange}
-        />
 
         {/* Top: Profile Identity & Actions */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 bg-[#0c0e18]/60 p-4 sm:p-5 rounded-2xl border border-slate-800/80">
@@ -104,69 +44,14 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
             
             {/* Left: Resume Photo + Name */}
             <div className="flex items-center gap-4 sm:gap-5 min-w-0 shrink-0">
-              {/* Resume Photo Frame (Standard Portrait 3:4 Ratio) */}
+              {/* Resume Photo Frame (Permanent Original Photo - Pure Display) */}
               <div 
-                onClick={() => fileInputRef.current?.click()}
-                onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
-                onDragLeave={() => setIsDragging(false)}
-                onDrop={handleDrop}
-                title={photo ? '클릭하여 사진 변경' : '클릭하여 이력서 사진 등록'}
-                className={`relative w-20 h-[106px] sm:w-24 sm:h-[128px] md:w-28 md:h-[148px] rounded-xl sm:rounded-2xl border-2 transition-all cursor-pointer flex-shrink-0 overflow-hidden group shadow-xl ${
-                  isDragging 
-                    ? 'border-cyan-400 bg-cyan-950/40 ring-2 ring-cyan-400/50' 
-                    : photo 
-                      ? 'border-slate-700 hover:border-cyan-400/70 bg-[#090b14]' 
-                      : 'border-dashed border-slate-700/80 hover:border-cyan-400/80 bg-[#0c0e18] hover:bg-[#0f1220]'
-                }`}
+                className="relative w-20 h-[106px] sm:w-24 sm:h-[128px] md:w-28 md:h-[148px] rounded-xl sm:rounded-2xl border border-slate-700/80 bg-[#090b14] flex-shrink-0 overflow-hidden shadow-xl"
               >
-                {photo ? (
-                  <>
-                    <img 
-                      src={photo} 
-                      alt={`${profile.name} 이력서 사진`} 
-                      className="w-full h-full object-cover object-center"
-                      referrerPolicy="no-referrer"
-                      onError={() => {
-                        setPhoto(null);
-                        localStorage.removeItem('resume_profile_photo_custom');
-                        localStorage.removeItem('resume_profile_photo');
-                      }}
-                    />
-                    {/* Hover Actions Overlay */}
-                    <div className="absolute inset-0 bg-slate-950/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 p-2 text-white print:hidden backdrop-blur-[2px]">
-                      <div className="flex items-center gap-1.5 text-xs font-semibold text-cyan-300">
-                        <Camera className="w-4 h-4" />
-                        <span>사진 변경</span>
-                      </div>
-                      <button
-                        onClick={handleRemovePhoto}
-                        type="button"
-                        title="등록된 사진 삭제"
-                        className="px-2 py-1 rounded-md bg-rose-950/90 hover:bg-rose-900 text-rose-200 border border-rose-600/50 text-[11px] font-medium flex items-center gap-1 transition-colors shadow-sm"
-                      >
-                        <Trash2 className="w-3 h-3" />
-                        <span>사진 삭제</span>
-                      </button>
-                    </div>
-                  </>
-                ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center p-2 text-center select-none">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-cyan-950/60 group-hover:bg-cyan-900/70 border border-cyan-500/40 group-hover:border-cyan-400 flex items-center justify-center mb-1.5 sm:mb-2 transition-all shadow-inner">
-                      <Upload className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 group-hover:text-cyan-200 transition-colors" />
-                    </div>
-                    <span className="text-xs sm:text-sm font-bold text-slate-200 group-hover:text-cyan-300 leading-tight transition-colors">
-                      사진 등록
-                    </span>
-                    <span className="text-[10px] sm:text-xs text-cyan-400/90 font-mono mt-0.5 sm:mt-1">
-                      클릭하여 원본 선택
-                    </span>
-                  </div>
-                )}
-
-                {/* Status Indicator Dot */}
-                <div 
-                  className="absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full bg-emerald-500 border-2 border-[#0b0d18] shadow-md" 
-                  title="Available for Sound Design" 
+                <img 
+                  src={profilePhoto} 
+                  alt={`${profile.name} 프로필 사진`} 
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
 
