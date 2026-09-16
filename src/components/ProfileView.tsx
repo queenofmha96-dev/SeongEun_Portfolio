@@ -110,8 +110,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
 
           </div>
 
-          {/* Quick Action Buttons (Share & Print) */}
-          <div className="flex sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 shrink-0 pt-2 lg:pt-0 border-t border-slate-800/70 lg:border-t-0">
+          {/* Quick Action Buttons (Share & Print) - Screen Only */}
+          <div className="flex sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 shrink-0 pt-2 lg:pt-0 border-t border-slate-800/70 lg:border-t-0 no-print print:hidden">
             <button
               onClick={handleShare}
               onMouseEnter={() => soundEngine.playHover()}
@@ -185,7 +185,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
             {profile.skills.map((skill, idx) => (
               <div
                 key={idx}
-                className="p-3.5 sm:p-4 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-cyan-500/40 hover:bg-[#0c0e17] transition-all space-y-1.5"
+                className="p-3.5 sm:p-4 print:p-2 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-cyan-500/40 hover:bg-[#0c0e17] transition-all space-y-1.5 print:space-y-1 break-inside-avoid"
               >
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
@@ -262,11 +262,11 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
         </div>
 
         {/* Open Timeline without nested boxes */}
-        <div className="relative border-l-2 border-slate-800 ml-3 sm:ml-4 pl-5 sm:pl-7 space-y-10">
+        <div className="relative border-l-2 border-slate-800 print:border-slate-400 ml-3 sm:ml-4 pl-5 sm:pl-7 space-y-10 print:space-y-4">
           {profile.experience.map((exp, idx) => {
             const isCurrent = exp.period.includes('Present') || exp.role.includes('진행 중');
             return (
-              <div key={idx} className="relative space-y-3 group">
+              <div key={idx} className="relative space-y-3 print:space-y-1.5 group break-inside-avoid">
                 {/* Dot on line */}
                 <div
                   className={`absolute -left-[29px] sm:-left-[37px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#0b0d18] border-2 transition-all ${

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio, Smartphone, Monitor, Disc, CreditCard, Layers, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio, Smartphone, Monitor, Disc, CreditCard, Layers, ChevronLeft, ChevronRight, Search, X, ArrowRight } from 'lucide-react';
 import { OFFICIAL_STEAM_PROFILE_DATA } from '../data/steamData';
 import { PLAYED_GAMES_LIST, PlayedGameItem, GamePlatform } from '../data/playedGamesData';
 import { SteamProfileData } from '../types';
@@ -271,13 +271,39 @@ export const GamingHistoryView: React.FC = () => {
   const ITEMS_PER_PAGE = 8;
   const [steamPage, setSteamPage] = useState<number>(1);
   const [playedGamesPage, setPlayedGamesPage] = useState<number>(1);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [steamJumpInput, setSteamJumpInput] = useState<string>('');
+  const [playedJumpInput, setPlayedJumpInput] = useState<string>('');
   const gamesListTopRef = useRef<HTMLDivElement>(null);
 
-  const steamTotalPages = Math.max(1, Math.ceil(steamData.games.length / ITEMS_PER_PAGE));
+  // Filtered steam games with search query
+  const searchedSteamGames = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return steamData.games;
+    return steamData.games.filter(g =>
+      g.name.toLowerCase().includes(q) ||
+      g.appId.includes(q)
+    );
+  }, [steamData.games, searchQuery]);
+
+  // Filtered played games with search query (on top of platform filter)
+  const searchedPlayedGames = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return filteredPlayedGames;
+    return filteredPlayedGames.filter(g =>
+      g.name.toLowerCase().includes(q) ||
+      (g.genre && g.genre.toLowerCase().includes(q)) ||
+      (g.audioFocus && g.audioFocus.toLowerCase().includes(q)) ||
+      (g.tag && g.tag.toLowerCase().includes(q)) ||
+      g.appId.includes(q)
+    );
+  }, [filteredPlayedGames, searchQuery]);
+
+  const steamTotalPages = Math.max(1, Math.ceil(searchedSteamGames.length / ITEMS_PER_PAGE));
   const paginatedSteamGames = useMemo(() => {
     const start = (steamPage - 1) * ITEMS_PER_PAGE;
-    return steamData.games.slice(start, start + ITEMS_PER_PAGE);
-  }, [steamData.games, steamPage]);
+    return searchedSteamGames.slice(start, start + ITEMS_PER_PAGE);
+  }, [searchedSteamGames, steamPage]);
 
   // Top 6 Most Played Games for PDF Document Print Layout (Filtered & Sorted Descending by Playtime)
   const top6PlayedGames = useMemo(() => {
@@ -328,11 +354,37 @@ export const GamingHistoryView: React.FC = () => {
       .slice(0, 6);
   }, [steamData]);
 
-  const playedTotalPages = Math.max(1, Math.ceil(filteredPlayedGames.length / ITEMS_PER_PAGE));
+  const playedTotalPages = Math.max(1, Math.ceil(searchedPlayedGames.length / ITEMS_PER_PAGE));
   const paginatedPlayedGames = useMemo(() => {
     const start = (playedGamesPage - 1) * ITEMS_PER_PAGE;
-    return filteredPlayedGames.slice(start, start + ITEMS_PER_PAGE);
-  }, [filteredPlayedGames, playedGamesPage]);
+    return searchedPlayedGames.slice(start, start + ITEMS_PER_PAGE);
+  }, [searchedPlayedGames, playedGamesPage]);
+
+  const handleSearchChange = (val: string) => {
+    setSearchQuery(val);
+    setSteamPage(1);
+    setPlayedGamesPage(1);
+  };
+
+  const handleSteamJumpSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const p = parseInt(steamJumpInput.trim(), 10);
+    if (!isNaN(p)) {
+      const targetPage = Math.max(1, Math.min(p, steamTotalPages));
+      handleSteamPageChange(targetPage);
+      setSteamJumpInput('');
+    }
+  };
+
+  const handlePlayedJumpSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const p = parseInt(playedJumpInput.trim(), 10);
+    if (!isNaN(p)) {
+      const targetPage = Math.max(1, Math.min(p, playedTotalPages));
+      handlePlayedPageChange(targetPage);
+      setPlayedJumpInput('');
+    }
+  };
 
   const handleTabChange = (tab: 'steam' | 'all') => {
     soundEngine.playClick();
@@ -379,8 +431,22 @@ export const GamingHistoryView: React.FC = () => {
 
   return (
     <div className="w-full space-y-6 animate-fadeIn font-sans text-slate-100 py-1">
+      {/* Print-Only: Steam Verified Header & Document Summary */}
+      <div className="hidden print:flex items-center justify-between border-b-2 border-slate-700 pb-2 mb-2 text-xs font-sans text-slate-800">
+        <div className="flex items-center gap-2.5 font-mono">
+          <span className="font-bold text-slate-950">STEAM PROFILE: {steamData.steamID}</span>
+          <span className="text-slate-400">|</span>
+          <span>SteamID64: {steamData.steamID64}</span>
+          <span className="text-slate-400">|</span>
+          <span>가입: {steamData.memberSince}</span>
+        </div>
+        <div className="font-mono text-slate-700">
+          총 누적 플레이타임: <strong className="font-bold text-slate-950">{totalHours.toLocaleString()}시간+</strong> ({PLAYED_GAMES_LIST.length}개 게임)
+        </div>
+      </div>
+
       {/* Official Steam Verified Profile Showcase Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0d1424] via-[#09101f] to-[#0d1527] border border-cyan-500/40 p-4 sm:p-6 shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0d1424] via-[#09101f] to-[#0d1527] border border-cyan-500/40 p-4 sm:p-6 shadow-xl no-print print:hidden">
         <div className="absolute top-0 right-0 w-80 h-full bg-radial-gradient pointer-events-none opacity-20" />
         
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 relative z-10">
@@ -689,13 +755,77 @@ export const GamingHistoryView: React.FC = () => {
               </div>
             </div>
           )}
+
+          {/* Realtime Game Search Input Bar */}
+          <div className="pt-3 border-t border-slate-800/80">
+            <div className="relative flex items-center">
+              <div className="absolute left-3.5 flex items-center pointer-events-none text-slate-400">
+                <Search className="w-4 h-4 text-cyan-400" />
+              </div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                placeholder={
+                  activeTab === 'steam'
+                    ? "스팀 게임명 또는 AppID 검색 (예: 명조, Apex, 578080...)"
+                    : "게임명, 장르, 오디오 사운드 특징 검색 (예: 몬헌, 오클루전, 타격감, FPS...)"
+                }
+                className="w-full pl-10 pr-24 py-2.5 rounded-xl bg-black/70 border border-slate-700/80 hover:border-slate-600 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/50 text-slate-100 placeholder:text-slate-500 text-xs sm:text-sm font-sans transition-all outline-none"
+              />
+              <div className="absolute right-2.5 flex items-center gap-1.5">
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => handleSearchChange('')}
+                    className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                    title="검색어 지우기"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-800/90 text-cyan-300 border border-slate-700 font-bold shrink-0">
+                  {activeTab === 'steam' ? searchedSteamGames.length : searchedPlayedGames.length}개
+                </span>
+              </div>
+            </div>
+            {searchQuery && (
+              <div className="flex items-center justify-between text-[11px] text-slate-400 mt-1.5 px-1 font-sans">
+                <span>
+                  '<strong className="text-cyan-300 font-semibold">{searchQuery}</strong>' 검색 결과: 총 {activeTab === 'steam' ? searchedSteamGames.length : searchedPlayedGames.length}개 일치
+                </span>
+                <button
+                  type="button"
+                  onClick={() => handleSearchChange('')}
+                  className="text-cyan-400 hover:underline cursor-pointer font-medium"
+                >
+                  검색 초기화
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Tab 1: Steam Connected Games */}
       {activeTab === 'steam' && (
         <div className="space-y-4 print:hidden">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fadeIn">
+          {searchedSteamGames.length === 0 ? (
+            <div className="py-12 px-4 rounded-2xl bg-[#0a0c14] border border-slate-800 text-center space-y-3">
+              <Search className="w-8 h-8 text-slate-600 mx-auto" />
+              <p className="text-sm text-slate-300 font-sans">
+                '<span className="text-cyan-400 font-bold">{searchQuery}</span>' 검색어와 일치하는 스팀 게임이 없습니다.
+              </p>
+              <button
+                type="button"
+                onClick={() => handleSearchChange('')}
+                className="px-4 py-2 rounded-xl bg-cyan-950 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-semibold hover:bg-cyan-900 transition-colors cursor-pointer"
+              >
+                검색 초기화
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fadeIn">
             {paginatedSteamGames.map((game) => {
               const percentage = Math.min(100, Math.round((game.hoursTotal / steamMaxHours) * 100));
 
@@ -775,79 +905,135 @@ export const GamingHistoryView: React.FC = () => {
               );
             })}
           </div>
+          )}
 
           {/* Steam Games Pagination */}
-          <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="text-xs text-slate-400 font-mono">
-              스팀 배너 게임: 총 <span className="text-cyan-400 font-bold">{steamData.games.length}</span>개 중{' '}
-              <span className="text-slate-200 font-bold">
-                {(steamPage - 1) * ITEMS_PER_PAGE + 1} ~ {Math.min(steamPage * ITEMS_PER_PAGE, steamData.games.length)}
-              </span>개 표시 (페이지 {steamPage} / {steamTotalPages})
-            </div>
+          {searchedSteamGames.length > 0 && (
+            <div className="pt-4 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-3">
+              <div className="text-xs text-slate-400 font-mono">
+                스팀 배너 게임: 총 <span className="text-cyan-400 font-bold">{searchedSteamGames.length}</span>개 중{' '}
+                <span className="text-slate-200 font-bold">
+                  {(steamPage - 1) * ITEMS_PER_PAGE + 1} ~ {Math.min(steamPage * ITEMS_PER_PAGE, searchedSteamGames.length)}
+                </span>개 표시 (페이지 {steamPage} / {steamTotalPages})
+              </div>
 
-            {steamTotalPages > 1 && (
-              <div className="flex items-center gap-1.5 flex-wrap justify-center">
-                <button
-                  type="button"
-                  onClick={() => handleSteamPageChange(steamPage - 1)}
-                  disabled={steamPage === 1}
-                  aria-label="이전 페이지"
-                  className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
-                    steamPage === 1
-                      ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
-                      : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
-                  }`}
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                  <span>이전</span>
-                </button>
-
-                {getPageNumbers(steamPage, steamTotalPages).map((p, idx) => {
-                  if (typeof p === 'string') {
-                    return <span key={`steam-dot-${idx}`} className="px-2 text-slate-600 font-mono">•••</span>;
-                  }
-                  const isActive = p === steamPage;
-                  return (
+              <div className="flex items-center gap-2.5 flex-wrap justify-center">
+                {steamTotalPages > 1 && (
+                  <div className="flex items-center gap-1.5 flex-wrap justify-center">
                     <button
-                      key={`steam-page-${p}`}
                       type="button"
-                      onClick={() => handleSteamPageChange(p)}
-                      aria-current={isActive ? 'page' : undefined}
-                      className={`min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold flex items-center justify-center border transition-all ${
-                        isActive
-                          ? 'border-cyan-500/70 bg-cyan-950 text-cyan-300 shadow-sm shadow-cyan-500/30'
-                          : 'border-slate-800 text-slate-400 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                      onClick={() => handleSteamPageChange(steamPage - 1)}
+                      disabled={steamPage === 1}
+                      aria-label="이전 페이지"
+                      className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
+                        steamPage === 1
+                          ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
+                          : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
                       }`}
                     >
-                      {p}
+                      <ChevronLeft className="w-4 h-4" />
+                      <span>이전</span>
                     </button>
-                  );
-                })}
 
-                <button
-                  type="button"
-                  onClick={() => handleSteamPageChange(steamPage + 1)}
-                  disabled={steamPage === steamTotalPages}
-                  aria-label="다음 페이지"
-                  className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
-                    steamPage === steamTotalPages
-                      ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
-                      : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
-                  }`}
-                >
-                  <span>다음</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+                    {getPageNumbers(steamPage, steamTotalPages).map((p, idx) => {
+                      if (typeof p === 'string') {
+                        return <span key={`steam-dot-${idx}`} className="px-2 text-slate-600 font-mono">•••</span>;
+                      }
+                      const isActive = p === steamPage;
+                      return (
+                        <button
+                          key={`steam-page-${p}`}
+                          type="button"
+                          onClick={() => handleSteamPageChange(p)}
+                          aria-current={isActive ? 'page' : undefined}
+                          className={`min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold flex items-center justify-center border transition-all ${
+                            isActive
+                              ? 'border-cyan-500/70 bg-cyan-950 text-cyan-300 shadow-sm shadow-cyan-500/30'
+                              : 'border-slate-800 text-slate-400 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                          }`}
+                        >
+                          {p}
+                        </button>
+                      );
+                    })}
+
+                    <button
+                      type="button"
+                      onClick={() => handleSteamPageChange(steamPage + 1)}
+                      disabled={steamPage === steamTotalPages}
+                      aria-label="다음 페이지"
+                      className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
+                        steamPage === steamTotalPages
+                          ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
+                          : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                      }`}
+                    >
+                      <span>다음</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+
+                {/* Direct Jump to Page Form */}
+                {steamTotalPages > 1 && (
+                  <form
+                    onSubmit={handleSteamJumpSubmit}
+                    className="flex items-center gap-1.5 bg-[#080a12] border border-slate-800 hover:border-slate-700 rounded-xl px-2.5 py-1.5 shrink-0 transition-colors"
+                  >
+                    <span className="text-xs text-slate-400 font-mono">이동:</span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={steamTotalPages}
+                      value={steamJumpInput}
+                      onChange={(e) => setSteamJumpInput(e.target.value)}
+                      placeholder={String(steamPage)}
+                      className="w-12 h-8 px-1 rounded-lg bg-black/80 border border-slate-700 text-center font-mono font-bold text-xs text-cyan-300 focus:outline-none focus:border-cyan-400 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    />
+                    <span className="text-xs text-slate-500 font-mono">/ {steamTotalPages}</span>
+                    <button
+                      type="submit"
+                      aria-label="스팀 페이지 바로 이동"
+                      className="h-8 px-2.5 rounded-lg bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1"
+                    >
+                      <span>이동</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </form>
+                )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       )}
 
       {/* Tab 2: Full Played Games List with Platform Filtering */}
       {activeTab === 'all' && (
         <div className="space-y-4 print:hidden">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fadeIn">
+          {searchedPlayedGames.length === 0 ? (
+            <div className="py-12 px-4 rounded-2xl bg-[#0a0c14] border border-slate-800 text-center space-y-3">
+              <Search className="w-8 h-8 text-slate-600 mx-auto" />
+              <p className="text-sm text-slate-300 font-sans">
+                {searchQuery ? (
+                  <>
+                    '<span className="text-amber-400 font-bold">{searchQuery}</span>' 검색어와 일치하는 게임이 없습니다.
+                  </>
+                ) : (
+                  <>선택한 플랫폼에 등록된 게임이 없습니다.</>
+                )}
+              </p>
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => handleSearchChange('')}
+                  className="px-4 py-2 rounded-xl bg-amber-950 text-amber-300 border border-amber-500/40 text-xs font-mono font-semibold hover:bg-amber-900 transition-colors cursor-pointer"
+                >
+                  검색 초기화
+                </button>
+              )}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fadeIn">
             {paginatedPlayedGames.map((game, index) => {
               const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
               const p = game.platform || 'steam';
@@ -1024,133 +1210,167 @@ export const GamingHistoryView: React.FC = () => {
               );
             })}
           </div>
+          )}
 
           {/* Tab 2 Pagination */}
-          <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="text-xs text-slate-400 font-mono">
-              {platformFilter === 'all' ? '전체 게임' : `${platformFilter.toUpperCase()} 게임`}: 총{' '}
-              <span className="text-amber-400 font-bold">{filteredPlayedGames.length}</span>개 중{' '}
-              <span className="text-slate-200 font-bold">
-                {(playedGamesPage - 1) * ITEMS_PER_PAGE + 1} ~ {Math.min(playedGamesPage * ITEMS_PER_PAGE, filteredPlayedGames.length)}
-              </span>개 표시 (페이지 {playedGamesPage} / {playedTotalPages})
-            </div>
+          {searchedPlayedGames.length > 0 && (
+            <div className="pt-4 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-3">
+              <div className="text-xs text-slate-400 font-mono">
+                {platformFilter === 'all' ? '전체 게임' : `${platformFilter.toUpperCase()} 게임`}: 총{' '}
+                <span className="text-amber-400 font-bold">{searchedPlayedGames.length}</span>개 중{' '}
+                <span className="text-slate-200 font-bold">
+                  {(playedGamesPage - 1) * ITEMS_PER_PAGE + 1} ~ {Math.min(playedGamesPage * ITEMS_PER_PAGE, searchedPlayedGames.length)}
+                </span>개 표시 (페이지 {playedGamesPage} / {playedTotalPages})
+              </div>
 
-            {playedTotalPages > 1 && (
-              <div className="flex items-center gap-1.5 flex-wrap justify-center">
-                <button
-                  type="button"
-                  onClick={() => handlePlayedPageChange(playedGamesPage - 1)}
-                  disabled={playedGamesPage === 1}
-                  aria-label="이전 페이지"
-                  className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
-                    playedGamesPage === 1
-                      ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
-                      : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
-                  }`}
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                  <span>이전</span>
-                </button>
-
-                {getPageNumbers(playedGamesPage, playedTotalPages).map((p, idx) => {
-                  if (typeof p === 'string') {
-                    return <span key={`played-dot-${idx}`} className="px-2 text-slate-600 font-mono">•••</span>;
-                  }
-                  const isActive = p === playedGamesPage;
-                  return (
+              <div className="flex items-center gap-2.5 flex-wrap justify-center">
+                {playedTotalPages > 1 && (
+                  <div className="flex items-center gap-1.5 flex-wrap justify-center">
                     <button
-                      key={`played-page-${p}`}
                       type="button"
-                      onClick={() => handlePlayedPageChange(p)}
-                      aria-current={isActive ? 'page' : undefined}
-                      className={`min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold flex items-center justify-center border transition-all ${
-                        isActive
-                          ? 'border-amber-500/70 bg-amber-950 text-amber-300 shadow-sm shadow-amber-500/30'
-                          : 'border-slate-800 text-slate-400 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                      onClick={() => handlePlayedPageChange(playedGamesPage - 1)}
+                      disabled={playedGamesPage === 1}
+                      aria-label="이전 페이지"
+                      className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
+                        playedGamesPage === 1
+                          ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
+                          : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
                       }`}
                     >
-                      {p}
+                      <ChevronLeft className="w-4 h-4" />
+                      <span>이전</span>
                     </button>
-                  );
-                })}
 
-                <button
-                  type="button"
-                  onClick={() => handlePlayedPageChange(playedGamesPage + 1)}
-                  disabled={playedGamesPage === playedTotalPages}
-                  aria-label="다음 페이지"
-                  className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
-                    playedGamesPage === playedTotalPages
-                      ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
-                      : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
-                  }`}
-                >
-                  <span>다음</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+                    {getPageNumbers(playedGamesPage, playedTotalPages).map((p, idx) => {
+                      if (typeof p === 'string') {
+                        return <span key={`played-dot-${idx}`} className="px-2 text-slate-600 font-mono">•••</span>;
+                      }
+                      const isActive = p === playedGamesPage;
+                      return (
+                        <button
+                          key={`played-page-${p}`}
+                          type="button"
+                          onClick={() => handlePlayedPageChange(p)}
+                          aria-current={isActive ? 'page' : undefined}
+                          className={`min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold flex items-center justify-center border transition-all ${
+                            isActive
+                              ? 'border-amber-500/70 bg-amber-950 text-amber-300 shadow-sm shadow-amber-500/30'
+                              : 'border-slate-800 text-slate-400 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                          }`}
+                        >
+                          {p}
+                        </button>
+                      );
+                    })}
+
+                    <button
+                      type="button"
+                      onClick={() => handlePlayedPageChange(playedGamesPage + 1)}
+                      disabled={playedGamesPage === playedTotalPages}
+                      aria-label="다음 페이지"
+                      className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono flex items-center gap-1 border transition-colors whitespace-nowrap ${
+                        playedGamesPage === playedTotalPages
+                          ? 'border-slate-800/60 text-slate-600 bg-[#080a12] cursor-not-allowed'
+                          : 'border-slate-800 text-slate-300 bg-[#0a0c16] hover:text-white hover:bg-slate-800 hover:border-slate-700'
+                      }`}
+                    >
+                      <span>다음</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+
+                {/* Direct Jump to Page Form */}
+                {playedTotalPages > 1 && (
+                  <form
+                    onSubmit={handlePlayedJumpSubmit}
+                    className="flex items-center gap-1.5 bg-[#080a12] border border-slate-800 hover:border-slate-700 rounded-xl px-2.5 py-1.5 shrink-0 transition-colors"
+                  >
+                    <span className="text-xs text-slate-400 font-mono">이동:</span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={playedTotalPages}
+                      value={playedJumpInput}
+                      onChange={(e) => setPlayedJumpInput(e.target.value)}
+                      placeholder={String(playedGamesPage)}
+                      className="w-12 h-8 px-1 rounded-lg bg-black/80 border border-slate-700 text-center font-mono font-bold text-xs text-amber-300 focus:outline-none focus:border-amber-400 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    />
+                    <span className="text-xs text-slate-500 font-mono">/ {playedTotalPages}</span>
+                    <button
+                      type="submit"
+                      aria-label="게임 페이지 바로 이동"
+                      className="h-8 px-2.5 rounded-lg bg-amber-950 hover:bg-amber-900 text-amber-300 border border-amber-500/40 text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1"
+                    >
+                      <span>이동</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </form>
+                )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       )}
 
       {/* Print-Only: Top 6 Most Played Games for PDF Document Layout (No image boxes, clean links and sound analysis) */}
-      <div className="hidden print:block space-y-3 pt-2">
-        <div className="border-b-2 border-slate-700 pb-2 flex items-baseline justify-between">
+      <div className="hidden print:block space-y-2.5 pt-1">
+        <div className="border-b-2 border-slate-700 pb-1.5 flex items-baseline justify-between">
           <div>
-            <h3 className="text-base font-bold text-slate-900 font-sans tracking-tight">
+            <h3 className="text-sm font-bold text-slate-950 font-sans tracking-tight">
               핵심 게임 플레이 이력 (누적 플레이타임 TOP 6)
             </h3>
-            <p className="text-xs text-slate-600 font-sans mt-0.5">
+            <p className="text-[11px] text-slate-600 font-sans mt-0.5">
               사운드 디자인 분석, 공간 음향 믹싱 및 상호작용 오디오 시스템 연구를 위해 심층 플레이한 대표작 6선
             </p>
           </div>
-          <span className="text-xs font-mono font-semibold text-slate-600 shrink-0">
+          <span className="text-[10px] font-mono font-semibold text-slate-600 shrink-0">
             [스토어 및 공식 링크 포함]
           </span>
         </div>
 
-        <div className="overflow-hidden border border-slate-300 rounded-lg">
-          <table className="w-full text-left text-xs border-collapse">
+        <div className="overflow-hidden border border-slate-300 rounded-md">
+          <table className="w-full text-left text-[11px] border-collapse table-fixed">
             <thead>
-              <tr className="bg-slate-100 border-b border-slate-300 text-slate-800 font-bold">
-                <th className="py-2 px-2.5 text-center w-12 font-mono">순위</th>
-                <th className="py-2 px-3 w-44">게임 타이틀</th>
-                <th className="py-2 px-2 text-center w-28">장르 / 플랫폼</th>
-                <th className="py-2 px-2.5 text-right w-24 font-mono">플레이타임</th>
-                <th className="py-2 px-3">사운드 디자인 분석 관점 & 오디오 시스템</th>
-                <th className="py-2 px-3 w-44">공식 바로가기</th>
+              <tr className="bg-slate-100 border-b border-slate-300 text-slate-900 font-bold">
+                <th className="py-1.5 px-2 text-center w-[6%] font-mono">순위</th>
+                <th className="py-1.5 px-2.5 w-[22%]">게임 타이틀</th>
+                <th className="py-1.5 px-1.5 text-center w-[14%]">장르 / 플랫폼</th>
+                <th className="py-1.5 px-2 text-right w-[12%] font-mono">플레이타임</th>
+                <th className="py-1.5 px-2.5 w-[28%]">사운드 디자인 분석 관점 & 오디오 시스템</th>
+                <th className="py-1.5 px-2.5 w-[18%]">공식 바로가기</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200">
               {top6PlayedGames.map((game, idx) => (
-                <tr key={game.appId} className="align-top hover:bg-slate-50">
-                  <td className="py-2.5 px-2.5 text-center font-mono font-bold text-slate-700">
+                <tr key={game.appId} className="align-top hover:bg-slate-50 break-inside-avoid">
+                  <td className="py-2 px-2 text-center font-mono font-bold text-slate-700">
                     0{idx + 1}
                   </td>
-                  <td className="py-2.5 px-3">
+                  <td className="py-2 px-2.5">
                     <div className="font-bold text-slate-900 leading-snug break-keep">{game.name}</div>
-                    <div className="text-[10px] font-mono text-slate-500 mt-0.5">AppID: {game.appId}</div>
+                    <div className="text-[9.5px] font-mono text-slate-500 mt-0.5">AppID: {game.appId}</div>
                   </td>
-                  <td className="py-2.5 px-2 text-center text-slate-700">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-[11px] text-slate-800 font-medium">
+                  <td className="py-2 px-1.5 text-center text-slate-700">
+                    <span className="inline-block px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-[10px] text-slate-800 font-medium whitespace-nowrap">
                       {game.genre}
                     </span>
                   </td>
-                  <td className="py-2.5 px-2.5 text-right font-mono font-black text-slate-900 whitespace-nowrap">
+                  <td className="py-2 px-2 text-right font-mono font-black text-slate-900 whitespace-nowrap">
                     {game.hoursPlayed.toLocaleString()}시간
                   </td>
-                  <td className="py-2.5 px-3 text-slate-700 leading-relaxed text-[11.5px] break-keep">
+                  <td className="py-2 px-2.5 text-slate-700 leading-snug text-[10.5px] break-keep">
                     {game.audioFocus}
                   </td>
-                  <td className="py-2.5 px-3 text-[11px]">
+                  <td className="py-2 px-2.5 text-[10.5px]">
                     <a
                       href={game.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-700 underline font-mono break-all hover:text-blue-900 leading-tight block"
+                      className="text-blue-700 underline font-mono break-all hover:text-blue-900 leading-tight block truncate"
+                      title={game.url}
                     >
-                      {game.url}
+                      {game.url.replace(/^https?:\/\/(www\.)?/, '')}
                     </a>
                   </td>
                 </tr>
@@ -1158,10 +1378,20 @@ export const GamingHistoryView: React.FC = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Print-Only: Cash Purchase Totals 1-Line Summary Bar */}
+        <div className="flex items-center justify-between border-t border-slate-300 pt-2 text-[10.5px] text-slate-700 font-sans">
+          <div>
+            <span className="font-bold text-slate-950">[26년도 기준 집계]</span> 게임 플랫폼 현금 결제 누적 총액: <strong className="font-mono text-slate-950 font-bold">{totalSpent.toLocaleString()}원</strong>
+          </div>
+          <div className="font-mono text-slate-600 text-[10px]">
+            Steam: {purchaseAmounts.steam.toLocaleString()}원 / Google Play: {purchaseAmounts.googlePlay.toLocaleString()}원 / App Store: {purchaseAmounts.appStore.toLocaleString()}원
+          </div>
+        </div>
       </div>
 
-      {/* Cash Purchase Totals (Steam / Google Play / App Store) */}
-      <div className="pt-4 border-t border-slate-800/80">
+      {/* Cash Purchase Totals (Steam / Google Play / App Store) - Interactive Screen Mode */}
+      <div className="pt-4 border-t border-slate-800/80 no-print print:hidden">
         <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-[#0b0f1a] to-[#070910] border border-slate-800/90 shadow-lg relative overflow-hidden">
           {/* Subtle Ambient Glow */}
           <div className="absolute top-0 right-0 w-72 h-36 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />

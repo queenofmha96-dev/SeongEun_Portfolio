@@ -64,41 +64,51 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
     <div className="w-full space-y-9 animate-fadeIn text-white font-sans">
       
       {/* ================= PRINT / PDF ONLY CLEAN TABLE VIEW ================= */}
-      <div className="hidden print:block space-y-6">
-        <p className="text-sm text-slate-700 font-sans pb-2">
-          직접 제작 및 연출한 게임 사운드 디자인 포트폴리오 영상 목록입니다. 링크를 클릭하면 YouTube 영상으로 바로 연결됩니다.
-        </p>
+      <div className="hidden print:block space-y-3">
+        <div className="flex items-center justify-between pb-1 border-b border-slate-300">
+          <p className="text-xs text-slate-700 font-sans">
+            직접 제작 및 연출한 게임 사운드 디자인 포트폴리오 영상 목록입니다. 링크를 클릭하면 YouTube 영상으로 바로 연결됩니다.
+          </p>
+          <a
+            href={YOUTUBE_PLAYLIST_URL}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-[11px] font-mono font-bold text-sky-700 underline shrink-0"
+          >
+            [전체 재생목록 링크]
+          </a>
+        </div>
 
         <div className="divide-y divide-slate-200 border-t border-b border-slate-300">
           {projects.map((proj, idx) => {
             const watchUrl = getWatchUrl(proj.videoUrl);
             return (
-              <div key={proj.id} className="py-4 space-y-1.5 break-inside-avoid">
-                <div className="flex items-baseline justify-between gap-4">
+              <div key={proj.id} className="py-2.5 space-y-1 break-inside-avoid">
+                <div className="flex items-baseline justify-between gap-3">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-xs text-slate-500">#{idx + 1}</span>
-                    <h4 className="text-base font-bold text-slate-900 font-sans">
+                    <span className="font-mono font-bold text-xs text-slate-600">0{idx + 1}</span>
+                    <h4 className="text-sm font-bold text-slate-950 font-sans">
                       {proj.title}
                     </h4>
                   </div>
-                  <span className="font-mono text-xs font-semibold text-slate-500 shrink-0">
+                  <span className="font-mono text-[11px] font-semibold text-slate-600 shrink-0">
                     {proj.genre}
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-600 font-sans leading-relaxed">
+                <p className="text-[11px] text-slate-600 font-sans leading-snug break-keep">
                   {proj.subtitle} — {proj.description}
                 </p>
 
-                <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
-                  <div className="text-[11px] font-mono text-slate-500">
-                    <span className="font-bold">담당 역할:</span> {proj.role.join(', ')} | <span className="font-bold">툴:</span> {proj.toolsUsed.join(', ')}
+                <div className="flex flex-wrap items-center justify-between gap-2 pt-0.5">
+                  <div className="text-[10px] font-mono text-slate-500">
+                    <span className="font-bold text-slate-700">담당:</span> {proj.role.join(', ')} | <span className="font-bold text-slate-700">툴:</span> {proj.toolsUsed.join(', ')}
                   </div>
                   <a
                     href={watchUrl}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="text-xs font-mono font-bold text-sky-700 underline inline-flex items-center gap-1"
+                    className="text-[10.5px] font-mono font-bold text-sky-700 underline inline-flex items-center gap-1"
                   >
                     <span>{watchUrl}</span>
                   </a>

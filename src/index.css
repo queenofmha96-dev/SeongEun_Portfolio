@@ -54,70 +54,128 @@ header {
   scrollbar-color: #1e293b #06070b;
 }
 
-/* Clean Print / PDF Export Styles */
+/* Clean Print / PDF Export Styles for Exact A4 Page Specifications */
 @media print {
   @page {
-    margin: 1.2cm;
-    size: A4;
+    size: A4 portrait;
+    margin: 12mm 14mm 12mm 14mm;
   }
 
-  body, html {
+  html, body {
     background: #ffffff !important;
-    color: #111827 !important;
-    font-size: 13px !important;
+    color: #0f172a !important;
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  header, canvas, .no-print, button, input {
+  /* Hide screen-only interactive elements */
+  header, nav, canvas, footer, .no-print, button, input, select, form, [role="dialog"], #floating-controls {
     display: none !important;
   }
 
+  /* Reset main container dimensions for A4 */
   main {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    space-y: 1.5rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 1.5rem !important;
   }
 
-  * {
-    color: #1f2937 !important;
-    border-color: #cbd5e1 !important;
-    background-color: transparent !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
+  /* Section flow rules: avoid awkward blank spaces while keeping headers attached */
+  section {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    margin-bottom: 1.5rem !important;
+    padding: 0 !important;
   }
 
-  h1, h2, h3, h4, strong, .font-extrabold, .font-black {
-    color: #0f172a !important;
+  section > div:first-child {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.5rem !important;
+    border-color: #94a3b8 !important;
+  }
+
+  .print\:break-before-page {
+    page-break-before: always !important;
+    break-before: page !important;
+    margin-top: 0 !important;
+  }
+
+  /* Atomic cards and items must not split in the middle */
+  article, tr, .print-avoid-break, .break-inside-avoid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* High contrast readable text colors for white paper */
+  h1, h2, h3, h4, strong, b, .font-extrabold, .font-black, .font-bold {
+    color: #020617 !important;
+  }
+
+  p, li, td, span {
+    color: #1e293b !important;
   }
 
   a {
-    text-decoration: underline !important;
     color: #0369a1 !important;
+    text-decoration: underline !important;
   }
 
-  section {
-    page-break-inside: avoid;
-    margin-bottom: 2rem !important;
-    padding-top: 0.5rem !important;
-  }
-
-  /* Keep table borders visible and clean */
-  .border-t, .border-b, .border-l-2, .border {
+  /* Clean light borders and backgrounds for dark components */
+  .bg-\[\#0c0e18\]\/60,
+  .bg-\[\#0a0c16\]\/90,
+  .bg-\[\#090b13\],
+  .bg-\[\#0e1018\],
+  .bg-\[\#07080f\],
+  .bg-\[\#0b0f1a\],
+  .bg-\[\#0d1220\],
+  .bg-slate-900,
+  .bg-slate-950 {
+    background-color: #f8fafc !important;
     border-color: #cbd5e1 !important;
   }
 
+  .border-slate-800,
+  .border-slate-800\/80,
+  .border-slate-800\/70,
+  .border-slate-700,
+  .border-slate-700\/80 {
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Table styling for A4 print */
   table {
     width: 100% !important;
     border-collapse: collapse !important;
-    page-break-inside: auto;
+    table-layout: fixed !important;
+    page-break-inside: auto !important;
   }
 
-  tr {
-    page-break-inside: avoid;
-    page-break-after: auto;
+  thead {
+    display: table-header-group !important;
   }
 
   thead th {
     background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    border-bottom: 2px solid #94a3b8 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  th, td {
+    padding: 6px 8px !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f8fafc !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }

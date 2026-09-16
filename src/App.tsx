@@ -87,15 +87,15 @@ export default function App() {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
 
-        <main className="flex-1 px-4 sm:px-6 md:px-8 max-w-[1240px] w-full mx-auto flex flex-col gap-12 sm:gap-20 pt-4 sm:pt-6 md:pt-8 pb-12 sm:pb-20">
+        <main className="flex-1 px-4 sm:px-6 md:px-8 max-w-[1240px] w-full mx-auto flex flex-col gap-12 sm:gap-20 print:gap-8 pt-4 sm:pt-6 md:pt-8 pb-12 sm:pb-20 print:p-0">
           
           {/* Section 1: Sound Designer Profile */}
-          <section id="director-stats" className="space-y-6 sm:space-y-8">
-            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 pb-4 sm:pb-5 font-mono">
-              <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-cyan-950/90 border-2 border-cyan-400/70 text-cyan-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(6,182,212,0.25)] shrink-0 whitespace-nowrap">
+          <section id="director-stats" className="space-y-6 sm:space-y-8 print:space-y-4">
+            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2.5 font-mono">
+              <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-cyan-950/90 border-2 border-cyan-400/70 text-cyan-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(6,182,212,0.25)] shrink-0 whitespace-nowrap print:bg-slate-100 print:text-slate-900 print:border-slate-800">
                 01
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white font-sans tracking-tight break-keep">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white print:text-slate-950 font-sans tracking-tight break-keep">
                 사운드 디자이너 프로필 & 역량
               </h2>
             </div>
@@ -103,12 +103,12 @@ export default function App() {
           </section>
 
           {/* Section 2: Gaming History */}
-          <section id="gaming-history" className="space-y-6 sm:space-y-8">
-            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 pb-4 sm:pb-5 font-mono">
-              <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-amber-950/90 border-2 border-amber-400/70 text-amber-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(245,158,11,0.25)] shrink-0 whitespace-nowrap">
+          <section id="gaming-history" className="space-y-6 sm:space-y-8 print:space-y-4 print:break-before-page">
+            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2.5 font-mono">
+              <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-amber-950/90 border-2 border-amber-400/70 text-amber-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(245,158,11,0.25)] shrink-0 whitespace-nowrap print:bg-slate-100 print:text-slate-900 print:border-slate-800">
                 02
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white font-sans tracking-tight break-keep">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white print:text-slate-950 font-sans tracking-tight break-keep">
                 게이밍 경력
               </h2>
             </div>
@@ -116,13 +116,13 @@ export default function App() {
           </section>
 
           {/* Section 3: Portfolio Showcase Reel */}
-          <section id="showcase-reel" className="space-y-6 sm:space-y-8">
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-4 sm:pb-5 font-mono">
+          <section id="showcase-reel" className="space-y-6 sm:space-y-8 print:space-y-4 print:break-before-page">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2.5 font-mono">
               <div className="flex items-center gap-3.5 sm:gap-5">
-                <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-cyan-950/90 border-2 border-cyan-400/70 text-cyan-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(6,182,212,0.25)] shrink-0 whitespace-nowrap">
+                <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-cyan-950/90 border-2 border-cyan-400/70 text-cyan-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(6,182,212,0.25)] shrink-0 whitespace-nowrap print:bg-slate-100 print:text-slate-900 print:border-slate-800">
                   03
                 </span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white font-sans tracking-tight break-keep">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white print:text-slate-950 font-sans tracking-tight break-keep">
                   게임 사운드 포트폴리오
                 </h2>
               </div>
@@ -131,7 +131,7 @@ export default function App() {
                 href="https://www.youtube.com/playlist?list=PLiDQe1dL5sFu2nkE2KD_ch_H1XRMxvpmK"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-red-950/70 hover:bg-red-900/80 border border-red-500/50 text-red-200 hover:text-white text-xs sm:text-sm font-sans font-semibold transition-all shadow-xs shrink-0"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-red-950/70 hover:bg-red-900/80 border border-red-500/50 text-red-200 hover:text-white text-xs sm:text-sm font-sans font-semibold transition-all shadow-xs shrink-0 no-print"
               >
                 <span>YouTube 전체 재생목록</span>
                 <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-400" />
@@ -144,12 +144,12 @@ export default function App() {
           </section>
 
           {/* Section 4: Cover Letter / Self-Introduction */}
-          <section id="cover-letter" className="space-y-6 sm:space-y-8">
-            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 pb-4 sm:pb-5 font-mono">
-              <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-amber-950/90 border-2 border-amber-400/70 text-amber-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(245,158,11,0.25)] shrink-0 whitespace-nowrap">
+          <section id="cover-letter" className="space-y-6 sm:space-y-8 print:space-y-4 print:break-before-page">
+            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2.5 font-mono">
+              <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-amber-950/90 border-2 border-amber-400/70 text-amber-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(245,158,11,0.25)] shrink-0 whitespace-nowrap print:bg-slate-100 print:text-slate-900 print:border-slate-800">
                 04
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white font-sans tracking-tight break-keep">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white print:text-slate-950 font-sans tracking-tight break-keep">
                 자기소개서
               </h2>
             </div>
@@ -158,7 +158,7 @@ export default function App() {
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-slate-800/80 bg-[#06070b] py-8 sm:py-10 font-mono text-slate-400">
+        <footer className="border-t border-slate-800/80 bg-[#06070b] py-8 sm:py-10 font-mono text-slate-400 no-print">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div className="space-y-1">
               <p className="text-xs sm:text-sm font-bold text-white tracking-wider">
