@@ -37,7 +37,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
       <div className="space-y-6 print:space-y-3">
 
         {/* Top: Profile Identity & Actions */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 bg-[#0c0e18]/60 p-4 sm:p-5 print:p-3 rounded-2xl border border-slate-800/80 print:border-slate-300">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 bg-[#0c0e18]/60 p-4 sm:p-5 print:p-0 rounded-2xl border border-slate-800/80 print:border-none print:bg-transparent">
           
           {/* Main Info Block: Left (Photo + Name) + Vertical Line + Right (Contact Info) */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6 min-w-0 flex-1">
@@ -46,7 +46,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
             <div className="flex items-center gap-4 sm:gap-5 min-w-0 shrink-0">
               {/* Resume Photo Frame (Permanent Original Photo - Pure Display) */}
               <div 
-                className="relative w-20 h-[106px] sm:w-24 sm:h-[128px] md:w-28 md:h-[148px] print:w-20 print:h-[106px] rounded-xl sm:rounded-2xl border border-slate-700/80 print:border-slate-400 bg-[#090b14] flex-shrink-0 overflow-hidden shadow-xl print:shadow-none"
+                className="relative w-20 h-[106px] sm:w-24 sm:h-[128px] md:w-28 md:h-[148px] print:w-16 print:h-[86px] rounded-xl sm:rounded-2xl border border-slate-700/80 print:border print:border-slate-300 bg-[#090b14] flex-shrink-0 overflow-hidden shadow-xl print:shadow-none"
               >
                 <img 
                   src={profilePhoto} 
@@ -107,7 +107,6 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Quick Action Buttons (Share & Print) - Screen Only */}
@@ -149,7 +148,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
         </div>
 
         {/* Bio Section */}
-        <div className="p-5 sm:p-7 md:p-8 print:p-3 rounded-2xl bg-[#0a0c16]/90 border border-slate-800/80 print:border-slate-300 shadow-md print:shadow-none space-y-5 print:space-y-2">
+        <div className="p-5 sm:p-7 md:p-8 print:p-0 rounded-2xl bg-[#0a0c16]/90 border border-slate-800/80 print:border-none print:bg-transparent shadow-md print:shadow-none space-y-5 print:space-y-1.5">
           <div className="flex items-center justify-between border-b border-slate-800/70 print:border-slate-300 pb-3 print:pb-1">
             <h3 className="text-xs sm:text-sm font-mono font-black text-cyan-400 print:text-slate-900 uppercase tracking-wider flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-400 print:text-slate-700" /> ABOUT SOUND DESIGNER • 소개
@@ -163,7 +162,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
             {profile.bio}
           </p>
 
-          <div className="p-4 sm:p-5 print:p-2 rounded-xl bg-cyan-950/20 print:bg-slate-50 border-l-4 border-cyan-400 print:border-slate-700 text-xs sm:text-sm md:text-[14.5px] print:text-xs text-slate-200 print:text-slate-900 font-sans leading-relaxed">
+          <div className="p-4 sm:p-5 print:p-0 print:pl-2 rounded-xl bg-cyan-950/20 print:bg-transparent border-l-4 border-cyan-400 print:border-l-2 print:border-slate-500 text-xs sm:text-sm md:text-[14.5px] print:text-xs text-slate-200 print:text-slate-900 font-sans leading-relaxed">
             <span className="text-cyan-300 print:text-slate-950 font-bold font-mono block mb-1">SOUND PHILOSOPHY :</span>
             <span className="italic">"{profile.philosophy}"</span>
           </div>
@@ -185,7 +184,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
             {profile.skills.map((skill, idx) => (
               <div
                 key={idx}
-                className="p-3.5 sm:p-4 print:p-2 rounded-xl bg-[#090b13] border border-slate-800/80 print:border-slate-300 hover:border-cyan-500/40 hover:bg-[#0c0e17] transition-all space-y-1.5 print:space-y-0.5 break-inside-avoid"
+                className="p-3.5 sm:p-4 print:p-0 rounded-xl bg-[#090b13] border border-slate-800/80 print:border-none print:bg-transparent hover:border-cyan-500/40 hover:bg-[#0c0e17] transition-all space-y-1.5 print:space-y-0.5 break-inside-avoid"
               >
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
@@ -195,12 +194,12 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
                     </span>
                   </div>
                   {skill.tag && (
-                    <span className="text-[10px] sm:text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-cyan-950/70 text-cyan-300 print:bg-slate-100 print:text-slate-800 border border-cyan-500/40 print:border-slate-300 shrink-0">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-cyan-950/70 text-cyan-300 print:bg-transparent print:text-slate-600 border border-cyan-500/40 print:border-none shrink-0">
                       {skill.tag}
                     </span>
                   )}
                 </div>
-                <p className="text-[13px] sm:text-sm print:text-[11px] text-slate-400 print:text-slate-700 font-sans leading-relaxed pl-3.5">
+                <p className="text-[13px] sm:text-sm print:text-[11px] text-slate-400 print:text-slate-700 font-sans leading-relaxed pl-3.5 print:pl-2">
                   {skill.description}
                 </p>
               </div>
@@ -224,9 +223,9 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
                 {profile.tools.map((t, idx) => (
                   <span 
                     key={idx} 
-                    className="px-3.5 py-2 print:px-2.5 print:py-1 rounded-xl bg-slate-900 border border-slate-800 print:border-slate-300 text-slate-100 print:text-slate-900 font-mono text-xs sm:text-sm print:text-xs font-semibold flex items-center gap-2 hover:border-cyan-500/50 transition-colors"
+                    className="px-3.5 py-2 print:px-1.5 print:py-0 rounded-xl bg-slate-900 border border-slate-800 print:border-none print:bg-transparent text-slate-100 print:text-slate-900 font-mono text-xs sm:text-sm print:text-xs font-semibold flex items-center gap-2 print:gap-1 hover:border-cyan-500/50 transition-colors"
                   >
-                    <Disc className="w-4 h-4 text-cyan-400 print:text-slate-700" />
+                    <Disc className="w-4 h-4 text-cyan-400 print:text-slate-600 print:w-3 print:h-3" />
                     <span>{t.name}</span>
                   </span>
                 ))}
@@ -239,8 +238,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
               </span>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 print:gap-1 text-slate-200 print:text-slate-800 font-mono text-xs sm:text-sm print:text-xs">
                 {profile.hardware.map((hw, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5">
-                    <CheckCircle className="w-4 h-4 text-cyan-400 print:text-slate-700 flex-shrink-0 mt-0.5" />
+                  <li key={idx} className="flex items-start gap-2.5 print:gap-1.5">
+                    <CheckCircle className="w-4 h-4 text-cyan-400 print:text-slate-700 flex-shrink-0 mt-0.5 print:w-3 print:h-3" />
                     <span className="leading-snug break-words">{hw}</span>
                   </li>
                 ))}
@@ -278,25 +277,25 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
 
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   <span
-                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-extrabold px-2.5 py-0.5 sm:px-3.5 sm:py-1 rounded-lg border shadow-sm shrink-0 whitespace-nowrap ${
+                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-extrabold px-2.5 py-0.5 sm:px-3.5 sm:py-1 rounded-lg border shadow-sm shrink-0 whitespace-nowrap print:border-none print:p-0 print:bg-transparent print:shadow-none print:text-slate-900 ${
                       isCurrent
                         ? 'text-emerald-300 bg-emerald-950/90 border-emerald-500/70 shadow-[0_0_14px_rgba(16,185,129,0.25)]'
                         : 'text-cyan-200 bg-cyan-950 border-cyan-400/70 shadow-[0_0_12px_rgba(6,182,212,0.2)]'
                     }`}
                   >
                     <span
-                      className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                      className={`w-1.5 h-1.5 rounded-full shrink-0 print:hidden ${
                         isCurrent ? 'bg-emerald-400 animate-pulse' : 'bg-cyan-400'
                       }`}
                     />
-                    {exp.period}
+                    [{exp.period}]
                   </span>
-                  <h3 className="text-base sm:text-xl font-extrabold text-white tracking-tight">
+                  <h3 className="text-base sm:text-xl font-extrabold text-white print:text-slate-950 tracking-tight">
                     {exp.company}
                   </h3>
                   <span className="text-slate-500 text-sm hidden sm:inline">•</span>
                   <span
-                    className={`text-xs sm:text-base font-bold ${
+                    className={`text-xs sm:text-base font-bold print:text-slate-800 ${
                       isCurrent ? 'text-emerald-300' : 'text-amber-300'
                     }`}
                   >
@@ -304,16 +303,16 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-base text-slate-200 leading-relaxed font-sans break-keep">
+                <p className="text-xs sm:text-base text-slate-200 print:text-slate-800 leading-relaxed font-sans break-keep print:text-[11px]">
                   {exp.description}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1">
-                  <span className="text-xs sm:text-sm font-mono text-slate-400 font-bold">프로젝트:</span>
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1 print:pt-0">
+                  <span className="text-xs sm:text-sm print:text-[10.5px] font-mono text-slate-400 print:text-slate-700 font-bold">프로젝트:</span>
                   {exp.projects.map((p, i) => (
                     <span 
                       key={i} 
-                      className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg border text-xs sm:text-sm font-mono ${
+                      className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg border text-xs sm:text-sm font-mono print:border-none print:bg-transparent print:p-0 print:text-slate-800 print:text-[10.5px] print:after:content-[',_'] print:last:after:content-[''] ${
                         isCurrent
                           ? 'bg-emerald-950/40 border-emerald-500/30 text-emerald-200'
                           : 'bg-slate-900 border-slate-800 text-slate-200'

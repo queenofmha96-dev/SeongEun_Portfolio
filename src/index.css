@@ -147,19 +147,22 @@ header {
     text-decoration: underline !important;
   }
 
-  /* Crisp borders on cards */
-  .rounded-xl, .rounded-2xl, .rounded-3xl, article {
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 6px !important;
+  /* Eliminate heavy box containers, card outlines, and pills in print for a rough, clean, minimalist document */
+  .rounded-xl, .rounded-2xl, .rounded-3xl, .rounded-lg, .rounded-md, article {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
   }
 
-  /* Table styling */
+  /* Minimalist Open Table styling (no box enclosure, clean horizontal dividers) */
   table {
     width: 100% !important;
     border-collapse: collapse !important;
     table-layout: fixed !important;
     page-break-inside: auto !important;
     font-size: 10px !important;
+    border: none !important;
   }
 
   thead {
@@ -167,10 +170,13 @@ header {
   }
 
   thead th {
-    background-color: #f1f5f9 !important;
+    background-color: transparent !important;
     color: #0f172a !important;
-    border-bottom: 2px solid #64748b !important;
-    padding: 4px 6px !important;
+    border-top: 1.5px solid #0f172a !important;
+    border-bottom: 1.5px solid #0f172a !important;
+    border-left: none !important;
+    border-right: none !important;
+    padding: 5px 6px !important;
     font-weight: 700 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -179,14 +185,18 @@ header {
   th, td {
     padding: 4px 6px !important;
     border-bottom: 1px solid #e2e8f0 !important;
+    border-left: none !important;
+    border-right: none !important;
     word-break: break-word !important;
     overflow-wrap: break-word !important;
   }
 
+  tr:last-child td {
+    border-bottom: 1.5px solid #0f172a !important;
+  }
+
   tr:nth-child(even) td {
-    background-color: #f8fafc !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    background-color: transparent !important;
   }
 
   /* Profile Photo Specific Safe Frame */

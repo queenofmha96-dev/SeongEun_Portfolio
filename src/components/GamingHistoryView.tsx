@@ -1329,10 +1329,10 @@ export const GamingHistoryView: React.FC = () => {
           </span>
         </div>
 
-        <div className="overflow-hidden border border-slate-300 rounded-md">
+        <div className="overflow-hidden border-t border-b border-slate-300">
           <table className="w-full text-left text-[11px] border-collapse table-fixed">
             <thead>
-              <tr className="bg-slate-100 border-b border-slate-300 text-slate-900 font-bold">
+              <tr className="border-b border-slate-300 text-slate-900 font-bold">
                 <th className="py-1.5 px-2 text-center w-[6%] font-mono">순위</th>
                 <th className="py-1.5 px-2.5 w-[22%]">게임 타이틀</th>
                 <th className="py-1.5 px-1.5 text-center w-[14%]">장르 / 플랫폼</th>
@@ -1352,7 +1352,7 @@ export const GamingHistoryView: React.FC = () => {
                     <div className="text-[9.5px] font-mono text-slate-500 mt-0.5">AppID: {game.appId}</div>
                   </td>
                   <td className="py-2 px-1.5 text-center text-slate-700">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-[10px] text-slate-800 font-medium whitespace-nowrap">
+                    <span className="text-[10px] text-slate-800 font-medium whitespace-nowrap">
                       {game.genre}
                     </span>
                   </td>
