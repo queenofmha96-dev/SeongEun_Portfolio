@@ -258,24 +258,19 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
 
             </div>
 
-            {/* Well-Structured Roles & Tools Spec Grid */}
+            {/* Well-Structured Production & Tools Spec Grid */}
             <div className="pt-4 border-t border-slate-800/80 space-y-4 font-mono text-xs sm:text-sm">
               
-              {/* Roles */}
+              {/* Production Scope */}
               <div className="space-y-2">
                 <div className="text-xs text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                  <UserCheck className="w-4 h-4 text-cyan-400" />
-                  <span>Roles & Responsibilities</span>
+                  <UserCheck className="w-4 h-4 text-emerald-400" />
+                  <span>Production Scope</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {project.role.map((r, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1.5 rounded-lg bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 font-bold text-xs sm:text-sm"
-                    >
-                      {r}
-                    </span>
-                  ))}
+                  <span className="px-3 py-1.5 rounded-lg bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 font-bold text-xs sm:text-sm">
+                    100% Solo Sound Redesign & Mix (단독 제작)
+                  </span>
                 </div>
               </div>
 

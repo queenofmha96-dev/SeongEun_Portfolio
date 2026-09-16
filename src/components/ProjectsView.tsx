@@ -102,7 +102,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
                 <div className="flex flex-wrap items-center justify-between gap-2 pt-0.5">
                   <div className="text-[10px] font-mono text-slate-500">
-                    <span className="font-bold text-slate-700">담당:</span> {proj.role.join(', ')} | <span className="font-bold text-slate-700">툴:</span> {proj.toolsUsed.join(', ')}
+                    <span className="font-bold text-slate-700">작업 툴:</span> {proj.toolsUsed.join(', ')}
                   </div>
                   <a
                     href={watchUrl}
@@ -339,14 +339,9 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                     </p>
                   </div>
 
-                  {/* Roles & Tools list */}
+                  {/* Tools used list */}
                   <div className="pt-3 border-t border-slate-800/80 flex flex-wrap gap-1.5 text-xs font-mono">
-                    {proj.role.slice(0, 2).map((r, idx) => (
-                      <span key={idx} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#06070b] border border-cyan-500/40 text-cyan-300 text-[11px] sm:text-xs font-bold">
-                        {r}
-                      </span>
-                    ))}
-                    {proj.toolsUsed.slice(0, 2).map((t, idx) => (
+                    {proj.toolsUsed.map((t, idx) => (
                       <span key={idx} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#06070b] border border-amber-500/40 text-amber-300 text-[11px] sm:text-xs font-bold">
                         {t}
                       </span>

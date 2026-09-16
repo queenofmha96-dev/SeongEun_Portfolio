@@ -132,7 +132,7 @@ export const INITIAL_PROJECTS: SoundProject[] = [
     client: "Seongeun Sound Studio",
     releaseYear: "2024",
     genre: "Game SFX & Sound Redesign",
-    role: ["Sound Director", "SFX Design", "Mix Engineering"],
+    role: ["Sound Redesign", "SFX Multi-Layering", "Mix & Master"],
     toolsUsed: ["Reaper", "Pro Tools", "FMOD Studio", "Kyma"],
     description: "화려한 무협 액션 연출과 속도감 있는 임팩트에 맞춰 SFX Multi-Layering 및 타격음 이퀄라이징 작업을 진행한 사운드 쇼케이스 영상입니다.",
     soundHighlights: [
@@ -160,7 +160,7 @@ export const INITIAL_PROJECTS: SoundProject[] = [
     client: "Seongeun Sound Studio",
     releaseYear: "2024",
     genre: "Cinematic Audio & Action SFX",
-    role: ["Senior Sound Designer", "Foley Artist", "Audio Editor"],
+    role: ["Sound Redesign", "Foley & Synth Layering", "Audio Editing"],
     toolsUsed: ["Wwise", "Pro Tools", "Serum", "Logic Pro"],
     description: "독창적인 스킬 이펙트 및 시네마틱 효과음 포트폴리오 영상입니다. 현장 폴리 레코딩 소스와 신디사이징 음향을 정교하게 조합하여 시각적 몰입감을 청각적으로 완성했습니다.",
     soundHighlights: [
@@ -186,7 +186,7 @@ export const INITIAL_PROJECTS: SoundProject[] = [
     client: "Seongeun Sound Studio",
     releaseYear: "2023",
     genre: "Trailer Audio & Orchestral BGM",
-    role: ["Audio Director", "Composer", "Mastering Engineer"],
+    role: ["Sound Redesign", "BGM Arrangement", "Mastering"],
     toolsUsed: ["Pro Tools Ultimate", "Cubase", "Ableton Live"],
     description: "세계관과 스토리 라인의 서사를 극대화하는 트레일러 오디오 믹싱 & 음악 연출 작업 영상입니다.",
     soundHighlights: [
@@ -212,7 +212,7 @@ export const INITIAL_PROJECTS: SoundProject[] = [
     client: "Seongeun Sound Studio",
     releaseYear: "2023",
     genre: "Sword Action & Combat SFX",
-    role: ["UI SFX Designer", "Sound Designer"],
+    role: ["Sound Redesign", "Sword Action Foley", "Impact SFX"],
     toolsUsed: ["Ableton Live", "Max MSP", "Reaper"],
     description: "긴장감 넘치는 일대일 대결 순간의 칼날 교차 마찰음, 칼집 발도음 및 묵직한 타격감을 정밀하게 디자인한 결투 액션 사운드 쇼케이스입니다.",
     soundHighlights: [
@@ -236,7 +236,7 @@ export const INITIAL_PROJECTS: SoundProject[] = [
     client: "Seongeun Sound Studio",
     releaseYear: "2024",
     genre: "Survival Action & Creature SFX",
-    role: ["Composer", "Music Director", "Mix Engineer"],
+    role: ["Sound Redesign", "Creature SFX", "Soundscape Mix"],
     toolsUsed: ["Cubase", "Logic Pro", "Ableton Live"],
     description: "긴박한 생존 환경 속 미지의 크리처 괴성 및 환경 앰비언스, 위협적인 사운드스케이프를 디자인한 트레일러 오디오 작업 영상입니다.",
     soundHighlights: [
@@ -261,7 +261,7 @@ export const INITIAL_PROJECTS: SoundProject[] = [
     client: "Seongeun Sound Studio",
     releaseYear: "2024",
     genre: "Heavy Blade & Monster SFX",
-    role: ["Foley Artist", "Sound Designer", "Field Recorder"],
+    role: ["Sound Redesign", "Monster SFX Layering", "Foley Processing"],
     toolsUsed: ["Pro Tools", "Sennheiser MKH416", "Reaper"],
     description: "묵직한 대형 무기 스윙 공기 가르는 음과 몬스터 타격 시의 강렬한 서브 베이스 펀치감을 구현한 다크 판타지 액션 사운드 쇼케이스입니다.",
     soundHighlights: [
@@ -286,7 +286,7 @@ export const INITIAL_PROJECTS: SoundProject[] = [
     client: "Seongeun Sound Studio",
     releaseYear: "2024",
     genre: "Sci-Fi Mechanics & 3D Spatial Audio",
-    role: ["Audio Director", "Sound Designer"],
+    role: ["Sound Redesign", "Sci-Fi Mechanics SFX", "Spatial Audio Mix"],
     toolsUsed: ["FMOD Studio", "Wwise", "Unreal Engine 5"],
     description: "공상과학 우주 환경과 정밀 메카닉 구동음, 레이저 및 SF 보스전의 입체적인 3D 공간 음향을 연출한 사운드 디자인 영상입니다.",
     soundHighlights: [
@@ -310,7 +310,7 @@ export const INITIAL_PROJECTS: SoundProject[] = [
     client: "Seongeun Sound Studio",
     releaseYear: "2024",
     genre: "Stylish Action & Combat SFX",
-    role: ["Sound Director", "SFX Designer", "Composer"],
+    role: ["Sound Redesign", "Action SFX Design", "Track Mix"],
     toolsUsed: ["Pro Tools", "Reaper", "Wwise", "Serum"],
     description: "속도감 넘치고 유니크한 연출에 맞춘 감각적인 타격음과 트렌디한 액션 SFX를 담아낸 트레일러 사운드 쇼케이스입니다.",
     soundHighlights: [
