@@ -31,13 +31,13 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
   };
 
   return (
-    <div className="w-full space-y-14 animate-fadeIn text-slate-100 font-sans py-2">
+    <div className="w-full space-y-14 print:space-y-4 animate-fadeIn text-slate-100 font-sans py-2 print:py-0">
       
       {/* 1. Header & Bio Intro */}
-      <div className="space-y-6">
+      <div className="space-y-6 print:space-y-3">
 
         {/* Top: Profile Identity & Actions */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 bg-[#0c0e18]/60 p-4 sm:p-5 rounded-2xl border border-slate-800/80">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 bg-[#0c0e18]/60 p-4 sm:p-5 print:p-3 rounded-2xl border border-slate-800/80 print:border-slate-300">
           
           {/* Main Info Block: Left (Photo + Name) + Vertical Line + Right (Contact Info) */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6 min-w-0 flex-1">
@@ -46,7 +46,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
             <div className="flex items-center gap-4 sm:gap-5 min-w-0 shrink-0">
               {/* Resume Photo Frame (Permanent Original Photo - Pure Display) */}
               <div 
-                className="relative w-20 h-[106px] sm:w-24 sm:h-[128px] md:w-28 md:h-[148px] rounded-xl sm:rounded-2xl border border-slate-700/80 bg-[#090b14] flex-shrink-0 overflow-hidden shadow-xl"
+                className="relative w-20 h-[106px] sm:w-24 sm:h-[128px] md:w-28 md:h-[148px] print:w-20 print:h-[106px] rounded-xl sm:rounded-2xl border border-slate-700/80 print:border-slate-400 bg-[#090b14] flex-shrink-0 overflow-hidden shadow-xl print:shadow-none"
               >
                 <img 
                   src={profilePhoto} 
@@ -57,53 +57,53 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
 
               {/* Name */}
               <div className="space-y-1 sm:space-y-1.5 min-w-0">
-                <span className="text-[10px] sm:text-xs font-mono font-bold tracking-wider text-cyan-400 uppercase">
+                <span className="text-[10px] sm:text-xs font-mono font-bold tracking-wider text-cyan-400 print:text-slate-600 uppercase">
                   GAME SOUND DESIGNER
                 </span>
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight break-keep">
+                <h1 className="text-xl sm:text-2xl md:text-3xl print:text-2xl font-extrabold text-white print:text-slate-950 tracking-tight break-keep">
                   {profile.name}
                 </h1>
               </div>
             </div>
 
             {/* Vertical Divider (Desktop & Tablet) / Horizontal Divider (Mobile) */}
-            <div className="hidden sm:block w-[1px] self-stretch bg-gradient-to-b from-transparent via-slate-700/80 to-transparent shrink-0" />
-            <div className="block sm:hidden h-[1px] w-full bg-slate-800/80" />
+            <div className="hidden sm:block w-[1px] self-stretch bg-gradient-to-b from-transparent via-slate-700/80 to-transparent shrink-0 print:bg-slate-300" />
+            <div className="block sm:hidden h-[1px] w-full bg-slate-800/80 print:bg-slate-300" />
 
             {/* Right: Contact & Language Info */}
-            <div className="flex flex-col justify-center space-y-2 text-xs sm:text-sm font-medium">
+            <div className="flex flex-col justify-center space-y-2 text-xs sm:text-sm font-medium print:text-[11px] print:space-y-1">
               {/* Phone */}
               <div className="flex items-center gap-2.5">
-                <span className="text-slate-400 text-xs font-mono w-14 shrink-0">연락처</span>
+                <span className="text-slate-400 print:text-slate-600 text-xs print:text-[11px] font-mono w-14 shrink-0">연락처</span>
                 <a
                   href="tel:010-4991-1314"
-                  className="flex items-center gap-1.5 text-cyan-300 hover:text-cyan-200 transition-colors font-mono"
+                  className="flex items-center gap-1.5 text-cyan-300 print:text-slate-900 hover:text-cyan-200 transition-colors font-mono"
                   title="전화 걸기"
                 >
-                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" />
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 print:text-slate-700 shrink-0" />
                   <span className="whitespace-nowrap font-bold">010-4991-1314</span>
                 </a>
               </div>
 
               {/* Email */}
               <div className="flex items-center gap-2.5">
-                <span className="text-slate-400 text-xs font-mono w-14 shrink-0">이메일</span>
+                <span className="text-slate-400 print:text-slate-600 text-xs print:text-[11px] font-mono w-14 shrink-0">이메일</span>
                 <a
                   href={`mailto:${profile.email}`}
-                  className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 transition-colors font-mono"
+                  className="flex items-center gap-1.5 text-amber-300 print:text-slate-900 hover:text-amber-200 transition-colors font-mono"
                   title="이메일 보내기"
                 >
-                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 print:text-slate-700 shrink-0" />
                   <span className="whitespace-nowrap font-bold">{profile.email}</span>
                 </a>
               </div>
 
               {/* Chinese Native */}
               <div className="flex items-center gap-2.5">
-                <span className="text-slate-400 text-xs font-mono w-14 shrink-0">외국어</span>
-                <div className="flex items-center gap-1.5 text-slate-200">
-                  <Languages className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" />
-                  <span className="whitespace-nowrap">중국어 Native (원어민)</span>
+                <span className="text-slate-400 print:text-slate-600 text-xs print:text-[11px] font-mono w-14 shrink-0">외국어</span>
+                <div className="flex items-center gap-1.5 text-slate-200 print:text-slate-900">
+                  <Languages className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 print:text-slate-700 shrink-0" />
+                  <span className="whitespace-nowrap font-semibold">중국어 Native (원어민)</span>
                 </div>
               </div>
             </div>
@@ -149,22 +149,22 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
         </div>
 
         {/* Bio Section */}
-        <div className="p-5 sm:p-7 md:p-8 rounded-2xl bg-[#0a0c16]/90 border border-slate-800/80 shadow-md space-y-5">
-          <div className="flex items-center justify-between border-b border-slate-800/70 pb-3">
-            <h3 className="text-xs sm:text-sm font-mono font-black text-cyan-400 uppercase tracking-wider flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-amber-400" /> ABOUT SOUND DESIGNER • 소개
+        <div className="p-5 sm:p-7 md:p-8 print:p-3 rounded-2xl bg-[#0a0c16]/90 border border-slate-800/80 print:border-slate-300 shadow-md print:shadow-none space-y-5 print:space-y-2">
+          <div className="flex items-center justify-between border-b border-slate-800/70 print:border-slate-300 pb-3 print:pb-1">
+            <h3 className="text-xs sm:text-sm font-mono font-black text-cyan-400 print:text-slate-900 uppercase tracking-wider flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-400 print:text-slate-700" /> ABOUT SOUND DESIGNER • 소개
             </h3>
             <span className="text-[11px] font-mono text-slate-500 hidden sm:inline">
               SOUND PHILOSOPHY & DIRECTION
             </span>
           </div>
 
-          <p className="text-sm sm:text-base md:text-[16.5px] text-slate-200 leading-[1.95] sm:leading-[2.05] font-sans break-keep">
+          <p className="text-sm sm:text-base md:text-[16.5px] print:text-xs text-slate-200 print:text-slate-800 leading-[1.95] sm:leading-[2.05] print:leading-relaxed font-sans break-keep">
             {profile.bio}
           </p>
 
-          <div className="p-4 sm:p-5 rounded-xl bg-cyan-950/20 border-l-4 border-cyan-400 text-xs sm:text-sm md:text-[14.5px] text-slate-200 font-sans leading-relaxed">
-            <span className="text-cyan-300 font-bold font-mono block mb-1">SOUND PHILOSOPHY :</span>
+          <div className="p-4 sm:p-5 print:p-2 rounded-xl bg-cyan-950/20 print:bg-slate-50 border-l-4 border-cyan-400 print:border-slate-700 text-xs sm:text-sm md:text-[14.5px] print:text-xs text-slate-200 print:text-slate-900 font-sans leading-relaxed">
+            <span className="text-cyan-300 print:text-slate-950 font-bold font-mono block mb-1">SOUND PHILOSOPHY :</span>
             <span className="italic">"{profile.philosophy}"</span>
           </div>
         </div>
@@ -172,35 +172,35 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
       </div>
 
       {/* 2. Skills & Tools (Flat Clean Columns) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 pt-8 sm:pt-10 border-t border-slate-800/80">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 print:gap-4 pt-8 sm:pt-10 print:pt-4 border-t border-slate-800/80 print:border-slate-300">
         
         {/* Audio Middleware Skills */}
-        <div className="space-y-5">
-          <div className="flex items-center gap-2.5 border-b border-slate-800/70 pb-3">
-            <Shield className="w-5 h-5 text-cyan-400" />
-            <h3 className="text-base sm:text-lg font-extrabold text-white">오디오 미들웨어 & 작업 스킬</h3>
+        <div className="space-y-5 print:space-y-2">
+          <div className="flex items-center gap-2.5 border-b border-slate-800/70 print:border-slate-300 pb-3 print:pb-1">
+            <Shield className="w-5 h-5 text-cyan-400 print:text-slate-700" />
+            <h3 className="text-base sm:text-lg print:text-sm font-extrabold text-white print:text-slate-950">오디오 미들웨어 & 작업 스킬</h3>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 print:space-y-1.5">
             {profile.skills.map((skill, idx) => (
               <div
                 key={idx}
-                className="p-3.5 sm:p-4 print:p-2 rounded-xl bg-[#090b13] border border-slate-800/80 hover:border-cyan-500/40 hover:bg-[#0c0e17] transition-all space-y-1.5 print:space-y-1 break-inside-avoid"
+                className="p-3.5 sm:p-4 print:p-2 rounded-xl bg-[#090b13] border border-slate-800/80 print:border-slate-300 hover:border-cyan-500/40 hover:bg-[#0c0e17] transition-all space-y-1.5 print:space-y-0.5 break-inside-avoid"
               >
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
-                    <span className="text-sm sm:text-base text-slate-100 font-bold font-sans">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 print:bg-slate-700 shrink-0" />
+                    <span className="text-sm sm:text-base print:text-xs text-slate-100 print:text-slate-900 font-bold font-sans">
                       {skill.name}
                     </span>
                   </div>
                   {skill.tag && (
-                    <span className="text-[10px] sm:text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-cyan-950/70 text-cyan-300 border border-cyan-500/40 shrink-0">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-cyan-950/70 text-cyan-300 print:bg-slate-100 print:text-slate-800 border border-cyan-500/40 print:border-slate-300 shrink-0">
                       {skill.tag}
                     </span>
                   )}
                 </div>
-                <p className="text-[13px] sm:text-sm text-slate-400 font-sans leading-relaxed pl-3.5">
+                <p className="text-[13px] sm:text-sm print:text-[11px] text-slate-400 print:text-slate-700 font-sans leading-relaxed pl-3.5">
                   {skill.description}
                 </p>
               </div>
@@ -209,38 +209,38 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
         </div>
 
         {/* DAW & Hardware */}
-        <div className="space-y-5">
-          <div className="flex items-center gap-2.5 border-b border-slate-800/70 pb-3">
-            <Sliders className="w-5 h-5 text-amber-400" />
-            <h3 className="text-base sm:text-lg font-extrabold text-white">소프트웨어 DAW & 스튜디오 장비</h3>
+        <div className="space-y-5 print:space-y-2">
+          <div className="flex items-center gap-2.5 border-b border-slate-800/70 print:border-slate-300 pb-3 print:pb-1">
+            <Sliders className="w-5 h-5 text-amber-400 print:text-slate-700" />
+            <h3 className="text-base sm:text-lg print:text-sm font-extrabold text-white print:text-slate-950">소프트웨어 DAW & 스튜디오 장비</h3>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-5 print:space-y-2">
             <div>
-              <span className="text-xs sm:text-sm font-mono text-slate-400 block mb-2.5 font-bold uppercase">
+              <span className="text-xs sm:text-sm print:text-xs font-mono text-slate-400 print:text-slate-700 block mb-2.5 print:mb-1 font-bold uppercase">
                 주요 사용 오디오 엔진 / DAW
               </span>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-2.5 print:gap-1.5">
                 {profile.tools.map((t, idx) => (
                   <span 
                     key={idx} 
-                    className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-100 font-mono text-xs sm:text-sm font-semibold flex items-center gap-2 hover:border-cyan-500/50 transition-colors"
+                    className="px-3.5 py-2 print:px-2.5 print:py-1 rounded-xl bg-slate-900 border border-slate-800 print:border-slate-300 text-slate-100 print:text-slate-900 font-mono text-xs sm:text-sm print:text-xs font-semibold flex items-center gap-2 hover:border-cyan-500/50 transition-colors"
                   >
-                    <Disc className="w-4 h-4 text-cyan-400" />
+                    <Disc className="w-4 h-4 text-cyan-400 print:text-slate-700" />
                     <span>{t.name}</span>
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="pt-2">
-              <span className="text-xs sm:text-sm font-mono text-slate-400 block mb-2.5 font-bold uppercase flex items-center gap-1.5">
-                <Cpu className="w-4 h-4 text-emerald-400" /> 스튜디오 하드웨어
+            <div className="pt-2 print:pt-1">
+              <span className="text-xs sm:text-sm print:text-xs font-mono text-slate-400 print:text-slate-700 block mb-2.5 print:mb-1 font-bold uppercase flex items-center gap-1.5">
+                <Cpu className="w-4 h-4 text-emerald-400 print:text-slate-700" /> 스튜디오 하드웨어
               </span>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-slate-200 font-mono text-xs sm:text-sm">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 print:gap-1 text-slate-200 print:text-slate-800 font-mono text-xs sm:text-sm print:text-xs">
                 {profile.hardware.map((hw, idx) => (
                   <li key={idx} className="flex items-start gap-2.5">
-                    <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-cyan-400 print:text-slate-700 flex-shrink-0 mt-0.5" />
                     <span className="leading-snug break-words">{hw}</span>
                   </li>
                 ))}
@@ -252,7 +252,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
       </div>
 
       {/* 3. Clean Career Timeline */}
-      <div className="space-y-7 pt-8 sm:pt-10 border-t border-slate-800/80">
+      <div className="space-y-7 print:space-y-3 pt-8 sm:pt-10 print:pt-4 border-t border-slate-800/80 print:border-slate-300">
         
         <div className="flex items-center gap-3">
           <Award className="w-6 h-6 text-cyan-400" />

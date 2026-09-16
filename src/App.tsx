@@ -79,19 +79,19 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#07080f] text-white selection:bg-cyan-500 selection:text-black overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#07080f] text-white print:bg-white print:text-slate-900 selection:bg-cyan-500 selection:text-black overflow-x-hidden print:overflow-visible">
       {/* Static Ambient Dark Canvas */}
       <ParticleCanvas isStartScreen={false} />
 
       {/* Main Application Workspace */}
-      <div className="relative z-10 flex flex-col min-h-screen">
+      <div className="relative z-10 flex flex-col min-h-screen print:min-h-0 print:block">
         <Navbar />
 
-        <main className="flex-1 px-4 sm:px-6 md:px-8 max-w-[1240px] w-full mx-auto flex flex-col gap-12 sm:gap-20 print:gap-8 pt-4 sm:pt-6 md:pt-8 pb-12 sm:pb-20 print:p-0">
+        <main className="flex-1 px-4 sm:px-6 md:px-8 max-w-[1240px] w-full mx-auto flex flex-col gap-12 sm:gap-20 print:gap-6 pt-4 sm:pt-6 md:pt-8 pb-12 sm:pb-20 print:p-0 print:m-0 print:max-w-none print:block">
           
           {/* Section 1: Sound Designer Profile */}
-          <section id="director-stats" className="space-y-6 sm:space-y-8 print:space-y-4">
-            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2.5 font-mono">
+          <section id="director-stats" className="space-y-6 sm:space-y-8 print:space-y-3">
+            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2 font-mono">
               <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-cyan-950/90 border-2 border-cyan-400/70 text-cyan-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(6,182,212,0.25)] shrink-0 whitespace-nowrap print:bg-slate-100 print:text-slate-900 print:border-slate-800">
                 01
               </span>
@@ -103,8 +103,8 @@ export default function App() {
           </section>
 
           {/* Section 2: Gaming History */}
-          <section id="gaming-history" className="space-y-6 sm:space-y-8 print:space-y-4 print:break-before-page">
-            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2.5 font-mono">
+          <section id="gaming-history" className="space-y-6 sm:space-y-8 print:space-y-3 print:break-before-page">
+            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2 font-mono">
               <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-amber-950/90 border-2 border-amber-400/70 text-amber-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(245,158,11,0.25)] shrink-0 whitespace-nowrap print:bg-slate-100 print:text-slate-900 print:border-slate-800">
                 02
               </span>
@@ -116,8 +116,8 @@ export default function App() {
           </section>
 
           {/* Section 3: Portfolio Showcase Reel */}
-          <section id="showcase-reel" className="space-y-6 sm:space-y-8 print:space-y-4 print:break-before-page">
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2.5 font-mono">
+          <section id="showcase-reel" className="space-y-6 sm:space-y-8 print:space-y-3 print:break-before-page">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2 font-mono">
               <div className="flex items-center gap-3.5 sm:gap-5">
                 <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-cyan-950/90 border-2 border-cyan-400/70 text-cyan-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(6,182,212,0.25)] shrink-0 whitespace-nowrap print:bg-slate-100 print:text-slate-900 print:border-slate-800">
                   03
@@ -144,8 +144,8 @@ export default function App() {
           </section>
 
           {/* Section 4: Cover Letter / Self-Introduction */}
-          <section id="cover-letter" className="space-y-6 sm:space-y-8 print:space-y-4 print:break-before-page">
-            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2.5 font-mono">
+          <section id="cover-letter" className="space-y-6 sm:space-y-8 print:space-y-3 print:break-before-page">
+            <div className="flex items-center gap-3.5 sm:gap-5 border-b border-slate-800/80 print:border-slate-400 pb-4 sm:pb-5 print:pb-2 font-mono">
               <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-amber-950/90 border-2 border-amber-400/70 text-amber-300 text-sm sm:text-base md:text-lg font-mono font-black tracking-wider shadow-[0_0_14px_rgba(245,158,11,0.25)] shrink-0 whitespace-nowrap print:bg-slate-100 print:text-slate-900 print:border-slate-800">
                 04
               </span>
