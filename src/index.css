@@ -1,26 +1,29 @@
 @import "tailwindcss";
 
-/* Global Antialiasing & Jitter Prevention */
+@theme {
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+/* Global Crisp Font Rendering & Antialiasing */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
 *, *::before, *::after {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Eliminate subpixel icon / SVG raster jitter during scroll */
-svg, img {
-  transform: translateZ(0);
-  backface-visibility: hidden;
+/* Crisp vector rendering without compositor subpixel jitter */
+svg {
   shape-rendering: geometricPrecision;
 }
 
 /* Ensure sticky/fixed elements remain on their own compositor layer */
 header {
-  transform: translateZ(0);
-  backface-visibility: hidden;
   will-change: background-color, border-color, box-shadow;
 }
 
@@ -100,6 +103,23 @@ header {
   /* Keep table borders visible and clean */
   .border-t, .border-b, .border-l-2, .border {
     border-color: #cbd5e1 !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  thead th {
+    background-color: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
 

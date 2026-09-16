@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio, Smartphone, Monitor, Disc, CreditCard, Edit3, Check, RotateCcw, DollarSign, Layers, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Gamepad2, Clock, ExternalLink, ShieldCheck, Flame, Zap, RefreshCw, Radio, Smartphone, Monitor, Disc, CreditCard, Layers, ChevronLeft, ChevronRight } from 'lucide-react';
 import { OFFICIAL_STEAM_PROFILE_DATA } from '../data/steamData';
 import { PLAYED_GAMES_LIST, PlayedGameItem, GamePlatform } from '../data/playedGamesData';
 import { SteamProfileData } from '../types';
@@ -206,59 +206,14 @@ export const GamingHistoryView: React.FC = () => {
   const [lastSyncTime, setLastSyncTime] = useState<string | null>(null);
   const [syncStatus, setSyncStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  // Platform Cash Purchase Totals (Steam, Google Play, App Store) with localStorage persistence
-  const [purchaseAmounts, setPurchaseAmounts] = useState<{ steam: number; googlePlay: number; appStore: number }>(() => {
-    const defaults = {
-      steam: 6688000,
-      googlePlay: 2372200,
-      appStore: 2729500
-    };
-    try {
-      const saved = localStorage.getItem('seongeun_game_purchases');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        return {
-          ...defaults,
-          ...parsed,
-          steam: parsed.steam === 3450000 ? 6688000 : (parsed.steam ?? 6688000),
-          googlePlay: parsed.googlePlay === 1850000 ? 2372200 : (parsed.googlePlay ?? 2372200),
-          appStore: parsed.appStore === 920000 ? 2729500 : (parsed.appStore ?? 2729500)
-        };
-      }
-    } catch {
-      // ignore
-    }
-    return defaults;
-  });
-
-  const [isEditingPurchases, setIsEditingPurchases] = useState(false);
-  const [tempAmounts, setTempAmounts] = useState(purchaseAmounts);
+  // Platform Cash Purchase Totals (Steam, Google Play, App Store) - Official Verified Figures
+  const purchaseAmounts = useMemo(() => ({
+    steam: 6688000,
+    googlePlay: 2372200,
+    appStore: 2729500
+  }), []);
 
   const totalSpent = purchaseAmounts.steam + purchaseAmounts.googlePlay + purchaseAmounts.appStore;
-
-  const handleSavePurchases = () => {
-    soundEngine.playClick();
-    setPurchaseAmounts(tempAmounts);
-    try {
-      localStorage.setItem('seongeun_game_purchases', JSON.stringify(tempAmounts));
-    } catch {
-      // ignore
-    }
-    setIsEditingPurchases(false);
-  };
-
-  const handleResetPurchases = () => {
-    soundEngine.playClick();
-    const defaults = { steam: 6688000, googlePlay: 2372200, appStore: 2729500 };
-    setPurchaseAmounts(defaults);
-    setTempAmounts(defaults);
-    try {
-      localStorage.setItem('seongeun_game_purchases', JSON.stringify(defaults));
-    } catch {
-      // ignore
-    }
-    setIsEditingPurchases(false);
-  };
 
   // Real-time live sync with Steam on mount or on demand
   const fetchLiveSteamData = async () => {
@@ -323,6 +278,55 @@ export const GamingHistoryView: React.FC = () => {
     const start = (steamPage - 1) * ITEMS_PER_PAGE;
     return steamData.games.slice(start, start + ITEMS_PER_PAGE);
   }, [steamData.games, steamPage]);
+
+  // Top 6 Most Played Games for PDF Document Print Layout (Filtered & Sorted Descending by Playtime)
+  const top6PlayedGames = useMemo(() => {
+    const gameMap = new Map<string, {
+      appId: string;
+      name: string;
+      hoursPlayed: number;
+      genre: string;
+      audioFocus: string;
+      url: string;
+      platform: string;
+    }>();
+
+    // 1. Add all from PLAYED_GAMES_LIST
+    PLAYED_GAMES_LIST.forEach((g) => {
+      gameMap.set(g.appId, {
+        appId: g.appId,
+        name: g.name,
+        hoursPlayed: g.hoursPlayed || 0,
+        genre: g.genre,
+        audioFocus: g.audioFocus,
+        url: g.steamUrl || `https://store.steampowered.com/app/${g.appId}/`,
+        platform: g.platform || 'steam',
+      });
+    });
+
+    // 2. Sync live steam hours if greater or add steam games
+    steamData.games.forEach((sg) => {
+      const existing = gameMap.get(sg.appId);
+      if (existing) {
+        existing.hoursPlayed = Math.max(existing.hoursPlayed, sg.hoursTotal);
+        if (sg.link) existing.url = sg.link;
+      } else {
+        gameMap.set(sg.appId, {
+          appId: sg.appId,
+          name: sg.name,
+          hoursPlayed: sg.hoursTotal,
+          genre: 'PC 게임',
+          audioFocus: '실시간 플레이 세션 및 사운드 시스템 분석',
+          url: sg.link || `https://store.steampowered.com/app/${sg.appId}/`,
+          platform: 'steam',
+        });
+      }
+    });
+
+    return Array.from(gameMap.values())
+      .sort((a, b) => b.hoursPlayed - a.hoursPlayed)
+      .slice(0, 6);
+  }, [steamData]);
 
   const playedTotalPages = Math.max(1, Math.ceil(filteredPlayedGames.length / ITEMS_PER_PAGE));
   const paginatedPlayedGames = useMemo(() => {
@@ -389,9 +393,8 @@ export const GamingHistoryView: React.FC = () => {
                 className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl border-2 border-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.35)] object-cover"
                 referrerPolicy="no-referrer"
               />
-              <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-[#09101f]"></span>
+              <span className="absolute -bottom-1 -right-1 flex h-3.5 w-3.5">
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-[#09101f] shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
               </span>
             </div>
 
@@ -421,19 +424,19 @@ export const GamingHistoryView: React.FC = () => {
 
           {/* Steam Stat & Profile Link Button */}
           <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end flex-wrap">
-            <div className="bg-[#050912]/80 border border-slate-800 px-4 py-2 rounded-xl text-center">
-              <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider flex items-center justify-center gap-1">
-                <span>스팀 실시간 누적</span>
+            <div className="bg-[#050912]/90 border border-slate-700/80 px-4 py-2.5 rounded-xl text-center shadow-sm">
+              <div className="text-xs text-slate-200 font-sans font-semibold flex items-center justify-center gap-1.5">
+                <span className="tracking-normal">스팀 실시간 누적</span>
                 <button
                   onClick={fetchLiveSteamData}
                   disabled={isLoading}
                   title="스팀 실시간 동기화 새로고침"
                   className="p-1 hover:text-cyan-300 transition-colors disabled:opacity-50"
                 >
-                  <RefreshCw className={`w-3 h-3 ${isLoading ? 'animate-spin text-cyan-400' : ''}`} />
+                  <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-cyan-400' : 'text-slate-400'}`} />
                 </button>
               </div>
-              <div className="text-lg font-mono font-bold text-amber-300">
+              <div className="text-lg sm:text-xl font-mono font-bold text-amber-300 tracking-tight">
                 {steamTotalHours.toLocaleString()}시간+
               </div>
             </div>
@@ -456,25 +459,25 @@ export const GamingHistoryView: React.FC = () => {
       </div>
 
       {/* Tabs / Filter Controls - High-Visibility Game Library Mode Selector Dock */}
-      <div ref={gamesListTopRef} className="space-y-4 scroll-mt-20">
+      <div ref={gamesListTopRef} className="space-y-4 scroll-mt-20 print:hidden">
         <div className="rounded-2xl bg-[#090d1c] border-2 border-slate-700/90 p-3.5 sm:p-5 shadow-[0_12px_32px_rgba(0,0,0,0.6)] space-y-3.5">
           {/* Top Label & Status Summary */}
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/90 pb-3">
             <div className="flex items-center gap-2.5">
               <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shrink-0" />
-              <span className="text-xs sm:text-sm font-mono font-bold text-slate-200 tracking-wide uppercase flex items-center gap-1.5">
+              <span className="text-xs sm:text-sm font-sans font-bold text-slate-200 tracking-tight flex items-center gap-1.5">
                 <Layers className="w-4 h-4 text-cyan-400" />
                 게임 라이브러리 모드 선택
               </span>
-              <span className="text-[11px] text-cyan-400/90 bg-cyan-950/80 border border-cyan-500/40 px-2 py-0.5 rounded-md font-medium hidden xs:inline-block">
+              <span className="text-xs text-cyan-300 bg-cyan-950/80 border border-cyan-500/40 px-2 py-0.5 rounded-md font-medium hidden xs:inline-block font-sans">
                 탭을 눌러 모드를 전환하세요
               </span>
             </div>
 
             <div className="flex items-center gap-3 ml-auto">
               {lastSyncTime && (
-                <span className="text-[11px] font-mono text-slate-400 hidden md:inline">
-                  최근 동기화: {lastSyncTime}
+                <span className="text-xs font-sans text-slate-400 hidden md:inline">
+                  최근 동기화: <span className="font-mono text-slate-300">{lastSyncTime}</span>
                 </span>
               )}
               <div className="flex items-center gap-2 text-xs sm:text-sm font-mono text-amber-300 bg-black/60 border border-amber-500/30 px-3 py-1.5 rounded-xl shrink-0">
@@ -691,7 +694,7 @@ export const GamingHistoryView: React.FC = () => {
 
       {/* Tab 1: Steam Connected Games */}
       {activeTab === 'steam' && (
-        <div className="space-y-4">
+        <div className="space-y-4 print:hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fadeIn">
             {paginatedSteamGames.map((game) => {
               const percentage = Math.min(100, Math.round((game.hoursTotal / steamMaxHours) * 100));
@@ -843,7 +846,7 @@ export const GamingHistoryView: React.FC = () => {
 
       {/* Tab 2: Full Played Games List with Platform Filtering */}
       {activeTab === 'all' && (
-        <div className="space-y-4">
+        <div className="space-y-4 print:hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-fadeIn">
             {paginatedPlayedGames.map((game, index) => {
               const percentage = Math.round((game.hoursPlayed / maxHours) * 100);
@@ -1004,15 +1007,15 @@ export const GamingHistoryView: React.FC = () => {
                     </div>
                   ) : (
                     <div className="pt-1.5 border-t border-slate-800/60 flex items-center justify-between text-xs text-slate-500 font-sans">
-                      <span className={`text-[11px] font-mono flex items-center gap-1 ${
-                        p === 'other' ? 'text-purple-400/80' : 'text-emerald-400/80'
+                      <span className={`text-xs font-sans font-medium flex items-center gap-1.5 ${
+                        p === 'other' ? 'text-purple-300' : 'text-emerald-300'
                       }`}>
                         <span className={`w-1.5 h-1.5 rounded-full animate-pulse inline-block ${
                           p === 'other' ? 'bg-purple-400' : 'bg-emerald-400'
                         }`} />
                         플레이 이력 보관
                       </span>
-                      <span className="text-[11px] font-mono text-slate-500">
+                      <span className="text-xs font-mono text-slate-400">
                         {p === 'other' ? 'Official Site' : 'Google Play'}
                       </span>
                     </div>
@@ -1091,6 +1094,72 @@ export const GamingHistoryView: React.FC = () => {
         </div>
       )}
 
+      {/* Print-Only: Top 6 Most Played Games for PDF Document Layout (No image boxes, clean links and sound analysis) */}
+      <div className="hidden print:block space-y-3 pt-2">
+        <div className="border-b-2 border-slate-700 pb-2 flex items-baseline justify-between">
+          <div>
+            <h3 className="text-base font-bold text-slate-900 font-sans tracking-tight">
+              핵심 게임 플레이 이력 (누적 플레이타임 TOP 6)
+            </h3>
+            <p className="text-xs text-slate-600 font-sans mt-0.5">
+              사운드 디자인 분석, 공간 음향 믹싱 및 상호작용 오디오 시스템 연구를 위해 심층 플레이한 대표작 6선
+            </p>
+          </div>
+          <span className="text-xs font-mono font-semibold text-slate-600 shrink-0">
+            [스토어 및 공식 링크 포함]
+          </span>
+        </div>
+
+        <div className="overflow-hidden border border-slate-300 rounded-lg">
+          <table className="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr className="bg-slate-100 border-b border-slate-300 text-slate-800 font-bold">
+                <th className="py-2 px-2.5 text-center w-12 font-mono">순위</th>
+                <th className="py-2 px-3 w-44">게임 타이틀</th>
+                <th className="py-2 px-2 text-center w-28">장르 / 플랫폼</th>
+                <th className="py-2 px-2.5 text-right w-24 font-mono">플레이타임</th>
+                <th className="py-2 px-3">사운드 디자인 분석 관점 & 오디오 시스템</th>
+                <th className="py-2 px-3 w-44">공식 바로가기</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200">
+              {top6PlayedGames.map((game, idx) => (
+                <tr key={game.appId} className="align-top hover:bg-slate-50">
+                  <td className="py-2.5 px-2.5 text-center font-mono font-bold text-slate-700">
+                    0{idx + 1}
+                  </td>
+                  <td className="py-2.5 px-3">
+                    <div className="font-bold text-slate-900 leading-snug break-keep">{game.name}</div>
+                    <div className="text-[10px] font-mono text-slate-500 mt-0.5">AppID: {game.appId}</div>
+                  </td>
+                  <td className="py-2.5 px-2 text-center text-slate-700">
+                    <span className="inline-block px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-[11px] text-slate-800 font-medium">
+                      {game.genre}
+                    </span>
+                  </td>
+                  <td className="py-2.5 px-2.5 text-right font-mono font-black text-slate-900 whitespace-nowrap">
+                    {game.hoursPlayed.toLocaleString()}시간
+                  </td>
+                  <td className="py-2.5 px-3 text-slate-700 leading-relaxed text-[11.5px] break-keep">
+                    {game.audioFocus}
+                  </td>
+                  <td className="py-2.5 px-3 text-[11px]">
+                    <a
+                      href={game.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-700 underline font-mono break-all hover:text-blue-900 leading-tight block"
+                    >
+                      {game.url}
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       {/* Cash Purchase Totals (Steam / Google Play / App Store) */}
       <div className="pt-4 border-t border-slate-800/80">
         <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-[#0b0f1a] to-[#070910] border border-slate-800/90 shadow-lg relative overflow-hidden">
@@ -1118,51 +1187,9 @@ export const GamingHistoryView: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
-              {isEditingPurchases ? (
-                <>
-                  <button
-                    onClick={handleSavePurchases}
-                    type="button"
-                    className="px-2.5 py-1 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/50 text-xs font-medium flex items-center gap-1.5 transition-all shadow-sm"
-                  >
-                    <Check className="w-3.5 h-3.5" />
-                    <span>저장</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      soundEngine.playClick();
-                      setTempAmounts(purchaseAmounts);
-                      setIsEditingPurchases(false);
-                    }}
-                    type="button"
-                    className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-medium transition-all"
-                  >
-                    취소
-                  </button>
-                  <button
-                    onClick={handleResetPurchases}
-                    type="button"
-                    title="초기 기본값으로 복원"
-                    className="p-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-slate-200 border border-slate-700 transition-colors"
-                  >
-                    <RotateCcw className="w-3.5 h-3.5" />
-                  </button>
-                </>
-              ) : (
-                <button
-                  onClick={() => {
-                    soundEngine.playClick();
-                    setTempAmounts(purchaseAmounts);
-                    setIsEditingPurchases(true);
-                  }}
-                  type="button"
-                  className="px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-cyan-300 border border-slate-800 hover:border-cyan-500/40 text-xs font-mono flex items-center gap-1.5 transition-all"
-                >
-                  <Edit3 className="w-3 h-3 text-cyan-400" />
-                  <span>금액 직접 수정</span>
-                </button>
-              )}
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-sans text-slate-300 shrink-0">
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+              <span>26년도 기준 집계</span>
             </div>
           </div>
 
@@ -1179,48 +1206,35 @@ export const GamingHistoryView: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-xs font-bold text-slate-200 block leading-tight">스팀 (Steam)</span>
-                    <span className="text-[10px] text-cyan-400 font-mono">PC 라이브러리 & 게임 패키지</span>
+                    <span className="text-xs text-cyan-300 font-sans font-medium">PC 라이브러리 & 게임 패키지</span>
                   </div>
                 </div>
-                <span className="text-[10px] font-mono text-slate-500 uppercase px-1.5 py-0.5 rounded bg-black/40 border border-slate-800">
+                <span className="text-xs font-mono text-slate-400 uppercase px-2 py-0.5 rounded bg-black/40 border border-slate-800">
                   PC
                 </span>
               </div>
 
-              {isEditingPurchases ? (
-                <div className="pt-1">
-                  <label className="text-[10px] text-slate-400 font-mono block mb-1">결제 총액 (원):</label>
-                  <input
-                    type="number"
-                    step="10000"
-                    value={tempAmounts.steam}
-                    onChange={(e) => setTempAmounts(prev => ({ ...prev, steam: Number(e.target.value) || 0 }))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-950 border border-cyan-500/50 text-white font-mono text-sm focus:outline-none focus:border-cyan-400"
+              <div className="space-y-1">
+                <div className="flex items-baseline justify-between">
+                  <span className="text-xs text-slate-400">누적 결제액</span>
+                  <div className="text-right">
+                    <span className="text-lg sm:text-xl font-mono font-black text-cyan-300">
+                      {purchaseAmounts.steam.toLocaleString()}
+                    </span>
+                    <span className="text-xs text-slate-400 ml-1 font-sans">원</span>
+                  </div>
+                </div>
+                <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                  <div
+                    className="bg-cyan-400 h-full rounded-full transition-all duration-500"
+                    style={{ width: `${totalSpent > 0 ? (purchaseAmounts.steam / totalSpent) * 100 : 0}%` }}
                   />
                 </div>
-              ) : (
-                <div className="space-y-1">
-                  <div className="flex items-baseline justify-between">
-                    <span className="text-xs text-slate-400">누적 결제액</span>
-                    <div className="text-right">
-                      <span className="text-lg sm:text-xl font-mono font-black text-cyan-300">
-                        {purchaseAmounts.steam.toLocaleString()}
-                      </span>
-                      <span className="text-xs text-slate-400 ml-1 font-sans">원</span>
-                    </div>
-                  </div>
-                  <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
-                    <div
-                      className="bg-cyan-400 h-full rounded-full transition-all duration-500"
-                      style={{ width: `${totalSpent > 0 ? (purchaseAmounts.steam / totalSpent) * 100 : 0}%` }}
-                    />
-                  </div>
-                  <div className="flex justify-between text-[10px] font-mono text-slate-500 pt-0.5">
-                    <span>전체 결제의 {totalSpent > 0 ? Math.round((purchaseAmounts.steam / totalSpent) * 100) : 0}%</span>
-                    <span>패키지 및 DLC</span>
-                  </div>
+                <div className="flex justify-between text-[11px] sm:text-xs font-sans text-slate-400 pt-0.5">
+                  <span>전체 결제의 {totalSpent > 0 ? Math.round((purchaseAmounts.steam / totalSpent) * 100) : 0}%</span>
+                  <span>패키지 및 DLC</span>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* 2. Google Play */}
@@ -1237,48 +1251,35 @@ export const GamingHistoryView: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-xs font-bold text-slate-200 block leading-tight">구글 플레이 (Google Play)</span>
-                    <span className="text-[10px] text-emerald-400 font-mono">안드로이드 인게임 과금 & 패스</span>
+                    <span className="text-xs text-emerald-300 font-sans font-medium">안드로이드 인게임 과금 & 패스</span>
                   </div>
                 </div>
-                <span className="text-[10px] font-mono text-slate-500 uppercase px-1.5 py-0.5 rounded bg-black/40 border border-slate-800">
+                <span className="text-xs font-mono text-slate-400 uppercase px-2 py-0.5 rounded bg-black/40 border border-slate-800">
                   AOS
                 </span>
               </div>
 
-              {isEditingPurchases ? (
-                <div className="pt-1">
-                  <label className="text-[10px] text-slate-400 font-mono block mb-1">결제 총액 (원):</label>
-                  <input
-                    type="number"
-                    step="10000"
-                    value={tempAmounts.googlePlay}
-                    onChange={(e) => setTempAmounts(prev => ({ ...prev, googlePlay: Number(e.target.value) || 0 }))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-950 border border-emerald-500/50 text-white font-mono text-sm focus:outline-none focus:border-emerald-400"
+              <div className="space-y-1">
+                <div className="flex items-baseline justify-between">
+                  <span className="text-xs text-slate-400">누적 결제액</span>
+                  <div className="text-right">
+                    <span className="text-lg sm:text-xl font-mono font-black text-emerald-300">
+                      {purchaseAmounts.googlePlay.toLocaleString()}
+                    </span>
+                    <span className="text-xs text-slate-400 ml-1 font-sans">원</span>
+                  </div>
+                </div>
+                <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                  <div
+                    className="bg-emerald-400 h-full rounded-full transition-all duration-500"
+                    style={{ width: `${totalSpent > 0 ? (purchaseAmounts.googlePlay / totalSpent) * 100 : 0}%` }}
                   />
                 </div>
-              ) : (
-                <div className="space-y-1">
-                  <div className="flex items-baseline justify-between">
-                    <span className="text-xs text-slate-400">누적 결제액</span>
-                    <div className="text-right">
-                      <span className="text-lg sm:text-xl font-mono font-black text-emerald-300">
-                        {purchaseAmounts.googlePlay.toLocaleString()}
-                      </span>
-                      <span className="text-xs text-slate-400 ml-1 font-sans">원</span>
-                    </div>
-                  </div>
-                  <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
-                    <div
-                      className="bg-emerald-400 h-full rounded-full transition-all duration-500"
-                      style={{ width: `${totalSpent > 0 ? (purchaseAmounts.googlePlay / totalSpent) * 100 : 0}%` }}
-                    />
-                  </div>
-                  <div className="flex justify-between text-[10px] font-mono text-slate-500 pt-0.5">
-                    <span>전체 결제의 {totalSpent > 0 ? Math.round((purchaseAmounts.googlePlay / totalSpent) * 100) : 0}%</span>
-                    <span>월정액 및 패스권</span>
-                  </div>
+                <div className="flex justify-between text-[11px] sm:text-xs font-sans text-slate-400 pt-0.5">
+                  <span>전체 결제의 {totalSpent > 0 ? Math.round((purchaseAmounts.googlePlay / totalSpent) * 100) : 0}%</span>
+                  <span>월정액 및 패스권</span>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* 3. App Store */}
@@ -1292,48 +1293,35 @@ export const GamingHistoryView: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-xs font-bold text-slate-200 block leading-tight">앱스토어 (App Store)</span>
-                    <span className="text-[10px] text-sky-400 font-mono">iOS 인게임 아이템 & 유료 앱</span>
+                    <span className="text-xs text-sky-300 font-sans font-medium">iOS 인게임 아이템 & 유료 앱</span>
                   </div>
                 </div>
-                <span className="text-[10px] font-mono text-slate-500 uppercase px-1.5 py-0.5 rounded bg-black/40 border border-slate-800">
+                <span className="text-xs font-mono text-slate-400 uppercase px-2 py-0.5 rounded bg-black/40 border border-slate-800">
                   iOS
                 </span>
               </div>
 
-              {isEditingPurchases ? (
-                <div className="pt-1">
-                  <label className="text-[10px] text-slate-400 font-mono block mb-1">결제 총액 (원):</label>
-                  <input
-                    type="number"
-                    step="10000"
-                    value={tempAmounts.appStore}
-                    onChange={(e) => setTempAmounts(prev => ({ ...prev, appStore: Number(e.target.value) || 0 }))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-950 border border-sky-500/50 text-white font-mono text-sm focus:outline-none focus:border-sky-400"
+              <div className="space-y-1">
+                <div className="flex items-baseline justify-between">
+                  <span className="text-xs text-slate-400">누적 결제액</span>
+                  <div className="text-right">
+                    <span className="text-lg sm:text-xl font-mono font-black text-sky-300">
+                      {purchaseAmounts.appStore.toLocaleString()}
+                    </span>
+                    <span className="text-xs text-slate-400 ml-1 font-sans">원</span>
+                  </div>
+                </div>
+                <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                  <div
+                    className="bg-sky-400 h-full rounded-full transition-all duration-500"
+                    style={{ width: `${totalSpent > 0 ? (purchaseAmounts.appStore / totalSpent) * 100 : 0}%` }}
                   />
                 </div>
-              ) : (
-                <div className="space-y-1">
-                  <div className="flex items-baseline justify-between">
-                    <span className="text-xs text-slate-400">누적 결제액</span>
-                    <div className="text-right">
-                      <span className="text-lg sm:text-xl font-mono font-black text-sky-300">
-                        {purchaseAmounts.appStore.toLocaleString()}
-                      </span>
-                      <span className="text-xs text-slate-400 ml-1 font-sans">원</span>
-                    </div>
-                  </div>
-                  <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
-                    <div
-                      className="bg-sky-400 h-full rounded-full transition-all duration-500"
-                      style={{ width: `${totalSpent > 0 ? (purchaseAmounts.appStore / totalSpent) * 100 : 0}%` }}
-                    />
-                  </div>
-                  <div className="flex justify-between text-[10px] font-mono text-slate-500 pt-0.5">
-                    <span>전체 결제의 {totalSpent > 0 ? Math.round((purchaseAmounts.appStore / totalSpent) * 100) : 0}%</span>
-                    <span>유료 앱 및 인게임 구매</span>
-                  </div>
+                <div className="flex justify-between text-[11px] sm:text-xs font-sans text-slate-400 pt-0.5">
+                  <span>전체 결제의 {totalSpent > 0 ? Math.round((purchaseAmounts.appStore / totalSpent) * 100) : 0}%</span>
+                  <span>유료 앱 및 인게임 구매</span>
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </div>

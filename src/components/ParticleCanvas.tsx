@@ -13,8 +13,8 @@ export const ParticleCanvas: React.FC<{ isStartScreen?: boolean }> = () => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Create subtle twinkling stars/audio dust particles
-    const particleCount = Math.floor((width * height) / 14000); // adaptive density
+    // Create subtle twinkling stars/audio dust particles - calmer density to prevent visual clutter
+    const particleCount = Math.floor((width * height) / 22000); // reduced, calmer density
     const particles: Array<{
       x: number;
       y: number;
@@ -38,13 +38,13 @@ export const ParticleCanvas: React.FC<{ isStartScreen?: boolean }> = () => {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.1 + 0.3, // Slightly more defined yet delicate
-        alpha: Math.random() * 0.55 + 0.15, // Balanced opacity
-        targetAlpha: Math.random() * 0.65 + 0.2,
-        twinkleSpeed: Math.random() * 0.006 + 0.003,
+        radius: Math.random() * 0.8 + 0.4,
+        alpha: Math.random() * 0.4 + 0.1,
+        targetAlpha: Math.random() * 0.45 + 0.15,
+        twinkleSpeed: Math.random() * 0.003 + 0.0015, // Smooth slow twinkle without jitter
         color: colors[Math.floor(Math.random() * colors.length)],
-        vx: (Math.random() - 0.5) * 0.08,
-        vy: (Math.random() - 0.5) * 0.08
+        vx: (Math.random() - 0.5) * 0.04, // Calmer drift
+        vy: (Math.random() - 0.5) * 0.04
       });
     }
 
@@ -80,8 +80,6 @@ export const ParticleCanvas: React.FC<{ isStartScreen?: boolean }> = () => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `${p.color}${p.alpha})`;
-        ctx.shadowBlur = p.radius > 1 ? 4 : 0;
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.4)';
         ctx.fill();
       });
 
