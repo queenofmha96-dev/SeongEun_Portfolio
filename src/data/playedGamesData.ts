@@ -945,6 +945,6 @@ export const PLAYED_GAMES_LIST: PlayedGameItem[] = [
   },
   // --- Other Standalone / Battle.net / Riot Games (그외 게임) ---
   ...OTHER_GAMES_LIST,
-  // --- Mobile Games (277 Titles, No hours displayed) ---
+  // --- Mobile Games (207 Titles, No hours displayed) ---
   ...MOBILE_GAMES_LIST
 ];

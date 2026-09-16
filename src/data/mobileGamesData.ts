@@ -2,16 +2,6 @@ import { PlayedGameItem } from './playedGamesData';
 
 export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
-    "appId": "mobile-15-0",
-    "name": "15 슬라임",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/uA_duPWgN5-3U8qrb20NNRFqM0hOulJSIYf4H4OGU7tw54Nc2KqJr_4jKSqz5zicor60h45ylslEoyr-ZEINSg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=15%20%EC%8A%AC%EB%9D%BC%EC%9E%84&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-2017-with-naver-webtoon-1",
     "name": "2017갓오브하이스쿨 with NAVER WEBTOON",
     "genre": "모바일 RPG",
@@ -19,16 +9,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/oG4FgElBP0V3oUTPvRwUx4ajXMUxMsIuZDmYHCRcF4XyG8iaGgLZo94_Qr0gV6xfJ_DiaWWQuoJrUDS_07T6=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=2017%EA%B0%93%EC%98%A4%EB%B8%8C%ED%95%98%EC%9D%B4%EC%8A%A4%EC%BF%A8%20with%20NAVER%20WEBTOON&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-2079-2",
-    "name": "2079",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/cBQaxGyBHfUe9Fc2VC6B5oI1RyL11KGB25xki1cZKY6zqgEm1dfrBL-j5ySKaKsdqviEkx7qb8qK556Ip9eIOA=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=2079&c=apps",
     "platform": "mobile"
   },
   {
@@ -49,16 +29,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "",
     "steamUrl": "https://play.google.com/store/search?q=%EA%B0%93%EC%98%A4%EB%B8%8C%ED%95%98%EC%9D%B4%EC%8A%A4%EC%BF%A8&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-5-5",
-    "name": "강철소녀",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/-YpS6I8M6wu7oAUXhmZTYaE1yKsRgavYpjRhAJIB4dRH_2f3ErMbiAcwJnpBB2XI5IfIxAIZHGR_ostJQQDBs3w=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EA%B0%95%EC%B2%A0%EC%86%8C%EB%85%80&c=apps",
     "platform": "mobile"
   },
   {
@@ -92,26 +62,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-9-9",
-    "name": "그랑블루오디세이",
-    "genre": "수집형 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/9TRubMereF2LZJLsQXL3hBwNTvorKNjF6P6riZNT23QZcHGDth9kQztjgGMuL3JV09cWW-YcIZvT6obY_1ifuA=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EA%B7%B8%EB%9E%91%EB%B8%94%EB%A3%A8%EC%98%A4%EB%94%94%EC%84%B8%EC%9D%B4&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-10-10",
-    "name": "길드 오브 아너",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/Ql1fMVGWMum2GSScto0yUKE7jLwOgkTWUjKI2Xnm_zsk1hDQe1OP3F_Xac3r9MWSAlbqHc4Ji0Jycf_5OPa2=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EA%B8%B8%EB%93%9C%20%EC%98%A4%EB%B8%8C%20%EC%95%84%EB%84%88&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-11-11",
     "name": "나선의경계",
     "genre": "모바일 RPG",
@@ -142,16 +92,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-dice-is-cast-14",
-    "name": "다이스 이즈 캐스트(Dice is Cast)",
-    "genre": "퍼즐 / 보드",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/OclV-THdyWj36ZfKjCCFHSjw9ZdKSEuvYOULEZKYyxWmSK660SrN97aerOMYUgfZ7QbNXNLn78NehiH-RXY7=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EC%9D%B4%EC%A6%88%20%EC%BA%90%EC%8A%A4%ED%8A%B8%28Dice%20is%20Cast%29&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-15-15",
     "name": "달빛조각사",
     "genre": "모바일 RPG",
@@ -159,26 +99,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/CFzXhTy7-MwUE7Pqu9QjK5b8474_ovlQURx-9rlwpspOd3PjxqMc5Br6SDSC0B9K6iSQ1J3tJnrgHtPEsjEd=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EB%8B%AC%EB%B9%9B%EC%A1%B0%EA%B0%81%EC%82%AC&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-16-16",
-    "name": "대건물주 _ 주인님께 물어봐",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/5Yc7-UFS10nmZNMFEK3ATzeSIWJAT8RTai-zcL-I5jUB3zm9Ygz_kx9hxuINUD9B5UMiyow18jdsgE3ZnBnpiQ=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%8C%80%EA%B1%B4%EB%AC%BC%EC%A3%BC%20_%20%EC%A3%BC%EC%9D%B8%EB%8B%98%EA%BB%98%20%EB%AC%BC%EC%96%B4%EB%B4%90&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-rpg-17",
-    "name": "대난투RPG 가디언헌터",
-    "genre": "수집형 RPG",
-    "audioFocus": "필살기 컷인 성우 보이스와 스킬 버스트 타격 임팩트",
-    "tag": "SKILL CUTIN AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/PS4mar7WTKdcW9NSUU6ZbH7GVXlSJvT6wYqNaK2warkN1C0fJO8vtxw_M6PqzVUMahb9FfCXRFE-fK0oBSPhcg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%8C%80%EB%82%9C%ED%88%ACRPG%20%EA%B0%80%EB%94%94%EC%96%B8%ED%97%8C%ED%84%B0&c=apps",
     "platform": "mobile"
   },
   {
@@ -222,16 +142,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-22-22",
-    "name": "던전공주",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/_7qTsIGJIGWO6YiPbiEwrZd-6Yo0dZNvd997pONmYNaIwirGMLZvVZ1H9ZPuj7kng7dJS93aHt4VGeu4hTMlWg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%8D%98%EC%A0%84%EA%B3%B5%EC%A3%BC&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-23-23",
     "name": "던전메이커",
     "genre": "모바일 RPG",
@@ -249,16 +159,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/Y2kSclLNEVnaktkb-H8ZJ45Jgti8-0TufW_8Frx2gwcmcibntFNt2qhb9dPd7BAoQ_Q-d5Cf27Psgw7cLtWuJA=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EB%8D%98%EC%A0%84%EC%95%A4%ED%8C%8C%EC%9D%B4%ED%84%B0_%20%ED%98%BC&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-25-25",
-    "name": "던전엔 환생",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/c_tOn_8P9SPJDJWE_QG-lA2QeHXZno5JRkI3xnToqYOZhIF6hQCjqIVbe3Flvpqml4CVSvpyXlOi-33CqaI17Q=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%8D%98%EC%A0%84%EC%97%94%20%ED%99%98%EC%83%9D&c=apps",
     "platform": "mobile"
   },
   {
@@ -302,16 +202,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-d-o-s-30",
-    "name": "디오에스(D.O.S)",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/FuFNDFGIAi78T0hvQu3bO4SVNHrcuFb9juoWSW7QRizn-coH-KTxeaqx-2YGOkF1twbslEVKZthxbiyiQ_z_-ek=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%94%94%EC%98%A4%EC%97%90%EC%8A%A4%28D.O.S%29&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-31-31",
     "name": "旅行物语",
     "genre": "모바일 RPG",
@@ -342,16 +232,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-34-34",
-    "name": "로드 오브 히어로즈",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/6VUP1Pf_2agtJxXfsaUa9vh3ZN_eUUNWxyHSyltOz5Dx0kvoY2iG8IeT6intsGVABkp0jG7xrvyGajlJ3hv-QQ=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%A1%9C%EB%93%9C%20%EC%98%A4%EB%B8%8C%20%ED%9E%88%EC%96%B4%EB%A1%9C%EC%A6%88&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-35-35",
     "name": "루나 _ 차원의 감시자",
     "genre": "모바일 RPG",
@@ -359,26 +239,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/UWBwE3ZWIBNXNbeQhFtR9i8YQA8eKNOZwNHNJWBkVP1JIGQhEpKzToPQzASBwdEcJ4pNEHwmvyTRM5wk4nqxVQ=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EB%A3%A8%EB%82%98%20_%20%EC%B0%A8%EC%9B%90%EC%9D%98%20%EA%B0%90%EC%8B%9C%EC%9E%90&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-36-36",
-    "name": "루디엘",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/L2FxCfulCGuEpjkyRD3b4RK4AkMcIHrzfkMvgSIe9NMzLSpU1GbVB6sfMVMvgxxSlMyxpI0cSZAtLjgsIjNF8Q=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%A3%A8%EB%94%94%EC%97%98&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-37-37",
-    "name": "루시드 사가",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/eKCM_FlZmBIwVD90iZ66hjLix7D6MMC7nMyYm0KNRQsQ1YPhHQdjZS-s4CVxDNicCY3bf2nVUQh4PHiQI7fS5w=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%A3%A8%EC%8B%9C%EB%93%9C%20%EC%82%AC%EA%B0%80&c=apps",
     "platform": "mobile"
   },
   {
@@ -412,36 +272,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-41-41",
-    "name": "마술양품점",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/nkzn1FQACvY0jGvTTm-zvfyo1y7dNbieJv9vosHQt0a9ZMfsEzRI_jAUFTeeDP-i8i2aEJlHTdBCj8Uc9LOg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%A7%88%EC%88%A0%EC%96%91%ED%92%88%EC%A0%90&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-42-42",
-    "name": "메인탱커 성기사",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/hWM2ymA9U2zFTdbRrAEkowxndSjur3h2wrvp6s5lMYkfpNmhpH4LYU-tWnTkSSuf1qehsYSM5VMrQvd_DwBVFw=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%A9%94%EC%9D%B8%ED%83%B1%EC%BB%A4%20%EC%84%B1%EA%B8%B0%EC%82%AC&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-43-43",
-    "name": "모두의불금",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/8Co3utjU5PJoDnrtOABF8YHEJM0gcATQfX1xuMg9csiuO7x8a6h2bEU2JFcV5gnq3QhVM_ZsiNCnB0Usg7kibg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%AA%A8%EB%91%90%EC%9D%98%EB%B6%88%EA%B8%88&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-bang-bang-44",
     "name": "모바일 레전드_ Bang Bang",
     "genre": "모바일 RPG",
@@ -472,16 +302,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-47-47",
-    "name": "무한 루프",
-    "genre": "퍼즐 / 보드",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/DDSThR1Y_RpNlzdxgmQIBh-uGE0uumaS4ONWJ4GFxy5Zvm57ftwsLJ9y88bkEIcYEpeDDfqZham3UkUprO7qYQ0=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%AC%B4%ED%95%9C%20%EB%A3%A8%ED%94%84&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-48-48",
     "name": "배틀그라운드",
     "genre": "서바이벌 / 슈팅",
@@ -502,16 +322,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-50-50",
-    "name": "블랙서바이벌",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/5cbhsLsTN5wr-cSI2C2gce0jqpj13z4H4MGzlfCcr3zE4P4wWtxCmLx3_Pcw9PQ4P6e5_giYAI8ZOY5JRfB1zg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%B8%94%EB%9E%99%EC%84%9C%EB%B0%94%EC%9D%B4%EB%B2%8C&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-51-51",
     "name": "블레이드&소울 레볼루션",
     "genre": "모바일 MMORPG",
@@ -519,16 +329,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/y1lfsdw1LGfjX8IpEu_QmlvtaudP_HKVgna5u7B4r8JtPJTmg6U3-NMIHVPr-TpdOziAS5C4CoT7zGnLubXgAVc=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EB%B8%94%EB%A0%88%EC%9D%B4%EB%93%9C%26%EC%86%8C%EC%9A%B8%20%EB%A0%88%EB%B3%BC%EB%A3%A8%EC%85%98&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-52-52",
-    "name": "블리츠크랭크 미러전",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/F7TZ8qjWdTrbt0wNoTeMG9TvpQ6Tt8zGMVQiuWjYp7eJW42XDF6g_OeiiWqVbghDZlKkpU_J2Wpsrc1zDT1G=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%B8%94%EB%A6%AC%EC%B8%A0%ED%81%AC%EB%9E%AD%ED%81%AC%20%EB%AF%B8%EB%9F%AC%EC%A0%84&c=apps",
     "platform": "mobile"
   },
   {
@@ -579,16 +379,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/MUCpc9V1KmbWYb2Cv6p3aSVyzBo-uuG_iMPWY0vZSRh9cpDadSM07vaWHJXE6Yrpxj-wH1y55mO6Bo6B3_2k=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EC%84%9C%EB%A8%B8%EB%84%88%EC%A6%88%20%EC%9B%8C_%20%EC%B2%9C%EA%B3%B5%EC%9D%98%20%EC%95%84%EB%A0%88%EB%82%98&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-58-58",
-    "name": "세계수키우기 - 감성적인 힐링 게임",
-    "genre": "방치형 / 클리커",
-    "audioFocus": "경쾌한 골드 획득 챠링 폴리와 레벨업 라이저 사운드",
-    "tag": "IDLE REWARD SFX",
-    "headerImg": "https://play-lh.googleusercontent.com/AlFmQeAzGqW7CdDZ-NOLed4JFQhkoMaS3TIdYhgL3s4UvzTXKNQbGMainYUnGGHgG0vIPsr3NhBVSfzU-E5h=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%84%B8%EA%B3%84%EC%88%98%ED%82%A4%EC%9A%B0%EA%B8%B0%20-%20%EA%B0%90%EC%84%B1%EC%A0%81%EC%9D%B8%20%ED%9E%90%EB%A7%81%20%EA%B2%8C%EC%9E%84&c=apps",
     "platform": "mobile"
   },
   {
@@ -652,26 +442,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-65-65",
-    "name": "시그널",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/HXEs85Okatm4_lZMmCaLFk3iXQ6_lrr00i8nsxaqBRSy6VGnsP7F50dKUfrO37Sj0nxtzSjMpKbjgWh6d0PTyEA=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%8B%9C%EA%B7%B8%EB%84%90&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-66-66",
-    "name": "심연의 군주",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/gidC_MtNQnQYXACR2JQNrHwCAbPZI7jd13xFXkpACK8RIE-slzVR4NgYM0ZtticAUCSASp6d5QPcejAKcwC54A=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%8B%AC%EC%97%B0%EC%9D%98%20%EA%B5%B0%EC%A3%BC&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-67-67",
     "name": "아르카나 택틱스",
     "genre": "모바일 RPG",
@@ -692,16 +462,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-69-69",
-    "name": "악몽의 주인",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/METpEQVobRzG5KSDfI8Yax-KRqe7e3eYNUS6y__tq7upVTn_kzP594l_NCSK_lUtgJ5N3ULNaPHbTqRrZM7u3w=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%95%85%EB%AA%BD%EC%9D%98%20%EC%A3%BC%EC%9D%B8&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-for-kakao-70",
     "name": "앙상블 스타즈 for kakao",
     "genre": "모바일 RPG",
@@ -709,16 +469,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/RcpG-LyYp59p4F3To7YPAuHwuxTQGx1gLf5t1YVrFKNAkeo2LgcJM7yC9YfEw4iMIyLkRYJplNTzXAa9j7DgFQ=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EC%95%99%EC%83%81%EB%B8%94%20%EC%8A%A4%ED%83%80%EC%A6%88%20for%20kakao&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-axe-71",
-    "name": "액스(AxE)",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/YBmlZdYYKnzhWxFIH84o7hxjWaDGULep70XECKcAqBu1boZfh2xAxBbASF9G5-fInJoEyuVZI2sTYIEO713afsI=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%95%A1%EC%8A%A4%28AxE%29&c=apps",
     "platform": "mobile"
   },
   {
@@ -742,16 +492,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-otogi-74",
-    "name": "御靈錄Otogi",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/zm2JPSexPqiu73oRFejWPKFP4ntrKXD0o183R-Rey8k_k1NUrpiEz6Arcj1wqHoPD4NGYEQyX9mROLM9Ob46=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%E5%BE%A1%E9%9D%88%E9%8C%84Otogi&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-75-75",
     "name": "언더월드 _ 핵전쟁 이후 생존 게임",
     "genre": "서바이벌 / 슈팅",
@@ -772,16 +512,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-2048-age-of-2048-77",
-    "name": "에이지 오브 2048 (Age of 2048)",
-    "genre": "퍼즐 / 보드",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/GL7Q3ylxzjGcKp6xmYoLAOHMKk2GSNJe_cHyObzcrS94vlKRkRJLTOK-UJGVi4wq09yWMXzeZSei4dKS0WIoyRs=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%97%90%EC%9D%B4%EC%A7%80%20%EC%98%A4%EB%B8%8C%202048%20%28Age%20of%202048%29&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-78-78",
     "name": "에픽세븐",
     "genre": "수집형 RPG",
@@ -799,26 +529,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/2Rp2zdzjO0ijMLNIfQRL__KitlgoLj0bh13d3JDslcjtoBqEusXc3yRdqtuyRvBmf7_YTAfDN1UPoHO2-7Ytyg=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EC%97%91%EC%86%8C%EC%8A%A4%20%ED%9E%88%EC%96%B4%EB%A1%9C%EC%A6%88&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-80-80",
-    "name": "엘룬사가",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/-KaZ8FKICLzj2SpoPrz-3KJ0-XyDsUANEXFFu1EwO_sBNhGF1MjGmkeQMnC6m31sJ5HICKPqM_9UquB-dyjzXfU=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%97%98%EB%A3%AC%EC%82%AC%EA%B0%80&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-82-82",
-    "name": "연예인 키우기 _ 서울핫",
-    "genre": "방치형 / 클리커",
-    "audioFocus": "경쾌한 골드 획득 챠링 폴리와 레벨업 라이저 사운드",
-    "tag": "IDLE REWARD SFX",
-    "headerImg": "https://play-lh.googleusercontent.com/_LY_USGUOkCDA6EJjGKOICUeg3dY4or2VtG97TgYK82Bki_wg_5NWjXbc5MQLycYDJziKdXGfqB_VhhS6N5I=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%97%B0%EC%98%88%EC%9D%B8%20%ED%82%A4%EC%9A%B0%EA%B8%B0%20_%20%EC%84%9C%EC%9A%B8%ED%95%AB&c=apps",
     "platform": "mobile"
   },
   {
@@ -892,16 +602,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-90-90",
-    "name": "용사모아 타워",
-    "genre": "전략 / 시뮬레이션",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/ywnUL8K9-Gprmg12MpYIkUClLdTghDzz_rRyWB9jIz1sJTKiOsN1aDEC7tJZDuGuqwTpYzNmfJB7_rLnkiKF=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%9A%A9%EC%82%AC%EB%AA%A8%EC%95%84%20%ED%83%80%EC%9B%8C&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-91-91",
     "name": "용사식당",
     "genre": "모바일 RPG",
@@ -942,16 +642,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-95-95",
-    "name": "유즈맵 디펜스 온라인",
-    "genre": "전략 / 시뮬레이션",
-    "audioFocus": "유닛 배치음 및 타워 포격 저음역 폭발 임팩트",
-    "tag": "STRATEGY & FOLEY",
-    "headerImg": "https://play-lh.googleusercontent.com/qI8fpPYVHXsmXZVJxVbcgahNjJ1yvMrUeeWKPvh6u1xNycULqwgUUV-JKXYJm3LVasH892hgqNSMMA9Mr_gQ6Q=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%9C%A0%EC%A6%88%EB%A7%B5%20%EB%94%94%ED%8E%9C%EC%8A%A4%20%EC%98%A8%EB%9D%BC%EC%9D%B8&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-for-kakao-96",
     "name": "음양사 for kakao",
     "genre": "모바일 RPG",
@@ -959,26 +649,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/kPI56UE1BCVY5x-V5z2bHJvQHroVxuE9_jneozABskZD_YS9TFsMlTSVBGhE7ly_YgfFIShPAMefdOaPs8GXxA=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EC%9D%8C%EC%96%91%EC%82%AC%20for%20kakao&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-97-97",
-    "name": "이데아",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/T9J8e9oxxPd600j_KPM4KK2GHfNpUpGBdTy8lHPXBXpOUfGusRuZXj0UMgFNrP8we6LVt9V-AibEgcLootE6VK4=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%9D%B4%EB%8D%B0%EC%95%84&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-pc-98",
-    "name": "이세계 PC방 _ 방치형 탑 키우기",
-    "genre": "방치형 / 클리커",
-    "audioFocus": "경쾌한 골드 획득 챠링 폴리와 레벨업 라이저 사운드",
-    "tag": "IDLE REWARD SFX",
-    "headerImg": "https://play-lh.googleusercontent.com/IPxnTR2iblvh6dTZxYW27SVENNkCJRTRiibJ6dMuGGuQdy5XGlvMUV9xVgC9SIZ6aqGePqR3CCrTWJns8-dk=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%9D%B4%EC%84%B8%EA%B3%84%20PC%EB%B0%A9%20_%20%EB%B0%A9%EC%B9%98%ED%98%95%20%ED%83%91%20%ED%82%A4%EC%9A%B0%EA%B8%B0&c=apps",
     "platform": "mobile"
   },
   {
@@ -1052,16 +722,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-106-106",
-    "name": "제작왕 김포지",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/8qkWpO3trlzNNEFCNjPyheS4CJ3TngFh83QfHEx-O-GO5Kf4C6WZfZisP-0YqzbtB4_65D5lsnRNIogiTmY8Sss=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%A0%9C%EC%9E%91%EC%99%95%20%EA%B9%80%ED%8F%AC%EC%A7%80&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-107-107",
     "name": "좀비 고등학교",
     "genre": "서바이벌 / 슈팅",
@@ -1092,16 +752,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-110-110",
-    "name": "지겨워하지마_ 마계 영웅 키우기",
-    "genre": "방치형 / 클리커",
-    "audioFocus": "경쾌한 골드 획득 챠링 폴리와 레벨업 라이저 사운드",
-    "tag": "IDLE REWARD SFX",
-    "headerImg": "https://play-lh.googleusercontent.com/2R_eF1rVJ0NTDrRIV7QV3agWFebXFrdQeEP7fcH0x24fvvVa3LqiDAwQBCX65ysIgeIUI1XerMYwDLahJQk=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%A7%80%EA%B2%A8%EC%9B%8C%ED%95%98%EC%A7%80%EB%A7%88_%20%EB%A7%88%EA%B3%84%20%EC%98%81%EC%9B%85%20%ED%82%A4%EC%9A%B0%EA%B8%B0&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-111-111",
     "name": "진·삼국무쌍_ 언리쉬드",
     "genre": "액션 / 대전",
@@ -1112,16 +762,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-112-112",
-    "name": "창공의 수호자",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/MNQUNMvn0w70PABm6IEafVH-SFRthKUosrAuwjvbCHQmWgHK3fuwVI_XO-9eCVbfUe0MYWNOA_FzG58Ery1T-g=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%B0%BD%EA%B3%B5%EC%9D%98%20%EC%88%98%ED%98%B8%EC%9E%90&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-game-113-113",
     "name": "쿠키런_ 킹덤",
     "genre": "모바일 RPG",
@@ -1129,16 +769,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/J1zzZf_Clyg51sikuBbfTMD_sGVK64Ki5vyVtn3MmkUUzQ-AxKWq2-WuVDnpkrpai6Icun3wXspttadNAxy4djI=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EC%BF%A0%ED%82%A4%EB%9F%B0_%20%ED%82%B9%EB%8D%A4&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-with-naver-114",
-    "name": "크로노블레이드 with NAVER",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/xCYhOD2U6nSEN8r0Y0y2CYW_NOmXpwgW33NVHKfRi1zZGAUvhBiYnc0Dhy8NWwiW99EI93u6h_xhujKeBOZErg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%ED%81%AC%EB%A1%9C%EB%85%B8%EB%B8%94%EB%A0%88%EC%9D%B4%EB%93%9C%20with%20NAVER&c=apps",
     "platform": "mobile"
   },
   {
@@ -1362,36 +992,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-game-137-137",
-    "name": "헌터스 어드벤처",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/Jz_cZIq50h7X873AIzYwCL43rpXA-v-q0j4p4ciNoVHYVHZNepsjAi1cssLguKJQu8KV2X83zL9BQOFx8jb2Rw=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%ED%97%8C%ED%84%B0%EC%8A%A4%20%EC%96%B4%EB%93%9C%EB%B2%A4%EC%B2%98&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-game-138-138",
-    "name": "히어로즈워_ 카운터어택",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/2R_eF1rVJ0NTDrRIV7QV3agWFebXFrdQeEP7fcH0x24fvvVa3LqiDAwQBCX65ysIgeIUI1XerMYwDLahJQk=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%ED%9E%88%EC%96%B4%EB%A1%9C%EC%A6%88%EC%9B%8C_%20%EC%B9%B4%EC%9A%B4%ED%84%B0%EC%96%B4%ED%83%9D&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-angelsaga-139",
-    "name": "AngelSaga",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/1OKkBYanPDNV95IiWND_rTHwvDcK41alVxEhuTR9mJTHuS3PMSX0tgNRcwr7W0bC2FeK-Y3wn7ERe_pmr6ig=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=AngelSaga&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-another-eden-140",
     "name": "ANOTHER EDEN",
     "genre": "모바일 RPG",
@@ -1459,26 +1059,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/c0hXyphuxh-gpnhSJGZV1I0IpWbq9IdEc1pautS7SmHlXNBrCff7bMqK-u63pJdfP3KJoxamG7W1dRMKr7ZzWKs=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=Brawl%20Stars&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-cartoon-survival-game-147",
-    "name": "Cartoon Survival Game",
-    "genre": "서바이벌 / 슈팅",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/tNMaMiJ4wTQy_TeZSWHdSlP5qH0PGig9g9sDJu2QFvCHdnrbo2u17pX55W4i6KITo56v_ZyICkqLgA2svH9ycQ=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Cartoon%20Survival%20Game&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-castle-creeps-td-148",
-    "name": "Castle Creeps TD",
-    "genre": "전략 / 시뮬레이션",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/pbuOyXLViCgKYU37A2pJtVs36ZADJeqZcFrcG6OrTb0At-7ioAwR-mQkrtios7gdp4ZopKRa5sLg9k-B7ayVHe4=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Castle%20Creeps%20TD&c=apps",
     "platform": "mobile"
   },
   {
@@ -1572,36 +1152,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-doona-158",
-    "name": "Doona",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/mVIoxUasfaMNunu0JHn5HNHnm5mC5pEkRUv4J5RavNcUGAzgsaV5Afc-Pu3V9hBuCLRtkerfUZGbW6lKpcsg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Doona&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-dragonian-159",
-    "name": "Dragonian",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/c-Yp5mnnjDL7NPKkunRMQ7kw6eG2EISHQOBtyRqR-B4-51gt3jHMk-crqAsWwLbnkCqGUcB9Ol7HB66lJvoS=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Dragonian&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-dwbgx-160",
-    "name": "dwbgx",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "",
-    "steamUrl": "https://play.google.com/store/search?q=dwbgx&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-ea-sports-fc-mobile-2026-161",
     "name": "EA SPORTS FC™ Mobile 축구 2026",
     "genre": "스포츠",
@@ -1662,16 +1212,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-google-play-games-167",
-    "name": "Google Play Games",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/3YayGH2tGgjk5NcwpJh0vB16C_bEX9GJ5EmUWI4kuEMd8b3Nh3zAgUtxL7rRHmyeEFSvnd6Af0lCyqICjZah7w=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Google%20Play%20Games&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-grand-battle-royale-168",
     "name": "Grand Battle Royale",
     "genre": "모바일 RPG",
@@ -1679,16 +1219,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/lNpWFA3MWwFbzPDuHoJlRjJJuKFDaUPp6mj3OCllGUo8gh_dVAa0HmyLUw11QS1fypCmE3SV8Lb51LLO7RkC=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=Grand%20Battle%20Royale&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-guitar-girl-169",
-    "name": "Guitar Girl",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/uiXewIqsOC-bRt2_VzeXspGI9BAoTx1emb5my5Aoa8DisTDnD15W5sWnQLnfEw7TsEm3W_RyofsxcdocrAJwfg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Guitar%20Girl&c=apps",
     "platform": "mobile"
   },
   {
@@ -1732,16 +1262,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-kon-knights-of-night-174",
-    "name": "KON(Knights Of Night)",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/U7c8CS_OGx2JvhQQoM6eR1KfeE8oDFevhujKQIeJX-TiXKVVlmbZOawj9rOBG_PE8LWYF2eAJ-UqifK7-Kw-2Zw=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=KON%28Knights%20Of%20Night%29&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-last-day-on-earth-175",
     "name": "Last Day on Earth",
     "genre": "모바일 RPG",
@@ -1749,16 +1269,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/_dEeRX2npkXJsq4iZZer_WAHFSLCdybkMdYkDB3ltLBAtK6RxKovMPB238LP0u6k0CcM1whYeZsTbyWoY2W-=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=Last%20Day%20on%20Earth&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-m-o-e-176",
-    "name": "M.O.E. 마스터 오브 이터니티",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/6nd-8lg-C8HYWZPgTtMTVKk5YBUGtVSVH2QX_eOT7yUVZ0_fVP46U-L_0onsxNmOXmVh0P-FIfG2LpkdXIoDpTA=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=M.O.E.%20%EB%A7%88%EC%8A%A4%ED%84%B0%20%EC%98%A4%EB%B8%8C%20%EC%9D%B4%ED%84%B0%EB%8B%88%ED%8B%B0&c=apps",
     "platform": "mobile"
   },
   {
@@ -1789,16 +1299,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/ERw3CKoUS9FkrGJU59e82ja2d1sZz2GJoZt_8XIos6QVFUXHoFR5mS-eVmNA6wlw2hatr09WEyJI6fBQGw18dw=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=Mmm%20Fingers&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-mob-180",
-    "name": "MOB_헌팅걸즈 - 엉덩이의 역습 (미소녀 대전 액션)",
-    "genre": "액션 / 대전",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/6nd-8lg-C8HYWZPgTtMTVKk5YBUGtVSVH2QX_eOT7yUVZ0_fVP46U-L_0onsxNmOXmVh0P-FIfG2LpkdXIoDpTA=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=MOB_%ED%97%8C%ED%8C%85%EA%B1%B8%EC%A6%88%20-%20%EC%97%89%EB%8D%A9%EC%9D%B4%EC%9D%98%20%EC%97%AD%EC%8A%B5%20%28%EB%AF%B8%EC%86%8C%EB%85%80%20%EB%8C%80%EC%A0%84%20%EC%95%A1%EC%85%98%29&c=apps",
     "platform": "mobile"
   },
   {
@@ -1862,16 +1362,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-rebel-inc-187",
-    "name": "Rebel Inc.",
-    "genre": "전략 / 시뮬레이션",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/e78_tvY_7QyAg2fccklq16K0aaBJABstS5Dj52cvsalKWPmH7n4jISTuaK2P69FDoEKLjtYXT9TceSeXg0HHew=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Rebel%20Inc.&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-rise-of-castles-ice-and-fire-188",
     "name": "Rise of Castles_ Ice and Fire",
     "genre": "모바일 RPG",
@@ -1879,16 +1369,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/VnuNntrmS7rBVEP2DrwSQAO9BFlaYZf9MwJ72p2jX5la8esW7IHoVuoVH9Qg5kzwLOCsKkg71GIzh7iQgG7hXQ=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=Rise%20of%20Castles_%20Ice%20and%20Fire&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-rodeo-stampede-sky-zoo-safari-189",
-    "name": "Rodeo Stampede_ Sky Zoo Safari",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/a85xz_wZJ5N1y97hQyA8YmICbcXbLSte8e-QR7k9MCuYTEtYRlViEOb4p1tzWwR99Eze3Vg7_TSeQpvG4DW1pC0=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Rodeo%20Stampede_%20Sky%20Zoo%20Safari&c=apps",
     "platform": "mobile"
   },
   {
@@ -1912,26 +1392,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-slayersgo-192",
-    "name": "SlayersGo",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "",
-    "steamUrl": "https://play.google.com/store/search?q=SlayersGo&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-smashy-city-193",
-    "name": "Smashy City",
-    "genre": "액션 / 대전",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/7hNWU_weUkXiOkoa7b32Ir0LB3y5oP73LngkGWTVV5CDESfAH7U-KsAFo72FunRF8_EUESwrN5SmXpF3NiB5=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Smashy%20City&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-soul-knight-194",
     "name": "Soul Knight",
     "genre": "모바일 RPG",
@@ -1939,36 +1399,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/TdrboDoMaYLBSq0JssD72M0moyump0kDp8yFlgvWpyVZRUyG_XnpY_R99UPChDo4qg1-PZvVJhs7lXar8cBJ_dU=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=Soul%20Knight&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-summonersclan-195",
-    "name": "SummonersClan",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "",
-    "steamUrl": "https://play.google.com/store/search?q=SummonersClan&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-tabtab-cataclysm-remaster-196",
-    "name": "TabTab Cataclysm - Remaster",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/L0IiQj5NccT0l5bb4ndHoC94S94JkM5geoRrARuzqQyfEp_T3GkpKFILXLc7kmKqtHXS2nKxlQVYbKhvrR4uHUc=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=TabTab%20Cataclysm%20-%20Remaster&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-tap-sonic-world-champion-197",
-    "name": "TAP SONIC World Champion",
-    "genre": "리듬 액션",
-    "audioFocus": "정밀한 비트 싱크 판정음과 고해상도 일렉트로닉 댄스 트랙",
-    "tag": "RHYTHM & BEAT",
-    "headerImg": "https://play-lh.googleusercontent.com/_cdtLDDt_C6EAYv0T5vr3HSrFJ-lS7OHuVrxBjBIfDlZF-koAHntJFz25KfCGzqGB2u3YJ9XLKJk62MtdqZJ-rU=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=TAP%20SONIC%20World%20Champion&c=apps",
     "platform": "mobile"
   },
   {
@@ -1989,86 +1419,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO",
     "headerImg": "https://play-lh.googleusercontent.com/-UpWtpXqM7_e9QOjDbiEENhCpF6YUn1J1DiKizDReSX87PmdtOLF2fPQn7Z9yzMvRXS4eELH4tJX5bK-HGg5l1Y=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=The%20Spike%20_%20Volleyball%20battle&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-tom-and-jerry-chase-200",
-    "name": "Tom and Jerry_ Chase",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/edTsjz9az0_VGF1c1yfJ4OvM5H3UaNcXB8uqOu3Q5DUJ51d0B_pCYGl4IS1O7GY9Z6An-tI0tmgd0PAU_DL49vA=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Tom%20and%20Jerry_%20Chase&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-towerlands-201",
-    "name": "Towerlands",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/NYxlAMunbTZS1dPlAEQAnkfTYHEtdbRIhwEYQpYESeYks79KxBDjoveTQpZ3VObs6qbLQAn2R9aHu4wrMb4Zpw=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Towerlands&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-uno-friends-202",
-    "name": "UNO™ & Friends",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/yAn20u0xsnzgIKZTaFGgkPnEOV1LPKh00_rEccAnQeljyXDESWneIl9C28c7JT-petqf7AD_ZlIIDMrYah7p=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=UNO%E2%84%A2%20%26%20Friends&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-witchspring4-203",
-    "name": "WitchSpring4",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/TkWiQsqdHoUde7oMeLf311SBTsEi63cZIPc0vu-wCtJN2nbfoz73I9r2SsGeYgkiHdORjEJTY4Zoxdw98ZU6=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=WitchSpring4&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-wll-global-204",
-    "name": "wll Global",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/UbXmQlSxK5IfDsOHmS4Vj1aQioa03iFCuGN0t6KAVFH8to_uspNcxTNnzg4btEGSMnfOrnDdjzC1adSQT_E4tA=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=wll%20Global&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-world-flipper-205",
-    "name": "World Flipper",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/KB6rNwwxrqjObprHoJyJqdalgxOM7JSiBQWeh10DA1s94vvxW_KsXwA8ULTIYJfqoIHAK3nrX0DvfkS2UwbK=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=World%20Flipper&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-yokai-saga-206",
-    "name": "Yokai Saga",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/Gs-lT3XVJFPVU0iK0MTZRvMrRZbM8Lk6H5TyVDSWXD5vv0P-JWgMImeZ_2v-if6Kxf5Jzb9nxOLpYXnqjs2gOcg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Yokai%20Saga&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-zgirls-207",
-    "name": "Zgirls",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
-    "tag": "MOBILE AUDIO",
-    "headerImg": "https://play-lh.googleusercontent.com/h1-mELHgwoCo4jVsZQsFt63F2Oxcfobvz_rS9Z0p5b-c-immVCDeGwEeZgRaQ60O8SwW1BzQGcyPf2frUmlH=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=Zgirls&c=apps",
     "platform": "mobile"
   },
   {
@@ -2119,16 +1469,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO LOG",
     "headerImg": "https://play-lh.googleusercontent.com/-h_Ns9bhU8axfF1UsRi3pU0B3MF09dn_fRewJ5LTrNpUZbG41-_O1FZ7ZnQMTT8KS-Ida1tBpuwohFdt1R8rO8A=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EC%8A%A4%ED%83%80%EB%9F%AC%EC%89%AC&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-mob-2-213",
-    "name": "회색병동",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
-    "tag": "MOBILE AUDIO LOG",
-    "headerImg": "https://play-lh.googleusercontent.com/Lq9FEewmkhNTn8VL9nsO6YI5rlYkov5k1VkVDaQ1iXSTpB-iEASsfiHvS8z2_wHzE4IDD8yOr78aBjgXPZDx=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%ED%9A%8C%EC%83%89%EB%B3%91%EB%8F%99&c=apps",
     "platform": "mobile"
   },
   {
@@ -2362,16 +1702,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-mob-26-237",
-    "name": "아너오브킹즈",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
-    "tag": "MOBILE AUDIO LOG",
-    "headerImg": "https://play-lh.googleusercontent.com/SDyA9zWQ7gRe7zh-rOWiOuw9Dy7Rfale9gvGN9LUN0pQNcPfTMg9CKSgfiRtwKFOgjHMijTngRXBooZmxPOb=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%95%84%EB%84%88%EC%98%A4%EB%B8%8C%ED%82%B9%EC%A6%88&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-mob-27-238",
     "name": "나혼자만레벨업",
     "genre": "액션 RPG",
@@ -2482,16 +1812,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "platform": "mobile"
   },
   {
-    "appId": "mobile-mob-38-249",
-    "name": "마대자 로그라이크",
-    "genre": "로그라이크 / 퍼즐",
-    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
-    "tag": "MOBILE AUDIO LOG",
-    "headerImg": "https://play-lh.googleusercontent.com/SAOX4IiJQn6w5AtoXz_mqhbDoU0n9cSsR8lpLua_sOc9EXEiJ2rhj_34AnZJHDqGm_k80EqJVDh9BXdkWVIMmg=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EB%A7%88%EB%8C%80%EC%9E%90%20%EB%A1%9C%EA%B7%B8%EB%9D%BC%EC%9D%B4%ED%81%AC&c=apps",
-    "platform": "mobile"
-  },
-  {
     "appId": "mobile-m-250",
     "name": "진삼국무쌍M",
     "genre": "액션 RPG",
@@ -2499,26 +1819,6 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
     "tag": "MOBILE AUDIO LOG",
     "headerImg": "https://play-lh.googleusercontent.com/bnRNTMLq31Xz0zAodb7zyqgxGVXn5fE40WtySObWnVfkm0-50gaxTuUw-qJQxkYTjSNfFXmxut5DqTOAk9GCtMA=s0-br30",
     "steamUrl": "https://play.google.com/store/search?q=%EC%A7%84%EC%82%BC%EA%B5%AD%EB%AC%B4%EC%8C%8DM&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-mob-40-251",
-    "name": "엘리멘탈",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
-    "tag": "MOBILE AUDIO LOG",
-    "headerImg": "https://play-lh.googleusercontent.com/1jG6vDkm3o1_i1t_1aZ_nyVRaPXv6kdqylS5XKVNMNS0vPjcS9_c6dzg0jhU1KZJHhCK9isABrULMcgTJKDq=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%97%98%EB%A6%AC%EB%A9%98%ED%83%88&c=apps",
-    "platform": "mobile"
-  },
-  {
-    "appId": "mobile-mob-41-252",
-    "name": "실력자가 되고싶어서",
-    "genre": "모바일 RPG",
-    "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
-    "tag": "MOBILE AUDIO LOG",
-    "headerImg": "https://play-lh.googleusercontent.com/HgMF0Fq3vKNgPlwm4GzidIh5W7hAY50kmAD1uNLcMywIFNqCnJ5aa88jN3x8mPBhtL8sSoLZlwl8IdMzeH0P7Y4=s0-br30",
-    "steamUrl": "https://play.google.com/store/search?q=%EC%8B%A4%EB%A0%A5%EC%9E%90%EA%B0%80%20%EB%90%98%EA%B3%A0%EC%8B%B6%EC%96%B4%EC%84%9C&c=apps",
     "platform": "mobile"
   },
   {

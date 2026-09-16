@@ -403,14 +403,12 @@ export const GamingHistoryView: React.FC = () => {
     if (newPage < 1 || newPage > steamTotalPages || newPage === steamPage) return;
     soundEngine.playClick();
     setSteamPage(newPage);
-    gamesListTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const handlePlayedPageChange = (newPage: number) => {
     if (newPage < 1 || newPage > playedTotalPages || newPage === playedGamesPage) return;
     soundEngine.playClick();
     setPlayedGamesPage(newPage);
-    gamesListTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const getPageNumbers = (current: number, total: number) => {
