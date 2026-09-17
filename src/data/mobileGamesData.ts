@@ -4,6 +4,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-3-3",
     "name": "가디언 테일즈",
+    "nameEn": "Guardian Tales",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -14,6 +15,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-4-4",
     "name": "갓오브하이스쿨",
+    "nameEn": "The God of High School",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -24,6 +26,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-6-6",
     "name": "검은사막 모바일",
+    "nameEn": "Black Desert Mobile",
     "genre": "모바일 MMORPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -34,6 +37,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-7-7",
     "name": "결전!헤이안쿄",
+    "nameEn": "결전!헤이안쿄",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -44,6 +48,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-8-8",
     "name": "괴리성 밀리언아서",
+    "nameEn": "괴리성 밀리언아서",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -54,6 +59,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-11-11",
     "name": "나선의경계",
+    "nameEn": "나선의경계",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -64,6 +70,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-13-13",
     "name": "다리 건너 친구들",
+    "nameEn": "다리 건너 친구들",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -74,6 +81,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-15-15",
     "name": "달빛조각사",
+    "nameEn": "달빛조각사",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -84,6 +92,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-5-18",
     "name": "대항해시대5",
+    "nameEn": "대항해시대5",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -94,6 +103,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-20-20",
     "name": "던만추〜메모리아 프레제〜",
+    "nameEn": "던만추〜메모리아 프레제〜",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -104,6 +114,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-23-23",
     "name": "던전메이커",
+    "nameEn": "던전메이커",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -114,6 +125,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-24-24",
     "name": "던전앤파이터_ 혼",
+    "nameEn": "던전앤파이터_ 혼",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -124,6 +136,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-m-for-kakao-28",
     "name": "드래곤네스트M for kakao",
+    "nameEn": "Dragon Nest M",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -134,6 +147,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-29-29",
     "name": "드래곤라자",
+    "nameEn": "드래곤라자",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -144,6 +158,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-32-32",
     "name": "로닌_ 더 라스트 사무라이",
+    "nameEn": "Ronin: The Last Samurai",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -154,6 +169,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-2-38",
     "name": "리니지2 레볼루션",
+    "nameEn": "Lineage 2: Revolution",
     "genre": "모바일 MMORPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -164,6 +180,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-3-39",
     "name": "마녀의 샘 3",
+    "nameEn": "Witch's Spring 3",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -174,6 +191,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-40-40",
     "name": "마비노기 듀얼",
+    "nameEn": "Mabinogi Duel",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -183,7 +201,8 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     "appId": "mobile-bang-bang-44",
-    "name": "모바일 레전드: Bang Bang",
+    "name": "모바일 레전드",
+    "nameEn": "Mobile Legends: Bang Bang",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -194,6 +213,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-45-45",
     "name": "모험가 이야기",
+    "nameEn": "모험가 이야기",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -204,6 +224,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-48-48",
     "name": "배틀그라운드",
+    "nameEn": "PUBG Mobile",
     "genre": "서바이벌 / 슈팅",
     "audioFocus": "모바일 스피커에 최적화된 총성 믹싱과 지근거리 발소리 패닝",
     "tag": "MOBILE SPATIAL",
@@ -214,6 +235,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-3rd-49",
     "name": "붕괴3rd",
+    "nameEn": "Honkai Impact 3rd",
     "genre": "수집형 RPG",
     "audioFocus": "필살기 컷인 성우 보이스와 스킬 버스트 타격 임팩트",
     "tag": "MOBILE AUDIO",
@@ -224,6 +246,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-51-51",
     "name": "블레이드&소울 레볼루션",
+    "nameEn": "블레이드&소울 레볼루션",
     "genre": "모바일 MMORPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -234,6 +257,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-55-55",
     "name": "사커스피리츠",
+    "nameEn": "Soccer Spirits",
     "genre": "스포츠",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -243,7 +267,8 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     "appId": "mobile-shadowverse-56",
-    "name": "섀도우버스(Shadowverse)",
+    "name": "섀도우버스",
+    "nameEn": "Shadowverse",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -254,6 +279,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-57-57",
     "name": "서머너즈 워_ 천공의 아레나",
+    "nameEn": "Summoners War: Sky Arena",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -264,6 +290,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-2-59",
     "name": "세븐나이츠2",
+    "nameEn": "Seven Knights 2",
     "genre": "수집형 RPG",
     "audioFocus": "필살기 컷인 성우 보이스와 스킬 버스트 타격 임팩트",
     "tag": "SKILL CUTIN AUDIO",
@@ -274,6 +301,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-64-64",
     "name": "스톤에이지",
+    "nameEn": "스톤에이지",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -284,6 +312,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-67-67",
     "name": "아르카나 택틱스",
+    "nameEn": "아르카나 택틱스",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -294,6 +323,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-68-68",
     "name": "아키에이지 비긴즈",
+    "nameEn": "ArcheAge Begins",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -303,7 +333,8 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     "appId": "mobile-2-angry-birds-2-72",
-    "name": "앵그리버드 2 (Angry Birds 2)",
+    "name": "앵그리버드 2",
+    "nameEn": "Angry Birds 2",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -314,6 +345,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-73-73",
     "name": "야생의 땅_ 듀랑고",
+    "nameEn": "Durango: Wild Lands",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -324,6 +356,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-76-76",
     "name": "에버테일",
+    "nameEn": "Evertale",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -334,6 +367,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-78-78",
     "name": "에픽세븐",
+    "nameEn": "Epic Seven",
     "genre": "수집형 RPG",
     "audioFocus": "필살기 컷인 성우 보이스와 스킬 버스트 타격 임팩트",
     "tag": "MOBILE AUDIO",
@@ -344,6 +378,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-79-79",
     "name": "엑소스 히어로즈",
+    "nameEn": "Exos Heroes",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -354,6 +389,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-84-84",
     "name": "오늘도 환생",
+    "nameEn": "오늘도 환생",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -364,6 +400,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-86-86",
     "name": "오버히트",
+    "nameEn": "Overhit",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -373,7 +410,8 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     "appId": "mobile-wild-tamer-88",
-    "name": "와일드 테이머 (Wild Tamer)",
+    "name": "와일드 테이머",
+    "nameEn": "Wild Tamer",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -384,6 +422,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-m-89",
     "name": "용비불패M",
+    "nameEn": "용비불패M",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -394,6 +433,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-91-91",
     "name": "용사식당",
+    "nameEn": "용사식당",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -404,6 +444,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-93-93",
     "name": "월간아이돌",
+    "nameEn": "월간아이돌",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -414,6 +455,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-z-for-kakao-94",
     "name": "윈드러너Z for kakao",
+    "nameEn": "윈드러너Z for kakao",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -424,6 +466,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-2-into-the-dead-2-100",
     "name": "인투 더 데드 2",
+    "nameEn": "Into the Dead 2",
     "genre": "서바이벌 / 슈팅",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -434,6 +477,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-grand-cross-101",
     "name": "일곱 개의 대죄: GRAND CROSS",
+    "nameEn": "The Seven Deadly Sins: Grand Cross",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -443,7 +487,8 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     "appId": "mobile-2-cross-worlds-104",
-    "name": "제2의 나라: Cross Worlds",
+    "name": "제2의 나라",
+    "nameEn": "Ni no Kuni: Cross Worlds",
     "genre": "모바일 MMORPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -454,6 +499,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-s-105",
     "name": "제노니아S_ 시간의 균열",
+    "nameEn": "ZENONIA S: Time Runners",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -464,6 +510,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-111-111",
     "name": "진·삼국무쌍_ 언리쉬드",
+    "nameEn": "Dynasty Warriors: Unleashed",
     "genre": "액션 / 대전",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -474,6 +521,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-113-113",
     "name": "쿠키런_ 킹덤",
+    "nameEn": "Cookie Run: Kingdom",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -484,6 +532,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-115-115",
     "name": "크루세이더 퀘스트",
+    "nameEn": "Crusaders Quest",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -494,6 +543,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-116-116",
     "name": "킹갓캐슬",
+    "nameEn": "킹갓캐슬",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -504,6 +554,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-m-119",
     "name": "테라M",
+    "nameEn": "TERA M",
     "genre": "모바일 MMORPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -514,6 +565,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-125-125",
     "name": "페이트 그랜드오더",
+    "nameEn": "Fate/Grand Order",
     "genre": "수집형 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -524,6 +576,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-128-128",
     "name": "표류소녀",
+    "nameEn": "표류소녀",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -534,6 +587,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-re-dive-131",
     "name": "프린세스 커넥트! Re:Dive",
+    "nameEn": "Princess Connect! Re:Dive",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -544,6 +598,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-vs-2-132",
     "name": "플랜츠 vs. 좀비 2",
+    "nameEn": "Plants vs. Zombies 2",
     "genre": "서바이벌 / 슈팅",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -554,6 +609,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-another-eden-140",
     "name": "어나더 에덴: 시공을 넘는 고양이",
+    "nameEn": "ANOTHER EDEN: The Cat Beyond Time and Space",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -564,6 +620,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-ark-survival-evolved-141",
     "name": "아크: 서바이벌 이볼브드",
+    "nameEn": "ARK: Survival Evolved",
     "genre": "서바이벌 / 슈팅",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -573,7 +630,8 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     "appId": "mobile-arknights-int-142",
-    "name": "명일방주 (글로벌)",
+    "name": "명일방주",
+    "nameEn": "Arknights",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -583,7 +641,8 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     "appId": "mobile-bombsquad-145",
-    "name": "폭탄 스쿼드 (BombSquad)",
+    "name": "폭탄 스쿼드",
+    "nameEn": "BombSquad",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -594,6 +653,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-clash-of-clans-151",
     "name": "클래시 오브 클랜",
+    "nameEn": "Clash of Clans",
     "genre": "전략 / 시뮬레이션",
     "audioFocus": "유닛 배치음 및 타워 포격 저음역 폭발 임팩트",
     "tag": "STRATEGY & FOLEY",
@@ -604,6 +664,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-clash-royale-152",
     "name": "클래시 로얄",
+    "nameEn": "Clash Royale",
     "genre": "전략 / 시뮬레이션",
     "audioFocus": "유닛 배치음 및 타워 포격 저음역 폭발 임팩트",
     "tag": "STRATEGY & FOLEY",
@@ -614,6 +675,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-cookierun-crumble-154",
     "name": "쿠키런: 오븐스매시 / 크럼블",
+    "nameEn": "Cookie Run: Crumble",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -624,6 +686,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-daltoki-155",
     "name": "달토끼 키우기",
+    "nameEn": "달토끼 키우기",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -634,6 +697,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-day-r-156",
     "name": "데이 R 서바이벌",
+    "nameEn": "Day R Survival",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -644,6 +708,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-ea-sports-fc-mobile-2026-161",
     "name": "EA SPORTS FC™ Mobile 축구 2026",
+    "nameEn": "EA SPORTS FC™ Mobile 축구 2026",
     "genre": "스포츠",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -654,6 +719,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-fallout-shelter-163",
     "name": "폴아웃 쉘터",
+    "nameEn": "Fallout Shelter",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -664,6 +730,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-fifa-online-4-m-by-ea-sports-164",
     "name": "FIFA ONLINE 4 M by EA SPORTS™",
+    "nameEn": "FIFA ONLINE 4 M by EA SPORTS™",
     "genre": "스포츠",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -674,6 +741,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-final-fantasy-brave-exvius-ww-165",
     "name": "파이널 판타지 브레이브 엑스비어스",
+    "nameEn": "Final Fantasy Brave Exvius",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -684,6 +752,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-grand-battle-royale-168",
     "name": "그랜드 배틀 로얄",
+    "nameEn": "Grand Battle Royale",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -693,7 +762,8 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   },
   {
     "appId": "mobile-hit-170",
-    "name": "HIT (히트)",
+    "name": "히트",
+    "nameEn": "HIT",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -704,6 +774,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-hungry-shark-world-171",
     "name": "헝그리 샤크 월드",
+    "nameEn": "Hungry Shark World",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -714,6 +785,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-kingdom-173",
     "name": "킹덤: 두 개의 왕관",
+    "nameEn": "Kingdom: Two Crowns",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -724,6 +796,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-last-day-on-earth-175",
     "name": "라스트 데이 온 어스",
+    "nameEn": "Last Day on Earth: Survival",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -734,6 +807,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-marvel-super-war-178",
     "name": "마블 슈퍼 워",
+    "nameEn": "MARVEL Super War",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -744,6 +818,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-odin-valhalla-rising-181",
     "name": "오딘: 발할라 라이징",
+    "nameEn": "Odin: Valhalla Rising",
     "genre": "모바일 MMORPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -754,6 +829,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-online-rpg-avabel-182",
     "name": "아바벨 온라인",
+    "nameEn": "Avabel Online",
     "genre": "수집형 RPG",
     "audioFocus": "필살기 컷인 성우 보이스와 스킬 버스트 타격 임팩트",
     "tag": "SKILL CUTIN AUDIO",
@@ -764,6 +840,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-pok-mon-masters-185",
     "name": "포켓몬 마스터즈 EX",
+    "nameEn": "Pokémon Masters EX",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -774,6 +851,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-random-dice-wars-186",
     "name": "랜덤 다이스: 워즈",
+    "nameEn": "Random Dice: Wars",
     "genre": "퍼즐 / 보드",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -784,6 +862,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-rise-of-castles-ice-and-fire-188",
     "name": "라이즈 오브 캐슬",
+    "nameEn": "Rise of Castles: Ice and Fire",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -794,6 +873,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-simcity-buildit-191",
     "name": "심시티 빌드잇",
+    "nameEn": "SimCity BuildIt",
     "genre": "전략 / 시뮬레이션",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -804,6 +884,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-the-spike-volleyball-battle-199",
     "name": "더 스파이크: 배구 배틀",
+    "nameEn": "The Spike: Volleyball Battle",
     "genre": "스포츠",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -814,6 +895,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-209-209",
     "name": "세븐나이츠",
+    "nameEn": "Seven Knights",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -824,6 +906,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-game-210-210",
     "name": "몬스터헌터 라이더즈",
+    "nameEn": "Monster Hunter Riders",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 스피커 주파수에 최적화된 명료한 UI 피드백과 메인 테마",
     "tag": "MOBILE AUDIO",
@@ -834,6 +917,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-0-211",
     "name": "브롤스타즈",
+    "nameEn": "Brawl Stars",
     "genre": "실시간 대전 액션",
     "audioFocus": "경쾌한 아케이드 팝 SFX와 개성 넘치는 캐릭터 시그니처 보이스",
     "tag": "ARCADE POP SFX",
@@ -844,6 +928,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-1-212",
     "name": "스타러쉬",
+    "nameEn": "스타러쉬",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -854,6 +939,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-3-214",
     "name": "협동타워디펜스",
+    "nameEn": "협동타워디펜스",
     "genre": "전략 / 타워디펜스",
     "audioFocus": "유닛 소환 클릭음과 몰려오는 웨이브 저음역 타격 믹스",
     "tag": "MOBILE AUDIO LOG",
@@ -864,6 +950,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-4-215",
     "name": "명일방주엔드필드",
+    "nameEn": "Arknights: Endfield",
     "genre": "서브컬처 수집형 RPG",
     "audioFocus": "앰비언트 인더스트리얼 신스 및 정밀한 전술 배치 오디오",
     "tag": "TACTICAL AMBIENT",
@@ -874,6 +961,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-5-216",
     "name": "어나더던전",
+    "nameEn": "어나더던전",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -884,6 +972,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-6-217",
     "name": "카오스제로나이트",
+    "nameEn": "카오스제로나이트",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -894,6 +983,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-7-218",
     "name": "명일방주",
+    "nameEn": "Arknights",
     "genre": "서브컬처 수집형 RPG",
     "audioFocus": "앰비언트 인더스트리얼 신스 및 정밀한 전술 배치 오디오",
     "tag": "TACTICAL AMBIENT",
@@ -904,6 +994,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-8-219",
     "name": "가디스오더",
+    "nameEn": "가디스오더",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -914,6 +1005,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-9-220",
     "name": "픽셀우주선",
+    "nameEn": "픽셀우주선",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -924,6 +1016,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-11-222",
     "name": "문명",
+    "nameEn": "문명",
     "genre": "전략 / 타워디펜스",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -934,6 +1027,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-12-223",
     "name": "쉐도우버스",
+    "nameEn": "Shadowverse",
     "genre": "전략 카드 배틀 (CCG)",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -944,6 +1038,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-13-224",
     "name": "세븐나이츠 리버스",
+    "nameEn": "Seven Knights Rebirth",
     "genre": "서브컬처 수집형 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -954,6 +1049,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-14-225",
     "name": "운빨돌격대",
+    "nameEn": "운빨돌격대",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -964,6 +1060,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-15-226",
     "name": "트라이브 나인",
+    "nameEn": "Tribe Nine",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -974,6 +1071,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-16-227",
     "name": "리메멘토",
+    "nameEn": "리메멘토",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -984,6 +1082,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-17-228",
     "name": "소울나이트",
+    "nameEn": "Soul Knight",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -994,6 +1093,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-18-229",
     "name": "메카아라시",
+    "nameEn": "메카아라시",
     "genre": "액션 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1004,6 +1104,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-19-230",
     "name": "울빤존많겜",
+    "nameEn": "울빤존많겜",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1014,6 +1115,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-20-231",
     "name": "슬레이어키우기",
+    "nameEn": "슬레이어키우기",
     "genre": "방치형 / 클리커",
     "audioFocus": "중독성 있는 재화 파밍 챠링음 및 폭발적인 크리티컬 타격 효과음",
     "tag": "IDLE REWARD FOLEY",
@@ -1024,6 +1126,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-21-232",
     "name": "소드오브콘발라리아",
+    "nameEn": "Sword of Convallaria",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1034,6 +1137,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-22-233",
     "name": "스노우블레이크",
+    "nameEn": "스노우블레이크",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1044,6 +1148,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-23-234",
     "name": "젠레스존제로",
+    "nameEn": "Zenless Zone Zero",
     "genre": "액션 RPG",
     "audioFocus": "트렌디한 시티 팝/일렉트로닉 비트와 극강의 타격 버스트 트랜지언트",
     "tag": "CITY BEATS & IMPACT",
@@ -1054,6 +1159,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-24-235",
     "name": "쿠키런오븐브레이크",
+    "nameEn": "Cookie Run: OvenBreak",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1064,6 +1170,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-25-236",
     "name": "쿠키런모험의탑",
+    "nameEn": "Cookie Run: Tower of Adventures",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1074,6 +1181,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-27-238",
     "name": "나혼자만레벨업",
+    "nameEn": "Solo Leveling: Arise",
     "genre": "액션 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1084,6 +1192,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-28-239",
     "name": "운빨디펜스",
+    "nameEn": "운빨디펜스",
     "genre": "전략 / 타워디펜스",
     "audioFocus": "유닛 소환 클릭음과 몰려오는 웨이브 저음역 타격 믹스",
     "tag": "MOBILE AUDIO LOG",
@@ -1094,6 +1203,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-29-240",
     "name": "스쿼드 버스터즈",
+    "nameEn": "Squad Busters",
     "genre": "실시간 대전 액션",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1104,6 +1214,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-5-241",
     "name": "페르소나5더팬텀",
+    "nameEn": "Persona 5: The Phantom X",
     "genre": "서브컬처 수집형 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1114,6 +1225,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-flyhigh-242",
     "name": "하이큐!! FLY HIGH",
+    "nameEn": "Haikyu!! FLY HIGH",
     "genre": "스포츠 / 육성 시뮬레이션",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1124,6 +1236,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-2-243",
     "name": "별이되어라2",
+    "nameEn": "별이되어라2",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1134,6 +1247,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-33-244",
     "name": "아스니아트리거",
+    "nameEn": "아스니아트리거",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1144,6 +1258,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-34-245",
     "name": "코노스바 모바일",
+    "nameEn": "KonoSuba: Fantastic Days",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1154,6 +1269,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-35-246",
     "name": "창세기전 모바일",
+    "nameEn": "창세기전 모바일",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1164,6 +1280,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-36-247",
     "name": "워크래프트럼블",
+    "nameEn": "Warcraft Rumble",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1174,6 +1291,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-37-248",
     "name": "옥토패스 트래블러 대륙의패자",
+    "nameEn": "Octopath Traveler: Champions of the Continent",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1184,6 +1302,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-m-250",
     "name": "진삼국무쌍M",
+    "nameEn": "진삼국무쌍M",
     "genre": "액션 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1194,6 +1313,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-42-253",
     "name": "빌딩앤파이터",
+    "nameEn": "빌딩앤파이터",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1204,6 +1324,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-1999-254",
     "name": "리버스1999",
+    "nameEn": "Reverse: 1999",
     "genre": "서브컬처 수집형 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1214,6 +1335,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-44-255",
     "name": "트릭컬리바이브",
+    "nameEn": "Trickcal Revive",
     "genre": "서브컬처 수집형 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1224,6 +1346,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-45-256",
     "name": "몬스터헌터나우",
+    "nameEn": "Monster Hunter Now",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1234,6 +1357,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-46-257",
     "name": "세븐나이츠키우기",
+    "nameEn": "Seven Knights Idle Adventure",
     "genre": "방치형 / 클리커",
     "audioFocus": "중독성 있는 재화 파밍 챠링음 및 폭발적인 크리티컬 타격 효과음",
     "tag": "IDLE REWARD FOLEY",
@@ -1244,6 +1368,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-47-258",
     "name": "아레스 라이즈오브가디언즈",
+    "nameEn": "아레스 라이즈오브가디언즈",
     "genre": "전략 / 타워디펜스",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1254,6 +1379,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-48-259",
     "name": "해리포터 께어난마법",
+    "nameEn": "Harry Potter: Magic Awakened",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1264,6 +1390,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-2-260",
     "name": "브라운더스트2",
+    "nameEn": "Brown Dust 2",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1274,6 +1401,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-50-261",
     "name": "기동전대 아이언사가",
+    "nameEn": "Iron Saga",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1284,6 +1412,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-51-262",
     "name": "림보스컴퍼니",
+    "nameEn": "Limbus Company",
     "genre": "서브컬처 수집형 RPG",
     "audioFocus": "밀리(Mili) 특유의 아방가르드 아트 록 사운드트랙과 묵직한 타격감",
     "tag": "AVANT-GARDE ROCK",
@@ -1294,6 +1423,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-52-263",
     "name": "해븐 번즈레드",
+    "nameEn": "Heaven Burns Red",
     "genre": "서브컬처 수집형 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1304,6 +1434,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-53-264",
     "name": "에버소울",
+    "nameEn": "Eversoul",
     "genre": "서브컬처 수집형 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1314,6 +1445,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-54-265",
     "name": "니케",
+    "nameEn": "Goddess of Victory: NIKKE",
     "genre": "서브컬처 수집형 RPG",
     "audioFocus": "강렬한 록/인더스트리얼 EDM BGM 및 총기 메카닉 격발 Foley 사운드",
     "tag": "CYBER METALLIC FOLEY",
@@ -1324,6 +1456,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-55-266",
     "name": "무기미도",
+    "nameEn": "무기미도",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1334,6 +1467,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-56-267",
     "name": "마블스냅",
+    "nameEn": "MARVEL SNAP",
     "genre": "전략 카드 배틀 (CCG)",
     "audioFocus": "카드 플립 햅틱 사운드 및 스냅 시 긴장감 넘치는 베이스 드롭",
     "tag": "CCG IMPACT SFX",
@@ -1344,6 +1478,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-57-268",
     "name": "메멘토 모리",
+    "nameEn": "Memento Mori",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1354,6 +1489,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-58-269",
     "name": "라이즈오브킹덤즈",
+    "nameEn": "Rise of Kingdoms",
     "genre": "전략 / 타워디펜스",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1364,6 +1500,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-59-270",
     "name": "로닌",
+    "nameEn": "Ronin: The Last Samurai",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1374,6 +1511,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-60-271",
     "name": "이블헌터 타이쿤",
+    "nameEn": "Evil Hunter Tycoon",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1384,6 +1522,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-61-272",
     "name": "타워오브판타지",
+    "nameEn": "Tower of Fantasy",
     "genre": "전략 / 타워디펜스",
     "audioFocus": "유닛 소환 클릭음과 몰려오는 웨이브 저음역 타격 믹스",
     "tag": "MOBILE AUDIO LOG",
@@ -1394,6 +1533,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-62-273",
     "name": "모바일레전드",
+    "nameEn": "Mobile Legends: Bang Bang",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1404,6 +1544,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-63-274",
     "name": "세븐나이츠 레볼루션",
+    "nameEn": "Seven Knights Revolution",
     "genre": "모바일 RPG",
     "audioFocus": "모바일 환경에 최적화된 명료한 주파수 밸런싱과 UI 피드백",
     "tag": "MOBILE AUDIO LOG",
@@ -1414,6 +1555,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-64-275",
     "name": "우마무스메",
+    "nameEn": "Uma Musume: Pretty Derby",
     "genre": "스포츠 / 육성 시뮬레이션",
     "audioFocus": "박진감 넘치는 라이브 보컬곡과 관중 함성, 경기장 아나운서 실황 오디오",
     "tag": "LIVE STADIUM AUDIO",
@@ -1424,6 +1566,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-65-276",
     "name": "퍼니싱 그레이레이븐",
+    "nameEn": "Punishing: Gray Raven",
     "genre": "액션 RPG",
     "audioFocus": "초고속 비트 사이버네틱 브레이크비트 및 정밀한 회피 불릿타임 SFX",
     "tag": "CYBERNETIC ACTION",
@@ -1434,6 +1577,7 @@ export const MOBILE_GAMES_LIST: PlayedGameItem[] = [
   {
     "appId": "mobile-mob-66-277",
     "name": "디아블로이모탈",
+    "nameEn": "Diablo Immortal",
     "genre": "액션 RPG",
     "audioFocus": "어두운 고딕 오케스트라 앰비언스와 악마 처치 고어 임팩트",
     "tag": "GOTHIC DARK ORCHESTRA",

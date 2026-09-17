@@ -296,6 +296,7 @@ export const GamingHistoryView: React.FC = () => {
     if (!q) return filteredPlayedGames;
     return filteredPlayedGames.filter(g =>
       g.name.toLowerCase().includes(q) ||
+      (g.nameEn && g.nameEn.toLowerCase().includes(q)) ||
       (g.genre && g.genre.toLowerCase().includes(q)) ||
       (g.audioFocus && g.audioFocus.toLowerCase().includes(q)) ||
       (g.tag && g.tag.toLowerCase().includes(q)) ||
@@ -1143,7 +1144,7 @@ export const GamingHistoryView: React.FC = () => {
                       <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 shrink-0 transition-colors" />
                     </div>
                     <div className="flex items-center justify-between text-[11px] text-slate-400 font-sans">
-                      <span className="truncate">{game.genre}</span>
+                      <span className="truncate">{game.nameEn || game.genre}</span>
                       {p === 'steam' ? (
                         <span className="font-mono text-slate-500 text-[10px] shrink-0">AppID: {game.appId}</span>
                       ) : (
@@ -1153,11 +1154,6 @@ export const GamingHistoryView: React.FC = () => {
                       )}
                     </div>
                   </div>
-
-                  {/* Audio Focus Note */}
-                  <p className="text-xs text-slate-400 break-keep leading-relaxed border-l-2 border-amber-500/50 pl-2 bg-slate-900/30 py-1 rounded-r-lg">
-                    {game.audioFocus}
-                  </p>
 
                   {/* Playtime Progress Bar & Hours */}
                   {game.hoursPlayed && game.hoursPlayed > 0 ? (
