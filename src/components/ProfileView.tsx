@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Award, Cpu, Disc, Mail, MapPin, Phone, Shield, Sliders, Radio, Sparkles, CheckCircle,
-  Printer, Share2, Check, FileText, Globe, Languages, User
+  Printer, Share2, Check, FileText, Globe, Languages
 } from 'lucide-react';
 import { SoundDirectorProfile } from '../types';
 import { soundEngine } from '../utils/soundEngine';
@@ -46,12 +46,20 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
             <div className="flex items-center gap-4 sm:gap-5 min-w-0 shrink-0">
               {/* Resume Photo Frame (Permanent Original Photo - Pure Display) */}
               <div 
+                id="profile-photo-frame"
                 className="relative w-20 h-[106px] sm:w-24 sm:h-[128px] md:w-28 md:h-[148px] print:w-16 print:h-[86px] rounded-xl sm:rounded-2xl border border-slate-700/80 print:border print:border-slate-300 bg-[#090b14] flex-shrink-0 overflow-hidden shadow-xl print:shadow-none"
               >
                 <img 
                   src={profilePhoto} 
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== window.location.origin + '/안경.jpg') {
+                      target.src = '/안경.jpg';
+                    }
+                  }}
                   alt={`${profile.name} 프로필 사진`} 
                   className="w-full h-full object-cover object-center"
+                  referrerPolicy="no-referrer"
                 />
               </div>
 

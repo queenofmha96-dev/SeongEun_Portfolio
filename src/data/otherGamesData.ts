@@ -275,7 +275,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "액션 플랫포머",
     audioFocus: "적을 빨아들이는 진공 흡입 효과음과 별 내뱉기 사운드, 둥글고 사랑스러운 카와이 신시사이저 테마 멜로디",
     tag: "VACUUM INHALE SFX & CUTE SYNTH POP",
-    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/ko_KR/games/switch/k/kirby-and-the-forgotten-land-switch/hero",
+    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/en_US/games/switch/k/kirby-and-the-forgotten-land-switch/hero",
     steamUrl: "https://www.nintendo.co.kr/switch/kirby/",
     platform: "other"
   },

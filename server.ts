@@ -70,8 +70,22 @@ async function startServer() {
         });
       }
 
-      // Sort by total playtime descending
+      // Sort by total playtime descending and limit to top 4 recent games
       games.sort((a, b) => b.hoursTotal - a.hoursTotal);
+      const recentGames = games.slice(0, 4);
+
+      // Official crisp high-resolution header/capsule images for Steam titles
+      const HIGH_RES_STEAM_IMAGES: Record<string, string> = {
+        "3513350": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3513350/e122b1670ac26b72d6e1af5190f5ce2af87b18aa/header_koreana.jpg?t=1787182292",
+        "960170": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/960170/capsule_616x353.jpg",
+        "3321460": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3321460/4a895369007efe7cc9da27a999bbca2427d92bb3/header_koreana.jpg?t=1789020763",
+        "2456740": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2456740/capsule_616x353.jpg"
+      };
+
+      const highResGames = recentGames.map(g => ({
+        ...g,
+        logo: HIGH_RES_STEAM_IMAGES[g.appId] || g.logo
+      }));
 
       return res.json({
         success: true,
@@ -85,7 +99,7 @@ async function startServer() {
           avatarFull,
           memberSince,
           location,
-          games
+          games: highResGames
         }
       });
     } catch (err: any) {
@@ -94,7 +108,7 @@ async function startServer() {
     }
   });
 
-  // Save user profile photo permanently to public/profile.png
+  // Save user profile photo permanently to public/profile.png, src/assets/profile.png, public/안경.jpg
   app.post("/api/save-profile-photo", express.json({ limit: "25mb" }), (req, res) => {
     try {
       const { imageBase64 } = req.body;
@@ -103,19 +117,27 @@ async function startServer() {
       }
       const base64Data = imageBase64.replace(/^data:image\/\w+;base64,/, "");
       const buffer = Buffer.from(base64Data, "base64");
+      
       const publicDir = path.join(process.cwd(), "public");
       if (!fs.existsSync(publicDir)) {
         fs.mkdirSync(publicDir, { recursive: true });
       }
       fs.writeFileSync(path.join(publicDir, "profile.png"), buffer);
+      fs.writeFileSync(path.join(publicDir, "안경.jpg"), buffer);
       
+      const srcAssetsDir = path.join(process.cwd(), "src", "assets");
+      if (fs.existsSync(srcAssetsDir)) {
+        fs.writeFileSync(path.join(srcAssetsDir, "profile.png"), buffer);
+      }
+
       // Also write to dist if it exists
       const distDir = path.join(process.cwd(), "dist");
       if (fs.existsSync(distDir)) {
         fs.writeFileSync(path.join(distDir, "profile.png"), buffer);
+        fs.writeFileSync(path.join(distDir, "안경.jpg"), buffer);
       }
       
-      return res.json({ success: true, message: "Profile photo saved" });
+      return res.json({ success: true, message: "Profile photo saved permanently" });
     } catch (err: any) {
       console.error("Save profile photo error:", err);
       return res.status(500).json({ error: err.message || "Failed to save photo" });
