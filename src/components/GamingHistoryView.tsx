@@ -513,7 +513,7 @@ export const GamingHistoryView: React.FC = () => {
               href={`https://steamcommunity.com/profiles/${steamData.steamID64}/`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-medium text-xs sm:text-sm shadow-lg shadow-cyan-950/50 transition-all hover:scale-[1.02] shrink-0"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-medium text-xs sm:text-sm shadow-lg shadow-cyan-950/50 transition-all hover:scale-[1.02] shrink-0 transform-gpu will-change-transform"
             >
               {/* Official Steam Logo */}
               <svg className="w-4 h-4 fill-white shrink-0" viewBox="0 0 24 24">

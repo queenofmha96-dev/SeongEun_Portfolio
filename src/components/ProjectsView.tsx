@@ -375,7 +375,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
             rel="noreferrer noopener"
             onClick={() => soundEngine.playClick()}
             onMouseEnter={() => soundEngine.playHover()}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:py-2.5 rounded-xl bg-red-900/75 hover:bg-red-800/85 border border-red-500/50 text-white font-sans font-semibold text-xs sm:text-sm transition-all shadow-md shadow-red-950/50 hover:scale-[1.02] active:scale-95 shrink-0"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:py-2.5 rounded-xl bg-red-900/75 hover:bg-red-800/85 border border-red-500/50 text-white font-sans font-semibold text-xs sm:text-sm transition-all shadow-md shadow-red-950/50 hover:scale-[1.02] active:scale-95 shrink-0 transform-gpu will-change-transform"
           >
             <span>전체 재생목록 열기</span>
             <ArrowUpRight className="w-4 h-4 text-red-200" />
