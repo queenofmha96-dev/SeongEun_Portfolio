@@ -118,7 +118,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
           </div>
 
           {/* Quick Action Buttons (Share & Print) - Screen Only */}
-          <div className="flex sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 shrink-0 pt-2 lg:pt-0 border-t border-slate-800/70 lg:border-t-0 no-print print:hidden">
+          <div className="flex flex-wrap sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 shrink-0 pt-2 lg:pt-0 border-t border-slate-800/70 lg:border-t-0 no-print print:hidden">
             <button
               onClick={handleShare}
               onMouseEnter={() => soundEngine.playHover()}

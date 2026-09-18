@@ -46,7 +46,7 @@ export const Navbar: React.FC = () => {
   // Close mobile menu when screen resizes to desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setIsMobileMenuOpen(false);
       }
     };
@@ -142,8 +142,8 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation (>= md / 768px) */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
+          {/* Desktop Navigation (>= lg / 1024px) */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
             <nav className="flex items-center gap-1.5 lg:gap-2.5 font-sans text-sm">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -192,8 +192,8 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Mobile Right Controls (< md / 768px): Sound Mute + Hamburger Toggle */}
-          <div className="flex md:hidden items-center gap-2 shrink-0">
+          {/* Mobile/Tablet Right Controls (< lg / 1024px): Sound Mute + Hamburger Toggle */}
+          <div className="flex lg:hidden items-center gap-2 shrink-0">
             {/* Sound Mute Toggle */}
             <button
               onClick={handleToggleMute}
@@ -229,7 +229,7 @@ export const Navbar: React.FC = () => {
       {/* Mobile Drawer Navigation Menu */}
       {isMobileMenuOpen && (
         <div 
-          className="fixed inset-0 top-[65px] z-40 bg-black/80 backdrop-blur-md md:hidden p-4 animate-fadeIn"
+          className="fixed inset-0 top-[65px] z-40 bg-black/80 backdrop-blur-md lg:hidden p-4 animate-fadeIn"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div 
