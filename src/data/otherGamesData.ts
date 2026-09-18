@@ -10,7 +10,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "MOBA / 전략",
     audioFocus: "160명 이상 챔피언의 고유 스킬 사운드 시그니처와 시각 효과 없이도 상황을 인지할 수 있는 명료한 타격 피드백",
     tag: "SKILL IMPACT & AUDIO CUES",
-    headerImg: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt36ec17da6238b72a/6695b28d6c70176d6ec037e9/LoL_Banner.jpg",
+    headerImg: "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/d3b7bd9decb1e1672dcb80be4f8bc1aa05490dc1-110x70.svg?accountingTag=LoL?w=1200&h=630&fm=webp&fit=crop&crop=center",
     steamUrl: "https://www.leagueoflegends.com/ko-kr/",
     platform: "other"
   },
@@ -22,7 +22,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "팀 기반 히어로 FPS",
     audioFocus: "난전 상황에서도 적군과 아군의 궁극기 시전 음성을 1순위로 마스킹 없이 뚫고 나오게 하는 엄격한 사운드 믹싱 우선순위 계층",
     tag: "PRIORITY MIXING & VOICE CUES",
-    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/bltc5d17ae5101a0862/62fea0cf76d7fb117b4a2d3e/OW2_HeroImage_1920x1080.jpg",
+    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt45586c965db08717/6823abc24dee72d806fff5e2/OpenGraph.jpg",
     steamUrl: "https://overwatch.blizzard.com/ko-kr/",
     platform: "other"
   },
@@ -34,7 +34,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "택티컬 5v5 FPS",
     audioFocus: "벽 뒤 풋스텝 재질음과 스파이크 설치/해체 사운드만으로 3D 적 위치와 잔여 시간을 완벽하게 연상시키는 초정밀 HRTF 공간 음향",
     tag: "TACTICAL SPATIAL & HRTF",
-    headerImg: "https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt7a79e605dc553cb7/62a39281a8c3d64df191e4f4/Valorant_Banner.jpg",
+    headerImg: "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/cbf4460132cdfeb2a97fad5f9dd25ba0bc058f76-128x128.png?accountingTag=VAL?w=1200&h=630&fm=webp&fit=crop&crop=center",
     steamUrl: "https://playvalorant.com/ko-kr/",
     platform: "other"
   },
@@ -46,7 +46,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "다크 판타지 액션 RPG",
     audioFocus: "몰이사냥 시 묵직하게 터지는 서브우퍼 저음역 임팩트와 성역 던전의 음산하고 공간감 넘치는 암흑 앰비언스",
     tag: "DARK BASS & AMBIENCE",
-    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/bltb8b16c89116e7884/6446e5ba27eb954be4a2ef69/D4_Header_1920x1080.jpg",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2344520/80f21a42e378b93e8fbb68ee43103be8ab84891b/header.jpg?t=1789491624",
     steamUrl: "https://diablo4.blizzard.com/ko-kr/",
     platform: "other"
   },
@@ -70,7 +70,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "SF 실시간 전략 (RTS)",
     audioFocus: "테란 공성전차 시즈모드 포격음의 가슴을 울리는 트랜지언트와 저그 유기체 점막 질감의 사실적인 생체 폴리 사운드",
     tag: "SIEGE IMPACT & BIO FOLEY",
-    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt6d5d5904d98a729e/SC2_Header.jpg",
+    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/bltbe2068a317e02d9f/6966bac0fb2fd910dbda4a26/og_image.webp",
     steamUrl: "https://starcraft2.blizzard.com/ko-kr/",
     platform: "other"
   },
@@ -84,7 +84,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "핵앤슬래시 액션 RPG",
     audioFocus: "전설/세트 아이템 드랍 시 허공을 가르는 전율의 기둥 핑(Ping) 사운드와 대균열 무한 학살의 타격 쾌감 믹싱",
     tag: "LEGENDARY BEAM & SLAUGHTER FOLEY",
-    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt9754f24c30c33a9c/62e0391d1797c5108f97a51d/D3_Header.jpg",
+    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blte3178c04d93773f1/67ce27f440e6651e27e17582/og_image.webp",
     steamUrl: "https://diablo3.blizzard.com/ko-kr/",
     platform: "other"
   },
@@ -96,7 +96,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "다크 액션 RPG",
     audioFocus: "물약 복용 시의 걸쭉한 액체 효과음, 보석 장착 사운드, 카우 레벨의 해학적이면서도 기괴한 무(Moo) 폴리 보이스",
     tag: "CLASSIC DARK AMBIENCE & GEM SOUNDS",
-    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blteeb51582294191c7/62e038827eb0981156fe4549/D2R_Header.jpg",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2536520/8cfd8f0d73075b10b3b58d9eccfee799baffab79/header.jpg?t=1774399170",
     steamUrl: "https://diablo2.blizzard.com/ko-kr/",
     platform: "other"
   },
@@ -156,7 +156,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "SF 우주 시뮬레이션 MMO",
     audioFocus: "우주선 퀀텀 드라이브 워프 시의 공간 찢김 음향과 행성 대기 진입 시 선체 표면 공기 마찰 압력 저주파 진동",
     tag: "QUANTUM WARP & COCKPIT ATMOSPHERE",
-    headerImg: "https://robertsspaceindustries.com/media/bq3m25p1ox0zgr/source/Star_Citizen_KeyArt.jpg",
+    headerImg: "https://cdn.robertsspaceindustries.com/static/images/thumbnail/RSI.png",
     steamUrl: "https://robertsspaceindustries.com/",
     platform: "other"
   },
@@ -180,7 +180,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "하드코어 익스트랙션 택티컬 FPS",
     audioFocus: "방탄모 착용 시 헤드셋(ComTac) 증폭 사운드와 유리조각/나무바닥/자갈 재질별 풋스텝, 초근접 총격 소닉붐의 극단적 사실주의",
     tag: "SURREAL HARDCORE AUDIO & TACTICAL COMTAC",
-    headerImg: "https://assets.escapefromtarkov.com/uploads/content/news/eft_header_new.jpg",
+    headerImg: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3932890/4dd12ea3b00a4f8b67bfd629f3b9abbf8d5cab05/header_alt_assets_2.jpg?t=1785782094",
     steamUrl: "https://www.escapefromtarkov.com/",
     platform: "other"
   },
@@ -192,7 +192,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "레트로 2D 액션 플랫포머",
     audioFocus: "코인 획득, 슈퍼버섯 변신, 깃발 터치 등 비디오 게임 역사상 가장 완벽한 피드백을 구축한 8비트 사각파·삼각파 칩튠의 정수",
     tag: "8-BIT CHIPTUNE & COIN SOUND SIGNATURE",
-    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000012332/desc/01_hero",
+    headerImg: "https://upload.wikimedia.org/wikipedia/en/0/03/Super_Mario_Bros._box.png",
     steamUrl: "https://www.nintendo.co.kr/",
     platform: "other"
   },
@@ -204,7 +204,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "2D 액션 플랫포머",
     audioFocus: "무를 땅에서 뽑아 던지는 독창적인 플럭(Pluck) 효과음과 캐릭터별 점프 체공 물리 사운드",
     tag: "RETRO PLUCK FOLEY & CHARACTER DYNAMICS",
-    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000012332/desc/02_mario2",
+    headerImg: "https://upload.wikimedia.org/wikipedia/en/7/78/Super_Mario_Bros._2_box_art.png",
     steamUrl: "https://www.nintendo.co.kr/",
     platform: "other"
   },
@@ -216,7 +216,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "2D 액션 플랫포머 걸작",
     audioFocus: "꼬리 마리오 나뭇잎 활공 퍼덕임 음향과 쿠파 군단 비행선 엔진 진동의 리드미컬한 브라스 타악기 시퀀싱",
     tag: "LEAF FLAP FOLEY & AIRSHIP BRASS PERCUSSION",
-    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000012332/desc/03_mario3",
+    headerImg: "https://upload.wikimedia.org/wikipedia/en/a/a5/Super_Mario_Bros._3_coverart.png",
     steamUrl: "https://www.nintendo.co.kr/",
     platform: "other"
   },
@@ -312,7 +312,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "몬스터 수집 턴제 RPG",
     audioFocus: "시간과 공간의 신화 전설의 포켓몬 디아루가·펄기아의 웅장한 신스 울음소리와 난천(신디아) 피아노 배틀 테마",
     tag: "LEGENDARY ROAR & CYNTHIA PIANO THEME",
-    headerImg: "https://pokemonkorea.co.kr/archive/games/2021/08/18/d8e11a24d55b8829ef2ff4fd79a2bbd2.jpg",
+    headerImg: "https://upload.wikimedia.org/wikipedia/en/2/2e/PokemonDiamondPearlBoxArt.jpg",
     steamUrl: "https://pokemonkorea.co.kr/",
     platform: "other"
   },
@@ -324,7 +324,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "GBA 몬스터 RPG 명작",
     audioFocus: "호연 지방 특유의 풍성한 GBA 브라스 관악기 팡파르와 레쿠쟈 천공의 분노 사운드트랙 연출",
     tag: "HOENN BRASS FANFARE & RAYQUAZA ROAR",
-    headerImg: "https://pokemonkorea.co.kr/archive/games/2021/08/18/3455ae0e6ea87a242f36bc6474bdf739.jpg",
+    headerImg: "https://upload.wikimedia.org/wikipedia/en/f/f7/PokemonEmeraldBox.jpg",
     steamUrl: "https://pokemonkorea.co.kr/",
     platform: "other"
   },
@@ -336,7 +336,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "로그라이크 던전 RPG",
     audioFocus: "감동적인 이별 테마 곡의 서정적인 플루트 선율과 턴제 이동 시 리드미컬한 던전 타일 풋스텝 및 스킬 피드백",
     tag: "EMOTIONAL FLUTE THEME & TURN FOOTSTEPS",
-    headerImg: "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/ko_KR/games/switch/p/pokemon-mystery-dungeon-rescue-team-dx-switch/hero",
+    headerImg: "https://upload.wikimedia.org/wikipedia/en/d/d3/Pok%C3%A9mon_Mystery_Dungeon_Blue_and_Red_Rescue_Team_cover_arts.jpg",
     steamUrl: "https://pokemonkorea.co.kr/",
     platform: "other"
   },
@@ -348,7 +348,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "헌팅 액션 RPG",
     audioFocus: "차지액스 초고출력 속성해방베기의 육중한 기계 전개음과 고어 마가라 광룡화 바이러스 발동 시의 심연 포효 사운드",
     tag: "CHARGE BLADE EXPULSION & FRENZY ROAR",
-    headerImg: "https://www.monsterhunter.com/4g/images/main_visual.jpg",
+    headerImg: "https://upload.wikimedia.org/wikipedia/en/3/39/Monster-Hunter_4Boxart.png",
     steamUrl: "https://www.capcom.co.jp/monsterhunter/",
     platform: "other"
   },
@@ -360,7 +360,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "헌팅 액션",
     audioFocus: "PSP 아날로그 시절 티가렉스 전진 포효의 충격파 이명음과 포케 마을 BGM의 포근한 어쿠스틱 기타 선율",
     tag: "TIGREX SHOCKWAVE & POKKE VILLAGE GUITAR",
-    headerImg: "https://www.capcom.co.jp/monsterhunter/images/pkg_p2g.jpg",
+    headerImg: "https://upload.wikimedia.org/wikipedia/en/7/79/Monster_Hunter_Freedom_2_Coverart.png",
     steamUrl: "https://www.capcom.co.jp/monsterhunter/",
     platform: "other"
   },
@@ -408,7 +408,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "판타지 MMORPG",
     audioFocus: "날개를 펼쳐 활강할 때의 바람 가르는 공기역학 사운드와 천족/마족 어비스 공중전의 웅대한 심포니",
     tag: "GLIDING WIND SOUND & ABYSS FLIGHT SYMPHONY",
-    headerImg: "https://aion.plaync.com/aion/images/common/og_image.jpg",
+    headerImg: "https://fizz-download.playnccdn.com/download/v2/buckets/marketing-platform/files/19dada889ba-b7bb3ee7-7a15-4ae4-a058-a148da6368e3",
     steamUrl: "https://aion.plaync.com/",
     platform: "other"
   },
@@ -420,7 +420,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "차세대 언리얼 엔진 MMORPG",
     audioFocus: "차세대 공간 음향 엔진을 통한 입체적인 대규모 필드 전투 사운드와 정밀한 물리 기반 무기 충돌 Foley",
     tag: "NEXT-GEN 3D COMBAT & PHYSICAL FOLEY",
-    headerImg: "https://aion2.plaync.com/images/common/og_image.jpg",
+    headerImg: "https://fizz-download.playnccdn.com/download/v2/buckets/marketing-platform/files/19ebb0c21b5-ad647231-4eab-4bae-ac0d-6385b5e1ed1a",
     steamUrl: "https://aion2.plaync.com/",
     platform: "other"
   },
@@ -432,7 +432,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "판타지 실시간 전략 (RTS)",
     audioFocus: "아서스 메네실과 일리단 대결의 서사시적 BGM과 아크메이지 블리자드 빙결음, 언데드 지구라트 생성 생체 효과음",
     tag: "HERO VOICE ACTING & BLIZZARD SPELL SFX",
-    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/bltb8b16c89116e7884/6446e5ba27eb954be4a2ef69/WC3_Header.jpg",
+    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt806d59ff0b4e0508/6aa88158ad9209ba7f5629ef/rebirth_og.png",
     steamUrl: "https://warcraft3.blizzard.com/ko-kr/",
     platform: "other"
   },
@@ -444,7 +444,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "SF 실시간 전략 (RTS 전설)",
     audioFocus: "시즈탱크 포격음의 전설적인 트랜지언트, 질럿 사이오닉 블레이드 절단음, 배틀크루저 야마토 캐논 발사 사운드",
     tag: "LEGENDARY RTS FOLEY & YAMATO CANNON SFX",
-    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt6d5d5904d98a729e/SC1_Header.jpg",
+    headerImg: "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt9cbae43d0642e6ba/6a9b42028102310ecb81e0e3/OG_Image.png",
     steamUrl: "https://starcraft.blizzard.com/ko-kr/",
     platform: "other"
   },
@@ -492,7 +492,7 @@ export const OTHER_GAMES_LIST: PlayedGameItem[] = [
     genre: "글로벌 밀리터리 택티컬 FPS",
     audioFocus: "고스트 매치에서 투명 적의 가쁜 숨소리와 발소리로 위치를 추적하는 극강의 긴장감 사운드 믹싱",
     tag: "GHOST BREATHING AUDITORY CUES & FAST PACED FPS",
-    headerImg: "https://images.contentstack.io/v3/assets/blt9c12f249ac15c7ec/bltb8b16c89116e7884/CF_Header.jpg",
+    headerImg: "https://upload.wikimedia.org/wikipedia/en/b/bd/CrossFire_%28video_game%29_logo.png",
     steamUrl: "https://crossfire.z8games.com/",
     platform: "other"
   },
