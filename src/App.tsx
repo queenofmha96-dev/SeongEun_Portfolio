@@ -12,36 +12,13 @@ import { SoundProject, SoundDirectorProfile } from './types';
 import { INITIAL_PROJECTS, INITIAL_PROFILE } from './data/portfolioData';
 
 export default function App() {
-  // Persistence in localStorage
-  const [projects, setProjects] = useState<SoundProject[]>(() => {
-    try {
-      const saved = localStorage.getItem('seongeun_sound_projects_v3');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length >= INITIAL_PROJECTS.length) {
-          return parsed;
-        }
-      }
-    } catch {
-      // fallback
-    }
-    return INITIAL_PROJECTS;
-  });
+  const [projects] = useState<SoundProject[]>(INITIAL_PROJECTS);
 
   const [profile, setProfile] = useState<SoundDirectorProfile>(INITIAL_PROFILE);
 
   const [selectedProjectForModal, setSelectedProjectForModal] = useState<SoundProject | null>(null);
 
-  // Sync state to LocalStorage (Projects only)
-  useEffect(() => {
-    try {
-      localStorage.setItem('seongeun_sound_projects_v3', JSON.stringify(projects));
-    } catch {
-      // ignore
-    }
-  }, [projects]);
-
-  // Always clean up legacy profile cache to guarantee latest profile data is displayed
+  // Always clean up legacy caches to guarantee the latest profile/project data is displayed
   useEffect(() => {
     try {
       localStorage.removeItem('seongeun_sound_profile');
@@ -49,19 +26,14 @@ export default function App() {
       localStorage.removeItem('seongeun_sound_profile_v3');
       localStorage.removeItem('seongeun_sound_profile_v4');
       localStorage.removeItem('seongeun_sound_profile_v5');
+      localStorage.removeItem('seongeun_sound_projects');
+      localStorage.removeItem('seongeun_sound_projects_v3');
+      localStorage.removeItem('jiho_sound_projects');
+      localStorage.removeItem('jiho_sound_profile');
     } catch {
       // ignore
     }
   }, []);
-
-  const handleResetDefaults = () => {
-    setProjects(INITIAL_PROJECTS);
-    setProfile(INITIAL_PROFILE);
-    localStorage.removeItem('seongeun_sound_projects');
-    localStorage.removeItem('seongeun_sound_profile');
-    localStorage.removeItem('jiho_sound_projects');
-    localStorage.removeItem('jiho_sound_profile');
-  };
 
   const handleExportData = () => {
     const data = {

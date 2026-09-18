@@ -1,4 +1,4 @@
-export type ProjectCategory = 'all' | 'game-sfx' | 'bgm' | 'foley' | 'trailer' | 'ui-sound';
+export type ProjectCategory = 'all' | 'subculture' | 'action' | 'sci-fi' | 'fantasy';
 
 export interface AudioStem {
   id: string;

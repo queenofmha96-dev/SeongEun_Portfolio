@@ -19,11 +19,10 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
   const categories: { id: ProjectCategory; label: string }[] = [
     { id: 'all', label: 'ALL PROJECTS' },
-    { id: 'game-sfx', label: 'GAME SFX' },
-    { id: 'bgm', label: 'BGM / COMPOSITION' },
-    { id: 'foley', label: 'FOLEY & ENV' },
-    { id: 'trailer', label: 'TRAILER MIX' },
-    { id: 'ui-sound', label: 'UI SOUND PACK' }
+    { id: 'subculture', label: 'SUBCULTURE' },
+    { id: 'action', label: 'ACTION' },
+    { id: 'sci-fi', label: 'SCI-FI' },
+    { id: 'fantasy', label: 'FANTASY' }
   ];
 
   const getCategoryCount = (catId: ProjectCategory) => {
