@@ -8,10 +8,37 @@ import { ProfileView } from './components/ProfileView';
 import { GamingHistoryView } from './components/GamingHistoryView';
 import { CoverLetterSection } from './components/CoverLetterSection';
 import { FloatingControls } from './components/FloatingControls';
+import { OmgPortfolio } from './components/OmgPortfolio';
 import { SoundProject, SoundDirectorProfile } from './types';
 import { INITIAL_PROJECTS, INITIAL_PROFILE } from './data/portfolioData';
 
 export default function App() {
+  const [pageHash, setPageHash] = useState(() => window.location.hash);
+  const isOmgPage = pageHash === '#/projects/omg';
+
+  useEffect(() => {
+    const handleHashChange = () => setPageHash(window.location.hash);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  useEffect(() => {
+    document.title = isOmgPage
+      ? 'OMG · Game Sound Design | 양성은'
+      : '양성은 | Game Sound Designer Portfolio';
+    const frame = requestAnimationFrame(() => {
+      if (isOmgPage) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        document.getElementById('omg-title')?.focus({ preventScroll: true });
+      } else if (pageHash === '#project-experience') {
+        const timeline = document.getElementById('project-experience');
+        timeline?.scrollIntoView({ behavior: 'instant', block: 'start' });
+        timeline?.focus({ preventScroll: true });
+      }
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [isOmgPage, pageHash]);
+
   const [projects] = useState<SoundProject[]>(INITIAL_PROJECTS);
 
   const [profile, setProfile] = useState<SoundDirectorProfile>(INITIAL_PROFILE);
@@ -49,6 +76,8 @@ export default function App() {
     downloadAnchor.click();
     downloadAnchor.remove();
   };
+
+  if (isOmgPage) return <OmgPortfolio />;
 
   return (
     <div className="relative min-h-screen bg-[#07080f] text-white print:bg-white print:text-slate-900 selection:bg-cyan-500 selection:text-black overflow-x-hidden print:overflow-visible">

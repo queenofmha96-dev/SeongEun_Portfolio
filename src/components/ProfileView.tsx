@@ -259,7 +259,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
       </div>
 
       {/* 3. Clean Career Timeline */}
-      <div className="space-y-7 print:space-y-3 pt-8 sm:pt-10 print:pt-4 border-t border-slate-800/80 print:border-slate-300">
+      <div id="project-experience" tabIndex={-1} className="scroll-mt-24 outline-none space-y-7 print:space-y-3 pt-8 sm:pt-10 print:pt-4 border-t border-slate-800/80 print:border-slate-300">
         
         <div className="flex items-center gap-3">
           <Award className="w-6 h-6 text-cyan-400" />
@@ -302,19 +302,16 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
                     <h3 className="text-base sm:text-xl font-extrabold text-white print:text-slate-950 tracking-tight">
                       {exp.company}
                     </h3>
-                    {exp.portfolioPending && (
-                      <span className="inline-flex items-center gap-2 shrink-0 whitespace-nowrap print:hidden">
-                        <button
-                          type="button"
-                          disabled
-                          aria-label={`${exp.company} 포트폴리오 보기 (준비 중)`}
-                          title="상세 포트폴리오 준비 중"
-                          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-cyan-500/40 bg-cyan-950/40 px-3 text-xs sm:text-sm font-bold text-cyan-300 cursor-not-allowed"
-                        >
-                          보기
-                        </button>
-                        <span className="text-xs text-slate-400">준비 중</span>
-                      </span>
+                    {exp.portfolioHref && (
+                      <a
+                        href={exp.portfolioHref}
+                        aria-label={`${exp.company} 포트폴리오 보기`}
+                        onMouseEnter={() => soundEngine.playHover()}
+                        onClick={() => soundEngine.playClick()}
+                        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-cyan-500/40 bg-cyan-950/40 px-3 text-xs sm:text-sm font-bold text-cyan-300 hover:bg-cyan-900/60 hover:border-cyan-300 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 transition-colors shrink-0 whitespace-nowrap print:hidden"
+                      >
+                        보기
+                      </a>
                     )}
                   </div>
                   <span className="text-slate-500 text-sm hidden sm:inline">•</span>

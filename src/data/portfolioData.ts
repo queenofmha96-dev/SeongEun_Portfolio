@@ -43,7 +43,7 @@ export const INITIAL_PROFILE: SoundDirectorProfile = {
       period: "2026 - Present",
       role: "사운드 기획 및 오디오 협업 (진행 중)",
       company: "게임 'OMG' 협업 프로젝트",
-      portfolioPending: true,
+      portfolioHref: '#/projects/omg',
       projects: ["게임 OMG 사운드 기획", "오디오 시스템 콘셉트 설계"],
       description: "게임 'OMG' 개발팀과 협업하여 전반적인 사운드 방향성 수립, 인게임 오디오 시스템 기획 및 사운드 연출 진행 중."
     },
