@@ -9,10 +9,8 @@ const backLink = '#project-experience';
 const linkStyle = 'inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-bold text-cyan-300 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300';
 
 const roles = [
-  { number: '01', title: 'UI 사운드 제작', label: 'UI SOUND DESIGN', description: '메인 메뉴, 중력 설정, 핀, 화면 전환, 미션 결과, 조작 가이드 및 에디터 오브젝트 조작에 쓰이는 UI 사운드를 제작했습니다.' },
-  { number: '02', title: '중력총 관련 사운드', label: 'GRAVITY / ANTI-GRAVITY', description: '총 습득·버리기, 레이저 발사, 중력장·반중력장의 생성·유지·소멸과 중력장 내 물체가 튕기는 소리를 제작했습니다.' },
-  { number: '03', title: '플레이어 사운드', label: 'PLAYER SOUND', description: '플레이어가 사망할 때와 다시 리스폰할 때 사용하는 사운드를 제작했습니다.' },
-  { number: '04', title: '게임 엔진 적용', label: 'ENGINE IMPLEMENTATION', description: '담당 사운드의 제작과 함께 메타사운드를 활용한 게임 엔진 적용 작업을 진행했습니다.' },
+  { number: '01', title: '사운드 제작', label: 'SOUND DESIGN', items: ['UI · 메뉴 · 화면 전환', '중력건 등 무기 · 중력·반중력 효과', '플레이어 사망 · 리스폰'] },
+  { number: '02', title: '게임 엔진 적용', label: 'ENGINE IMPLEMENTATION', items: ['게임 엔진 내 사운드 적용', '메타사운드 적용', '볼륨 밸런스 조정'] },
 ];
 
 function SectionHeading({ number, label, title }: { number: string; label: string; title: string }) {
@@ -99,7 +97,7 @@ export function OmgPortfolio() {
                   <article key={role.number} className="border-l-2 border-cyan-500/40 pl-5">
                     <p className="font-mono text-[10px] tracking-widest text-cyan-400">{role.number} / {role.label}</p>
                     <h3 className="mt-3 text-lg font-bold break-keep">{role.title}</h3>
-                    <p className="mt-3 text-sm text-slate-400 leading-7 break-keep">{role.description}</p>
+                    <ul className="mt-3 space-y-2 text-sm text-slate-400 leading-7 break-keep">{role.items.map(item => <li key={item}>{item}</li>)}</ul>
                   </article>
                 ))}
               </div>
