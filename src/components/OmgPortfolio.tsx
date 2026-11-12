@@ -1,10 +1,9 @@
 import React from 'react';
-import { ArrowLeft, ArrowDown, ArrowUpRight, AudioLines, Headphones, Layers, Radio, ChevronDown } from 'lucide-react';
+import { ArrowLeft, ArrowDown, ArrowUpRight, AudioLines, Headphones, Layers, Radio } from 'lucide-react';
 import { ParticleCanvas } from './ParticleCanvas';
 import { FloatingControls } from './FloatingControls';
 import { soundEngine } from '../utils/soundEngine';
 import { OMG_VIDEOS, OMG_BLUEPRINTS } from '../data/omgMedia';
-import { OMG_SOUND_SCOPE } from '../data/omgSoundScope';
 
 const backLink = '#project-experience';
 const linkStyle = 'inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-bold text-cyan-300 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300';
@@ -54,12 +53,6 @@ export function OmgPortfolio() {
               <p className="text-xs font-mono tracking-[0.18em] text-cyan-400">GAME AUDIO PORTFOLIO / 2026</p>
               <h1 id="omg-title" tabIndex={-1} className="mt-5 text-8xl sm:text-[9rem] leading-none font-black tracking-tighter outline-none">OMG<span className="text-cyan-400">.</span></h1>
               <p className="mt-3 text-xl sm:text-3xl font-bold tracking-tight text-slate-200">Sound Design & Implementation</p>
-              <p className="mt-6 max-w-lg text-base sm:text-lg leading-relaxed text-slate-400 break-keep">우주 청소의 코믹함과 무게감 사이.<br />UI·중력총·플레이어 사운드 제작 및 엔진 적용.</p>
-              <div className="mt-7 flex flex-wrap gap-2 text-[11px] sm:text-xs font-mono">
-                {['UI SOUND', 'GRAVITY SFX', 'ENGINE IMPLEMENTATION'].map(label => (
-                  <span key={label} className="rounded-lg border border-cyan-500/25 bg-cyan-950/30 px-2.5 py-1.5 text-cyan-200 whitespace-nowrap">{label}</span>
-                ))}
-              </div>
               <button type="button" className={`${linkStyle} mt-7`} onMouseEnter={() => soundEngine.playHover()} onClick={() => {
                 soundEngine.playClick();
                 document.getElementById('omg-showcase')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -123,30 +116,19 @@ export function OmgPortfolio() {
                   </article>
                 ))}
               </div>
-              <div className="mt-8 sm:mt-10 border-t border-slate-800/80 pt-6">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="text-base sm:text-lg font-bold">담당 사운드 목록</h3>
-                  <p className="text-xs text-slate-500">작업표 기준 {OMG_SOUND_SCOPE.reduce((total, group) => total + group.items.length, 0)}개 항목</p>
-                </div>
-                <div className="mt-4 divide-y divide-slate-800/80">
-                  {OMG_SOUND_SCOPE.map(group => (
-                    <details key={group.label} className="group">
-                      <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 py-4 text-sm font-bold text-slate-200 transition-colors hover:text-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 [&::-webkit-details-marker]:hidden">
-                        <span className="flex-1 break-keep">{group.title}</span>
-                        <span className="text-xs font-mono text-cyan-400 whitespace-nowrap shrink-0">{group.items.length}항목</span>
-                        <ChevronDown className="size-4 shrink-0 text-slate-500 transition-transform group-open:rotate-180" aria-hidden="true" />
-                      </summary>
-                      <dl className="divide-y divide-slate-800/50 pb-5">
-                        {group.items.map(item => (
-                          <div key={item.asset} className="grid gap-1.5 py-3 sm:grid-cols-2 sm:gap-6">
-                            <dt className="text-sm text-slate-300 break-keep">{item.use}</dt>
-                            <dd className="text-[11px] sm:text-xs font-mono text-slate-500 break-all">{item.asset}</dd>
-                          </div>
-                        ))}
-                      </dl>
-                    </details>
-                  ))}
-                </div>
+              <div className="mt-8 space-y-7">
+                {[
+                  { title: 'UI 사운드 작업표', src: '/omg/omg-ui-sheet.png' },
+                  { title: '중력총 사운드 작업표', src: '/omg/omg-gravity-sheet.png' },
+                  { title: '플레이어 사운드 작업표', src: '/omg/omg-player-sheet.png' },
+                ].map(sheet => (
+                  <figure key={sheet.src}>
+                    <figcaption className="mb-3 text-sm text-slate-300">{sheet.title}</figcaption>
+                    <a href={sheet.src} target="_blank" rel="noopener noreferrer" aria-label={sheet.title + ' 원본 확대 보기 (새 탭)'} className="block min-h-11 overflow-hidden rounded-lg border border-slate-800 hover:border-cyan-500/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300">
+                      <img src={sheet.src} alt={sheet.title} loading="lazy" className="w-full h-auto" />
+                    </a>
+                  </figure>
+                ))}
               </div>
             </section>
 
