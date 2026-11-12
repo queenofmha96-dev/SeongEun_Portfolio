@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ArrowDown, ArrowUpRight, AudioLines, Headphones, Layers, Radio } from 'lucide-react';
+import { ArrowLeft, ArrowDown, ArrowUpRight } from 'lucide-react';
 import { ParticleCanvas } from './ParticleCanvas';
 import { FloatingControls } from './FloatingControls';
 import { soundEngine } from '../utils/soundEngine';
@@ -13,12 +13,6 @@ const roles = [
   { number: '02', title: '중력총 관련 사운드', label: 'GRAVITY / ANTI-GRAVITY', description: '총 습득·버리기, 레이저 발사, 중력장·반중력장의 생성·유지·소멸과 중력장 내 물체가 튕기는 소리를 제작했습니다.' },
   { number: '03', title: '플레이어 사운드', label: 'PLAYER SOUND', description: '플레이어가 사망할 때와 다시 리스폰할 때 사용하는 사운드를 제작했습니다.' },
   { number: '04', title: '게임 엔진 적용', label: 'ENGINE IMPLEMENTATION', description: '담당 사운드의 제작과 함께 메타사운드를 활용한 게임 엔진 적용 작업을 진행했습니다.' },
-];
-
-const goals = [
-  { icon: AudioLines, label: 'SPACE / CLEANING', title: '우주에서의 청소', description: '우주를 배경으로 청소를 목표로 하는 게임이라는 설정을 사운드 콘셉트의 출발점으로 삼았습니다.' },
-  { icon: Headphones, label: 'RESTRAINED COMEDY', title: '마냥 밝지만은 않은 코믹함', description: '기본적인 코믹함은 살리되, 지나치게 천진난만하고 밝은 느낌으로 흐르지 않도록 방향을 잡았습니다.' },
-  { icon: Layers, label: 'TONAL BALANCE', title: '심각함과 가벼움 사이', description: '너무 심각하지도, 너무 가볍지도 않게. 게임의 유머와 분위기 사이에서 무게의 균형을 잡는 사운드를 지향했습니다.' },
 ];
 
 function SectionHeading({ number, label, title }: { number: string; label: string; title: string }) {
@@ -48,7 +42,7 @@ export function OmgPortfolio() {
         </header>
 
         <main className="mx-auto max-w-[1240px] px-4 sm:px-6 md:px-8 pb-16 sm:pb-24">
-          <section aria-labelledby="omg-title" className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16 items-center py-12 sm:py-20 lg:py-24">
+          <section aria-labelledby="omg-title" className="py-12 sm:py-16">
             <div>
               <p className="text-xs font-mono tracking-[0.18em] text-cyan-400">GAME AUDIO PORTFOLIO / 2026</p>
               <h1 id="omg-title" tabIndex={-1} className="mt-5 text-8xl sm:text-[9rem] leading-none font-black tracking-tighter outline-none">OMG<span className="text-cyan-400">.</span></h1>
@@ -61,21 +55,6 @@ export function OmgPortfolio() {
               </button>
             </div>
 
-            {/* Abstract editorial graphic, not a game screenshot or playable media. */}
-            <div className="relative aspect-square max-h-[440px] w-full overflow-hidden rounded-2xl border border-cyan-500/20 bg-[radial-gradient(ellipse_at_center,_rgba(6,182,212,0.14),_transparent_65%)]" aria-hidden="true">
-              <span className="absolute top-5 left-5 text-[10px] font-mono tracking-[0.2em] text-slate-500">AUDIO / CONCEPT GRAPHIC</span>
-              <div className="absolute inset-[13%] rounded-full border border-cyan-500/15" />
-              <div className="absolute inset-[24%] rounded-full border border-cyan-400/30" />
-              <div className="absolute inset-x-[8%] top-1/2 h-px bg-cyan-500/15" />
-              <div className="absolute inset-y-[8%] left-1/2 w-px bg-cyan-500/15" />
-              <div className="absolute inset-0 flex items-center justify-center gap-1.5 sm:gap-2">
-                {[18, 30, 46, 25, 62, 83, 48, 100, 68, 38, 58, 29, 43, 23, 15].map((height, index) => (
-                  <span key={index} style={{ height: `${height * 1.5}px` }} className="w-1.5 sm:w-2 rounded-full bg-cyan-300/80 shadow-[0_0_18px_rgba(6,182,212,0.3)]" />
-                ))}
-              </div>
-              <span className="absolute bottom-5 left-5 text-[10px] font-mono tracking-[0.2em] text-cyan-400">OMG — SOUND DESIGN</span>
-              <Radio className="absolute bottom-5 right-5 size-4 text-cyan-400" />
-            </div>
           </section>
 
           <div className="space-y-12 sm:space-y-20">
@@ -84,14 +63,14 @@ export function OmgPortfolio() {
               <div className="mt-7 grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
                 <div>
                   <h3 id="omg-overview" className="text-xl sm:text-2xl font-bold break-keep">게임 ‘OMG’의 사운드 디자인 협업</h3>
-                  <p className="mt-4 text-sm sm:text-base leading-8 text-slate-300 break-keep">‘OMG’는 우주를 배경으로 청소를 목표로 하는 게임입니다. 팀 내에서 사운드 작업을 분담했으며, 저는 주로 UI와 중력총의 중력·반중력 효과를 담당했습니다. 플레이어 사망·리스폰 사운드도 제작했으며, 담당 사운드의 게임 엔진 적용 작업을 함께 진행했습니다.</p>
-                  <p className="mt-4 text-sm sm:text-base leading-8 text-slate-400 break-keep">현재 작업을 마무리하며 포트폴리오 자료를 정리하고 있습니다. 아래에서 담당 게임 사운드 영상과 메타사운드 적용 화면을 확인할 수 있습니다.</p>
+                  <p className="mt-4 text-sm sm:text-base leading-8 text-slate-300 break-keep">OMG는 우주를 배경으로 청소를 목표로 하는 게임으로, 여러 명이 사운드 작업을 분담해 진행한 협업 프로젝트입니다.</p>
+                  <p className="mt-4 text-sm sm:text-base leading-8 text-slate-400 break-keep">저는 주로 UI 사운드와 중력건을 비롯한 무기 관련 사운드를 담당했습니다. 메뉴를 선택하거나 화면을 전환할 때 들리는 소리, 중력·반중력 효과가 생성되고 유지되거나 사라질 때의 소리, 플레이어가 사망하고 리스폰할 때의 사운드 등을 제작했습니다. 제작한 사운드는 메타사운드를 활용해 게임 엔진에 적용하는 작업까지 함께 진행했습니다.</p>
                 </div>
                 <dl className="divide-y divide-slate-800/80 text-sm">
                   {[
                     ['PROJECT', 'OMG'],
                     ['ROLE', '사운드 제작 및 게임 엔진 적용'],
-                    ['FOCUS', 'UI · 중력총 · 플레이어 사망·리스폰'],
+                    ['FOCUS', 'UI · 무기 · 화면 전환 · 사망·리스폰'],
                     ['YEAR', '2026'],
                     ['TEAM', 'OMG 개발팀과 역할 분담 협업'],
                     ['STATUS', '마무리 작업 중 · 자료 정리 중'],
@@ -105,8 +84,16 @@ export function OmgPortfolio() {
               </div>
             </section>
 
+            <section aria-label="사운드 방향성">
+              <SectionHeading number="02" label="SOUND DIRECTION" title="사운드 방향성" />
+              <div className="mt-7 max-w-4xl space-y-4 text-sm sm:text-base leading-8 text-slate-300 break-keep">
+                <p>게임의 분위기와 플레이 방식, 캐릭터와 UI의 시각적 인상을 바탕으로 사운드의 톤을 잡았습니다. OMG는 심각하거나 무거운 분위기의 게임은 아니지만, 그렇다고 마냥 밝고 경쾌한 느낌도 아니었습니다. 가벼운 코믹함 속에 차분함이 있는 게임이라고 느꼈습니다.</p>
+                <p>이러한 분위기에 맞춰 자극적이고 날카로운 소리보다는, 둥글고 부드러운 질감의 사운드를 주로 사용했습니다. 전체적으로 몽글몽글한 느낌을 살리면서, 너무 진지하거나 지나치게 가볍게 들리지 않도록 균형을 잡고자 했습니다.</p>
+              </div>
+            </section>
+
             <section aria-label="담당 작업">
-              <SectionHeading number="02" label="MY CONTRIBUTION" title="담당 작업" />
+              <SectionHeading number="03" label="MY CONTRIBUTION" title="담당 작업" />
               <div className="mt-7 grid gap-7 md:grid-cols-2 md:gap-8">
                 {roles.map(role => (
                   <article key={role.number} className="border-l-2 border-cyan-500/40 pl-5">
@@ -128,20 +115,6 @@ export function OmgPortfolio() {
                       <img src={sheet.src} alt={sheet.title} loading="lazy" className="w-full h-auto" />
                     </a>
                   </figure>
-                ))}
-              </div>
-            </section>
-
-            <section aria-label="사운드 콘셉트">
-              <SectionHeading number="03" label="SOUND CONCEPT" title="사운드 콘셉트" />
-              <div className="mt-7 grid gap-7 md:grid-cols-3 md:gap-8">
-                {goals.map(({ icon: Icon, label, title, description }) => (
-                  <article key={label}>
-                    <Icon className="size-6 text-cyan-400" aria-hidden="true" />
-                    <p className="mt-4 text-[10px] font-mono tracking-widest text-slate-500">{label}</p>
-                    <h3 className="mt-2 font-bold text-base sm:text-lg break-keep">{title}</h3>
-                    <p className="mt-3 text-sm text-slate-400 leading-7 break-keep">{description}</p>
-                  </article>
                 ))}
               </div>
             </section>
