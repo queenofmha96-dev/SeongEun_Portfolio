@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowDown, ArrowUpRight, AudioLines, Headphones, Layers, Rad
 import { ParticleCanvas } from './ParticleCanvas';
 import { FloatingControls } from './FloatingControls';
 import { soundEngine } from '../utils/soundEngine';
+import { OMG_VIDEOS, OMG_BLUEPRINTS } from '../data/omgMedia';
 
 const backLink = '#project-experience';
 const linkStyle = 'inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-bold text-cyan-300 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300';
@@ -89,7 +90,7 @@ export function OmgPortfolio() {
                 <div>
                   <h3 id="omg-overview" className="text-xl sm:text-2xl font-bold break-keep">게임 ‘OMG’의 사운드 디자인 협업</h3>
                   <p className="mt-4 text-sm sm:text-base leading-8 text-slate-300 break-keep">‘OMG’는 우주를 배경으로 청소를 목표로 하는 게임입니다. 팀 내에서 사운드 작업을 분담했으며, 저는 주로 UI와 특정 무기가 생성하는 중력·반중력 효과의 사운드 제작 및 게임 엔진 적용을 담당했습니다.</p>
-                  <p className="mt-4 text-sm sm:text-base leading-8 text-slate-400 break-keep">현재 작업을 마무리하며 포트폴리오 자료를 정리하고 있습니다. 실제 게임 장면과 사운드 작업물은 준비되는 대로 이 페이지에서 공개합니다.</p>
+                  <p className="mt-4 text-sm sm:text-base leading-8 text-slate-400 break-keep">현재 작업을 마무리하며 포트폴리오 자료를 정리하고 있습니다. 아래에서 담당 게임 사운드 영상과 메타사운드 적용 화면을 확인할 수 있습니다.</p>
                 </div>
                 <dl className="divide-y divide-slate-800/80 text-sm">
                   {[
@@ -138,26 +139,62 @@ export function OmgPortfolio() {
 
             <section id="omg-showcase" className="scroll-mt-28" aria-label="작업 자료">
               <SectionHeading number="04" label="SELECTED WORK" title="작업 자료" />
-              <div className="mt-7 rounded-2xl border border-slate-800 bg-[#0b0d18]/80 px-5 py-10 sm:px-10 sm:py-14 text-center">
-                <Headphones className="mx-auto size-9 text-cyan-400" aria-hidden="true" />
-                <p className="mt-5 font-mono text-[10px] sm:text-xs tracking-[0.2em] text-cyan-400">GAMEPLAY & SOUND SHOWREEL</p>
-                <h3 className="mt-3 text-xl sm:text-2xl font-bold">소리로 만나는 OMG</h3>
-                <p className="mx-auto mt-4 max-w-lg text-sm sm:text-base text-slate-400 leading-7 break-keep">실제 게임플레이와 사운드 작업물을 담은 쇼릴을 준비하고 있습니다.</p>
-                <span className="mt-6 inline-flex rounded-full border border-amber-500/30 bg-amber-950/30 px-3 py-1.5 text-xs font-bold text-amber-300">영상·음원 공개 준비 중</span>
+              <div className="mt-7">
+                <h3 className="text-lg sm:text-xl font-bold">게임 사운드 영상</h3>
+                <div className="mt-5 grid gap-7 lg:grid-cols-3">
+                  {OMG_VIDEOS.map(video => (
+                    <figure key={video.src} className="min-w-0">
+                      <video
+                        controls
+                        playsInline
+                        preload="metadata"
+                        aria-label={video.title}
+                        data-omg-video
+                        className="aspect-video w-full rounded-xl border border-slate-800 bg-black object-contain"
+                        onPlay={event => {
+                          const activeVideo = event.currentTarget;
+                          document.querySelectorAll<HTMLVideoElement>('video[data-omg-video]').forEach(otherVideo => {
+                            if (otherVideo !== activeVideo) otherVideo.pause();
+                          });
+                        }}
+                      >
+                        <source src={video.src} type="video/mp4" />
+                        <a href={video.src}>영상 파일 열기</a>
+                      </video>
+                      <figcaption className="mt-4">
+                        <h4 className="text-base font-bold text-slate-200">{video.title}</h4>
+                        {video.description && <p className="mt-3 text-sm leading-7 text-slate-400 break-keep">{video.description}</p>}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
               </div>
-              <div className="mt-6 grid gap-5 sm:grid-cols-3 text-sm">
-                {[
-                  ['UI SOUND', 'UI 사운드', '담당 UI 사운드의 제작 과정과 결과'],
-                  ['GRAVITY / ANTI-GRAVITY', '중력·반중력 사운드', '특정 무기로 생성되는 효과의 사운드'],
-                  ['ENGINE IMPLEMENTATION', '엔진 적용 장면', '담당 사운드를 실제 게임에 적용한 모습'],
-                ].map(([label, title, description]) => (
-                  <div key={label} className="border-t border-slate-800/80 pt-5">
-                    <p className="font-mono text-[10px] text-slate-500 tracking-widest">{label}</p>
-                    <h3 className="mt-2 font-bold">{title}</h3>
-                    <p className="mt-2 text-slate-400 leading-6 break-keep">{description}</p>
-                    <p className="mt-3 text-xs text-slate-500">자료 정리 중</p>
-                  </div>
-                ))}
+              <div className="mt-10 sm:mt-12 border-t border-slate-800/80 pt-8 sm:pt-10">
+                <h3 className="text-lg sm:text-xl font-bold">메타사운드 적용 화면</h3>
+                <div className="mt-5 grid gap-7 lg:grid-cols-3">
+                  {OMG_BLUEPRINTS.map(blueprint => (
+                    <figure key={blueprint.src} className="min-w-0">
+                      <a
+                        href={blueprint.src}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${blueprint.title} 메타사운드 화면 원본 확대 보기 (새 탭)`}
+                        className="block overflow-hidden rounded-xl border border-slate-800 bg-[#0b0d18] transition-colors hover:border-cyan-500/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300"
+                      >
+                        <img src={blueprint.src} alt={`${blueprint.title} 메타사운드 블루프린트`} loading="lazy" decoding="async" className="aspect-video w-full object-contain" />
+                      </a>
+                      <figcaption className="mt-2">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <h4 className="text-base font-bold text-slate-200">{blueprint.title}</h4>
+                          <a href={blueprint.src} target="_blank" rel="noopener noreferrer" className={`${linkStyle} text-xs`} aria-label={`${blueprint.title} 원본 보기 (새 탭)`}>
+                            원본 보기 <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                          </a>
+                        </div>
+                        {blueprint.description && <p className="mt-3 text-sm leading-7 text-slate-400 break-keep">{blueprint.description}</p>}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
               </div>
             </section>
           </div>
