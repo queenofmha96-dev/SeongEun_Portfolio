@@ -298,9 +298,25 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ profile }) => {
                     />
                     [{exp.period}]
                   </span>
-                  <h3 className="text-base sm:text-xl font-extrabold text-white print:text-slate-950 tracking-tight">
-                    {exp.company}
-                  </h3>
+                  <div className="flex flex-wrap items-center gap-x-2 sm:gap-x-3">
+                    <h3 className="text-base sm:text-xl font-extrabold text-white print:text-slate-950 tracking-tight">
+                      {exp.company}
+                    </h3>
+                    {exp.portfolioPending && (
+                      <span className="inline-flex items-center gap-2 shrink-0 whitespace-nowrap print:hidden">
+                        <button
+                          type="button"
+                          disabled
+                          aria-label={`${exp.company} 포트폴리오 보기 (준비 중)`}
+                          title="상세 포트폴리오 준비 중"
+                          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-cyan-500/40 bg-cyan-950/40 px-3 text-xs sm:text-sm font-bold text-cyan-300 cursor-not-allowed"
+                        >
+                          보기
+                        </button>
+                        <span className="text-xs text-slate-400">준비 중</span>
+                      </span>
+                    )}
+                  </div>
                   <span className="text-slate-500 text-sm hidden sm:inline">•</span>
                   <span
                     className={`text-xs sm:text-base font-bold print:text-slate-800 ${

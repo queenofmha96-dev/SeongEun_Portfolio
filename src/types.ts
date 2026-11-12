@@ -98,6 +98,7 @@ export interface SoundDirectorProfile {
     period: string;
     role: string;
     company: string;
+    portfolioPending?: boolean;
     projects: string[];
     description: string;
   }[];
