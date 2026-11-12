@@ -1,17 +1,19 @@
 import React from 'react';
-import { ArrowLeft, ArrowDown, ArrowUpRight, AudioLines, Headphones, Layers, Radio } from 'lucide-react';
+import { ArrowLeft, ArrowDown, ArrowUpRight, AudioLines, Headphones, Layers, Radio, ChevronDown } from 'lucide-react';
 import { ParticleCanvas } from './ParticleCanvas';
 import { FloatingControls } from './FloatingControls';
 import { soundEngine } from '../utils/soundEngine';
 import { OMG_VIDEOS, OMG_BLUEPRINTS } from '../data/omgMedia';
+import { OMG_SOUND_SCOPE } from '../data/omgSoundScope';
 
 const backLink = '#project-experience';
 const linkStyle = 'inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-bold text-cyan-300 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300';
 
 const roles = [
-  { number: '01', title: 'UI 사운드 제작', label: 'UI SOUND DESIGN', description: '팀 내에서 역할을 분담하고, UI를 주요 담당 영역으로 맡아 관련 사운드를 제작했습니다.' },
-  { number: '02', title: '중력·반중력 사운드', label: 'GRAVITY / ANTI-GRAVITY', description: '특정 무기로 생성되는 중력·반중력 효과의 사운드를 주요 담당 영역으로 맡아 작업했습니다.' },
-  { number: '03', title: '게임 엔진 적용', label: 'ENGINE IMPLEMENTATION', description: '담당 사운드의 제작과 함께 게임 엔진에 적용하는 작업을 진행했습니다.' },
+  { number: '01', title: 'UI 사운드 제작', label: 'UI SOUND DESIGN', description: '메인 메뉴, 중력 설정, 핀, 화면 전환, 미션 결과, 조작 가이드 및 에디터 오브젝트 조작에 쓰이는 UI 사운드를 제작했습니다.' },
+  { number: '02', title: '중력총 관련 사운드', label: 'GRAVITY / ANTI-GRAVITY', description: '총 습득·버리기, 레이저 발사, 중력장·반중력장의 생성·유지·소멸과 중력장 내 물체가 튕기는 소리를 제작했습니다.' },
+  { number: '03', title: '플레이어 사운드', label: 'PLAYER SOUND', description: '플레이어가 사망할 때와 다시 리스폰할 때 사용하는 사운드를 제작했습니다.' },
+  { number: '04', title: '게임 엔진 적용', label: 'ENGINE IMPLEMENTATION', description: '담당 사운드의 제작과 함께 메타사운드를 활용한 게임 엔진 적용 작업을 진행했습니다.' },
 ];
 
 const goals = [
@@ -52,7 +54,7 @@ export function OmgPortfolio() {
               <p className="text-xs font-mono tracking-[0.18em] text-cyan-400">GAME AUDIO PORTFOLIO / 2026</p>
               <h1 id="omg-title" tabIndex={-1} className="mt-5 text-8xl sm:text-[9rem] leading-none font-black tracking-tighter outline-none">OMG<span className="text-cyan-400">.</span></h1>
               <p className="mt-3 text-xl sm:text-3xl font-bold tracking-tight text-slate-200">Sound Design & Implementation</p>
-              <p className="mt-6 max-w-lg text-base sm:text-lg leading-relaxed text-slate-400 break-keep">우주 청소의 코믹함과 무게감 사이.<br />UI·중력·반중력 사운드 제작 및 엔진 적용.</p>
+              <p className="mt-6 max-w-lg text-base sm:text-lg leading-relaxed text-slate-400 break-keep">우주 청소의 코믹함과 무게감 사이.<br />UI·중력총·플레이어 사운드 제작 및 엔진 적용.</p>
               <div className="mt-7 flex flex-wrap gap-2 text-[11px] sm:text-xs font-mono">
                 {['UI SOUND', 'GRAVITY SFX', 'ENGINE IMPLEMENTATION'].map(label => (
                   <span key={label} className="rounded-lg border border-cyan-500/25 bg-cyan-950/30 px-2.5 py-1.5 text-cyan-200 whitespace-nowrap">{label}</span>
@@ -89,14 +91,14 @@ export function OmgPortfolio() {
               <div className="mt-7 grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
                 <div>
                   <h3 id="omg-overview" className="text-xl sm:text-2xl font-bold break-keep">게임 ‘OMG’의 사운드 디자인 협업</h3>
-                  <p className="mt-4 text-sm sm:text-base leading-8 text-slate-300 break-keep">‘OMG’는 우주를 배경으로 청소를 목표로 하는 게임입니다. 팀 내에서 사운드 작업을 분담했으며, 저는 주로 UI와 특정 무기가 생성하는 중력·반중력 효과의 사운드 제작 및 게임 엔진 적용을 담당했습니다.</p>
+                  <p className="mt-4 text-sm sm:text-base leading-8 text-slate-300 break-keep">‘OMG’는 우주를 배경으로 청소를 목표로 하는 게임입니다. 팀 내에서 사운드 작업을 분담했으며, 저는 주로 UI와 중력총의 중력·반중력 효과를 담당했습니다. 플레이어 사망·리스폰 사운드도 제작했으며, 담당 사운드의 게임 엔진 적용 작업을 함께 진행했습니다.</p>
                   <p className="mt-4 text-sm sm:text-base leading-8 text-slate-400 break-keep">현재 작업을 마무리하며 포트폴리오 자료를 정리하고 있습니다. 아래에서 담당 게임 사운드 영상과 메타사운드 적용 화면을 확인할 수 있습니다.</p>
                 </div>
                 <dl className="divide-y divide-slate-800/80 text-sm">
                   {[
                     ['PROJECT', 'OMG'],
                     ['ROLE', '사운드 제작 및 게임 엔진 적용'],
-                    ['FOCUS', 'UI · 무기 중력·반중력 효과'],
+                    ['FOCUS', 'UI · 중력총 · 플레이어 사망·리스폰'],
                     ['YEAR', '2026'],
                     ['TEAM', 'OMG 개발팀과 역할 분담 협업'],
                     ['STATUS', '마무리 작업 중 · 자료 정리 중'],
@@ -112,7 +114,7 @@ export function OmgPortfolio() {
 
             <section aria-label="담당 작업">
               <SectionHeading number="02" label="MY CONTRIBUTION" title="담당 작업" />
-              <div className="mt-7 grid gap-7 md:grid-cols-3 md:gap-8">
+              <div className="mt-7 grid gap-7 md:grid-cols-2 md:gap-8">
                 {roles.map(role => (
                   <article key={role.number} className="border-l-2 border-cyan-500/40 pl-5">
                     <p className="font-mono text-[10px] tracking-widest text-cyan-400">{role.number} / {role.label}</p>
@@ -120,6 +122,31 @@ export function OmgPortfolio() {
                     <p className="mt-3 text-sm text-slate-400 leading-7 break-keep">{role.description}</p>
                   </article>
                 ))}
+              </div>
+              <div className="mt-8 sm:mt-10 border-t border-slate-800/80 pt-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="text-base sm:text-lg font-bold">담당 사운드 목록</h3>
+                  <p className="text-xs text-slate-500">작업표 기준 {OMG_SOUND_SCOPE.reduce((total, group) => total + group.items.length, 0)}개 항목</p>
+                </div>
+                <div className="mt-4 divide-y divide-slate-800/80">
+                  {OMG_SOUND_SCOPE.map(group => (
+                    <details key={group.label} className="group">
+                      <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 py-4 text-sm font-bold text-slate-200 transition-colors hover:text-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 [&::-webkit-details-marker]:hidden">
+                        <span className="flex-1 break-keep">{group.title}</span>
+                        <span className="text-xs font-mono text-cyan-400 whitespace-nowrap shrink-0">{group.items.length}항목</span>
+                        <ChevronDown className="size-4 shrink-0 text-slate-500 transition-transform group-open:rotate-180" aria-hidden="true" />
+                      </summary>
+                      <dl className="divide-y divide-slate-800/50 pb-5">
+                        {group.items.map(item => (
+                          <div key={item.asset} className="grid gap-1.5 py-3 sm:grid-cols-2 sm:gap-6">
+                            <dt className="text-sm text-slate-300 break-keep">{item.use}</dt>
+                            <dd className="text-[11px] sm:text-xs font-mono text-slate-500 break-all">{item.asset}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </details>
+                  ))}
+                </div>
               </div>
             </section>
 

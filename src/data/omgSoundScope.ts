@@ -1,0 +1,51 @@
+// Assigned entries transcribed from the author's sound work sheets.
+export const OMG_SOUND_SCOPE = [
+  {
+    title: 'UI 사운드',
+    label: 'UI SOUND',
+    items: [
+      { asset: 'UI_Main_Menu_Hover', use: '메인 메뉴 마우스 호버' },
+      { asset: 'UI_Main_Menu_Click', use: '메인 메뉴 클릭' },
+      { asset: 'UI_Main_Menu_PopUp', use: '메뉴창 진입' },
+      { asset: 'UI_Gravity_On', use: '중력 영향 받기 활성화' },
+      { asset: 'UI_Gravity_Off', use: '중력 영향 받기 비활성화' },
+      { asset: 'UI_Pin', use: '위치 지정 핀' },
+      { asset: 'UI_Page_Open', use: '화면 전환 · 열림' },
+      { asset: 'UI_Page_Close', use: '화면 전환 · 닫힘' },
+      { asset: 'UI_Mission_Clear_Score', use: '미션 클리어 점수 표시' },
+      { asset: 'UI_Mission_Clear_Star', use: '미션 클리어 별 표시' },
+      { asset: 'UI_Mission_Fail', use: '미션 실패' },
+      { asset: 'UI_Click_Fail', use: '메뉴 클릭 실패' },
+      { asset: 'UI_Mission_Clear', use: '미션 클리어' },
+      { asset: 'UI_Control Guide_Open', use: '조작 가이드 열기' },
+      { asset: 'UI_Control Guide_Close', use: '조작 가이드 닫기' },
+      { asset: 'UI_Object_Craft', use: '에디터 오브젝트 생성' },
+      { asset: 'UI_Object_Delete', use: '에디터 오브젝트 삭제' },
+      { asset: 'UI_Object_Retouch', use: '에디터 오브젝트 수정' },
+    ],
+  },
+  {
+    title: '중력총 관련 사운드',
+    label: 'GRAVITY GUN',
+    items: [
+      { asset: 'SE_Gun_Get', use: '총 습득' },
+      { asset: 'SE_Gun_Drop', use: '총 버리기' },
+      { asset: 'SE_GravityGun_Create', use: '중력장 생성' },
+      { asset: 'SE_GravityGun_Loop', use: '중력장 유지 · 루프' },
+      { asset: 'SE_Gun_Shot', use: '중력·반중력 레이저 발사' },
+      { asset: 'SE_GravityGun_Disappear', use: '중력장 소멸' },
+      { asset: 'SE_AntigravityGun_Create', use: '반중력장 생성' },
+      { asset: 'SE_AntigravityGun_Loop', use: '반중력장 유지 · 루프' },
+      { asset: 'SE_AntigravityGun_Disappear', use: '반중력장 소멸' },
+      { asset: 'SE_Gravity_Field_Bounce', use: '중력장에서 물체가 튕기는 소리' },
+    ],
+  },
+  {
+    title: '플레이어 사운드',
+    label: 'PLAYER',
+    items: [
+      { asset: 'SE_Player_Death', use: '플레이어 사망' },
+      { asset: 'SE_Player_Respawn', use: '플레이어 리스폰' },
+    ],
+  },
+];

@@ -44,8 +44,8 @@ export const INITIAL_PROFILE: SoundDirectorProfile = {
       role: "사운드 제작 및 엔진 적용 (진행 중)",
       company: "게임 'OMG' 협업 프로젝트",
       portfolioHref: '#/projects/omg',
-      projects: ["UI 사운드", "무기 중력·반중력 사운드", "게임 엔진 적용"],
-      description: "우주에서 청소를 목표로 하는 게임 'OMG'의 사운드 협업. 역할을 분담해 주로 UI와 특정 무기가 생성하는 중력·반중력 효과의 사운드 제작 및 엔진 적용을 담당."
+      projects: ["UI 사운드", "중력총 사운드", "플레이어 사망·리스폰", "메타사운드·엔진 적용"],
+      description: "우주에서 청소를 목표로 하는 게임 'OMG'의 사운드 협업. 역할을 분담해 UI, 중력총의 중력·반중력 효과, 플레이어 사망·리스폰 사운드를 제작하고 메타사운드를 활용한 엔진 적용을 담당."
     },
     {
       period: "2024 - 2026",
