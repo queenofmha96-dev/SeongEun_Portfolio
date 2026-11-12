@@ -205,3 +205,11 @@ header {
   }
 }
 
+
+/* Readable screen typography, while keeping the print layout unchanged. */
+@media screen {
+  :root { --text-xs: 0.875rem; --text-xs--line-height: 1.6; --text-sm: 1rem; --text-sm--line-height: 1.75; --text-base: 1.125rem; --text-base--line-height: 1.8; }
+  [class~="text-[8px]"], [class~="text-[9px]"], [class~="text-[10px]"], [class~="text-[11px]"], [class~="text-[12px]"], [class~="text-[13px]"] { font-size: 0.875rem; line-height: 1.65; }
+  main p { line-height: 1.85; }
+}
+

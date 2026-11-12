@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowDown, ArrowUpRight } from 'lucide-react';
 import { ParticleCanvas } from './ParticleCanvas';
 import { FloatingControls } from './FloatingControls';
@@ -26,6 +26,24 @@ function SectionHeading({ number, label, title }: { number: string; label: strin
 }
 
 export function OmgPortfolio() {
+  const previewDialog = useRef<HTMLDialogElement>(null);
+  const [preview, setPreview] = useState<{ src: string; title: string } | null>(null);
+  useEffect(() => {
+    if (!preview) return;
+    const previousOverflow = document.body.style.overflow;
+    const trigger = document.activeElement as HTMLElement | null;
+    document.body.style.overflow = 'hidden';
+    previewDialog.current?.showModal();
+    return () => {
+      previewDialog.current?.close();
+      document.body.style.overflow = previousOverflow;
+      trigger?.focus({ preventScroll: true });
+    };
+  }, [preview]);
+  const openPreview = (event: React.MouseEvent<HTMLAnchorElement>, src: string, title: string) => {
+    event.preventDefault();
+    setPreview({ src, title });
+  };
   return (
     <div className="relative min-h-screen bg-[#07080f] text-slate-100 selection:bg-cyan-400 selection:text-slate-950 font-sans">
       <ParticleCanvas />
@@ -129,10 +147,10 @@ export function OmgPortfolio() {
                       </video>
                       <figcaption className="min-w-0">
                         <h4 className="text-base font-bold text-slate-200">{video.title}</h4>
-                        <a href={video.sheetSrc} target="_blank" rel="noopener noreferrer" aria-label={video.sheetTitle + ' 원본 확대 보기 (새 탭)'} className="mt-4 block min-h-11 overflow-hidden rounded-lg border border-slate-800 hover:border-cyan-500/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300">
+                        <a href={video.sheetSrc} onClick={event => openPreview(event, video.sheetSrc, video.sheetTitle)}  aria-label={video.sheetTitle + ' 원본 확대 보기'} className="mt-4 block min-h-11 overflow-hidden rounded-lg border border-slate-800 hover:border-cyan-500/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300">
                           <img src={video.sheetSrc} alt={video.sheetTitle} loading="lazy" className="w-full h-auto" />
                         </a>
-                        <a href={video.sheetSrc} target="_blank" rel="noopener noreferrer" className={linkStyle + ' mt-2 text-xs'}>{video.sheetTitle} · 원본 보기 <ArrowUpRight className="size-3.5" aria-hidden="true" /></a>
+                        <a href={video.sheetSrc} onClick={event => openPreview(event, video.sheetSrc, video.sheetTitle)}  className={linkStyle + ' mt-2 text-xs'}>{video.sheetTitle} · 원본 보기 <ArrowUpRight className="size-3.5" aria-hidden="true" /></a>
                         {video.description && <p className="mt-3 text-sm leading-7 text-slate-400 break-keep">{video.description}</p>}
                       </figcaption>
                     </figure>
@@ -145,10 +163,8 @@ export function OmgPortfolio() {
                   {OMG_BLUEPRINTS.map(blueprint => (
                     <figure key={blueprint.src} className="grid min-w-0 gap-5 md:grid-cols-2 md:gap-8 items-start">
                       <a
-                        href={blueprint.src}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${blueprint.title} 메타사운드 화면 원본 확대 보기 (새 탭)`}
+                        href={blueprint.src} onClick={event => openPreview(event, blueprint.src, blueprint.title)}
+                        aria-label={`${blueprint.title} 메타사운드 화면 원본 확대 보기`}
                         className="block overflow-hidden rounded-xl border border-slate-800 bg-[#0b0d18] transition-colors hover:border-cyan-500/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300"
                       >
                         <img src={blueprint.src} alt={`${blueprint.title} 메타사운드 블루프린트`} loading="lazy" decoding="async" className="aspect-video w-full object-contain" />
@@ -156,7 +172,7 @@ export function OmgPortfolio() {
                       <figcaption className="min-w-0">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <h4 className="text-base font-bold text-slate-200">{blueprint.title}</h4>
-                          <a href={blueprint.src} target="_blank" rel="noopener noreferrer" className={`${linkStyle} text-xs`} aria-label={`${blueprint.title} 원본 보기 (새 탭)`}>
+                          <a href={blueprint.src} onClick={event => openPreview(event, blueprint.src, blueprint.title)}  className={`${linkStyle} text-xs`} aria-label={`${blueprint.title} 원본 보기`}>
                             원본 보기 <ArrowUpRight className="size-3.5" aria-hidden="true" />
                           </a>
                         </div>
@@ -181,6 +197,17 @@ export function OmgPortfolio() {
         <footer className="border-t border-slate-800/80 px-4 py-7 text-center text-[10px] sm:text-xs font-mono tracking-wider text-slate-500">© 2026 SEONGEUN YANG · GAME SOUND DESIGN</footer>
       </div>
       <FloatingControls />
+      <dialog ref={previewDialog} aria-label={preview?.title ?? '사진 확대'} onCancel={() => setPreview(null)} onClose={() => setPreview(null)} onClick={event => { if (event.target === event.currentTarget) setPreview(null); }} className="fixed inset-0 m-auto h-dvh w-screen max-h-none max-w-none bg-black/90 p-4 text-slate-100 backdrop:bg-black/70 sm:p-8">
+        {preview && <div className="pointer-events-none flex h-full flex-col gap-4">
+          <div className="pointer-events-auto flex items-center justify-between gap-4">
+            <p className="text-base font-bold break-keep">{preview.title}</p>
+            <button type="button" autoFocus onClick={() => setPreview(null)} className="min-h-11 shrink-0 rounded-lg border border-cyan-400/40 bg-slate-900 px-5 text-base text-cyan-200 focus-visible:outline-2 focus-visible:outline-cyan-300">✕ 닫기</button>
+          </div>
+          <div className="flex min-h-0 flex-1 items-center justify-center">
+            <img src={preview.src} alt={preview.title} className="pointer-events-auto max-h-full max-w-full object-contain" />
+          </div>
+        </div>}
+      </dialog>
     </div>
   );
 }
