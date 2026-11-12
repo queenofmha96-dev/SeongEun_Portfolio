@@ -41,11 +41,11 @@ export const INITIAL_PROFILE: SoundDirectorProfile = {
   experience: [
     {
       period: "2026 - Present",
-      role: "사운드 기획 및 오디오 협업 (진행 중)",
+      role: "사운드 제작 및 엔진 적용 (진행 중)",
       company: "게임 'OMG' 협업 프로젝트",
       portfolioHref: '#/projects/omg',
-      projects: ["게임 OMG 사운드 기획", "오디오 시스템 콘셉트 설계"],
-      description: "게임 'OMG' 개발팀과 협업하여 전반적인 사운드 방향성 수립, 인게임 오디오 시스템 기획 및 사운드 연출 진행 중."
+      projects: ["UI 사운드", "무기 중력·반중력 사운드", "게임 엔진 적용"],
+      description: "우주에서 청소를 목표로 하는 게임 'OMG'의 사운드 협업. 역할을 분담해 주로 UI와 특정 무기가 생성하는 중력·반중력 효과의 사운드 제작 및 엔진 적용을 담당."
     },
     {
       period: "2024 - 2026",

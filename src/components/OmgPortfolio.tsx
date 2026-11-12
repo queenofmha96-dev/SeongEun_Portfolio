@@ -8,15 +8,15 @@ const backLink = '#project-experience';
 const linkStyle = 'inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-bold text-cyan-300 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300';
 
 const roles = [
-  { number: '01', title: '사운드 방향성 기획', label: 'SOUND DIRECTION', description: '게임의 분위기와 플레이 흐름에 맞는 전반적인 사운드 방향성을 개발팀과 함께 기획합니다.' },
-  { number: '02', title: '오디오 시스템 콘셉트', label: 'AUDIO SYSTEM CONCEPT', description: '인게임 상황에 따라 사운드가 어떤 역할을 해야 하는지 정리하고, 오디오 시스템의 콘셉트를 설계합니다.' },
-  { number: '03', title: '인게임 사운드 연출', label: 'IN-GAME AUDIO', description: '게임플레이의 행동과 상황을 소리로 전달하는 사운드 연출 작업을 진행합니다.' },
+  { number: '01', title: 'UI 사운드 제작', label: 'UI SOUND DESIGN', description: '팀 내에서 역할을 분담하고, UI를 주요 담당 영역으로 맡아 관련 사운드를 제작했습니다.' },
+  { number: '02', title: '중력·반중력 사운드', label: 'GRAVITY / ANTI-GRAVITY', description: '특정 무기로 생성되는 중력·반중력 효과의 사운드를 주요 담당 영역으로 맡아 작업했습니다.' },
+  { number: '03', title: '게임 엔진 적용', label: 'ENGINE IMPLEMENTATION', description: '담당 사운드의 제작과 함께 게임 엔진에 적용하는 작업을 진행했습니다.' },
 ];
 
 const goals = [
-  { icon: AudioLines, label: 'FEEDBACK', title: '행동이 소리로 돌아오도록', description: '플레이어의 행동과 결과가 명확하게 연결되는 청각적 피드백을 지향합니다.' },
-  { icon: Headphones, label: 'ATMOSPHERE', title: '게임의 분위기를 이어가도록', description: '개별 소리가 하나의 세계 안에서 자연스럽게 어우러지는 사운드 방향을 고민합니다.' },
-  { icon: Layers, label: 'READABILITY', title: '중요한 순간이 들리도록', description: '여러 소리가 겹치는 순간에도 필요한 정보가 전달되는 사운드의 역할과 우선순위를 고려합니다.' },
+  { icon: AudioLines, label: 'SPACE / CLEANING', title: '우주에서의 청소', description: '우주를 배경으로 청소를 목표로 하는 게임이라는 설정을 사운드 콘셉트의 출발점으로 삼았습니다.' },
+  { icon: Headphones, label: 'RESTRAINED COMEDY', title: '마냥 밝지만은 않은 코믹함', description: '기본적인 코믹함은 살리되, 지나치게 천진난만하고 밝은 느낌으로 흐르지 않도록 방향을 잡았습니다.' },
+  { icon: Layers, label: 'TONAL BALANCE', title: '심각함과 가벼움 사이', description: '너무 심각하지도, 너무 가볍지도 않게. 게임의 유머와 분위기 사이에서 무게의 균형을 잡는 사운드를 지향했습니다.' },
 ];
 
 function SectionHeading({ number, label, title }: { number: string; label: string; title: string }) {
@@ -50,10 +50,10 @@ export function OmgPortfolio() {
             <div>
               <p className="text-xs font-mono tracking-[0.18em] text-cyan-400">GAME AUDIO PORTFOLIO / 2026</p>
               <h1 id="omg-title" tabIndex={-1} className="mt-5 text-8xl sm:text-[9rem] leading-none font-black tracking-tighter outline-none">OMG<span className="text-cyan-400">.</span></h1>
-              <p className="mt-3 text-xl sm:text-3xl font-bold tracking-tight text-slate-200">Game Sound Design</p>
-              <p className="mt-6 max-w-lg text-base sm:text-lg leading-relaxed text-slate-400 break-keep">게임의 순간을 소리로 연결하다.<br />사운드 방향성부터 인게임 오디오 연출까지.</p>
+              <p className="mt-3 text-xl sm:text-3xl font-bold tracking-tight text-slate-200">Sound Design & Implementation</p>
+              <p className="mt-6 max-w-lg text-base sm:text-lg leading-relaxed text-slate-400 break-keep">우주 청소의 코믹함과 무게감 사이.<br />UI·중력·반중력 사운드 제작 및 엔진 적용.</p>
               <div className="mt-7 flex flex-wrap gap-2 text-[11px] sm:text-xs font-mono">
-                {['SOUND DIRECTION', 'AUDIO CONCEPT', 'IN-GAME AUDIO'].map(label => (
+                {['UI SOUND', 'GRAVITY SFX', 'ENGINE IMPLEMENTATION'].map(label => (
                   <span key={label} className="rounded-lg border border-cyan-500/25 bg-cyan-950/30 px-2.5 py-1.5 text-cyan-200 whitespace-nowrap">{label}</span>
                 ))}
               </div>
@@ -88,15 +88,16 @@ export function OmgPortfolio() {
               <div className="mt-7 grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
                 <div>
                   <h3 id="omg-overview" className="text-xl sm:text-2xl font-bold break-keep">게임 ‘OMG’의 사운드 디자인 협업</h3>
-                  <p className="mt-4 text-sm sm:text-base leading-8 text-slate-300 break-keep">게임 ‘OMG’ 개발팀과 협업하여 전반적인 사운드 방향성 수립, 인게임 오디오 시스템 콘셉트 기획 및 사운드 연출을 진행한 프로젝트입니다.</p>
+                  <p className="mt-4 text-sm sm:text-base leading-8 text-slate-300 break-keep">‘OMG’는 우주를 배경으로 청소를 목표로 하는 게임입니다. 팀 내에서 사운드 작업을 분담했으며, 저는 주로 UI와 특정 무기가 생성하는 중력·반중력 효과의 사운드 제작 및 게임 엔진 적용을 담당했습니다.</p>
                   <p className="mt-4 text-sm sm:text-base leading-8 text-slate-400 break-keep">현재 작업을 마무리하며 포트폴리오 자료를 정리하고 있습니다. 실제 게임 장면과 사운드 작업물은 준비되는 대로 이 페이지에서 공개합니다.</p>
                 </div>
                 <dl className="divide-y divide-slate-800/80 text-sm">
                   {[
                     ['PROJECT', 'OMG'],
-                    ['ROLE', '사운드 기획 및 오디오 협업'],
+                    ['ROLE', '사운드 제작 및 게임 엔진 적용'],
+                    ['FOCUS', 'UI · 무기 중력·반중력 효과'],
                     ['YEAR', '2026'],
-                    ['TEAM', 'OMG 개발팀'],
+                    ['TEAM', 'OMG 개발팀과 역할 분담 협업'],
                     ['STATUS', '마무리 작업 중 · 자료 정리 중'],
                   ].map(([label, value]) => (
                     <div key={label} className="grid grid-cols-[72px_1fr] sm:grid-cols-[88px_1fr] gap-4 py-3.5 first:pt-0">
@@ -121,8 +122,8 @@ export function OmgPortfolio() {
               </div>
             </section>
 
-            <section aria-label="사운드 설계의 지향점">
-              <SectionHeading number="03" label="SOUND DIRECTION" title="사운드 설계의 지향점" />
+            <section aria-label="사운드 콘셉트">
+              <SectionHeading number="03" label="SOUND CONCEPT" title="사운드 콘셉트" />
               <div className="mt-7 grid gap-7 md:grid-cols-3 md:gap-8">
                 {goals.map(({ icon: Icon, label, title, description }) => (
                   <article key={label}>
@@ -146,9 +147,9 @@ export function OmgPortfolio() {
               </div>
               <div className="mt-6 grid gap-5 sm:grid-cols-3 text-sm">
                 {[
-                  ['GAMEPLAY', '인게임 사운드', '플레이 장면 속 사운드 연출'],
-                  ['AUDIO BREAKDOWN', '사운드 제작 과정', '소리의 구성과 디자인 의도'],
-                  ['BEFORE / AFTER', '사운드 적용 비교', '같은 장면의 사운드 전후 비교'],
+                  ['UI SOUND', 'UI 사운드', '담당 UI 사운드의 제작 과정과 결과'],
+                  ['GRAVITY / ANTI-GRAVITY', '중력·반중력 사운드', '특정 무기로 생성되는 효과의 사운드'],
+                  ['ENGINE IMPLEMENTATION', '엔진 적용 장면', '담당 사운드를 실제 게임에 적용한 모습'],
                 ].map(([label, title, description]) => (
                   <div key={label} className="border-t border-slate-800/80 pt-5">
                     <p className="font-mono text-[10px] text-slate-500 tracking-widest">{label}</p>
