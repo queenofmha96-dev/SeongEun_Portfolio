@@ -101,29 +101,15 @@ export function OmgPortfolio() {
                   </article>
                 ))}
               </div>
-              <div className="mt-8 space-y-7">
-                {[
-                  { title: 'UI 사운드 작업표', src: '/omg/omg-ui-sheet.png' },
-                  { title: '중력총 사운드 작업표', src: '/omg/omg-gravity-sheet.png' },
-                  { title: '플레이어 사운드 작업표', src: '/omg/omg-player-sheet.png' },
-                ].map(sheet => (
-                  <figure key={sheet.src}>
-                    <figcaption className="mb-3 text-sm text-slate-300">{sheet.title}</figcaption>
-                    <a href={sheet.src} target="_blank" rel="noopener noreferrer" aria-label={sheet.title + ' 원본 확대 보기 (새 탭)'} className="block min-h-11 overflow-hidden rounded-lg border border-slate-800 hover:border-cyan-500/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300">
-                      <img src={sheet.src} alt={sheet.title} loading="lazy" className="w-full h-auto" />
-                    </a>
-                  </figure>
-                ))}
-              </div>
             </section>
 
             <section id="omg-showcase" className="scroll-mt-28" aria-label="작업 자료">
               <SectionHeading number="04" label="SELECTED WORK" title="작업 자료" />
               <div className="mt-7">
                 <h3 className="text-lg sm:text-xl font-bold">게임 사운드 영상</h3>
-                <div className="mt-5 grid gap-7 lg:grid-cols-3">
+                <div className="mt-5 space-y-10 sm:space-y-12">
                   {OMG_VIDEOS.map(video => (
-                    <figure key={video.src} className="min-w-0">
+                    <figure key={video.src} className="grid min-w-0 gap-5 md:grid-cols-2 md:gap-8 items-start">
                       <video
                         controls
                         playsInline
@@ -141,8 +127,12 @@ export function OmgPortfolio() {
                         <source src={video.src} type="video/mp4" />
                         <a href={video.src}>영상 파일 열기</a>
                       </video>
-                      <figcaption className="mt-4">
+                      <figcaption className="min-w-0">
                         <h4 className="text-base font-bold text-slate-200">{video.title}</h4>
+                        <a href={video.sheetSrc} target="_blank" rel="noopener noreferrer" aria-label={video.sheetTitle + ' 원본 확대 보기 (새 탭)'} className="mt-4 block min-h-11 overflow-hidden rounded-lg border border-slate-800 hover:border-cyan-500/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300">
+                          <img src={video.sheetSrc} alt={video.sheetTitle} loading="lazy" className="w-full h-auto" />
+                        </a>
+                        <a href={video.sheetSrc} target="_blank" rel="noopener noreferrer" className={linkStyle + ' mt-2 text-xs'}>{video.sheetTitle} · 원본 보기 <ArrowUpRight className="size-3.5" aria-hidden="true" /></a>
                         {video.description && <p className="mt-3 text-sm leading-7 text-slate-400 break-keep">{video.description}</p>}
                       </figcaption>
                     </figure>
@@ -151,9 +141,9 @@ export function OmgPortfolio() {
               </div>
               <div className="mt-10 sm:mt-12 border-t border-slate-800/80 pt-8 sm:pt-10">
                 <h3 className="text-lg sm:text-xl font-bold">메타사운드 적용 화면</h3>
-                <div className="mt-5 grid gap-7 lg:grid-cols-3">
+                <div className="mt-5 space-y-10 sm:space-y-12">
                   {OMG_BLUEPRINTS.map(blueprint => (
-                    <figure key={blueprint.src} className="min-w-0">
+                    <figure key={blueprint.src} className="grid min-w-0 gap-5 md:grid-cols-2 md:gap-8 items-start">
                       <a
                         href={blueprint.src}
                         target="_blank"
@@ -163,7 +153,7 @@ export function OmgPortfolio() {
                       >
                         <img src={blueprint.src} alt={`${blueprint.title} 메타사운드 블루프린트`} loading="lazy" decoding="async" className="aspect-video w-full object-contain" />
                       </a>
-                      <figcaption className="mt-2">
+                      <figcaption className="min-w-0">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <h4 className="text-base font-bold text-slate-200">{blueprint.title}</h4>
                           <a href={blueprint.src} target="_blank" rel="noopener noreferrer" className={`${linkStyle} text-xs`} aria-label={`${blueprint.title} 원본 보기 (새 탭)`}>
